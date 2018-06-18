@@ -55,8 +55,9 @@
 			<button id="addRecord">Přidat záznam</button>
 		</div>
 		<div id="form">
-			<form onsubmit="return newRecord()">
-				Date: <input type="text" id = "form1">
+			<form onsubmit="newRecord(event)">
+				Date: <input type="text" id="form1">
+				<br />
 				Subject: 
 				<select id="form2">
 					<option>D</option>
@@ -66,7 +67,7 @@
 				<br />
 				Description: <input type="text" id="form3">
 				<br />
-				<input type="submit">
+				<input type="submit" id="formSubmit">
 			</form>
 		</div>
     </body>
