@@ -14,7 +14,7 @@ window.onload = function ()
 		evt.preventDefault();
 		recordCount++;
 		document.getElementById("form").style.display = "none";
-		document.getElementById("home").style.height = ((recordCount * 52) + 60) + "px";
+		document.getElementById("home").style.height = ((recordCount * 56) + 60) + "px";
 		
 		var records = document.getElementById("data");
 		var rw = document.createElement("tr");
