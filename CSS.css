@@ -1,4 +1,21 @@
-﻿#column1{
+﻿#home{
+	border: 1px solid black;
+	background-color: #FFFF99;
+	width: 1255px;
+	height: 115px;
+}
+#form{
+	display: none;
+	border: 1px solid black;
+	background-color: #99FFFF;
+	width: 419px;
+	height: 250px;
+	position: absolute;
+	top: 50px;
+	left: 418px;
+}
+/*---------------------*/
+#column1{
     width: 150px;
 	height: 50px;
 	text-align: center;
