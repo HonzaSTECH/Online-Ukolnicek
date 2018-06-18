@@ -15,6 +15,56 @@
 	left: 418px;
 }
 /*---------------------*/
+#form1Text{
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	font-size: 20px;
+}
+#form2Text{
+	position: absolute;
+	left: 5px;
+	top: 30px;
+	font-size: 20px;
+}
+#form3Text{
+	position: absolute;
+	left: 5px;
+	top: 55px;
+	font-size: 20px;
+}
+#form4Text{
+	position: absolute;
+	left: 5px;
+	top: 80px;
+	font-size: 20px;
+}
+#form1{
+	position: absolute;
+	left: 150px;
+	top: 5px;
+}
+#form2{
+	position: absolute;
+	left: 150px;
+	top: 30px;
+}
+#form3{
+	position: absolute;
+	left: 150px;
+	top: 55px;
+}
+#form4{
+	position: absolute;
+	left: 150px;
+	top: 80px;
+}
+#formSubmit{
+	position: absolute;
+	left: 150px;
+	top: 120px;
+}
+/*---------------------*/
 #column1{
     width: 150px;
 	height: 50px;
