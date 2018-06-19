@@ -142,7 +142,7 @@
     width: 100px;
 	height: 50px;
 	text-align: center;
-	font-size: 25px;
+	font-size: 28px;
 }
 #column3{
     width: 500px;
@@ -177,5 +177,19 @@
 #addRecord{
 	width: 100px;
 	position: relative;
-	left: 600px;
+	top: 50px;
+	left: 570px;
+}
+#noRecord{
+	position: absolute;
+	top:75px;
+	left: 250px;
+	height:30px;
+	width: 750px;
+	background-color: #CCCCCC;
+	border: 1px solid black;
+	text-align: center;
+	vertical-align: center;
+	font-size: 22px;
+	z-index: -1;
 }
