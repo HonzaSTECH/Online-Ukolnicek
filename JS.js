@@ -1,4 +1,7 @@
 ﻿var recordCount = 0;
+var recordPriority;
+var recordColor;
+var date;
 
 window.onload = function ()
 {
@@ -21,6 +24,27 @@ window.onload = function ()
 		document.getElementById("form").style.display = "none";
 		document.getElementById("home").style.height = ((recordCount * 56) + 60) + "px";
 		
+		date = new Date();
+		
+		recordPriority = (document.querySelector('input[name="priority"]:checked').value);
+		switch(recordPriority){
+			case "1":
+				recordColor = "#FF8888";
+				break;
+			case "2":
+				recordColor = "#FFCC88";
+				break;
+			case "3":
+				recordColor = "#FFFF77";
+				break;
+			case "4":
+				recordColor = "#88EE88";
+				break;
+			case "5":
+				recordColor = "#9999FF";
+				break;
+		}
+		
 		var records = document.getElementById("data");
 		var rw = document.createElement("tr");
 		var date = document.createElement("td");
@@ -32,9 +56,9 @@ window.onload = function ()
 		var author = document.createElement("td");
 		var authorText = document.createTextNode(document.getElementById("form4").value);
 		var dateOfAdding = document.createElement("td");
-		var dateOfAddingText = document.createTextNode("adding");
+		var dateOfAddingText = document.createTextNode(date.getDate);
 		var action = document.createElement("td");
-		var actionText = document.createTextNode("Edit");
+		var actionText = document.createTextNode("Upvote Edit Delete");
 	
 		date.appendChild(dateText);
 		subject.appendChild(subjectText);
@@ -49,6 +73,13 @@ window.onload = function ()
 		author.id = "column4";
 		dateOfAdding.id = "column5";
 		action.id = "column6";
+		
+		date.style.backgroundColor = recordColor;
+		subject.style.backgroundColor = recordColor;
+		description.style.backgroundColor = recordColor;
+		author.style.backgroundColor = recordColor;
+		dateOfAdding.style.backgroundColor = recordColor;
+		action.style.backgroundColor = recordColor;
 		
 		rw.appendChild(date);
 		rw.appendChild(subject);
