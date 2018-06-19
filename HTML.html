@@ -7,6 +7,7 @@
     </head>
     <body>
 		<div id="home">
+			<div id="noRecord">Žádný záznam</div>
 			<table id="data" border="2">
 				<tr>
 					<td id="column1">
@@ -16,7 +17,7 @@
 						Předmět
 					</td>
 					<td id="column3">
-						Stručný popis
+						Popis
 					</td>
 					<td id="column4">
 						Přidal/a
@@ -28,57 +29,59 @@
 						Akce
 					</td>
 				</tr>
-<!--				<tr>
-					<td id="column1">
-						22. 5.
-					</td>
-					<td id="column2">
-						Fy
-					</td>
-					<td id="column3">
-						Test na vlnění a zvuk
-					</td>
-					<td id="column4">
-						Jan Štěch
-					</td>
-					<td id="column5">
-						17. 5.
-					</td>
-					<td id="column6">
-						Upvote
-						Downvote
-						Edit
-					</td>
-				</tr>			-->
 			</table>
-			<p></p>
 			<button id="addRecord">Přidat záznam</button>
 		</div>
 		<div id="form">
 			<form onsubmit="newRecord(event)">
-			
-				<span id="form1Text">Date:</span>
-				<input type="text" id="form1">
+				<span id="form1Text">Datum:</span>
+				<input type="date" id="form1">
 				<br />
-				
-				<span id="form2Text">Subject:</span>
+				<span id="form2Text">Předmět:</span>
 				<select id="form2">
+					<option>-</option>
+					<option>ČJ</option>
+					<option>AJ</option>
+					<option>NJ</option>
+					<option>ZSV</option>
 					<option>D</option>
 					<option>Z</option>
 					<option>Bi</option>
+					<option>M</option>
+					<option>Fy</option>
+					<option>Ch</option>
+					<option>EVV</option>
+					<option>EVH</option>
+					<option>TV</option>
+					<option>IVT</option>
 				</select>
 				<br />
-				
-				<span id="form3Text">Description:</span>
-				<input type="text" id="form3">
+				<span id="form3Text">Popis:</span>
+				<textarea type="message" id="form3"></textarea>
 				<br />
-				
-				<span id="form4Text">Author:</span>
+				<span id="form4Text">Přidal:</span>
 				<input type="text" id="form4">
 				<br />
-				
-				<input type="submit" id="formSubmit">
+				<span id="form5Text">Priorita:</span>
+					<div id="priority1">
+						<input type="radio" name="priority">1
+					</div>
+					<div id="priority2">
+						<input type="radio"  name="priority" >2
+					</div>
+					<div id="priority3">
+						<input type="radio" name="priority"> 3
+					</div>
+					<div id="priority4">
+						<input type="radio" name="priority"> 4
+					</div>
+					<div id="priority5">
+						<input type="radio" name="priority"> 5
+					</div>
+					<br />
+				<input type="submit" id="formSubmit" value="Přidat">
 			</form>
+			<button id="formCancel">Zrušit</button>
 		</div>
     </body>
 </html>
