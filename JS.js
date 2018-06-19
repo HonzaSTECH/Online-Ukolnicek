@@ -8,6 +8,11 @@ window.onload = function ()
 	{
 		document.getElementById("form").style.display = "block";
 	}
+	
+	document.getElementById("formCancel").onclick = function closeForm()
+	{
+		document.getElementById("form").style.display = "none";
+	}
 }
 	
 	function newRecord(evt){
