@@ -48,29 +48,31 @@ window.onload = function ()
 				recordColor = "#FFFF77";
 		}
 		
-		var dateWork = document.getElementById("form1").value;
-		
-		var year;
-		var month;
-		var day;
-		i=0;
-		
-		for(; dateWork[i] != "-"; i++){
-			if(year == undefined){year = dateWork[i];}
-			else{year += dateWork[i];}
-		}
-		i++;
-		for(; dateWork[i] != "-"; i++){
-			if(month == undefined){month = dateWork[i];}
-			else{month += dateWork[i];}
-		}
-		i++;
-		for(; dateWork[i] != "-" && dateWork[i] != undefined; i++){
-			if(day == undefined){day = dateWork[i];}
-			else{day += dateWork[i];}
-		}
-		dateWork = (day + ". " + month + ". " + year);
-		
+/*	D */var dateWork = document.getElementById("form1").value;
+/*	A */
+/*	T */var year;
+/*	E */var month;
+/*	  */var day;
+/*	G */i=0;
+/*	E */
+/*	T */for(; dateWork[i] != "-"; i++){
+/*	T */	if(year == undefined){year = dateWork[i];}
+/*	I */	else{year += dateWork[i];}
+/*	N */}
+/*	G */i++;
+/*	  */for(; dateWork[i] != "-"; i++){
+/*	A */	if(month == undefined){month = dateWork[i];}
+/*	N */	else{month += dateWork[i];}
+/*	D */}
+/*	  */i++;
+/*	C */for(; dateWork[i] != "-" && dateWork[i] != undefined; i++){
+/*	O */	if(day == undefined){day = dateWork[i];}
+/*	N */	else{day += dateWork[i];}
+/*	V */}
+/*	E */dateWork = (day + ". " + month + ". " + year);
+/*	R */
+/*	T */var today = (date.getDate() + ". " + (date.getMonth()+1) + ". " + date.getFullYear());
+
 		var records = document.getElementById("data");
 		var rw = document.createElement("tr");
 		var date = document.createElement("td");
@@ -82,7 +84,7 @@ window.onload = function ()
 		var author = document.createElement("td");
 		var authorText = document.createTextNode(document.getElementById("form4").value);
 		var dateOfAdding = document.createElement("td");
-		var dateOfAddingText = document.createTextNode(date.getDate);
+		var dateOfAddingText = document.createTextNode(today);
 		var action = document.createElement("td");
 		var actionText = document.createTextNode("Upvote Edit Delete");
 	
