@@ -35,10 +35,10 @@
 		<div id="form">
 			<form onsubmit="newRecord(event)">
 				<span id="form1Text">Datum:</span>
-				<input type="date" id="form1">
+				<input type="date" id="form1" required>
 				<br />
 				<span id="form2Text">Předmět:</span>
-				<select id="form2">
+				<select id="form2" required>
 					<option>-</option>
 					<option>ČJ</option>
 					<option>AJ</option>
@@ -57,10 +57,10 @@
 				</select>
 				<br />
 				<span id="form3Text">Popis:</span>
-				<textarea type="message" id="form3"></textarea>
+				<textarea type="message" id="form3" required placeholder="Opakovací test"></textarea>
 				<br />
 				<span id="form4Text">Přidal:</span>
-				<input type="text" id="form4">
+				<input type="text" id="form4" required placeholder="Jméno Přijímení">
 				<br />
 				<span id="form5Text">Priorita:</span>
 					<div id="priority1">
@@ -70,7 +70,7 @@
 						<input type="radio"  name="priority" value="2">2
 					</div>
 					<div id="priority3">
-						<input type="radio" name="priority" value="3"> 3
+						<input type="radio" name="priority" value="3" checked> 3
 					</div>
 					<div id="priority4">
 						<input type="radio" name="priority" value="4"> 4
