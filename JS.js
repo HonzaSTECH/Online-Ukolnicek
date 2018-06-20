@@ -23,7 +23,7 @@ window.onload = function ()
 		evt.preventDefault();
 		recordCount++;
 		document.getElementById("form").style.display = "none";
-		document.getElementById("home").style.height = ((recordCount * 56) + 60) + "px";
+		document.getElementById("home").style.height = ((recordCount * 66) + 60) + "px";
 		
 		date = new Date();
 		
@@ -86,14 +86,28 @@ window.onload = function ()
 		var dateOfAdding = document.createElement("td");
 		var dateOfAddingText = document.createTextNode(today);
 		var action = document.createElement("td");
-		var actionText = document.createTextNode("Upvote Edit Delete");
+		var actionButton1 = document.createElement("button");
+		var actionButton1Text = document.createTextNode("Like");
+		var actionButton2 = document.createElement("button");
+		var actionButton2Text = document.createTextNode("Edit");
+		var actionButton3 = document.createElement("button");
+		var actionButton3Text = document.createTextNode("Delete");
 	
+		actionButton1.appendChild(actionButton1Text);
+		actionButton1.id = "action1";
+		actionButton2.appendChild(actionButton2Text);
+		actionButton2.id = "action2";
+		actionButton3.appendChild(actionButton3Text);
+		actionButton3.id = "action3";
+		
 		date.appendChild(dateText);
 		subject.appendChild(subjectText);
 		description.appendChild(descriptionText);
 		author.appendChild(authorText);
 		dateOfAdding.appendChild(dateOfAddingText);
-		action.appendChild(actionText);
+		action.appendChild(actionButton1);
+		action.appendChild(actionButton2);
+		action.appendChild(actionButton3);
 		
 		date.id = "column1";
 		subject.id = "column2";
