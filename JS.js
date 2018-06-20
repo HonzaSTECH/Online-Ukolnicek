@@ -2,6 +2,7 @@
 var recordPriority;
 var recordColor;
 var date;
+var i;
 
 window.onload = function ()
 {
@@ -43,7 +44,36 @@ window.onload = function ()
 			case "5":
 				recordColor = "#9999FF";
 				break;
+			default:
+				recordColor = "#FFFF77";
 		}
+		
+		var dateWork = document.getElementById("form1").value;
+		
+		var year;
+		var month;
+		var day;
+		i=0;
+		
+		while(dateWork[i] != "-"){
+			console.log(dateWork[i]);
+			year += dateWork[i];
+			i++;
+		}
+		console.log(dateWork[i]+" STOP");
+		i++;
+		for(i=0; dateWork[i] != "-"; i++){
+			console.log(dateWork[i]);
+			month += dateWork[i];
+		}
+		console.log(dateWork[i]+" STOP");
+		i++;
+		for(i=0; dateWork[i] != "-"; i++){
+			console.log(dateWork[i]);
+			day += dateWork[i];
+		}
+		console.log(dateWork[i]+" STOP");
+		console.log(day + ". " + month + ". " + year);
 		
 		var records = document.getElementById("data");
 		var rw = document.createElement("tr");
