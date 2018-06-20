@@ -55,30 +55,26 @@ window.onload = function ()
 		var day;
 		i=0;
 		
-		while(dateWork[i] != "-"){
-			console.log(dateWork[i]);
-			year += dateWork[i];
-			i++;
+		for(; dateWork[i] != "-"; i++){
+			if(year == undefined){year = dateWork[i];}
+			else{year += dateWork[i];}
 		}
-		console.log(dateWork[i]+" STOP");
 		i++;
-		for(i=0; dateWork[i] != "-"; i++){
-			console.log(dateWork[i]);
-			month += dateWork[i];
+		for(; dateWork[i] != "-"; i++){
+			if(month == undefined){month = dateWork[i];}
+			else{month += dateWork[i];}
 		}
-		console.log(dateWork[i]+" STOP");
 		i++;
-		for(i=0; dateWork[i] != "-"; i++){
-			console.log(dateWork[i]);
-			day += dateWork[i];
+		for(; dateWork[i] != "-" && dateWork[i] != undefined; i++){
+			if(day == undefined){day = dateWork[i];}
+			else{day += dateWork[i];}
 		}
-		console.log(dateWork[i]+" STOP");
-		console.log(day + ". " + month + ". " + year);
+		dateWork = (day + ". " + month + ". " + year);
 		
 		var records = document.getElementById("data");
 		var rw = document.createElement("tr");
 		var date = document.createElement("td");
-		var dateText = document.createTextNode(document.getElementById("form1").value);
+		var dateText = document.createTextNode(dateWork);
 		var subject = document.createElement("td");
 		var subjectText = document.createTextNode(document.getElementById("form2").value);
 		var description = document.createElement("td");
