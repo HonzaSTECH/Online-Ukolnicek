@@ -17,8 +17,28 @@ window.onload = function ()
 	{
 		document.getElementById("form").style.display = "none";
 	}
-}
 	
+	document.getElementsByClassName("action1").onclick = function upvoteRecord(event)
+	{
+		console.log("Upvoted");
+	}
+	document.getElementsByClassName("action2")[0].onclick = function editRecord(event)
+	{
+		console.log("Editted");
+	}
+	document.getElementsByClassName("action3")[0].onclick = function removeRecord(event)
+	{
+		console.log("Deleted");
+		
+		var yCursor = event.pageY;
+		yCursor -= "px";
+		yCursor -= 60;
+		yCursor /= 66;
+		yCursor -= 1;
+		document.getElementById("data").removeChild(document.getElementsByClassName("action1")[yCursor]);
+	}
+}
+
 	function newRecord(evt){
 		evt.preventDefault();
 		recordCount++;
@@ -94,11 +114,11 @@ window.onload = function ()
 		var actionButton3Text = document.createTextNode("Delete");
 	
 		actionButton1.appendChild(actionButton1Text);
-		actionButton1.id = "action1";
+		actionButton1.className = "action1";
 		actionButton2.appendChild(actionButton2Text);
-		actionButton2.id = "action2";
+		actionButton2.className = "action2";
 		actionButton3.appendChild(actionButton3Text);
-		actionButton3.id = "action3";
+		actionButton3.className = "action3";
 		
 		date.appendChild(dateText);
 		subject.appendChild(subjectText);
@@ -109,12 +129,12 @@ window.onload = function ()
 		action.appendChild(actionButton2);
 		action.appendChild(actionButton3);
 		
-		date.id = "column1";
-		subject.id = "column2";
-		description.id = "column3";
-		author.id = "column4";
-		dateOfAdding.id = "column5";
-		action.id = "column6";
+		date.className = "column1";
+		subject.className = "column2";
+		description.className = "column3";
+		author.className = "column4";
+		dateOfAdding.className = "column5";
+		action.className = "column6";
 		
 		date.style.backgroundColor = recordColor;
 		subject.style.backgroundColor = recordColor;
