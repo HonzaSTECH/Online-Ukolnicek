@@ -3,6 +3,7 @@ var recordPriority;
 var recordColor;
 var date;
 var i;
+var yCursor;
 
 window.onload = function ()
 {
@@ -11,15 +12,12 @@ window.onload = function ()
     document.getElementById("formCancel").onclick = closeForm;
     
 }
-function newRecord(evt)
+function newRecord(event)
 {
-    evt.preventDefault();
+    event.preventDefault();
     document.getElementById("form").style.display = "none";
-    document.getElementById("home").style.height = ((recordCount * 66) + 60) + "px";
-    
-    date = new Date();
-    
-    recordPriority = (document.querySelector('input[name="priority"]:checked').value);
+	
+	recordPriority = (document.querySelector('input[name="priority"]:checked').value);
     switch(recordPriority){
         case "1":
             recordColor = "#FF8888";
@@ -39,8 +37,11 @@ function newRecord(evt)
         default:
             recordColor = "#FFFF77";
     }
-    
-/*  D */var dateWork = document.getElementById("form1").value;
+	
+	var duplicate = false;
+	
+/*	    */date = new Date();
+/*    D */var dateWork = document.getElementById("form1").value;
 /*    A */
 /*    T */var year;
 /*    E */var month;
@@ -61,78 +62,121 @@ function newRecord(evt)
 /*    O */    if(day == undefined){day = dateWork[i];}
 /*    N */    else{day += dateWork[i];}
 /*    V */}
-/*    E */dateWork = (day + ". " + month + ". " + year);
-/*    R */
+/*    E */if(month >=10){dateWork = (day + ". " + month + ". " + year);}
+/*    R */else{dateWork = (day + ". " + month[1] + ". " + year);}
+/*		*/
 /*    T */var today = (date.getDate() + ". " + (date.getMonth()+1) + ". " + date.getFullYear());
-    
-    var records = document.getElementById("data");
-    var rw = document.createElement("tr");
-    var date = document.createElement("td");
-    var dateText = document.createTextNode(dateWork);
-    var subject = document.createElement("td");
-    var subjectText = document.createTextNode(document.getElementById("form2").value);
-    var description = document.createElement("td");
-    var descriptionText = document.createTextNode(document.getElementById("form3").value);
-    var author = document.createElement("td");
-    var authorText = document.createTextNode(document.getElementById("form4").value);
-    var dateOfAdding = document.createElement("td");
-    var dateOfAddingText = document.createTextNode(today);
-    var action = document.createElement("td");
-    var actionButton1 = document.createElement("button");
-    var actionButton1Text = document.createTextNode("Like");
-    var actionButton2 = document.createElement("button");
-    var actionButton2Text = document.createTextNode("Edit");
-    var actionButton3 = document.createElement("button");
-    var actionButton3Text = document.createTextNode("Delete");
-
-    actionButton1.appendChild(actionButton1Text);
-    actionButton1.className = "action1";
-    actionButton2.appendChild(actionButton2Text);
-    actionButton2.className = "action2";
-    actionButton3.appendChild(actionButton3Text);
-    actionButton3.className = "action3";
-    
-    date.appendChild(dateText);
-    subject.appendChild(subjectText);
-    description.appendChild(descriptionText);
-    author.appendChild(authorText);
-    dateOfAdding.appendChild(dateOfAddingText);
-    action.appendChild(actionButton1);
-    action.appendChild(actionButton2);
-    action.appendChild(actionButton3);
-    
-    date.className = "column1";
-    subject.className = "column2";
-    description.className = "column3";
-    author.className = "column4";
-    dateOfAdding.className = "column5";
-    action.className = "column6";
-    
-    date.style.backgroundColor = recordColor;
-    subject.style.backgroundColor = recordColor;
-    description.style.backgroundColor = recordColor;
-    author.style.backgroundColor = recordColor;
-    dateOfAdding.style.backgroundColor = recordColor;
-    action.style.backgroundColor = recordColor;
-    
-    rw.appendChild(date);
-    rw.appendChild(subject);
-    rw.appendChild(description);
-    rw.appendChild(author);
-    rw.appendChild(dateOfAdding);
-    rw.appendChild(action);
-    
-    records.appendChild(rw);
-    
-    document.getElementsByClassName("action1")[recordCount].onclick = upvoteRecord;
-    document.getElementsByClassName("action2")[recordCount].onclick = editRecord;
-    document.getElementsByClassName("action3")[recordCount].onclick = removeRecord;
-    recordCount++;
+	
+	if(document.getElementById("form").style.backgroundColor == "rgb(153, 254, 254)"){
+		duplicate = true;
+		/*var i = event.pageY;
+		console.log(i);
+		i -= 60;
+        i /= 66;
+		i = Math.round(i);
+		console.log(i);*/
+		}
+	else 
+	{for(i=1; i<=recordCount; i++)
+	{
+		console.log(document.getElementsByClassName("column2")[i].innerHTML);
+		console.log(document.getElementById("form2").value);
+		console.log("---");
+		console.log(document.getElementsByClassName("column1")[i].innerHTML);
+		console.log(dateWork);
+		console.log("++++++")
+		if(document.getElementsByClassName("column2")[i].innerText == document.getElementById("form2").value && document.getElementsByClassName("column1")[i].innerText == dateWork)
+		{
+			duplicate = true;
+			break;
+		}
+	}
+	}
+	console.log(duplicate + " on record " + i);
+    if(duplicate == false)
+	{
+		var records = document.getElementById("data");
+		
+		var rw = document.createElement("tr");
+		var date = document.createElement("td");
+		var subject = document.createElement("td");
+		var description = document.createElement("td");
+		var author = document.createElement("td");
+		var dateOfAdding = document.createElement("td");
+		var action = document.createElement("td");
+		var actionButton1 = document.createElement("button");
+		var actionButton2 = document.createElement("button");
+		var actionButton3 = document.createElement("button");
+		
+		var dateText = document.createTextNode(dateWork);
+		var subjectText = document.createTextNode(document.getElementById("form2").value);
+		var descriptionText = document.createTextNode(document.getElementById("form3").value);
+		var authorText = document.createTextNode(document.getElementById("form4").value);
+		var dateOfAddingText = document.createTextNode(today);
+		var actionButton1Text = document.createTextNode("Like");
+		var actionButton2Text = document.createTextNode("Edit");
+		var actionButton3Text = document.createTextNode("Delete");
+	
+		actionButton1.appendChild(actionButton1Text);
+		actionButton1.className = "action1";
+		actionButton2.appendChild(actionButton2Text);
+		actionButton2.className = "action2";
+		actionButton3.appendChild(actionButton3Text);
+		actionButton3.className = "action3";
+		
+		date.appendChild(dateText);
+		subject.appendChild(subjectText);
+		description.appendChild(descriptionText);
+		author.appendChild(authorText);
+		dateOfAdding.appendChild(dateOfAddingText);
+		action.appendChild(actionButton1);
+		action.appendChild(actionButton2);
+		action.appendChild(actionButton3);
+		
+		date.className = "column1";
+		subject.className = "column2";
+		description.className = "column3";
+		author.className = "column4";
+		dateOfAdding.className = "column5";
+		action.className = "column6";
+		
+		date.style.backgroundColor = recordColor;
+		subject.style.backgroundColor = recordColor;
+		description.style.backgroundColor = recordColor;
+		author.style.backgroundColor = recordColor;
+		dateOfAdding.style.backgroundColor = recordColor;
+		action.style.backgroundColor = recordColor;
+		
+		rw.appendChild(date);
+		rw.appendChild(subject);
+		rw.appendChild(description);
+		rw.appendChild(author);
+		rw.appendChild(dateOfAdding);
+		rw.appendChild(action);
+		
+		records.appendChild(rw);
+		
+		document.getElementsByClassName("action1")[recordCount].onclick = upvoteRecord;
+		document.getElementsByClassName("action2")[recordCount].onclick = editRecord;
+		document.getElementsByClassName("action3")[recordCount].onclick = removeRecord;
+		
+		document.getElementById("home").style.height = ((recordCount * 66) + 60) + "px";
+		recordCount++;
+	}
+	else
+	{
+		alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.")
+		document.getElementsByTagName("tr")[yCursor].childNodes[0].innerHTML = dateWork;
+		document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML = document.getElementById("form2").value;
+		document.getElementsByTagName("tr")[yCursor].childNodes[2].innerHTML = document.getElementById("form3").value;
+		document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML = document.getElementById("form4").value;
+	}
 }
 
 function addRecord()
     {
         document.getElementById("form").style.display = "block";
+		document.getElementById("form").style.backgroundColor = "#99FFFF";
 		
 		document.getElementById("form1").value = "";
 		document.getElementById("form2").value = "";
@@ -157,19 +201,20 @@ function upvoteRecord()
 
 function editRecord(event)
         {
-			var yCursor = event.pageY;
+			yCursor = event.pageY;
             yCursor -= 60;
             yCursor /= 66;
 			yCursor = Math.round(yCursor);
-            console.log("Editted");
+            //console.log("Editted");
             document.getElementById("form").style.display = "block";
+			document.getElementById("form").style.backgroundColor = "#99FEFE";
 			var dateTemp = document.getElementsByClassName("column1")[yCursor].innerHTML;
 			var year=undefined;
 			var month=undefined;
 			var day=undefined;
 			
 			i=0;
-			console.log(dateTemp);
+			//console.log(dateTemp);
 			
 			for(; dateTemp[i] != "."; i++){
 			if(day == undefined){day = dateTemp[i];}
@@ -194,7 +239,7 @@ function editRecord(event)
 			document.getElementById("form3").value = document.getElementsByClassName("column3")[yCursor].innerHTML;
 			document.getElementById("form4").value = document.getElementsByClassName("column4")[yCursor].innerHTML;
 			
-			console.log(document.getElementsByClassName("column1")[yCursor].style.backgroundColor);
+			//console.log(document.getElementsByClassName("column1")[yCursor].style.backgroundColor);
 			switch(document.getElementsByClassName("column1")[yCursor].style.backgroundColor){
 				case "rgb(255, 136, 136)":
 					document.getElementById("priority1").childNodes[1].checked = true;
@@ -224,4 +269,5 @@ function removeRecord(event)
             yCursor = Math.round(yCursor);
             //console.log(yCursor);
             document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor]);
+			recordCount--;
         }
