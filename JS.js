@@ -133,6 +133,16 @@ function newRecord(evt)
 function addRecord()
     {
         document.getElementById("form").style.display = "block";
+		
+		document.getElementById("form1").value = "";
+		document.getElementById("form2").value = "";
+		document.getElementById("form3").value = "";
+		document.getElementById("form4").value = "";
+		document.getElementById("priority1").childNodes[1].checked = false;
+		document.getElementById("priority2").childNodes[1].checked = false;
+		document.getElementById("priority3").childNodes[1].checked = true;
+		document.getElementById("priority4").childNodes[1].checked = false;
+		document.getElementById("priority5").childNodes[1].checked = false;
     }
 
 function closeForm()
@@ -145,11 +155,63 @@ function upvoteRecord()
         console.log("Upvoted");
     }
 
-function editRecord()
+function editRecord(event)
         {
+			var yCursor = event.pageY;
+            yCursor -= 60;
+            yCursor /= 66;
+			yCursor = Math.round(yCursor);
             console.log("Editted");
-            document.getElementById("form").display = "block";
-           // document.getElementById("form1").value = //ToDo
+            document.getElementById("form").style.display = "block";
+			var dateTemp = document.getElementsByClassName("column1")[yCursor].innerHTML;
+			var year=undefined;
+			var month=undefined;
+			var day=undefined;
+			
+			i=0;
+			console.log(dateTemp);
+			
+			for(; dateTemp[i] != "."; i++){
+			if(day == undefined){day = dateTemp[i];}
+			else{day += dateTemp[i];}
+			}
+			i++; i++;
+			for(; dateTemp[i] != "."; i++){
+			    if(month == undefined){month = dateTemp[i];}
+				else{month += dateTemp[i];}
+			}
+			i++; i++;
+			for(; dateTemp[i] != "." && dateTemp[i] != undefined; i++){
+				if(year == undefined){year = dateTemp[i];}
+				else{year += dateTemp[i];}
+			}
+			
+			if(month >= 10){dateTemp = year + "-" + (month - 1) + "-" + day;}
+			else{dateTemp = year + "-" + "0" + (month - 1) + "-" + day;}
+			
+            document.getElementById("form1").value = dateTemp;
+			document.getElementById("form2").value = document.getElementsByClassName("column2")[yCursor].innerHTML;
+			document.getElementById("form3").value = document.getElementsByClassName("column3")[yCursor].innerHTML;
+			document.getElementById("form4").value = document.getElementsByClassName("column4")[yCursor].innerHTML;
+			
+			console.log(document.getElementsByClassName("column1")[yCursor].style.backgroundColor);
+			switch(document.getElementsByClassName("column1")[yCursor].style.backgroundColor){
+				case "rgb(255, 136, 136)":
+					document.getElementById("priority1").childNodes[1].checked = true;
+					break;
+				case "rgb(255, 204, 136)":
+					document.getElementById("priority2").childNodes[1].checked = true;
+					break;
+				case "rgb(255, 255, 119)":
+					document.getElementById("priority3").childNodes[1].checked = true;
+					break;
+				case "rgb(136, 238, 136)":
+					document.getElementById("priority4").childNodes[1].checked = true;
+					break;
+				case "rgb(153, 153, 255)":
+					document.getElementById("priority5").childNodes[1].checked = true;
+					break;
+			}
         }
 
 function removeRecord(event)
@@ -159,7 +221,7 @@ function removeRecord(event)
             yCursor -= 60;
             yCursor /= 66;
             //yCursor -= 1;
-            yCursor = Math.round(yCursor)
+            yCursor = Math.round(yCursor);
             //console.log(yCursor);
             document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor]);
         }
