@@ -1,6 +1,8 @@
-﻿#home{
-	border: 1px solid black;
+﻿body{
 	background-color: #FFFF99;
+}
+/*---------------------*/
+#home{
 	width: 1250px;
 	height: 60px;
 }
@@ -133,47 +135,90 @@
 	height: 30px;
 }
 /*---------------------*/
-#column1{
+.column1{
+	background-color: #CDFFCD;
     width: 200px;
 	height: 50px;
 	text-align: center;
 	font-size: 30px;
 }
-#column2{
+.column2{
+	background-color: #CDFFCD;
     width: 100px;
 	height: 50px;
 	text-align: center;
 	font-size: 28px;
 }
-#column3{
+.column3{
+	background-color: #CDFFCD;
     width: 500px;
 	height: 50px;
 	text-align: center;
 	font-size: 30px;
 }
-#column4{
+.column4{
+	background-color: #CDFFCD;
     width: 300px;
 	height: 50px;
 	text-align: center;
 	font-size: 30px;
 }
-#column5{
+.column5{
+	background-color: #CDFFCD;
     width: 200px;
 	height: 50px;
 	text-align: center;
 	font-size: 30px;
 }
-#column6{
+.column6{
+	background-color: #CDFFCD;
+    width: 50px;
+	height: 50px;
+	text-align: center;
+	vertical-align: center;
+	font-size: 30px;
+}
+#likes{
+	background-color: #CDFFCD;
+    width: 50px;
+	text-align: center;
+	vertical-align: bottom;
+	font-size: 40px;
+}
+.column7{
     width: 50px;
 	height: 50px;
 	text-align: center;
 	font-size: 10px;
 }
 #akce{
+	background-color: #CDFFCD;
     width: 50px;
 	height: 50px;
 	text-align: center;
-	font-size: 25px;
+	font-size: 20px;
+}
+.action1{
+	width: 46px;
+	height: 20px;
+	font-size: 10px;
+	text-align: center;
+	position: relative;
+	top: 3px;
+}
+.action2{
+	width: 46px;
+	height: 20px;
+	font-size: 10px;
+	text-align: center;
+}
+.action3{
+	width: 46px;
+	height: 20px;
+	font-size: 10px;
+	text-align: center;
+	position: relative;
+	top: -3px;
 }
 #addRecord{
 	width: 100px;

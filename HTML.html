@@ -4,31 +4,36 @@
         <title>Ukolnicek - 5.E</title>
 		<link rel="stylesheet" href="CSS.css">
 		<script src=JS.js></script>
+		<!--<script src="https://code.jquery.com/jquery-3.1.1.js"></script>-->
     </head>
     <body>
 		<div id="home">
 			<div id="noRecord">Žádný záznam</div>
 			<table id="data" border="2">
 				<tr>
-					<td id="column1">
+					<td class="column1">
 						Datum
 					</td>
-					<td id="column2">
+					<td class="column2">
 						Předmět
 					</td>
-					<td id="column3">
+					<td class="column3">
 						Popis
 					</td>
-					<td id="column4">
+					<td class="column4">
 						Přidal/a
 					</td>
-					<td id="column5">
+					<td class="column5">
 						Přidáno
+					</td>
+					<td id="likes">
+						<strong>^</strong>
 					</td>
 					<td id="akce">
 						Akce
 					</td>
 				</tr>
+				<!--<td class="column1" style="background-color: rgb(255, 255, 255);">0. 0. 0000</td><td class="column2" style="background-color: rgb(255, 255, 255);">-</td><td class="column3" style="background-color: rgb(255, 255, 255);">Defalut</td><td class="column4" style="background-color: rgb(255, 255, 255);">System</td><td class="column5" style="background-color: rgb(255, 255, 255);">0. 0. 0000</td><td class="column6" style="background-color: rgb(255, 255, 255);"><button class="action1"></button><button class="action2"></button><button class="action3"></button></td>-->
 			</table>
 			<button id="addRecord">Přidat záznam</button>
 		</div>
@@ -39,7 +44,6 @@
 				<br />
 				<span id="form2Text">Předmět:</span>
 				<select id="form2" required>
-					<option>-</option>
 					<option>ČJ</option>
 					<option>AJ</option>
 					<option>NJ</option>
@@ -79,7 +83,7 @@
 						<input type="radio" name="priority" value="5"> 5
 					</div>
 					<br />
-				<input type="submit" id="formSubmit" value="Přidat">
+				<input type="submit" id="formSubmit" value="Potrvrdit">
 			</form>
 			<button id="formCancel">Zrušit</button>
 		</div>
