@@ -1,6 +1,7 @@
 ﻿var recordCount = 0;
 var recordPriority;
 var recordColor;
+var recordUpvotes = new Array(0);
 var date;
 var i;
 var yCursor;
@@ -98,6 +99,7 @@ function newRecord(event)
 		var description = document.createElement("td");
 		var author = document.createElement("td");
 		var dateOfAdding = document.createElement("td");
+		var likes = document.createElement("td");
 		var action = document.createElement("td");
 		var actionButton1 = document.createElement("button");
 		var actionButton2 = document.createElement("button");
@@ -108,6 +110,7 @@ function newRecord(event)
 		var descriptionText = document.createTextNode(document.getElementById("form3").value);
 		var authorText = document.createTextNode(document.getElementById("form4").value);
 		var dateOfAddingText = document.createTextNode(today);
+		var likesText = document.createTextNode("0");
 		var actionButton1Text = document.createTextNode("Like");
 		var actionButton2Text = document.createTextNode("Edit");
 		var actionButton3Text = document.createTextNode("Delete");
@@ -124,6 +127,7 @@ function newRecord(event)
 		description.appendChild(descriptionText);
 		author.appendChild(authorText);
 		dateOfAdding.appendChild(dateOfAddingText);
+		likes.appendChild(likesText);
 		action.appendChild(actionButton1);
 		action.appendChild(actionButton2);
 		action.appendChild(actionButton3);
@@ -133,13 +137,15 @@ function newRecord(event)
 		description.className = "column3";
 		author.className = "column4";
 		dateOfAdding.className = "column5";
-		action.className = "column6";
+		likes.className = "column6";
+		action.className = "column7";
 		
 		date.style.backgroundColor = recordColor;
 		subject.style.backgroundColor = recordColor;
 		description.style.backgroundColor = recordColor;
 		author.style.backgroundColor = recordColor;
 		dateOfAdding.style.backgroundColor = recordColor;
+		likes.style.backgroundColor = recordColor;
 		action.style.backgroundColor = recordColor;
 		
 		rw.appendChild(date);
@@ -147,6 +153,7 @@ function newRecord(event)
 		rw.appendChild(description);
 		rw.appendChild(author);
 		rw.appendChild(dateOfAdding);
+		rw.appendChild(likes);
 		rw.appendChild(action);
 		
 		records.appendChild(rw);
@@ -154,6 +161,8 @@ function newRecord(event)
 		document.getElementsByClassName("action1")[recordCount].onclick = upvoteRecord;
 		document.getElementsByClassName("action2")[recordCount].onclick = editRecord;
 		document.getElementsByClassName("action3")[recordCount].onclick = removeRecord;
+		
+		recordUpvotes[recordCount]=0;
 		
 		//document.getElementById("home").style.height = ((recordCount * 66) + 126) + "px";
 		if(recordCount == 0){document.getElementById("noRecord").style.display = "none";}
@@ -196,9 +205,17 @@ function closeForm()
         document.getElementById("form").style.display = "none";
     }
 
-function upvoteRecord()
+function upvoteRecord(event)
     {
-        console.log("Upvoted");
+		yCursor = event.pageY;
+        yCursor -= 60;
+        yCursor /= 66;
+        yCursor = Math.round(yCursor);
+		//console.log(yCursor);
+		recordUpvotes [yCursor] += 1;
+		//console.log(recordUpvotes[yCursor]);
+		document.getElementsByTagName("tr")[yCursor + 1].childNodes[5].innerHTML = recordUpvotes[yCursor];
+        //console.log("Upvoted");
     }
 
 function editRecord(event)
@@ -264,7 +281,7 @@ function editRecord(event)
 function removeRecord(event)
         {
             //console.log("Deleted");
-            var yCursor = event.pageY;
+            yCursor = event.pageY;
             yCursor -= 60;
             yCursor /= 66;
             //yCursor -= 1;
