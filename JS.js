@@ -82,6 +82,7 @@ function newRecord(event)
 		if(document.getElementsByClassName("column2")[i].innerText == document.getElementById("form2").value && document.getElementsByClassName("column1")[i].innerText == dateWork)
 		{
 			duplicate = true;
+			yCursor = i;
 			break;
 		}
 	}
