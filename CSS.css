@@ -1,8 +1,8 @@
 ﻿body{
 	background-color: #FFFF99;
 }
+/*---------------------*/
 #home{
-	border: 1px solid black;
 	width: 1250px;
 	height: 60px;
 }

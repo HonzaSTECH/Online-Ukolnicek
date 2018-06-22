@@ -69,22 +69,16 @@ function newRecord(event)
 	
 	if(document.getElementById("form").style.backgroundColor == "rgb(153, 254, 254)"){
 		duplicate = true;
-		/*var i = event.pageY;
-		console.log(i);
-		i -= 60;
-        i /= 66;
-		i = Math.round(i);
-		console.log(i);*/
 		}
 	else 
 	{for(i=1; i<=recordCount; i++)
 	{
-		console.log(document.getElementsByClassName("column2")[i].innerHTML);
-		console.log(document.getElementById("form2").value);
-		console.log("---");
-		console.log(document.getElementsByClassName("column1")[i].innerHTML);
-		console.log(dateWork);
-		console.log("++++++")
+		//console.log(document.getElementsByClassName("column2")[i].innerHTML);
+		//console.log(document.getElementById("form2").value);
+		//console.log("---");
+		//console.log(document.getElementsByClassName("column1")[i].innerHTML);
+		//console.log(dateWork);
+		//console.log("++++++");
 		if(document.getElementsByClassName("column2")[i].innerText == document.getElementById("form2").value && document.getElementsByClassName("column1")[i].innerText == dateWork)
 		{
 			duplicate = true;
@@ -92,7 +86,7 @@ function newRecord(event)
 		}
 	}
 	}
-	console.log(duplicate + " on record " + i);
+	//console.log(duplicate + " on record " + i);
     if(duplicate == false)
 	{
 		var records = document.getElementById("data");
@@ -160,7 +154,8 @@ function newRecord(event)
 		document.getElementsByClassName("action2")[recordCount].onclick = editRecord;
 		document.getElementsByClassName("action3")[recordCount].onclick = removeRecord;
 		
-		document.getElementById("home").style.height = ((recordCount * 66) + 126) + "px";
+		//document.getElementById("home").style.height = ((recordCount * 66) + 126) + "px";
+		if(recordCount == 0){document.getElementById("noRecord").style.display = "none";}
 		recordCount++;
 	}
 	else
@@ -275,5 +270,10 @@ function removeRecord(event)
             yCursor = Math.round(yCursor);
             //console.log(yCursor);
             document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor]);
+			
+			if(recordCount == 1){document.getElementById("noRecord").style.display = "block";}
 			recordCount--;
+			
+			//document.getElementById("home").style.height = ((recordCount * 66) + 126) + "px";
+			//console.log(((recordCount * 66) + 126) + "px")
         }
