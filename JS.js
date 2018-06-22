@@ -165,11 +165,17 @@ function newRecord(event)
 	}
 	else
 	{
-		alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.")
+		//alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.");
 		document.getElementsByTagName("tr")[yCursor].childNodes[0].innerHTML = dateWork;
 		document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML = document.getElementById("form2").value;
 		document.getElementsByTagName("tr")[yCursor].childNodes[2].innerHTML = document.getElementById("form3").value;
 		document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML = document.getElementById("form4").value;
+		document.getElementsByTagName("tr")[yCursor].childNodes[0].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[1].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[2].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[3].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[4].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[5].style.backgroundColor = recordColor;
 	}
 }
 
