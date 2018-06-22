@@ -160,7 +160,7 @@ function newRecord(event)
 		document.getElementsByClassName("action2")[recordCount].onclick = editRecord;
 		document.getElementsByClassName("action3")[recordCount].onclick = removeRecord;
 		
-		document.getElementById("home").style.height = ((recordCount * 66) + 60) + "px";
+		document.getElementById("home").style.height = ((recordCount * 66) + 126) + "px";
 		recordCount++;
 	}
 	else
@@ -237,8 +237,8 @@ function editRecord(event)
 				else{year += dateTemp[i];}
 			}
 			
-			if(month >= 10){dateTemp = year + "-" + (month - 1) + "-" + day;}
-			else{dateTemp = year + "-" + "0" + (month - 1) + "-" + day;}
+			if(month >= 10){dateTemp = year + "-" + month + "-" + day;}
+			else{dateTemp = year + "-" + "0" + month + "-" + day;}
 			
             document.getElementById("form1").value = dateTemp;
 			document.getElementById("form2").value = document.getElementsByClassName("column2")[yCursor].innerHTML;
