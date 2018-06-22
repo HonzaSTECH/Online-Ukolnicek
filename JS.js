@@ -74,12 +74,6 @@ function newRecord(event)
 	else 
 	{for(i=1; i<=recordCount; i++)
 	{
-		//console.log(document.getElementsByClassName("column2")[i].innerHTML);
-		//console.log(document.getElementById("form2").value);
-		//console.log("---");
-		//console.log(document.getElementsByClassName("column1")[i].innerHTML);
-		//console.log(dateWork);
-		//console.log("++++++");
 		if(document.getElementsByClassName("column2")[i].innerText == document.getElementById("form2").value && document.getElementsByClassName("column1")[i].innerText == dateWork)
 		{
 			duplicate = true;
@@ -88,7 +82,6 @@ function newRecord(event)
 		}
 	}
 	}
-	//console.log(duplicate + " on record " + i);
     if(duplicate == false)
 	{
 		var records = document.getElementById("data");
@@ -164,7 +157,6 @@ function newRecord(event)
 		
 		recordUpvotes[recordCount]=0;
 		
-		//document.getElementById("home").style.height = ((recordCount * 66) + 126) + "px";
 		if(recordCount == 0){document.getElementById("noRecord").style.display = "none";}
 		recordCount++;
 	}
@@ -211,11 +203,8 @@ function upvoteRecord(event)
         yCursor -= 60;
         yCursor /= 66;
         yCursor = Math.round(yCursor);
-		//console.log(yCursor);
 		recordUpvotes [yCursor] += 1;
-		//console.log(recordUpvotes[yCursor]);
 		document.getElementsByTagName("tr")[yCursor + 1].childNodes[5].innerHTML = recordUpvotes[yCursor];
-        //console.log("Upvoted");
     }
 
 function editRecord(event)
@@ -224,7 +213,6 @@ function editRecord(event)
             yCursor -= 60;
             yCursor /= 66;
 			yCursor = Math.round(yCursor);
-            //console.log("Editted");
             document.getElementById("form").style.display = "block";
 			document.getElementById("form").style.backgroundColor = "#99FEFE";
 			var dateTemp = document.getElementsByClassName("column1")[yCursor].innerHTML;
@@ -233,7 +221,6 @@ function editRecord(event)
 			var day=undefined;
 			
 			i=0;
-			//console.log(dateTemp);
 			
 			for(; dateTemp[i] != "."; i++){
 			if(day == undefined){day = dateTemp[i];}
@@ -258,7 +245,6 @@ function editRecord(event)
 			document.getElementById("form3").value = document.getElementsByClassName("column3")[yCursor].innerHTML;
 			document.getElementById("form4").value = document.getElementsByClassName("column4")[yCursor].innerHTML;
 			
-			//console.log(document.getElementsByClassName("column1")[yCursor].style.backgroundColor);
 			switch(document.getElementsByClassName("column1")[yCursor].style.backgroundColor){
 				case "rgb(255, 136, 136)":
 					document.getElementById("priority1").childNodes[1].checked = true;
@@ -280,13 +266,10 @@ function editRecord(event)
 
 function removeRecord(event)
         {
-            //console.log("Deleted");
             yCursor = event.pageY;
             yCursor -= 60;
             yCursor /= 66;
-            //yCursor -= 1;
             yCursor = Math.round(yCursor);
-            //console.log(yCursor);
             document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor]);
 			
 			if(recordCount == 1){document.getElementById("noRecord").style.display = "block";}
@@ -296,7 +279,4 @@ function removeRecord(event)
 				if(i == (recordUpvotes.length-1)){recordUpvotes[i]=undefined;}
 				else{recordUpvotes[i] = recordUpvotes[i + 1];}
 			}
-			
-			//document.getElementById("home").style.height = ((recordCount * 66) + 126) + "px";
-			//console.log(((recordCount * 66) + 126) + "px")
         }
