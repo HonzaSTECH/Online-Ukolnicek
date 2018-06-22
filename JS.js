@@ -291,6 +291,11 @@ function removeRecord(event)
 			
 			if(recordCount == 1){document.getElementById("noRecord").style.display = "block";}
 			recordCount--;
+			for(i = (yCursor - 1); i < recordUpvotes.length; i++)
+			{
+				if(i == (recordUpvotes.length-1)){recordUpvotes[i]=undefined;}
+				else{recordUpvotes[i] = recordUpvotes[i + 1];}
+			}
 			
 			//document.getElementById("home").style.height = ((recordCount * 66) + 126) + "px";
 			//console.log(((recordCount * 66) + 126) + "px")
