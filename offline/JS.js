@@ -1,4 +1,4 @@
-var recordCount = 0;
+﻿var recordCount = 0;
 var recordPriority;
 var recordColor;
 var recordUpvotes = new Array(0);
@@ -13,8 +13,9 @@ window.onload = function ()
     document.getElementById("formCancel").onclick = closeForm;
     
 }
-function newRecord()
+function newRecord(event)
 {
+    event.preventDefault();
     document.getElementById("form").style.display = "none";
 	
 	recordPriority = (document.querySelector('input[name="priority"]:checked').value);
@@ -162,17 +163,16 @@ function newRecord()
 	else
 	{
 		//alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.");
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[0].innerHTML = dateWork;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[1].innerHTML = document.getElementById("form2").value;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[2].innerHTML = document.getElementById("form3").value;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[3].innerHTML = document.getElementById("form4").value;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[0].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[1].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[2].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[3].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[4].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[5].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[6].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[0].innerHTML = dateWork;
+		document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML = document.getElementById("form2").value;
+		document.getElementsByTagName("tr")[yCursor].childNodes[2].innerHTML = document.getElementById("form3").value;
+		document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML = document.getElementById("form4").value;
+		document.getElementsByTagName("tr")[yCursor].childNodes[0].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[1].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[2].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[3].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[4].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor].childNodes[5].style.backgroundColor = recordColor;
 	}
 }
 
@@ -203,8 +203,8 @@ function upvoteRecord(event)
         yCursor -= 60;
         yCursor /= 66;
         yCursor = Math.round(yCursor);
-		recordUpvotes [yCursor - 1] += 1;
-		document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML = recordUpvotes[yCursor - 1];
+		recordUpvotes [yCursor] += 1;
+		document.getElementsByTagName("tr")[yCursor + 1].childNodes[5].innerHTML = recordUpvotes[yCursor];
     }
 
 function editRecord(event)
@@ -215,7 +215,7 @@ function editRecord(event)
 			yCursor = Math.round(yCursor);
             document.getElementById("form").style.display = "block";
 			document.getElementById("form").style.backgroundColor = "#99FEFE";
-			var dateTemp = document.getElementsByClassName("column1")[yCursor - 1].innerHTML;
+			var dateTemp = document.getElementsByClassName("column1")[yCursor].innerHTML;
 			var year=undefined;
 			var month=undefined;
 			var day=undefined;
@@ -241,11 +241,11 @@ function editRecord(event)
 			else{dateTemp = year + "-" + "0" + month + "-" + day;}
 			
             document.getElementById("form1").value = dateTemp;
-			document.getElementById("form2").value = document.getElementsByClassName("column2")[yCursor - 1].innerHTML;
-			document.getElementById("form3").value = document.getElementsByClassName("column3")[yCursor - 1].innerHTML;
-			document.getElementById("form4").value = document.getElementsByClassName("column4")[yCursor - 1].innerHTML;
+			document.getElementById("form2").value = document.getElementsByClassName("column2")[yCursor].innerHTML;
+			document.getElementById("form3").value = document.getElementsByClassName("column3")[yCursor].innerHTML;
+			document.getElementById("form4").value = document.getElementsByClassName("column4")[yCursor].innerHTML;
 			
-			switch(document.getElementsByClassName("column1")[yCursor - 1].style.backgroundColor){
+			switch(document.getElementsByClassName("column1")[yCursor].style.backgroundColor){
 				case "rgb(255, 136, 136)":
 					document.getElementById("priority1").childNodes[1].checked = true;
 					break;
@@ -270,7 +270,7 @@ function removeRecord(event)
             yCursor -= 60;
             yCursor /= 66;
             yCursor = Math.round(yCursor);
-            document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor - 1]);
+            document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor]);
 			
 			if(recordCount == 1){document.getElementById("noRecord").style.display = "block";}
 			recordCount--;
@@ -280,5 +280,3 @@ function removeRecord(event)
 				else{recordUpvotes[i] = recordUpvotes[i + 1];}
 			}
         }
-
-function testFunc(){document.write("Test succefull.");}
