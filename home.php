@@ -32,11 +32,21 @@
 		foreach ($classes as $class){
 			$result = mysqli_query($connection, "SELECT * FROM classes WHERE id='$class'");
 			$classData = mysqli_fetch_array($result);
-			$classAdmin = $classData['admin'];
 			$classData = $classData['name'];
-			$classAdmin = ($classAdmin == $user);
+			
+			$result = mysqli_query($connection, "SELECT modIn FROM users WHERE name='$user'");
+			$data = mysqli_fetch_array($result);
+			$data = $data['modIn'];
+			if(!$data == '0'){$modClasses = explode('0', $data);}
+			
+			$result = mysqli_query($connection, "SELECT adminIn FROM users WHERE name='$user'");
+			$data = mysqli_fetch_array($result);
+			$data = $data['adminIn'];
+			if(!$data == '0'){$adminClasses = explode('0', $data);}
+			
 			echo "<tr><td align='center' class='td1'><input type=radio name='classSelect' value='$class'></td><td align='center' class='td2'> $classData</td><td align='center' class='td3'>";
-			if($classAdmin){echo "Administrátor";}
+			if(in_array($class, $adminClasses)){echo "Administrátor";}
+			else if(in_array($class, $modClasses)){echo "Moderátor";}
 			else{echo "Člen";}
 			echo "</td></tr>";
 		}
