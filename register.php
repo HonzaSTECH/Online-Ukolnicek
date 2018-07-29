@@ -44,4 +44,4 @@
 	}
 	mysqli_close($connection);
 ?>
-<p>Jsi již zaregistrován? Přihlaš se <a href="index.php"><u>zde</u></a>.</p>
+<p>Jsi již zaregistrován? Přihlaš se <a href="login.php"><u>zde</u></a>.</p>

@@ -54,3 +54,5 @@ if(isset($_POST['posted'])){
     <textarea type="message" name="message" placeholder="Text žádosti" required id="text"></textarea><br /><br />
     <input type=submit name="posted" value="Odeslat žádost"><br />
 </form>
+
+<a href="home.php">Návrat na seznam tříd</a>
