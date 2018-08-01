@@ -1,15 +1,21 @@
-<?php session_start(); ?>
+<?php
+	session_start(); 
+	unset($_SESSION['class']);
+	unset($_SESSION['user']);
+?>
 <meta charset="utf-8">
 <form method="POST" action="register.php">
 	<input type="text" name="username" placeholder="Jméno" required><br />
 	<input type="password" name="password" placeholder="Heslo" required><br />
 	<input type="password" name="password_repeat" placeholder="Heslo znovu" required><br />
-	<input type="email" name="email" placeholder="E-mail (nepovinné)"><br />
+	<input type="email" name="email" placeholder="E-mail" required><br />
 	<input type="checkbox" name="accept">Souhlasím se spracováním zadaných údajů pro účely této služby<br />
 	<input type="submit" name="send" value="Zaregistrovat se">
 </form>
 <?php
 	require_once("connect.php");
+	include 'logger.php';
+	
 	if(isset($_POST['send'])){
 		$name = $_POST['username'];
 		$pass = $_POST['password'];
@@ -30,6 +36,7 @@
 						if($result){
 								echo "Byl/a jsi úspěšně zaregistrován/a.";
 								$_SESSION['user']=$name;
+								filelog("Uživatel $name se zaregistroval do systému.");
 								echo "<script type='text/javascript'>location.href = 'home.php';</script>";
 						}
 						else{echo "Nastala chyba. Zkuste to později, nebo kontaktujte administrátora na emailu honza.stech@gmail.com.<br />";echo mysqli_error($connection);}
