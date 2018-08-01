@@ -1,38 +1,45 @@
 <?php
-if(isset($_POST['posted'])){
-	//echo "Formulář byl odeslán.<br />";
-	$myemail = 'honza.stech@gmail.com';
+	session_start();
+	require 'checker.php';
+	check(true);
+	include 'logger.php';
 
-	$name = $_POST['name'];
-	$surname = $_POST['surname'];
-	$school = $_POST['school'];
-	$class = $_POST['class'];
-	$email = $_POST['email'];
-	$message = $_POST['message'];
-	$message = wordwrap($message, 70, "\r\n");
-	if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i",$email))
-	{
-		$errors .= "\n Error: Invalid email address";
-		echo "Neplatná e-mailová adresa.<br />";
+	if(isset($_POST['posted'])){
+		//echo "Formulář byl odeslán.<br />";
+		$myemail = 'honza.stech@gmail.com';
+
+		$name = $_POST['name'];
+		$surname = $_POST['surname'];
+		$school = $_POST['school'];
+		$class = $_POST['class'];
+		$email = $_POST['email'];
+		$message = $_POST['message'];
+		$message = wordwrap($message, 70, "\r\n");
+		if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i",$email))
+		{
+			$errors .= "\n Error: Invalid email address";
+			echo "Neplatná e-mailová adresa.<br />";
+		}
+		else{
+			$to = $myemail;
+			$email_subject = "Žádost o založení třídy od: $name $surname";
+			$email_body = "Detaily žádosti:".
+			"\n Jméno: $name".
+			"\n Přijímení: $surname".
+			"\n Škola: $school".
+			"\n Třída: $class".
+			"\n E-mail: $email".
+			"\n Text žádosti: $message";
+			$headers = "From: $email\n";
+			$headers .= "Reply-To: '$email'";
+			//echo $name."<br />".$surname."<br />".$school."<br />".$class."<br />".$email."<br />".$message."<br /><br />";
+			//echo $to."<br />".$email_subject."<br />".$email_body."<br />".$headers;
+			mail($to,$email_subject,$email_body,$headers);
+			$user = $_SESSION['user'];
+			fileLog("Uživatel $user zažádal o založení nové třídy za třídu $class ve škole $school");
+			echo "Vaše žádost o založení nové třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte prostřednictvím e-mailu na Vámi zadanou e-mailovou adresu v řádu několika málo dní.";
+		}
 	}
-	else{
-		$to = $myemail;
-		$email_subject = "Žádost o založení třídy od: $name $surname";
-		$email_body = "Detaily žádosti:".
-		"\n Jméno: $name".
-		"\n Přijímení: $surname".
-		"\n Škola: $school".
-		"\n Třída: $class".
-		"\n E-mail: $email".
-		"\n Text žádosti: $message";
-		$headers = "From: $email\n";
-		$headers .= "Reply-To: '$email'";
-		//echo $name."<br />".$surname."<br />".$school."<br />".$class."<br />".$email."<br />".$message."<br /><br />";
-		//echo $to."<br />".$email_subject."<br />".$email_body."<br />".$headers;
-		mail($to,$email_subject,$email_body,$headers);
-		echo "Vaše žádost o založení nové třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte prostřednictvím e-mailu na Vámi zadanou e-mailovou adresu v řádu několika málo dní.";
-	}
-}
 ?>
 
 <style>

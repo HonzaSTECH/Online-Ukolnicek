@@ -1,12 +1,31 @@
+<?php
+	session_start();
+	require 'checker.php';
+	check(true, true);
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ukolníček - 5.E</title>
+        <title>Ukolníček - 
+		<?php
+			require_once('connect.php');
+			$classId = $_SESSION['class'];
+			$query = "SELECT name FROM classes WHERE id=$classId";
+			$result = mysqli_query($connection, $query);
+			$name = mysqli_fetch_array($result);
+			$name = $name['name'];
+			echo $name;
+		?></title>
 		<link rel="stylesheet" href="CSS.css">
 		<script src=JS.js></script>
                 <meta charset="utf-8">
     </head>
     <body>
+		<div id="header">
+			<a href="login.php">Odhlásit se</a><br />
+			<a href="home.php">Zpět na seznam tříd</a><br />
+			<a href="classManagement.php">Správa třídy</a><br />
+		</div>
 		<div id="home">
 			<div id="noRecord">Žádný záznam</div>
 			<table id="data" border="2">
@@ -36,7 +55,7 @@
 				<?php
 					require_once("connect.php");
 					
-					$query = "SELECT id, date,subject, description, author, dateOfAdding, priority, likes FROM records";
+					$query = "SELECT id, date,subject, description, author, dateOfAdding, priority, likes FROM records WHERE class=$classId ORDER BY date";
 					$records = mysqli_query($connection, $query);
 					
 					if($records){
@@ -80,7 +99,7 @@
 			<button id="addRecord">Přidat záznam</button>
 		</div>
 		<div id="form">
-			<form method="POST" action=home.php>
+			<form method="POST" action=list.php>
 				<span id="form1Text">Datum:</span>
 				<input type="date" id="form1" name="date" required>
 				<br />
@@ -134,6 +153,8 @@
 </html>
 <?php
     require_once('connect.php');
+	include 'logger.php';
+	
 	if(isset($_POST['send'])){
 	
 		$a = $_POST['date'];
@@ -148,7 +169,7 @@
 		echo $d."<br />";
 		echo $e."<br />";
 	*/	
-		$query = "INSERT INTO records (date, subject, description, author, dateOfAdding, priority, id) values ('$a', '$b', '$c', '$d', NOW(), '$e', NULL)";
+		$query = "INSERT INTO records (date, subject, description, author, dateOfAdding, priority, class) values ('$a', '$b', '$c', '$d', NOW(), '$e', '$classId')";
 		$result = mysqli_query($connection, $query);
 		if ($result){
 			echo "
@@ -157,6 +178,8 @@
 					document.getElementsByClassName('action2')[recordCount].onclick = editRecord;
 					document.getElementsByClassName('action3')[recordCount].onclick = removeRecord;
 				</script>";
+				$user = $_SESSION['user'];
+				fileLog("Uživatel $user přidal ve třídě /*TODO*/ záznam: $a - $b - $c - $e. priorita");
 		}
 		else{
             echo "An error occured: ".mysqli_error($connection);
