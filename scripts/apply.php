@@ -4,16 +4,7 @@
 	check(true);
 ?>
 <meta charset="utf-8">
-<style>
-	.td1{
-		width: 20px;
-		height: 20px;
-	}
-	.td2{
-		width: 100px;
-		height: 20px;
-	}
-</style>
+<link rel="stylesheet" href="../styles/apply.css">
 <p>Seznam tříd:</p>
 
 <?php

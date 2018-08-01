@@ -5,20 +5,7 @@
 	unset($_SESSION['class']);
 ?>
 <meta charset="utf-8">
-<style>
-	.td1{
-		width: 20px;
-		height: 20px;
-	}
-	.td2{
-		width: 100px;
-		height: 20px;
-	}
-	.td3{
-		width: 75px;
-		height: 20px;
-	}
-</style>
+<link rel="stylesheet" href="../styles/home.css">
 <a href="login.php">Odhlásit se</a>
 <p>Jsi členem v těchto třídách:</p>
 
