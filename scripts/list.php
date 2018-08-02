@@ -16,7 +16,7 @@
 			$name = $name['name'];
 			echo $name;
 		?></title>
-		<link rel="stylesheet" href="CSS.css">
+		<link rel="stylesheet" href="../styles/list.css">
 		<script src=JS.js></script>
                 <meta charset="utf-8">
     </head>

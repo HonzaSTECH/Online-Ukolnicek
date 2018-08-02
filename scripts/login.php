@@ -4,6 +4,7 @@
 	unset($_SESSION['user']);
 ?>
 <meta charset="utf-8">
+<link rel="stylesheet" href="../styles/login.css">
 <form method="POST" action="login.php">
 	<input type="text" name="username" placeholder="Jméno" required><br />
 	<input type="password" name="password" placeholder="Heslo" required><br />

@@ -42,13 +42,8 @@
 	}
 ?>
 
-<style>
-    #text{
-        height: 100px;
-        width: 173px;
-    }
-</style>
 <meta charset="utf-8">
+<link rel="stylesheet" href="../styles/newClass.css">
 <p>Zažádat o založení nové třídy</p>
 <p>Z důvodu zamezení zakládání nepotřebných a prázdných tříd a zaplňování omezeného místa v naší databázi je nutné k založení třídy vyplnit tento formulář.</p><br />
 
