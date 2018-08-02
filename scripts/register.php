@@ -27,7 +27,9 @@
 		if(isset($accept)){
 			$query = "SELECT * FROM users WHERE name='$name'";
 			$result = mysqli_query($connection, $query);
-			if(!empty($result)){
+			$data = mysqli_fetch_array($result);
+			$data = $data['name'];
+			if(empty($data)){
 				if($pass == $pass_repeat){
 					$query = "SELECT * FROM users WHERE email = '$email'";
 					$result = mysqli_query($connection, $query);
