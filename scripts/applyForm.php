@@ -4,12 +4,7 @@
 	check(true);
 ?>
 <meta charset="utf-8">
-<style>
-    #text{
-        height: 100px;
-        width: 173px;
-    }
-</style>
+<link rel="stylesheet" href="../styles/applyForm.css">
 
 <p>Administrátor nebo moderátoři této třídy musí potvrdit tvou žádost o vstup do této třídy. Dej jim tedy vědět, kdo skutečně jsi, ať vědí, koho mezi sebe přijímají.</p>
 <form action="applyForm.php" method="POST"><br />

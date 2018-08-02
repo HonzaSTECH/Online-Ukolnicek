@@ -4,6 +4,7 @@
 	check(true, true);
 ?>
 <meta charset="utf-8">
+<link rel="stylesheet" href="../styles/classManagement.css">
 <?php
 	require_once('connect.php');
 	$query = "SELECT * FROM applications ORDER BY age";
