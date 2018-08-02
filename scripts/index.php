@@ -1,9 +1,15 @@
 <?php session_start(); ?>
 
 <meta charset="utf-8">
-<link rel="stylesheet" href="../styles/index.css">
-
-<p>Vítej na seznamtestu.chytrak.cz . Pro pokračování klikni na tlačítko.</p>
-<form action="login.php">
-	<input type=submit value="Vstoupit">
-</form>
+<link rel="stylesheet" href="styles/index.css">
+<body>
+	<div id="main">
+		<div id="welcomeText">Vítej na seznamtestu.chytrak.cz.<br />Pro pokračování klikni na tlačítko.</div>
+		<form action="scripts/login.php" id="enterForm">
+			<input type=submit value="Vstoupit" id="enterButton">
+		</form>
+	</div>
+	<hr />
+	<div id="news">
+	</div>
+</body>
