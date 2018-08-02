@@ -1,3 +1,46 @@
-div{
-	
+body{
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#main{
+	background-color: FFFF99;
+	margin-bottom: 0;
+}
+#welcomeText{
+	font-family: "Comic Sans MS", Arial;
+	padding: 20px;
+	border: 1px hidden;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 10vh;
+	height: 25vh;
+	width: 100vw;
+	white-space: nowrap;
+}
+#enterForm{
+	margin: 0;
+}
+#enterButton{
+	font-family: "Comic Sans MS", Arial;
+	height: 10vh;
+	width: 26vw;
+	font-size: 6vh;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+	margin-left: 37vw;
+	margin-right: 37vw;
+	color: #CC4444;
+	font-weight: bolder;
+	background-color: #FFEE88;
+}
+hr{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+#news{
+	padding: 20px;
+	background-color: #FF99FF;
+	height: 49vh;
 }
