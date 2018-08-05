@@ -1,3 +1,77 @@
-div{
-	
+body{
+    background-image:url("https://image.ibb.co/htq7ZT/classroom_night.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+#loginBox{
+    border: 1vw dashed #777700;
+    border-radius: 20%;
+    background-color: #FFBB77;
+    width: 50vw;
+    height: 50vh;
+    margin-right: 24vw;
+    margin-left: 24vw;
+    margin-top: 24vh;
+    margin-bottom: 24vh;
+}
+#loginForm{
+    height: 30vh;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+}
+#usernameInput{
+    font-size: 5vh;
+    width: 40vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    height: 8vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+#passwordInput{
+    font-size: 5vh;
+    width: 40vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    height: 8vh;
+    margin-top: 3vh;
+    margin-bottom: 0;
+    text-align: center;
+}
+#submitButton{
+    font-size: 5vh;
+    font-size: 3vh;
+    width: 20vw;
+    margin-right: 15vw;
+    margin-left: 15vw;
+    height: 8vh;
+    margin-top: 3vh;
+    margin-bottom: 0;
+    text-align: center;
+}
+#registerLink{
+	width: 50vw;
+	text-align: center;
+	font-size: 2vh;
+	color: green;
+	margin-bottom: 2vh;
+}
+a:link{
+	color:blue;
+}
+a:visited{
+	color:blue;
+}
+a:hover{
+	color:red;
+}
+a:active{
+	color:yellow;
+}
+#loginError{
+	width: 50vw;
+	text-align: center;
+	font-size: 4vh;
+	color: red;
 }
