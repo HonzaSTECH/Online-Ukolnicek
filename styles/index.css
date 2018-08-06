@@ -1,8 +1,5 @@
 body{
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin: 0;
 }
 #main{
 	background-color: FFFF99;
@@ -10,7 +7,7 @@ body{
 }
 #welcomeText{
 	font-family: "Comic Sans MS", Arial;
-	padding: 20px;
+	padding: 2vh;
 	border: 1px hidden;
 	text-align: center;
 	vertical-align: middle;
@@ -40,7 +37,9 @@ hr{
 	margin-bottom: 0;
 }
 #news{
-	padding: 20px;
+	padding-left: 10vw;
+	padding-right: 10vw;
+	padding-top: 2vh;
 	background-color: #FF99FF;
-	height: 49vh;
+	height: 47vh;
 }
