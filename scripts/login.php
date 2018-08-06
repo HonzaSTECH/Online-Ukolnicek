@@ -32,7 +32,7 @@
 				
 				if($data['name'] == $name){
 					if($data['password'] == $pass){
-						echo "Byl/a jsi úspěšně přihlášen/a.";
+						echo "<div id='successMessage'>Byl/a jsi úspěšně přihlášen/a.</div>";
 						$_SESSION['user']=$name;
 						$ip = $_SERVER['REMOTE_ADDR'];
 						fileLog("Uživatel $name se přihlásil z IP adresy $ip");

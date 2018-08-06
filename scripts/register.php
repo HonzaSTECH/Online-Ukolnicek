@@ -42,7 +42,7 @@
 								$query = "INSERT INTO users (name, password, email) VALUES ('$name', '$pass', '$email')";
 								$result = mysqli_query($connection, $query);
 								if($result){
-										echo "Byl/a jsi úspěšně zaregistrován/a.";
+										echo "<div id='successMessage'>Byl/a jsi úspěšně zaregistrován/a.</div>";
 										$_SESSION['user']=$name;
 										filelog("Uživatel $name se zaregistroval do systému.");
 										echo "<script type='text/javascript'>location.href = 'home.php';</script>";

@@ -116,3 +116,10 @@ a:active{
 	font-size: 4vh;
 	color: red;
 }
+#successMessage{
+	width: 50vw;
+	text-align: center;
+	font-size: 4vh;
+	color: green;
+	font-weight: bold;
+}
