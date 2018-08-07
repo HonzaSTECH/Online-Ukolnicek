@@ -1,12 +1,177 @@
-.td1{
-	width: 20px;
-	height: 20px;
+body{
+	margin: 0;
+	background-color: #FFFF99;
 }
-.td2{
-	width: 100px;
-	height: 20px;
+#header{
+	width: 98vw;
+	height: 10vh;
+	margin-left: 1vw;
+	margin-right: 1vw;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	background-color: #999999;
 }
-.td3{
-	width: 75px;
-	height: 20px;
+#logoutBox{
+	width: 15vw;
+	height: 10vh;
+	margin: 0;
+	border: 0;
+	background-color: #99FFFF;
+	text-align: center;
+	font-size: 4vh;
+	position: absolute;
+	right: 1vw;
+	overflow: hide;
+}
+#logoutLink{
+	color: #66CCCC;
+	text-decoration: none;
+	margin-top: 2.5vh;
+	margin-right: 0;
+	margin-bottom: 3.5vh;
+	margin-left: 0;
+	display: block;
+}
+#homeBox{
+	width: 15vw;
+	height: 10vh;
+	margin: 0;
+	border: 0;
+	background-color: #9999FF;
+	text-align: center;
+	font-size: 3em;
+	position: absolute;
+	right: 16vw;
+	overflow: hide;
+}
+#homeLink{
+	color:  #6666CC;
+	text-decoration: none;
+	margin-top: 2vh;
+	margin-right: 0;
+	margin-bottom: 4vh;
+	margin-left: 0;
+	display: block;
+}
+#infoBox{
+	width: 15vw;
+	height: 10vh;
+	margin: 0;
+	border: 0;
+	background-color: #99FF99;
+	text-align: center;
+	font-size: 3em;
+	position: absolute;
+	right: 31vw;
+	overflow: hide;
+}
+#infoLink{
+	color: #66CC66;
+	text-decoration: none;
+	margin-top: 2vh;
+	margin-right: 0;
+	margin-bottom: 4vh;
+	margin-left: 0;
+	display: block;
+}
+#leftSidebar{
+	background-color: #FF9999;
+	margin: 0;
+	float: left;
+	width: 25vw;
+	height: 88vh;
+}
+#rightSidebar{
+	background-color: #FF99FF;
+	margin: 0;
+	float: right;
+	width: 25vw;
+	height: 88vh;
+}
+#middle{
+	margin: 0;
+	position: absolute;
+	left: 25vw;
+	width: 50vw;
+}
+#titleBox{
+	height: 5vh;
+	background-color: #FFCC99;
+	text-align: center;
+}
+#title{
+	color: #CC9966;
+	font-size: 4vh;
+}
+#main{
+	height: 50vh;
+	background-color: #CC99FF;
+}
+form{
+	margin-top: 5vh;
+	position: absolute;
+	left: 12.5vw;
+	width: 25vw;
+	background-color: #99FFCC;
+}
+table{
+	width: 25vw;
+	font-size: 3vh;
+	background-color: #CCFF99;
+}
+.selectorColumn{
+	text-align: center;
+	width: 5vw;
+	height: 5vh;
+}
+.nameColumn{
+	text-align: center;
+	width: 12vw;
+	height: 5vh;
+}
+.rankColumn{
+	text-align: center;
+	width: 8vw;
+	height: 5vh;
+}
+#submitButton{
+	height: 5vh;
+	width: 12vw;
+	margin-left: 6.5vw;
+	margin-right: 6.5vw;
+	margin-top: 3vh;
+	margin-bottom: 1vh;
+	font-size: 4vh;
+}
+#applyBox{
+	width: 15vw;
+	height: 15vh;
+	margin-bottom: 7vh;
+	margin-top: 7vh;
+	margin-left: 4vw;
+	margin-right: 4vw;
+	border: 1vw dashed pink;
+	background-color: #FF99CC;
+	text-align: center;
+	font-size: 3vh;
+	float: left;
+}
+#applyLink{
+	color: #CC6699
+}
+#newClassBox{
+	width: 15vw;
+	height: 15vh;
+	margin-bottom: 7vh;
+	margin-top: 7vh;
+	margin-left: 4vw;
+	margin-right: 4vw;
+	border: 1vw dashed #88CCFF;
+	background-color: #99CCFF;
+	text-align: center;
+	font-size: 3vh;
+	float: right;
+}
+#newClassLink{
+	color: #6699CC;
 }
