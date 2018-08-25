@@ -86,7 +86,19 @@
 							<td align='center' class='column4' BGCOLOR=".$recordColor.">".$row['author']."</td>
 							<td align='center' class='column5' BGCOLOR=".$recordColor.">".$row['dateOfAdding']."</td>
 							<td align='center' class='column6' BGCOLOR=".$recordColor.">".$row['likes']."</td>
-							<td align='center' class='column7' BGCOLOR=".$recordColor."><button class='action1'>Like</button><button class='action2'>Edit</button><button class='action3'>Delete</button></td>
+							<td align='center' class='column7' BGCOLOR=".$recordColor.">";
+							if($_SESSION['user'] == $row['author']){echo "<button class='action2'>Edit</button><button class='action3'>Delete</button>";}
+							else{
+								echo "<button class='action1'>Like</button>";
+								$user = $_SESSION['user'];
+								$query = "SELECT modIn, adminIn FROM users WHERE name = '$user'";
+								$result = mysqli_query($connection, $query);
+								$result = mysqli_fetch_array($result);
+								$adminClasses = explode(',', $result['adminIn']);
+								$modClasses = explode(',', $result['modIn']);
+								if(in_array($classId, $adminClasses) || in_array($classId, $modClasses)){echo "<button class='action2'>Edit</button><button class='action3'>Delete</button>";}
+							}
+							echo "</td>
 							</tr>";
 						}
 					}
@@ -122,11 +134,11 @@
 				</select>
 				<br />
 				<span id="form3Text">Popis:</span>
-				<textarea type="message" id="form3" name="description" required placeholder="Opakovací test"></textarea>
+				<textarea type="message" id="form3" name="description" required placeholder="Opakovací test" maxlength=100></textarea>
 				<br />
-				<span id="form4Text">Přidal:</span>
+				<!--<span id="form4Text">Přidal:</span>
 				<input type="text" id="form4" name="author" required placeholder="Jméno Přijímení">
-				<br />
+				<br />-->
 				<span id="form5Text">Priorita:</span>
 					<div id="priority1">
 						<input type="radio" name="priority" value="1">1
@@ -160,7 +172,7 @@
 		$a = $_POST['date'];
 		$b = $_POST['subject'];
 		$c = $_POST['description'];
-		$d = $_POST['author'];
+		$d = $_SESSION['user'];
 		$e = $_POST['priority'];
 	/*
 		echo $a."<br />";
@@ -172,14 +184,16 @@
 		$query = "INSERT INTO records (date, subject, description, author, dateOfAdding, priority, class) values ('$a', '$b', '$c', '$d', NOW(), '$e', '$classId')";
 		$result = mysqli_query($connection, $query);
 		if ($result){
-			echo "
+			/*echo "
 				<script>
 					document.getElementsByClassName('action1')[recordCount].onclick = upvoteRecord;
 					document.getElementsByClassName('action2')[recordCount].onclick = editRecord;
 					document.getElementsByClassName('action3')[recordCount].onclick = removeRecord;
 				</script>";
+			*/
 				$user = $_SESSION['user'];
 				fileLog("Uživatel $user přidal ve třídě $name záznam: $a - $b - $c - $e. priorita");
+				echo "<script type='text/javascript'>location.href = 'list.php';</script>";
 		}
 		else{
             echo "An error occured: ".mysqli_error($connection);
