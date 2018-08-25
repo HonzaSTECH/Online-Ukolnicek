@@ -10,6 +10,12 @@
 </head>
 <body>
 	<div id="header">
+		<span id="username">
+			<?php
+			echo "Jsi přihlášen jako ";
+			echo $_SESSION['user'];
+			?>
+		</span>
 		<div id="logoutBox">
 			<a href="login.php" id="logoutLink">Odhlásit se</a>
 		</div>
@@ -17,7 +23,7 @@
 			<a href="home.php" id="homeLink">Domů</a>
 		</div>
 		<div id="infoBox">
-			<a href="#" id="infoLink">Informace</a>
+			<a href="info.php" id="infoLink">Informace</a>
 		</div>
 	</div>
 	<div id="leftSidebar">
@@ -60,7 +66,7 @@
 					$data = $data['adminIn'];
 					if(!$data == '0'){$adminClasses = explode(',', $data);}
 					
-					echo "<tr><td class='selectorColumn'><input type=radio name='classSelect' value='$class'></td><td class='nameColumn'> $classData</td><td class='rankColumn'>";
+					echo "<tr><td class='selectorColumn'><input type=radio name='classSelect' value='$class' class='radioSelect'></td><td class='nameColumn'> $classData</td><td class='rankColumn'>";
 					if(in_array($class, $adminClasses)){echo "Administrátor";}
 					else if(in_array($class, $modClasses)){echo "Moderátor";}
 					else{echo "Člen";}

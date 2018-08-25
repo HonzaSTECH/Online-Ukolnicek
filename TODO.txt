@@ -1,0 +1,11 @@
+TODO list:
+--------------------
+1) Change background picture on login and register page
+2) When adding a record, write name of the class into log file instead of /*TODO*/
+3) Style apply page
+4) Style applyForm page
+5) Style newClass page
+6) Style classManagement page
+7) Improve styling of home page
+8) Improve styling of list page
+9) Remove "Author" input field from "Add record" form and use name of logged user instead
