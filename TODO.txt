@@ -2,7 +2,7 @@ TODO list:
 --------------------
 1) Change background picture on login and register page
 2) When adding a record, write name of the class into log file instead of /*TODO*/	DONE
-3) Display action buttons on list page depending on logged user and/or its status
+3) Display action buttons on list page depending on logged user and/or its status		DONE
 4) Style apply page
 5) Style applyForm page
 6) Style newClass page
@@ -11,6 +11,6 @@ TODO list:
 9) Style info page
 10) Improve styling of home page
 11) Improve styling of list page
-12) Remove "Author" input field from "Add record" form and use name of logged user instead
+12) Remove "Author" input field from "Add record" form and use name of logged user instead	DONE
 13) Improve styling of index page
 14) Make adding and removing subject possible for admins on classManagement page
