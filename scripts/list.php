@@ -179,7 +179,7 @@
 					document.getElementsByClassName('action3')[recordCount].onclick = removeRecord;
 				</script>";
 				$user = $_SESSION['user'];
-				fileLog("Uživatel $user přidal ve třídě /*TODO*/ záznam: $a - $b - $c - $e. priorita");
+				fileLog("Uživatel $user přidal ve třídě $name záznam: $a - $b - $c - $e. priorita");
 		}
 		else{
             echo "An error occured: ".mysqli_error($connection);
