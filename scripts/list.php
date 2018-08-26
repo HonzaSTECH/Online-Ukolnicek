@@ -5,7 +5,7 @@
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
         <title>Ukolníček - 
 		<?php
 			require_once('connect.php');
@@ -15,12 +15,13 @@
 			$name = mysqli_fetch_array($result);
 			$name = $name['name'];
 			echo $name;
-		?></title>
+		?>
+		</title>
 		<link rel="stylesheet" href="../styles/list.css">
 		<script src=JS.js></script>
-                <meta charset="utf-8">
-    </head>
-    <body>
+		<meta charset="utf-8">
+	</head>
+	<body>
 		<div id="header">
 			<span id="username">
 				<?php
@@ -94,6 +95,10 @@
 								default:
 									$recordColor = "#FFFF77";
 							}
+							
+							$row['date'] = date_format(date_create($row['date']), "d. m. Y");
+							$row['dateOfAdding'] = date_format(date_create($row['dateOfAdding']), "d. m. Y");
+							
 							echo "<tr>
 							<td align='center' class='column1' BGCOLOR=".$recordColor.">".$row['date']."</td>
 							<td align='center' class='column2' BGCOLOR=".$recordColor.">".$row['subject']."</td>
