@@ -184,7 +184,7 @@ function addRecord()
 		document.getElementById("form1").value = "";
 		document.getElementById("form2").value = "";
 		document.getElementById("form3").value = "";
-		document.getElementById("form4").value = "";
+		//document.getElementById("form4").value = "";
 		document.getElementById("priority1").childNodes[1].checked = false;
 		document.getElementById("priority2").childNodes[1].checked = false;
 		document.getElementById("priority3").childNodes[1].checked = true;
@@ -200,7 +200,7 @@ function closeForm()
 function upvoteRecord(event)
     {
 		yCursor = event.pageY;
-        yCursor -= 60;
+       // yCursor -= 60;
         yCursor /= 66;
         yCursor = Math.round(yCursor);
 		recordUpvotes [yCursor - 1] += 1;
@@ -210,7 +210,7 @@ function upvoteRecord(event)
 function editRecord(event)
         {
 			yCursor = event.pageY;
-            yCursor -= 60;
+           // yCursor -= 60;
             yCursor /= 66;
 			yCursor = Math.round(yCursor);
             document.getElementById("form").style.display = "block";
@@ -267,7 +267,7 @@ function editRecord(event)
 function removeRecord(event)
         {
             yCursor = event.pageY;
-            yCursor -= 60;
+           // yCursor -= 60;
             yCursor /= 66;
             yCursor = Math.round(yCursor);
             document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor - 1]);

@@ -28,10 +28,10 @@
 	
 	$result = mysqli_query($connection, $query);
 
-	echo "<form action='applyForm.php'><table>";
+	echo "<form action='applyForm.php' method='POST'><table>";
 	while($row = mysqli_fetch_array($result)){
 		$name = $row['name'];
-		echo "<tr><td align='center' class='td1'><input type=radio name=applyTo></td><td align='center' class='td2'>$name</td></tr>";
+		echo "<tr><td align='center' class='td1'><input type=radio name=applyTo value='$name'></td><td align='center' class='td2'>$name</td></tr>";
 	}
 	echo "</table><input type=submit name='apply' value='Zažádat o přijetí'></form>"
 ?>

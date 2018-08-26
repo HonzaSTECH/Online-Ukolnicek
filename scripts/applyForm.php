@@ -2,6 +2,7 @@
 	session_start();
 	require 'checker.php';
 	check(true);
+	//$class = $_POST['applyTo'];		//TODO
 ?>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../styles/applyForm.css">
@@ -20,7 +21,7 @@
 
 	if(isset($_POST['posted'])){
 
-		$query = "SELECT admin FROM classes WHERE name='2.B GJVJ'";		//TODO
+		$query = "SELECT admin FROM classes WHERE name='$class'";		//TODO
 		$result = mysqli_query($connection, $query);
 		if (!$result){echo "An error occured. Error: ".mysqli_error();}
 		$admin = mysqli_fetch_array($result);
@@ -44,7 +45,7 @@
 		$message = wordwrap($message, 70, "\r\n");
 		
 		$to = $toemail;
-		$email_subject = "Žádost o založení přijetí to třídy od: $name $surname";
+		$email_subject = "Žádost o přijetí to třídy od: $name $surname";
 		$email_body = "Detaily žádosti:".
 		"\nJméno: $name".
 		"\nPřijímení: $surname".

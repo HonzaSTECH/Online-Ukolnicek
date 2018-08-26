@@ -22,35 +22,50 @@
     </head>
     <body>
 		<div id="header">
-			<a href="login.php">Odhlásit se</a><br />
-			<a href="home.php">Zpět na seznam tříd</a><br />
-			<a href="classManagement.php">Správa třídy</a><br />
+			<span id="username">
+				<?php
+				echo "Jsi přihlášen jako ";
+				echo $_SESSION['user'];
+				?>
+			</span>
+			<div id="logoutBox">
+				<a href="login.php" id="logoutLink">Odhlásit se</a>
+			</div>
+			<div id="infoBox">
+				<a href="info.php" id="infoLink">Informace</a>
+			</div>
+			<div id="homeBox">
+				<a href="home.php" id="homeLink">Domů</a>
+			</div>
+			<div id="classManagementBox">
+				<a href="classManagement.php" id="classManagementLink">Správa třídy</a>
+			</div>
 		</div>
 		<div id="home">
 			<div id="noRecord">Žádný záznam</div>
-			<table id="data" border="2">
+			<table id="data" border="1">
 				<tr>
-					<td id="date">
+					<th id="date">
 						Datum
-					</td>
-					<td id="subject">
+					</th>
+					<th id="subject">
 						Předmět
-					</td>
-					<td id="description">
+					</th>
+					<th id="description">
 						Popis
-					</td>
-					<td id="author">
+					</th>
+					<th id="author">
 						Přidal/a
-					</td>
-					<td id="dateOfAdding">
+					</th>
+					<th id="dateOfAdding">
 						Přidáno
-					</td>
-					<td id="likes">
+					</th>
+					<th id="likes">
 						<strong>^</strong>
-					</td>
-					<td id="akce">
+					</th>
+					<th id="akce">
 						Akce
-					</td>
+					</th>
 				</tr>
 				<?php
 					require_once("connect.php");
@@ -87,16 +102,16 @@
 							<td align='center' class='column5' BGCOLOR=".$recordColor.">".$row['dateOfAdding']."</td>
 							<td align='center' class='column6' BGCOLOR=".$recordColor.">".$row['likes']."</td>
 							<td align='center' class='column7' BGCOLOR=".$recordColor.">";
-							if($_SESSION['user'] == $row['author']){echo "<button class='action2'>Edit</button><button class='action3'>Delete</button>";}
+							if($_SESSION['user'] == $row['author']){echo "<button class='action2' onclick='editRecord(event)'>Edit</button><button class='action3' onclick='removeRecord(event)'>Delete</button>";}
 							else{
-								echo "<button class='action1'>Like</button>";
+								echo "<button class='action1' onclick='upvoteRecord(event)'>Like</button>";
 								$user = $_SESSION['user'];
 								$query = "SELECT modIn, adminIn FROM users WHERE name = '$user'";
 								$result = mysqli_query($connection, $query);
 								$result = mysqli_fetch_array($result);
 								$adminClasses = explode(',', $result['adminIn']);
 								$modClasses = explode(',', $result['modIn']);
-								if(in_array($classId, $adminClasses) || in_array($classId, $modClasses)){echo "<button class='action2'>Edit</button><button class='action3'>Delete</button>";}
+								if(in_array($classId, $adminClasses) || in_array($classId, $modClasses)){echo "<button class='action2' onclick='editRecord(event)'>Edit</button><button class='action3' onclick='removeRecord(event)'>Delete</button>";}
 							}
 							echo "</td>
 							</tr>";
@@ -111,6 +126,7 @@
 			<button id="addRecord">Přidat záznam</button>
 		</div>
 		<div id="form">
+			<div id="formTitle">Přidat záznam</div>
 			<form method="POST" action=list.php>
 				<span id="form1Text">Datum:</span>
 				<input type="date" id="form1" name="date" required>
@@ -141,19 +157,29 @@
 				<br />-->
 				<span id="form5Text">Priorita:</span>
 					<div id="priority1">
-						<input type="radio" name="priority" value="1">1
+						<input type="radio" name="priority" value="1" id="pr1">
+						<br />
+						<label for="pr1">1</label>
 					</div>
 					<div id="priority2">
-						<input type="radio"  name="priority" value="2">2
+						<input type="radio"  name="priority" value="2"  id="pr2">
+						<br />
+						<label for="pr2">2</label>
 					</div>
 					<div id="priority3">
-						<input type="radio" name="priority" value="3" checked> 3
+						<input type="radio" name="priority" value="3"  id="pr3" checked>
+						<br />
+						<label for="pr3">3</label>
 					</div>
 					<div id="priority4">
-						<input type="radio" name="priority" value="4"> 4
+						<input type="radio" name="priority" value="4"  id="pr4">
+						<br />
+						<label for="pr4">4</label>
 					</div>
 					<div id="priority5">
-						<input type="radio" name="priority" value="5"> 5
+						<input type="radio" name="priority" value="5"  id="pr5">
+						<br />
+						<label for="pr5">5</label>
 					</div>
 					<br />
 				<input type="submit" id="formSubmit" name="send" value="Potrvrdit">

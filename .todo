@@ -8,7 +8,7 @@ Waiting 	7) Style classManagement page
 Waiting 	8) Write info page
 Waiting	9) Style info page
 Waiting 	10) Improve styling of home page
-Actual	 	11) Improve styling of list page
+Done	 	11) Improve styling of list page
 Done 		12) Remove "Author" input field from "Add record" form and use name of logged user instead
 Waiting 	13) Improve styling of index page
 Waiting 	14) Make adding and removing subject possible for admins on classManagement page
