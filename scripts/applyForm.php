@@ -2,7 +2,6 @@
 	session_start();
 	require 'checker.php';
 	check(true);
-	//$class = $_POST['applyTo'];		//TODO
 ?>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../styles/applyForm.css">
@@ -20,8 +19,11 @@
 	include 'logger.php';
 
 	if(isset($_POST['posted'])){
-
-		$query = "SELECT admin FROM classes WHERE name='$class'";		//TODO
+		
+		$class = $_SESSION['applyClass'];
+		unset($_SESSION['applyClass']);
+		
+		$query = "SELECT admin FROM classes WHERE name='$class'";
 		$result = mysqli_query($connection, $query);
 		if (!$result){echo "An error occured. Error: ".mysqli_error();}
 		$admin = mysqli_fetch_array($result);
@@ -38,7 +40,7 @@
 		$message = $_POST['message'];
 		
 		$timestamp = time();
-		$query = "INSERT INTO applications (nickname, name, surname, message, class, age) VALUES ('$user', '$name', '$surname', '$message', '/*TODO*/', '$timestamp')";
+		$query = "INSERT INTO applications (nickname, name, surname, message, class, age) VALUES ('$user', '$name', '$surname', '$message', '$class', '$timestamp')";
 		$result = mysqli_query($connection, $query);
 		if(!$result){echo "An Error occured. Error: ".mysqli_error($connection);}
 		
@@ -58,8 +60,9 @@
 		$headers = "From: info@seznamtestu.chytrak.cz\n";
 		mail($to,$email_subject,$email_body,$headers);
 		$user = $_SESSION['user'];
-		fileLog("Uživatel $user zažádal o přijetí do třídy /*TODO*/.");
+		fileLog("Uživatel $user zažádal o přijetí do třídy $class");
 		echo "Vaše žádost o přijetí do této třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte na stránce se seznamem tříd (<a href='home.php'>zde</a>).<br />";
+		echo "<script type='text/javascript'>location.href = 'home.php';</script>";
 	}
 ?>
 <a href="apply.php">Návrat na seznam tříd</a>

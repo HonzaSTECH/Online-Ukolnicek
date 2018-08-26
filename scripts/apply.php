@@ -28,12 +28,19 @@
 	
 	$result = mysqli_query($connection, $query);
 
-	echo "<form action='applyForm.php' method='POST'><table>";
+	echo "<form method='POST' action='apply.php'><table>";
 	while($row = mysqli_fetch_array($result)){
 		$name = $row['name'];
-		echo "<tr><td align='center' class='td1'><input type=radio name=applyTo value='$name'></td><td align='center' class='td2'>$name</td></tr>";
+		echo "<tr><td align='center' class='td1'><input type=radio name='applyTo' value='$name'></td><td align='center' class='td2'>$name</td></tr>";
 	}
 	echo "</table><input type=submit name='apply' value='Zažádat o přijetí'></form>"
 ?>
 
 <a href="home.php">Návrat na seznam tříd</a>
+
+<?php
+	if(isset($_POST['apply'])){
+		$_SESSION['applyClass'] = $_POST['applyTo'];
+		echo "<script type='text/javascript'>location.href = 'applyForm.php';</script>";
+	}
+?>
