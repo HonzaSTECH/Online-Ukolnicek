@@ -3,7 +3,6 @@
 	require 'checker.php';
 	check(true, true);
 ?>
-<!DOCTYPE html>
 <html>
 	<head>
         <title>Ukolníček - 
@@ -138,20 +137,22 @@
 				<br />
 				<span id="form2Text">Předmět:</span>
 				<select id="form2" name="subject" required>
-					<option>ČJ</option>
-					<option>AJ</option>
-					<option>NJ</option>
-					<option>ZSV</option>
-					<option>D</option>
-					<option>Z</option>
-					<option>Bi</option>
-					<option>M</option>
-					<option>Fy</option>
-					<option>Ch</option>
-					<option>EVV</option>
-					<option>EVH</option>
-					<option>TV</option>
-					<option>IVT</option>
+					<?php
+						require_once('connect.php');
+						$class = $_SESSION['class'];
+						$query = "SELECT subjects FROM classes WHERE id=$class";
+						unset($class);
+						$result = mysqli_query($connection,  $query);
+						$result = mysqli_fetch_array($result);
+						$result = explode(',', $result['subjects']);
+						
+						foreach($result as $subject)
+						{
+							if($subject == ''){continue;}
+							echo "<option>$subject</option>";
+						}
+					?>
+					<option>---</option>
 				</select>
 				<br />
 				<span id="form3Text">Popis:</span>

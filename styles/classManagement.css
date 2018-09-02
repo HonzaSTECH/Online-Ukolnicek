@@ -1,3 +1,59 @@
-div{
-	
+nav {
+	border: 1px solid black;
+}
+a {
+	display: block;
+}
+/*---------------------------*/
+#tab1{
+	color: #007700;
+	display: block;
+	position: absolute;
+	top: 20vh;
+}
+#tab2{
+	color: 000077;
+	display: none;
+	position: absolute;
+	top: 20vh;
+}
+#tab3{
+	color: CCCC00;
+	display: none;
+	position: absolute;
+	top: 20vh;
+}
+#tab4{
+	color: 770000;
+	display: none;
+	position: absolute;
+	top: 20vh;
+}
+/*---------------------------*/
+.rank1{
+	color: 0000BB;
+	width: 15vw;
+	overflow: auto;
+	text-align: center;
+}
+.rank2{
+	color: #777700;
+	width: 15vw;
+	overflow: auto;
+	text-align: center;
+}
+.rank3{
+	color: BB0000;
+	width: 15vw;
+	overflow: auto;
+	text-align: center;
+}
+.username{
+	color: #00BB00;
+	width: 35vw;
+	overflow: auto;
+	text-align: center;
+}
+#subjectsForm{
+	display: none;
 }
