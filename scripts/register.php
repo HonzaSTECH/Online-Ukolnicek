@@ -57,6 +57,7 @@
 						else if(!empty($data)){echo "<div id='registerError'>Uživatel s tímto e-mailem již existuje.</div>";}
 						else		//Valid e-mail
 						{
+							$pass = password_hash($pass, PASSWORD_DEFAULT);
 							$query = "INSERT INTO users (name, password, email) VALUES ('$name', '$pass', '$email')";
 							$result = mysqli_query($connection, $query);
 							if(!$result){echo "<div id='registerError'>Nastala chyba. Zkuste to později, nebo kontaktujte administrátora na e-mailu honza.stech@gmail.com."; echo mysqli_error($connection)."</div>";}
