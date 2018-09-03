@@ -31,7 +31,7 @@
 				$data = mysqli_fetch_array($result);
 				
 				if($data['name'] == $name){
-					if($data['password'] == $pass){
+					if(password_verify($pass, $data['password'])){
 						echo "<div id='successMessage'>Byl/a jsi úspěšně přihlášen/a.</div>";
 						$_SESSION['user']=$name;
 						$ip = $_SERVER['REMOTE_ADDR'];
