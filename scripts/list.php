@@ -16,6 +16,7 @@
 			echo $name;
 		?>
 		</title>
+		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" href="../styles/list.css">
 		<script src=JS.js></script>
 		<meta charset="utf-8">
