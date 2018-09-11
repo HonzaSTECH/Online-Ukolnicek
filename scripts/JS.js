@@ -6,13 +6,6 @@ var date;
 var i;
 var yCursor;
 
-window.onload = function ()
-{
-    document.getElementById("addRecord").onclick = addRecord;
-    
-    document.getElementById("formCancel").onclick = closeForm;
-    
-}
 function newRecord()
 {
     document.getElementById("form").style.display = "none";
@@ -177,20 +170,19 @@ function newRecord()
 }
 
 function addRecord()
-    {
+{
         document.getElementById("form").style.display = "block";
-		document.getElementById("form").style.backgroundColor = "#99FFFF";
-		
-		document.getElementById("form1").value = "";
-		document.getElementById("form2").value = "";
-		document.getElementById("form3").value = "";
-		//document.getElementById("form4").value = "";
-		document.getElementById("priority1").childNodes[1].checked = false;
-		document.getElementById("priority2").childNodes[1].checked = false;
-		document.getElementById("priority3").childNodes[1].checked = true;
-		document.getElementById("priority4").childNodes[1].checked = false;
-		document.getElementById("priority5").childNodes[1].checked = false;
-    }
+	document.getElementById("form").style.backgroundColor = "#99FFFF";
+	
+	document.getElementById("form1").value = "";
+	document.getElementById("form2").value = "";
+	document.getElementById("form3").value = "";
+	document.getElementById("priority1").childNodes[1].checked = false;
+	document.getElementById("priority2").childNodes[1].checked = false;
+	document.getElementById("priority3").childNodes[1].checked = true;
+	document.getElementById("priority4").childNodes[1].checked = false;
+	document.getElementById("priority5").childNodes[1].checked = false;
+}
 
 function closeForm()
     {
@@ -198,87 +190,123 @@ function closeForm()
     }
 
 function upvoteRecord(event)
-    {
-		yCursor = event.pageY;
-       // yCursor -= 60;
+{/*
+	yCursor = event.pageY;
+       //yCursor -= 60;
         yCursor /= 66;
         yCursor = Math.round(yCursor);
-		recordUpvotes [yCursor - 1] += 1;
-		document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML = recordUpvotes[yCursor - 1];
-    }
+	recordUpvotes [yCursor - 1] += 1;
+	document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML = recordUpvotes[yCursor - 1];
+*/
+console.log("Upvote detected.");
+var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+yCursor = event.pageY;
+yCursor -= 0.123 * VH;				//Substract header
+yCursor /= 0.102 * VH;				//Get record position
+yCursor = Math.floor(yCursor);		//Round the result down
+
+var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
+console.log(desc);
+//TODO
+}
 
 function editRecord(event)
-        {
-			yCursor = event.pageY;
-           // yCursor -= 60;
-            yCursor /= 66;
-			yCursor = Math.round(yCursor);
-            document.getElementById("form").style.display = "block";
-			document.getElementById("form").style.backgroundColor = "#99FEFE";
-			var dateTemp = document.getElementsByClassName("column1")[yCursor - 1].innerHTML;
-			var year=undefined;
-			var month=undefined;
-			var day=undefined;
-			
-			i=0;
-			
-			for(; dateTemp[i] != "."; i++){
-			if(day == undefined){day = dateTemp[i];}
-			else{day += dateTemp[i];}
-			}
-			i++; i++;
-			for(; dateTemp[i] != "."; i++){
-			    if(month == undefined){month = dateTemp[i];}
-				else{month += dateTemp[i];}
-			}
-			i++; i++;
-			for(; dateTemp[i] != "." && dateTemp[i] != undefined; i++){
-				if(year == undefined){year = dateTemp[i];}
-				else{year += dateTemp[i];}
-			}
-			
-			if(month >= 10){dateTemp = year + "-" + month + "-" + day;}
-			else{dateTemp = year + "-" + "0" + month + "-" + day;}
-			
-            document.getElementById("form1").value = dateTemp;
-			document.getElementById("form2").value = document.getElementsByClassName("column2")[yCursor - 1].innerHTML;
-			document.getElementById("form3").value = document.getElementsByClassName("column3")[yCursor - 1].innerHTML;
-			document.getElementById("form4").value = document.getElementsByClassName("column4")[yCursor - 1].innerHTML;
-			
-			switch(document.getElementsByClassName("column1")[yCursor - 1].style.backgroundColor){
-				case "rgb(255, 136, 136)":
-					document.getElementById("priority1").childNodes[1].checked = true;
-					break;
-				case "rgb(255, 204, 136)":
-					document.getElementById("priority2").childNodes[1].checked = true;
-					break;
-				case "rgb(255, 255, 119)":
-					document.getElementById("priority3").childNodes[1].checked = true;
-					break;
-				case "rgb(136, 238, 136)":
-					document.getElementById("priority4").childNodes[1].checked = true;
-					break;
-				case "rgb(153, 153, 255)":
-					document.getElementById("priority5").childNodes[1].checked = true;
-					break;
-			}
-        }
+{/*
+	yCursor = event.pageY;
+        // yCursor -= 60;
+	yCursor /= 66;
+	yCursor = Math.round(yCursor);
+	document.getElementById("form").style.display = "block";
+	document.getElementById("form").style.backgroundColor = "#99FEFE";
+	var dateTemp = document.getElementsByClassName("column1")[yCursor - 1].innerHTML;
+	var year=undefined;
+	var month=undefined;
+	var day=undefined;
+
+	i=0;
+	
+	for(; dateTemp[i] != "."; i++)
+	{
+		if(day == undefined){day = dateTemp[i];}
+		else{day += dateTemp[i];}
+	}
+	i++; i++;
+	for(; dateTemp[i] != "."; i++)
+	{
+		if(month == undefined){month = dateTemp[i];}
+		else{month += dateTemp[i];}
+	}
+	i++; i++;
+	for(; dateTemp[i] != "." && dateTemp[i] != undefined; i++)
+	{
+		if(year == undefined){year = dateTemp[i];}
+		else{year += dateTemp[i];}
+	}
+	
+	if(month >= 10){dateTemp = year + "-" + month + "-" + day;}
+	else{dateTemp = year + "-" + "0" + month + "-" + day;}
+	
+	document.getElementById("form1").value = dateTemp;
+	document.getElementById("form2").value = document.getElementsByClassName("column2")[yCursor - 1].innerHTML;
+	document.getElementById("form3").value = document.getElementsByClassName("column3")[yCursor - 1].innerHTML;
+	document.getElementById("form4").value = document.getElementsByClassName("column4")[yCursor - 1].innerHTML;
+	
+	switch(document.getElementsByClassName("column1")[yCursor - 1].style.backgroundColor){
+		case "rgb(255, 136, 136)":
+			document.getElementById("priority1").childNodes[1].checked = true;
+			break;
+		case "rgb(255, 204, 136)":
+			document.getElementById("priority2").childNodes[1].checked = true;
+			break;
+		case "rgb(255, 255, 119)":
+			document.getElementById("priority3").childNodes[1].checked = true;
+			break;
+		case "rgb(136, 238, 136)":
+			document.getElementById("priority4").childNodes[1].checked = true;
+			break;
+		case "rgb(153, 153, 255)":
+			document.getElementById("priority5").childNodes[1].checked = true;
+			break;
+	}
+*/
+console.log("Edit detected.");
+var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+yCursor = event.pageY;
+yCursor -= 0.123 * VH;				//Substract header
+yCursor /= 0.102 * VH;				//Get record position
+yCursor = Math.floor(yCursor);		//Round the result down
+
+var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
+console.log(desc);
+//TODO
+}
 
 function removeRecord(event)
-        {
-            yCursor = event.pageY;
-           // yCursor -= 60;
-            yCursor /= 66;
-            yCursor = Math.round(yCursor);
-            document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor - 1]);
-			
-			if(recordCount == 1){document.getElementById("noRecord").style.display = "block";}
-			recordCount--;
-			for(i = (yCursor - 1); i < recordUpvotes.length; i++)
-			{
-				if(i == (recordUpvotes.length-1)){recordUpvotes[i]=undefined;}
-				else{recordUpvotes[i] = recordUpvotes[i + 1];}
-			}
-        }
+{/*
+	yCursor = event.pageY;
+	// yCursor -= 60;
+	yCursor /= 66;
+	yCursor = Math.round(yCursor);
+	document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor - 1]);
+
+	if(recordCount == 1){document.getElementById("noRecord").style.display = "block";}
+	recordCount--;
+	for(i = (yCursor - 1); i < recordUpvotes.length; i++)
+	{
+		if(i == (recordUpvotes.length-1)){recordUpvotes[i]=undefined;}
+		else{recordUpvotes[i] = recordUpvotes[i + 1];}
+	}
+*/
+console.log("Delete detected.");
+var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+yCursor = event.pageY;
+yCursor -= 0.123 * VH;				//Substract header
+yCursor /= 0.102 * VH;				//Get record position
+yCursor = Math.floor(yCursor);		//Round the result down
+
+var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
+console.log(desc);
+//TODO
+}
 
 function testFunc(){document.write("Test succefull.");}

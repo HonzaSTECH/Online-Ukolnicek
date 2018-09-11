@@ -127,7 +127,7 @@
 					}
 				?>
 			</table>
-			<button id="addRecord">Přidat záznam</button>
+			<button id="addRecord" onclick="addRecord()">Přidat záznam</button>
 		</div>
 		<div id="form">
 			<div id="formTitle">Přidat záznam</div>
@@ -190,7 +190,7 @@
 					<br />
 				<input type="submit" id="formSubmit" name="send" value="Potrvrdit">
 			</form>
-			<button id="formCancel">Zrušit</button>
+			<button id="formCancel" onclick="closeForm()">Zrušit</button>
 		</div>
                <!-- <a href="server.php">PHP testing area</a>	-->
     </body>
