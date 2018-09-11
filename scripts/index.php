@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 
 <meta charset="utf-8">
+<link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="styles/index.css">
 <body>
 	<div id="main">
