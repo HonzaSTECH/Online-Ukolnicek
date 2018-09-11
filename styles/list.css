@@ -321,8 +321,10 @@ table{
 	/*margin-top: 2vh;*/
 	margin-bottom: 2vh;
 }
+tr{
+	height: 10.2vh;
+}
 td{
-	height: 7vh;
 	white-space:  nowrap;
 	overflow: auto;
 }
