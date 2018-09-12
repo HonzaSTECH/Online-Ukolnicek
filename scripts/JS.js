@@ -208,6 +208,13 @@ yCursor = Math.floor(yCursor);		//Round the result down
 var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
 console.log(desc);
 //TODO
+$.ajax({
+	type: "GET",
+	url: "empty.php"
+	}).done(function(desc)
+	{
+	alert( desc + " has been upvoted." );
+    });
 }
 
 function editRecord(event)
