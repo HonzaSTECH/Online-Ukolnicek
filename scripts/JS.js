@@ -205,16 +205,19 @@ yCursor -= 0.123 * VH;				//Substract header
 yCursor /= 0.102 * VH;				//Get record position
 yCursor = Math.floor(yCursor);		//Round the result down
 
+var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
+var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
 var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
-console.log(desc);
+document.getElementsByTagName("tr")[yCursor].childNodes[11].innerHTML = (Number(document.getElementsByTagName("tr")[yCursor].childNodes[11].innerHTML )+ 1);
 //TODO
-$.ajax({
-	type: "GET",
-	url: "empty.php"
-	}).done(function(desc)
-	{
-	alert( desc + " has been upvoted." );
-    });
+
+document.cookie = "date=" + date;
+document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
+document.cookie = "description=" + desc;
+
+document.cookie = "action=L";
+
+getRequest("AJAXphp.php", testFunc, testFunc);
 }
 
 function editRecord(event)
@@ -283,8 +286,9 @@ yCursor -= 0.123 * VH;				//Substract header
 yCursor /= 0.102 * VH;				//Get record position
 yCursor = Math.floor(yCursor);		//Round the result down
 
+var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
+var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
 var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
-console.log(desc);
 //TODO
 }
 
@@ -311,9 +315,59 @@ yCursor -= 0.123 * VH;				//Substract header
 yCursor /= 0.102 * VH;				//Get record position
 yCursor = Math.floor(yCursor);		//Round the result down
 
+var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
+var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
 var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
-console.log(desc);
+document.getElementsByTagName("tr")[yCursor].parentNode.removeChild(document.getElementsByTagName("tr")[yCursor]);
 //TODO
+
+document.cookie = "date=" + date;
+document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
+document.cookie = "description=" + desc;
+
+document.cookie = "action=D"
+
+getRequest("AJAXphp.php", testFunc, testFunc);
 }
 
-function testFunc(){document.write("Test succefull.");}
+function getRequest(url, success, error)
+{
+	var req = false;
+	try //Creating request
+	{
+		// most browsers
+		req = new XMLHttpRequest();
+	} catch (e)
+	{
+		// IE
+		try
+		{
+			req = new ActiveXObject("Msxml2.XMLHTTP");
+		}catch(e)
+		{
+			// try an older version
+			try
+			{
+				req = new ActiveXObject("Microsoft.XMLHTTP");
+			}catch(e)
+			{
+				return false;
+			}
+		}
+	}
+	if (!req) return false;	//Checking request
+	if (typeof success != 'function') success = function () {};	//Checking function parametrs and setting intial values in case they aren´t specified
+	if (typeof error!= 'function') error = function () {};
+	req.onreadystatechange = function()
+	{
+		if(req.readyState == 4)
+		{
+			return req.status === 200 ? success(req.responseText) : error(req.status);
+		}
+	}
+	req.open("GET", url, true);
+	req.send(null);
+	return req;
+}
+
+function testFunc(result){alert("Test succefull: " + result);}
