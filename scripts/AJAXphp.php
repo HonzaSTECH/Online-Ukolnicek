@@ -18,13 +18,15 @@
 		if($i == 2){$year .= $char;}
 	}
 	$date = $year."-".$month."-".$day;
+	unset($i);
 	
 	switch($action){
 		case 'L':
 			$query = "UPDATE records SET likes = likes + 1 WHERE date='$date' AND subject='$subject' AND description='$description'";
 			break;
 		case 'E':
-			$query = "";
+			$priority = $_COOKIE['priority'];
+			$query = "UPDATE records SET date='$date',subject='$subject',description='$description',priority='$priority' WHERE date='$date' AND subject='$subject' AND description='$description'";
 			break;
 		case 'D':
 			$query = "DELETE FROM records WHERE date='$date' AND subject='$subject' AND description='$description'";

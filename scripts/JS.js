@@ -8,28 +8,29 @@ var yCursor;
 
 function newRecord()
 {
-    document.getElementById("form").style.display = "none";
+	document.getElementById("form").style.display = "none";
 	
 	recordPriority = (document.querySelector('input[name="priority"]:checked').value);
-    switch(recordPriority){
-        case "1":
-            recordColor = "#FF8888";
-            break;
-        case "2":
-            recordColor = "#FFCC88";
-            break;
-        case "3":
-            recordColor = "#FFFF77";
-            break;
-        case "4":
-            recordColor = "#88EE88";
-            break;
-        case "5":
-            recordColor = "#9999FF";
-            break;
-        default:
-            recordColor = "#FFFF77";
-    }
+	switch(recordPriority)
+	{
+		case "1":
+		recordColor = "#FF8888";
+		    break;
+		case "2":
+		    recordColor = "#FFCC88";
+		    break;
+		case "3":
+		    recordColor = "#FFFF77";
+		    break;
+		case "4":
+		    recordColor = "#88EE88";
+		    break;
+		case "5":
+		    recordColor = "#9999FF";
+		    break;
+		default:
+		    recordColor = "#FFFF77";
+	}
 	
 	var duplicate = false;
 	
@@ -55,24 +56,26 @@ function newRecord()
 /*    O */    if(day == undefined){day = dateWork[i];}
 /*    N */    else{day += dateWork[i];}
 /*    V */}
-/*    E */if(month >=10){dateWork = (day + ". " + month + ". " + year);}
-/*    R */else{dateWork = (day + ". " + month[1] + ". " + year);}
-/*		*/
+/*    E */dateWork = (day + ". " + month + ". " + year);
+/*    R */
+/*	  */
 /*    T */var today = (date.getDate() + ". " + (date.getMonth()+1) + ". " + date.getFullYear());
 	
-	if(document.getElementById("form").style.backgroundColor == "rgb(153, 254, 254)"){
-		duplicate = true;
-		}
-	else 
-	{for(i=1; i<=recordCount; i++)
+	if(document.getElementById("form").style.backgroundColor == "rgb(153, 254, 254)")
 	{
-		if(document.getElementsByClassName("column2")[i].innerText == document.getElementById("form2").value && document.getElementsByClassName("column1")[i].innerText == dateWork)
-		{
-			duplicate = true;
-			yCursor = i;
-			break;
-		}
+		duplicate = true;
 	}
+	else 
+	{
+		for(i=1; i<=recordCount; i++)
+		{
+			if(document.getElementsByClassName("column2")[i].innerText == document.getElementById("form2").value && document.getElementsByClassName("column1")[i].innerText == dateWork)
+			{
+				duplicate = true;
+				yCursor = i;
+				break;
+			}
+		}
 	}
     if(duplicate == false)
 	{
@@ -141,7 +144,40 @@ function newRecord()
 		rw.appendChild(likes);
 		rw.appendChild(action);
 		
-		records.appendChild(rw);
+		var next;
+		for(i = 0; i < records.childNodes.length; i++)
+		{
+			next = records.childNodes[i];
+			date = next.childNodes[1].innerHTML;
+			
+			var dateTemp = date;
+			var yearT=undefined;
+			var monthT=undefined;
+			var dayT=undefined;
+			i=0;
+			
+			for(; dateTemp[i] != "."; i++)
+			{
+				if(day == undefined){day = dateTemp[i];}
+				else{day += dateTemp[i];}
+			}
+			i++; i++;
+			for(; dateTemp[i] != "."; i++)
+			{
+				if(month == undefined){month = dateTemp[i];}
+				else{month += dateTemp[i];}
+			}
+			i++; i++;
+			for(; dateTemp[i] != "." && dateTemp[i] != undefined; i++)
+			{
+				if(year == undefined){year = dateTemp[i];}
+				else{year += dateTemp[i];}
+			}
+			if(yearT < year || (monthT < month && yearT == year) || (dayT < day && monthT == month && yearT == year)){break;}
+		}
+		
+		records.insertBefore(rw, next);
+		//records.appendChild(rw);
 		
 		document.getElementsByClassName("action1")[recordCount].onclick = upvoteRecord;
 		document.getElementsByClassName("action2")[recordCount].onclick = editRecord;
@@ -151,21 +187,31 @@ function newRecord()
 		
 		if(recordCount == 0){document.getElementById("noRecord").style.display = "none";}
 		recordCount++;
+		
+		//TODO
+		getRequest("AJAXnewRecord.php", testFunc, testFunc);
 	}
 	else
 	{
 		//alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.");
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[0].innerHTML = dateWork;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[1].innerHTML = document.getElementById("form2").value;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[2].innerHTML = document.getElementById("form3").value;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[3].innerHTML = document.getElementById("form4").value;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[0].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[1].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[2].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[3].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[4].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[5].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor - 1].childNodes[6].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[0].innerHTML = dateWork;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[1].innerHTML = document.getElementById("form2").value;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[2].innerHTML = document.getElementById("form3").value;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[0].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[1].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[2].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[3].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[4].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[5].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[6].style.backgroundColor = recordColor;
+		
+		document.cookie = "date=" + dateWork;
+		document.cookie = "subject=" + document.getElementById("form2").value;		//Save date, subject and description value into cookie so PHP can acces it
+		document.cookie = "description=" + document.getElementById("form3").value;
+
+		document.cookie = "action=E";
+
+		getRequest("AJAXphp.php", testFunc, testFunc);
 	}
 }
 
@@ -190,49 +236,46 @@ function closeForm()
     }
 
 function upvoteRecord(event)
-{/*
+{
+	console.log("Upvote detected.");
+	var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	yCursor = event.pageY;
-       //yCursor -= 60;
-        yCursor /= 66;
-        yCursor = Math.round(yCursor);
-	recordUpvotes [yCursor - 1] += 1;
-	document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML = recordUpvotes[yCursor - 1];
-*/
-console.log("Upvote detected.");
-var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-yCursor = event.pageY;
-yCursor -= 0.123 * VH;				//Substract header
-yCursor /= 0.102 * VH;				//Get record position
-yCursor = Math.floor(yCursor);		//Round the result down
+	yCursor -= 0.123 * VH;				//Substract header
+	yCursor /= 0.102 * VH;				//Get record position
+	yCursor = Math.floor(yCursor);		//Round the result down
 
-var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
-var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
-var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
-document.getElementsByTagName("tr")[yCursor].childNodes[11].innerHTML = (Number(document.getElementsByTagName("tr")[yCursor].childNodes[11].innerHTML )+ 1);
-//TODO
+	var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
+	var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
+	var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
+	document.getElementsByTagName("tr")[yCursor].childNodes[11].innerHTML = (Number(document.getElementsByTagName("tr")[yCursor].childNodes[11].innerHTML )+ 1);
+	//TODO
 
-document.cookie = "date=" + date;
-document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
-document.cookie = "description=" + desc;
+	document.cookie = "date=" + date;
+	document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
+	document.cookie = "description=" + desc;
 
-document.cookie = "action=L";
+	document.cookie = "action=L";
 
-getRequest("AJAXphp.php", testFunc, testFunc);
+	getRequest("AJAXphp.php", testFunc, testFunc);
 }
 
 function editRecord(event)
-{/*
+{
+	console.log("Edit detected.");
+	var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	yCursor = event.pageY;
-        // yCursor -= 60;
-	yCursor /= 66;
-	yCursor = Math.round(yCursor);
-	document.getElementById("form").style.display = "block";
-	document.getElementById("form").style.backgroundColor = "#99FEFE";
-	var dateTemp = document.getElementsByClassName("column1")[yCursor - 1].innerHTML;
+	yCursor -= 0.123 * VH;				//Substract header
+	yCursor /= 0.102 * VH;				//Get record position
+	yCursor = Math.floor(yCursor);		//Round the result down
+	
+	var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
+	var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
+	var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
+	
+	var dateTemp = date;
 	var year=undefined;
 	var month=undefined;
 	var day=undefined;
-
 	i=0;
 	
 	for(; dateTemp[i] != "."; i++)
@@ -252,84 +295,63 @@ function editRecord(event)
 		if(year == undefined){year = dateTemp[i];}
 		else{year += dateTemp[i];}
 	}
+	dateTemp = year + "-" + month + "-" + day;
 	
-	if(month >= 10){dateTemp = year + "-" + month + "-" + day;}
-	else{dateTemp = year + "-" + "0" + month + "-" + day;}
+	document.getElementById("form").style.display = "block";
+	document.getElementById("form").style.backgroundColor = "#99FEFE";
 	
 	document.getElementById("form1").value = dateTemp;
-	document.getElementById("form2").value = document.getElementsByClassName("column2")[yCursor - 1].innerHTML;
-	document.getElementById("form3").value = document.getElementsByClassName("column3")[yCursor - 1].innerHTML;
-	document.getElementById("form4").value = document.getElementsByClassName("column4")[yCursor - 1].innerHTML;
+	document.getElementById("form2").value = subject;
+	document.getElementById("form3").value = desc;
 	
-	switch(document.getElementsByClassName("column1")[yCursor - 1].style.backgroundColor){
-		case "rgb(255, 136, 136)":
+	switch(document.getElementsByTagName("tr")[yCursor].childNodes[1].bgColor)
+	{
+		case "#FF8888":
 			document.getElementById("priority1").childNodes[1].checked = true;
 			break;
-		case "rgb(255, 204, 136)":
+		case "#FFCC88":
 			document.getElementById("priority2").childNodes[1].checked = true;
 			break;
-		case "rgb(255, 255, 119)":
+		case "#FFFF77":
 			document.getElementById("priority3").childNodes[1].checked = true;
 			break;
-		case "rgb(136, 238, 136)":
+		case "#88EE88":
 			document.getElementById("priority4").childNodes[1].checked = true;
 			break;
-		case "rgb(153, 153, 255)":
+		case "#9999FF":
 			document.getElementById("priority5").childNodes[1].checked = true;
 			break;
 	}
-*/
-console.log("Edit detected.");
-var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-yCursor = event.pageY;
-yCursor -= 0.123 * VH;				//Substract header
-yCursor /= 0.102 * VH;				//Get record position
-yCursor = Math.floor(yCursor);		//Round the result down
-
-var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
-var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
-var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
-//TODO
+	//Form has been displayed. After submitting data will be processed in newRecord function
 }
 
 function removeRecord(event)
-{/*
-	yCursor = event.pageY;
-	// yCursor -= 60;
-	yCursor /= 66;
-	yCursor = Math.round(yCursor);
-	document.getElementById("data").removeChild(document.getElementsByTagName("tr")[yCursor - 1]);
+{
+	console.log("Delete detected.");
 
-	if(recordCount == 1){document.getElementById("noRecord").style.display = "block";}
-	recordCount--;
-	for(i = (yCursor - 1); i < recordUpvotes.length; i++)
+	if(confirm("Opravdu chcete smazat tento záznam? Tato akce je nevratná!"))
 	{
-		if(i == (recordUpvotes.length-1)){recordUpvotes[i]=undefined;}
-		else{recordUpvotes[i] = recordUpvotes[i + 1];}
+		var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		yCursor = event.pageY;
+		yCursor -= 0.123 * VH;				//Substract header
+		yCursor /= 0.102 * VH;				//Get record position
+		yCursor = Math.floor(yCursor);		//Round the result down
+
+		var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
+		var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
+		var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
+		document.getElementsByTagName("tr")[yCursor].parentNode.removeChild(document.getElementsByTagName("tr")[yCursor]);
+		//TODO
+
+		document.cookie = "date=" + date;
+		document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
+		document.cookie = "description=" + desc;
+		
+		document.cookie = "action=D"
+		
+		getRequest("AJAXphp.php", testFunc, testFunc);
 	}
-*/
-console.log("Delete detected.");
-var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-yCursor = event.pageY;
-yCursor -= 0.123 * VH;				//Substract header
-yCursor /= 0.102 * VH;				//Get record position
-yCursor = Math.floor(yCursor);		//Round the result down
-
-var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
-var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
-var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
-document.getElementsByTagName("tr")[yCursor].parentNode.removeChild(document.getElementsByTagName("tr")[yCursor]);
-//TODO
-
-document.cookie = "date=" + date;
-document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
-document.cookie = "description=" + desc;
-
-document.cookie = "action=D"
-
-getRequest("AJAXphp.php", testFunc, testFunc);
 }
-
 function getRequest(url, success, error)
 {
 	var req = false;
