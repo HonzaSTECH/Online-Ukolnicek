@@ -1,6 +1,6 @@
 Waiting 	1) Change background picture on login and register page
-Done 	2) When adding a record, write name of the class into log file instead of /*TODO*/
-Done 	3) Display action buttons on list page depending on logged user and/or its status
+Done 		2) When adding a record, write name of the class into log file instead of /*TODO*/
+Done 		3) Display action buttons on list page depending on logged user and/or its status
 Waiting 	4) Style apply page
 Waiting 	5) Style applyForm page
 Waiting 	6) Style newClass page
@@ -8,15 +8,15 @@ Waiting 	7) Style classManagement page
 Waiting 	8) Write info page
 Waiting 	9) Style info page
 Waiting 	10) Improve styling of home page
-Done	11) Improve styling of list page
-Done 	12) Remove "Author" input field from "Add record" form and use name of logged user instead
+Done		11) Improve styling of list page
+Done 		12) Remove "Author" input field from "Add record" form and use name of logged user instead
 Waiting 	13) Improve styling of index page
-Done 	14) Make adding and removing subject possible for admins on classManagement page
-Done 	15) Repair sending e-mails to admins of classes (applyForm - line 24)
-Actual	16) Make action buttons work
-Done	17) Change date format on list page
+Done 		14) Make adding and removing subject possible for admins on classManagement page
+Done 		15) Repair sending e-mails to admins of classes (applyForm - line 24)
+Actual		16) Make action buttons work
+Done		17) Change date format on list page
 Waiting 	18) Comment the code
-Planned 19) Make accepting and declining applications work on classManagement page
-Done  	20) Make short names (<5 characters) invalid during registration
-Done	21) Encrypt user passwords before saving them in the database
+Planned	19) Make accepting and declining applications work on classManagement page
+Done  		20) Make short names (<5 characters) invalid during registration
+Done		21) Encrypt user passwords before saving them in the database
 Waiting 	22) Center form on the list page
