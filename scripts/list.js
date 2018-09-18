@@ -216,7 +216,7 @@ function newRecord(event)
 		document.cookie = "newPriority=" + recordPriority;
 		document.cookie = "action=E";
 
-		getRequest("AJAXphp.php", testFunc, testFunc);
+		getRequest("AJAXactions.php", testFunc, testFunc);
 	}
 }
 
@@ -261,7 +261,7 @@ function upvoteRecord()
 
 	document.cookie = "action=L";
 
-	getRequest("AJAXphp.php", testFunc, testFunc);
+	getRequest("AJAXactions.php", testFunc, testFunc);
 }
 
 function editRecord()
@@ -359,7 +359,7 @@ function removeRecord()
 		
 		document.cookie = "action=D"
 		
-		getRequest("AJAXphp.php", testFunc, testFunc);
+		getRequest("AJAXactions.php", testFunc, testFunc);
 	}
 }
 
