@@ -6,8 +6,9 @@ var date;
 var i;
 var yCursor;
 
-function newRecord()
+function newRecord(event)
 {
+	event.preventDefault();
 	document.getElementById("form").style.display = "none";
 	
 	recordPriority = (document.querySelector('input[name="priority"]:checked').value);
@@ -193,22 +194,23 @@ function newRecord()
 	}
 	else
 	{
+		console.log("Duplicate");
 		//alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.");
-		document.getElementsByTagName("tr")[yCursor ].childNodes[0].innerHTML = dateWork;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[1].innerHTML = document.getElementById("form2").value;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[2].innerHTML = document.getElementById("form3").value;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[0].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[1].innerHTML = dateWork;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[3].innerHTML = document.getElementById("form2").value;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[5].innerHTML = document.getElementById("form3").value;
 		document.getElementsByTagName("tr")[yCursor ].childNodes[1].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[2].style.backgroundColor = recordColor;
 		document.getElementsByTagName("tr")[yCursor ].childNodes[3].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[4].style.backgroundColor = recordColor;
 		document.getElementsByTagName("tr")[yCursor ].childNodes[5].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[6].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[7].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[9].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[11].style.backgroundColor = recordColor;
+		document.getElementsByTagName("tr")[yCursor ].childNodes[13].style.backgroundColor = recordColor;
 		
-		document.cookie = "date=" + dateWork;
-		document.cookie = "subject=" + document.getElementById("form2").value;		//Save date, subject and description value into cookie so PHP can acces it
-		document.cookie = "description=" + document.getElementById("form3").value;
-
+		document.cookie = "newDate=" + document.getElementById("form1").value;
+		document.cookie = "newSubject=" + document.getElementById("form2").value;
+		document.cookie = "newDescription=" + document.getElementById("form3").value;		//Saving new values into cookies so PHP can access it
+		document.cookie = "newPriority=" + recordPriority;
 		document.cookie = "action=E";
 
 		getRequest("AJAXphp.php", testFunc, testFunc);
@@ -322,6 +324,11 @@ function editRecord(event)
 			document.getElementById("priority5").childNodes[1].checked = true;
 			break;
 	}
+	
+	document.cookie = "date=" + date;
+	document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
+	document.cookie = "description=" + desc;
+	
 	//Form has been displayed. After submitting data will be processed in newRecord function
 }
 
@@ -352,6 +359,7 @@ function removeRecord(event)
 		getRequest("AJAXphp.php", testFunc, testFunc);
 	}
 }
+
 function getRequest(url, success, error)
 {
 	var req = false;

@@ -25,8 +25,11 @@
 			$query = "UPDATE records SET likes = likes + 1 WHERE date='$date' AND subject='$subject' AND description='$description'";
 			break;
 		case 'E':
-			$priority = $_COOKIE['priority'];
-			$query = "UPDATE records SET date='$date',subject='$subject',description='$description',priority='$priority' WHERE date='$date' AND subject='$subject' AND description='$description'";
+			$newDate = $_COOKIE['newDate'];
+			$newSubject = $_COOKIE['newSubject'];
+			$newDesc = $_COOKIE['newDescription'];
+			$newPriority = $_COOKIE['newPriority'];
+			$query = "UPDATE records SET date='$newDate',subject='$newSubject',description='$newDesc',priority='$newPriority' WHERE date='$date' AND subject='$subject' AND description='$description'";
 			break;
 		case 'D':
 			$query = "DELETE FROM records WHERE date='$date' AND subject='$subject' AND description='$description'";

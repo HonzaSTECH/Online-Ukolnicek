@@ -133,7 +133,7 @@
 		</div>
 		<div id="form">
 			<div id="formTitle">Přidat záznam</div>
-			<form method="POST" onsubmit="newRecord()">
+			<form method="POST" onsubmit="newRecord(event)">
 				<span id="form1Text">Datum:</span>
 				<input type="date" id="form1" name="date" required>
 				<br />
