@@ -97,7 +97,7 @@ function newRecord(event)
 		var dateText = document.createTextNode(dateWork);
 		var subjectText = document.createTextNode(document.getElementById("form2").value);
 		var descriptionText = document.createTextNode(document.getElementById("form3").value);
-		var authorText = document.createTextNode(document.getElementById("form4").value);
+		var authorText = document.createTextNode("Vy")
 		var dateOfAddingText = document.createTextNode(today);
 		var likesText = document.createTextNode("0");
 		var actionButton1Text = document.createTextNode("Like");
@@ -146,9 +146,9 @@ function newRecord(event)
 		rw.appendChild(action);
 		
 		var next;
-		for(i = 0; i < records.childNodes.length; i++)
+		for(i = 1; i < document.getElementsByTagName("tr").length; i++)
 		{
-			next = records.childNodes[i];
+			next = document.getElementsByTagName("tr")[i]
 			date = next.childNodes[1].innerHTML;
 			
 			var dateTemp = date;
@@ -177,8 +177,7 @@ function newRecord(event)
 			if(yearT < year || (monthT < month && yearT == year) || (dayT < day && monthT == month && yearT == year)){break;}
 		}
 		
-		records.insertBefore(rw, next);
-		//records.appendChild(rw);
+		document.getElementsByTagName("tr")[0].parentNode.insertBefore(rw, next);
 		
 		document.getElementsByClassName("action1")[recordCount].onclick = upvoteRecord;
 		document.getElementsByClassName("action2")[recordCount].onclick = editRecord;
@@ -189,7 +188,11 @@ function newRecord(event)
 		if(recordCount == 0){document.getElementById("noRecord").style.display = "none";}
 		recordCount++;
 		
-		//TODO
+		document.cookie = "date=" + document.getElementById("form1").value;
+		document.cookie = "subject=" + document.getElementById("form2").value;
+		document.cookie = "description=" + document.getElementById("form3").value;
+		document.cookie = "priority=" + recordPriority;
+		
 		getRequest("AJAXnewRecord.php", testFunc, testFunc);
 	}
 	else
@@ -237,7 +240,7 @@ function closeForm()
         document.getElementById("form").style.display = "none";
     }
 
-function upvoteRecord(event)
+function upvoteRecord()
 {
 	console.log("Upvote detected.");
 	var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -261,7 +264,7 @@ function upvoteRecord(event)
 	getRequest("AJAXphp.php", testFunc, testFunc);
 }
 
-function editRecord(event)
+function editRecord()
 {
 	console.log("Edit detected.");
 	var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -332,7 +335,7 @@ function editRecord(event)
 	//Form has been displayed. After submitting data will be processed in newRecord function
 }
 
-function removeRecord(event)
+function removeRecord()
 {
 	console.log("Delete detected.");
 
