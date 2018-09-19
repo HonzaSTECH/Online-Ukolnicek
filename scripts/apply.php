@@ -17,7 +17,7 @@
 	$alreadyMemberIn = mysqli_fetch_array($result);
 	$alreadyMemberIn = $alreadyMemberIn['memberIn'];
 	if(!$alreadyMemberIn == 0){$alreadyMemberIn = explode(',',$alreadyMemberIn);}
-	
+	else{$alreadyMemberIn = array(0);}
 	$count = count($alreadyMemberIn);
 	$query = "SELECT * FROM classes WHERE id NOT IN (";
 	foreach($alreadyMemberIn as $class){

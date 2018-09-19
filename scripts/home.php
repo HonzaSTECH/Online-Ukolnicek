@@ -20,9 +20,9 @@
 		<div id="logoutBox">
 			<a href="login.php" id="logoutLink">Odhlásit se</a>
 		</div>
-		<div id="homeBox">
+		<!--<div id="homeBox">
 			<a href="home.php" id="homeLink">Domů</a>
-		</div>
+		</div>-->
 		<div id="infoBox">
 			<a href="info.php" id="infoLink">Informace</a>
 		</div>
