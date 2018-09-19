@@ -1,34 +1,174 @@
+body{
+	background-color: #FFFF99;
+	margin: 0;
+}
+/*---------------------------*/
+#header{
+	width: 98vw;
+	height: 10vh;
+	margin-left: 1vw;
+	margin-right: 1vw;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	background-color: #999999;
+	display: inline-table;
+	overflow: auto;
+}
+#username{
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 5vh;
+	text-align: left;
+	color: #0000BB;
+}
+#logoutBox{
+	width: 15vw;
+	height: 10vh;
+	margin: 0;
+	border: 0;
+	background-color: #99FFFF;
+	text-align: center;
+	font-size: 4vh;
+	position: absolute;
+	right: 1vw;
+	overflow: hide;
+	display: inline-table;
+}
+#logoutLink{
+	color: #66CCCC;
+	text-decoration: none;
+	margin: 0;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+#infoBox{
+	width: 15vw;
+	height: 10vh;
+	margin: 0;
+	border: 0;
+	background-color: #99FF99;
+	text-align: center;
+	font-size: 4vh;
+	position: absolute;
+	right: 16vw;
+	overflow: hide;
+	display: inline-table;
+}
+#infoLink{
+	color: #66CC66;
+	text-decoration: none;
+	margin: 0;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+#homeBox{
+	width: 15vw;
+	height: 10vh;
+	margin: 0;
+	border: 0;
+	background-color: #9999FF;
+	text-align: center;
+	font-size: 4vh;
+	position: absolute;
+	right: 31vw;
+	overflow: hide;
+	display: inline-table;
+}
+#homeLink{
+	color:  #6666CC;
+	text-decoration: none;
+	margin: 0;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+#classBox{
+	width: 15vw;
+	height: 10vh;
+	margin: 0;
+	border: 0;
+	background-color: #FFFF99;
+	text-align: center;
+	font-size: 4vh;
+	position: absolute;
+	right: 46vw;
+	overflow: hide;
+	display: inline-table;
+}
+#classLink{
+	color:  #CCCC66;
+	text-decoration: none;
+	margin: 0;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+/*---------------------------*/
+#main{
+	width: 49.8vw;
+	height: 86.8vh;
+	border-top: 0.1vh solid black;
+	border-left: 0.1vw solid black;
+	border-bottom: 0.1vh solid black;
+	border-right: 0.1vw solid black;
+	margin: auto;
+}
+/*---------------------------*/
 nav {
 	border: 1px solid black;
+	height: 6.8vh;
 }
 a {
-	display: block;
+	/*display: block;*/
+}
+#container{
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-bottom: 1vh;
+	padding-right: 1vw;
+	height: 78vh;
+	width: 95.984%;
+	overflow: auto;
 }
 /*---------------------------*/
 #tab1{
 	color: #007700;
 	display: block;
 	position: absolute;
-	top: 20vh;
+	overflow: auto;
+	width: 47.8vw;
+	max-height: 76vw;
 }
 #tab2{
 	color: 000077;
 	display: none;
 	position: absolute;
-	top: 20vh;
+	overflow: auto;
+	width: 47.8vw;
+	max-height: 76vw;
 }
 #tab3{
 	color: CCCC00;
 	display: none;
 	position: absolute;
-	top: 20vh;
+	overflow: auto;
+	width: 47.8vw;
+	max-height: 76vw;
 }
 #tab4{
 	color: 770000;
 	display: none;
 	position: absolute;
-	top: 20vh;
+	overflow: auto;
+	width: 47.8vw;
+	max-height: 76vw;
 }
+/*---------------------------*/
+/*General tab*/
+/*---------------------------*/
+/*Subjects tab*/
 /*---------------------------*/
 .rank1{
 	color: 0000BB;
@@ -56,4 +196,41 @@ a {
 }
 #subjectsForm{
 	display: none;
+}
+/*---------------------------*/
+#nicknameHeader{
+	
+}
+#nameHeader{
+	
+}
+#surnameHeader{
+	
+}
+#messageHeader{
+	
+}
+#actionHeader{
+	
+}
+.nicknameColumn{
+	
+}
+.nameColumn{
+	
+}
+.surnameColumn{
+	
+}
+.messageColumn{
+	
+}
+.actionColumn{
+	
+}
+.acceptButton{
+	
+}
+.declineButton{
+	
 }
