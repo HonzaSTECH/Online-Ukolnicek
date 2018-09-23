@@ -40,12 +40,9 @@
 			</nav>
 			<div id="container">
 				<div id="tab1">
-					<h2>Obecné</h2>
 					ID třídy: <?php echo $_SESSION['class'];?>
 				</div>
 				<div id="tab2">
-					<h2>Správa předmětů</h2>
-					
 					<?php
 						require_once('connect.php');
 						
@@ -127,8 +124,7 @@
 					
 				</div>
 				<div id="tab3">
-					<h2>Správa členů</h2>
-					
+
 					<?php
 						require_once('connect.php');
 						$query = "SELECT id, name, memberIn, modIn, adminIn FROM `users` WHERE memberIn != 0";
@@ -166,8 +162,6 @@
 					
 				</div>
 				<div id="tab4">
-					<h2>Žádosti o přijetí</h2>
-					
 					<?php
 						require_once('connect.php');
 						$class = $_SESSION['class'];
@@ -177,12 +171,12 @@
 						$exist = 0;
 						while($data = mysqli_fetch_array($result)){
 							$exist++;
-							if ($exist == 1){echo "<table border=1><tr><th align='center' id='nicknameHeader'>$a</th><th align='center' id='nameHeader'>$b</th><th align='center' id='surnameHeader'>$c</th><th align='center' id='messageHeader'>$d</th><th align='center' id='actionHeader'>Akce</td></tr>";}
+							if ($exist == 1){echo "<table border=1><tr><th align='center' id='nicknameHeader'>Přezdívka</th><th align='center' id='nameHeader'>Jméno</th><th align='center' id='surnameHeader'>Přijímení</th><th align='center' id='messageHeader'>Zpráva</th><th align='center' id='actionHeader'>Akce</td></tr>";}
 							$a = $data['nickname'];
 							$b = $data['name'];
 							$c = $data['surname'];
 							$d = $data['message'];
-							echo "<tr><td align='center' class='nicknameColumn'>$a</td><td align='center' class='nameColumn'>$b</td><td align='center' class='surnameColumn'>$c</td><td align='center' class='messageColumn'>$d</td><td align='center' class='actionColumn'><button onclick='accept()' class='acceptButton'>Přijmout</button><br /><button onclick='decline()' class='declineButton'>Odmítnout</button></td></tr>";
+							echo "<tr><td align='center' class='nicknameColumn'>$a</td><td align='center' class='nameColumn'>$b</td><td align='center' class='surnameColumn'>$c</td><td align='center' class='messageColumn'><div class='messageBox'>$d</div></td><td align='center' class='actionColumn'><button onclick='accept(event)' class='acceptButton'>Přijmout</button><br /><button onclick='decline(event)' class='declineButton'>Odmítnout</button></td><td class='hiddenClass'>$class</td></tr>";
 						}
 						if($exist > 0){echo "</table>";}
 						else {echo "Žádné žádosti o přijetí.";}

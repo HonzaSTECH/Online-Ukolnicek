@@ -22,6 +22,10 @@
 	if(isset($_POST['posted'])){
 		
 		$class = $_SESSION['applyClass'];
+		$query = "SELECT id FROM classes WHERE name='$class'";
+		mysqli_query($connection, $query);
+		$result = mysqli_fetch_array($result);
+		$class = $result['id'];
 		unset($_SESSION['applyClass']);
 		
 		$query = "SELECT admin FROM classes WHERE name='$class'";
