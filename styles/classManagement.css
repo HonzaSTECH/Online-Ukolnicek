@@ -109,19 +109,28 @@ body{
 #main{
 	width: 49.8vw;
 	height: 86.8vh;
-	border-top: 0.1vh solid black;
+	/*border-top: 0.1vh solid black;
 	border-left: 0.1vw solid black;
 	border-bottom: 0.1vh solid black;
-	border-right: 0.1vw solid black;
+	border-right: 0.1vw solid black;*/
 	margin: auto;
 }
 /*---------------------------*/
 nav {
-	border: 1px solid black;
-	height: 6.8vh;
+	/*border: 1px solid black;*/
+	height: 4vh;
+	z-index: -1;
+	overflow: hidden;
 }
-a {
-	/*display: block;*/
+nav a {
+	border-radius: 1vh;
+	font-size: 3vh;
+	border: 1px solid black;
+	display: block;
+	float: left;
+	min-height: 5vh;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 #container{
 	padding-top: 1vh;
@@ -131,6 +140,8 @@ a {
 	height: 78vh;
 	width: 95.984%;
 	overflow: auto;
+	border: 1px solid black;
+	z-index: 1;
 }
 /*---------------------------*/
 #tab1{
@@ -139,7 +150,7 @@ a {
 	position: absolute;
 	overflow: auto;
 	width: 47.8vw;
-	max-height: 76vw;
+	max-height: 78vh;
 }
 #tab2{
 	color: 000077;
@@ -147,7 +158,7 @@ a {
 	position: absolute;
 	overflow: auto;
 	width: 47.8vw;
-	max-height: 76vw;
+	max-height: 78vh;
 }
 #tab3{
 	color: CCCC00;
@@ -155,7 +166,7 @@ a {
 	position: absolute;
 	overflow: auto;
 	width: 47.8vw;
-	max-height: 76vw;
+	max-height: 78vh;
 }
 #tab4{
 	color: 770000;
@@ -163,7 +174,7 @@ a {
 	position: absolute;
 	overflow: auto;
 	width: 47.8vw;
-	max-height: 76vw;
+	max-height: 78vh;
 }
 /*---------------------------*/
 /*General tab*/
@@ -198,35 +209,62 @@ a {
 	display: none;
 }
 /*---------------------------*/
+#tab4 table{
+	border-collapse: collapse;
+}
+tr {
+	height: 6vh;
+}
 #nicknameHeader{
-	
+	width: 15%;
+	overflow: auto;
 }
 #nameHeader{
-	
+	width: 15%;
+	overflow: auto;
 }
 #surnameHeader{
-	
+	width: 15%;
+	overflow: auto;
 }
 #messageHeader{
-	
+	width: 45%;
+	overflow: auto;
 }
 #actionHeader{
-	
+	width: 15%;
+	overflow: auto;
 }
 .nicknameColumn{
-	
+	width: 15%;
+	overflow: auto;
 }
 .nameColumn{
-	
+	width: 15%;
+	overflow: auto;
 }
 .surnameColumn{
-	
+	width: 15%;
+	overflow: auto;
 }
 .messageColumn{
-	
+	width: 45%;
+	/*overflow: auto;
+	white-space: pre-wrap;*/
+}
+.messageBox{
+	width: 99%;
+	overflow-y: auto;
+	white-space: pre-wrap;
+	max-height: 6.8vh;
+	white-space: pre-wrap;
 }
 .actionColumn{
-	
+	width: 15%;
+	overflow: auto;
+}
+.hiddenClass{
+	display: none;
 }
 .acceptButton{
 	
