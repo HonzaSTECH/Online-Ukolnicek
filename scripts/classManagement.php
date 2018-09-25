@@ -84,6 +84,7 @@
 								}
 							?>
 							<input type=submit value="Uložit" name="save">
+							<button onclick="hideForm(event)">Zrušit</button>
 						</form>
 						<?php
 							if(isset($_POST['save']))
@@ -147,15 +148,15 @@
 						echo "<table border=1>";
 						foreach($admins as $user)
 						{
-							echo "<tr><td class='rank3'>Administrátor</td><td class='username'>$user</td></tr>";
+							echo "<tr><td class='rank3'>Administrátor</td><td class='username'>$user</td><td class='action'></td></tr>";
 						}
 						foreach($mods as $user)
 						{
-							echo "<tr><td class='rank2'>Moderátor</td><td class='username'>$user</td></tr>";
+							echo "<tr><td class='rank2'>Moderátor</td><td class='username'>$user</td><td class='action'><select value='Moderátor'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
 						}
 						foreach($members as $user)
 						{
-							echo "<tr><td class='rank1'>Člen</td><td class='username'>$user</td></tr>";
+							echo "<tr><td class='rank1'>Člen</td><td class='username'>$user</td><td class='action'><select value='Člen'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
 						}
 						echo "</table>";
 					?>

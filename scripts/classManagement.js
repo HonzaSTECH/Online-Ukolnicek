@@ -29,7 +29,8 @@ function fourthTab(){
 function changeSubjects(){
 	document.getElementById("subjectsForm").style.display = "block";
 }
-function hideForm(){
+function hideForm(event){
+	event.preventDefault();
 	document.getElementById("subjectsForm").style.display = "none";
 }
 function accept(event){
