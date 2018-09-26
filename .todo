@@ -1,4 +1,4 @@
-Waiting	1) Change background picture on login and register page
+Planned	1) Change background picture on login and register page
 Done		2) When adding a record, write name of the class into log file instead of /*TODO*/
 Done		3) Display action buttons on list page depending on logged user and/or its status
 Waiting	4) Style apply page
@@ -19,10 +19,10 @@ Waiting 	18) Comment the code
 Done		19) Make accepting and declining applications work on classManagement page
 Done		20) Make short names (<5 characters) invalid during registration
 Done		21) Encrypt user passwords before saving them in the database
-Actual		22) Center form on the list page
-Waiting	23) Make JS.js file more simple and efficient
+Done		22) Center form on the list page
+Actual		23) Make JS.js file more simple and efficient
 Done		24) Repair adding new records
 Waiting	25) Make newly added record inserted on correct row without reloading the page
 Done		26) Remove horizontal scroll bar from the list page
-Waiting	27) Finish styling of classManagement page
+Planned	27) Finish styling of classManagement page
 Waiting	28) Repair bug with deleting answered applications with longer messages
