@@ -24,5 +24,6 @@ Actual		23) Make JS.js file more simple and efficient
 Done		24) Repair adding new records
 Waiting	25) Make newly added record inserted on correct row without reloading the page
 Done		26) Remove horizontal scroll bar from the list page
-Planned	27) Finish styling of classManagement page
+Waiting	27) Finish styling of classManagement page
 Waiting	28) Repair bug with deleting answered applications with longer messages
+Planned 29) Repair bug with normal members having moderator permissions
