@@ -108,16 +108,16 @@
 							<td align='center' class='column5' BGCOLOR=".$recordColor.">".$row['dateOfAdding']."</td>
 							<td align='center' class='column6' BGCOLOR=".$recordColor.">".$row['likes']."</td>
 							<td align='center' class='column7' BGCOLOR=".$recordColor.">";
-							if($_SESSION['user'] == $row['author']){echo "<button class='action2' onclick='editRecord()'>Edit</button><button class='action3' onclick='removeRecord()'>Delete</button>";}
+							if($_SESSION['user'] == $row['author']){echo "<button class='action2' onclick='editRecord(event)'>Edit</button><button class='action3' onclick='removeRecord(event)'>Delete</button>";}
 							else{
-								echo "<button class='action1' onclick='upvoteRecord()'>Like</button>";
+								echo "<button class='action1' onclick='upvoteRecord(event)'>Like</button>";
 								$user = $_SESSION['user'];
 								$query = "SELECT modIn, adminIn FROM users WHERE name = '$user'";
 								$result = mysqli_query($connection, $query);
 								$result = mysqli_fetch_array($result);
 								$adminClasses = explode(',', $result['adminIn']);
 								$modClasses = explode(',', $result['modIn']);
-								if(in_array($classId, $adminClasses) || in_array($classId, $modClasses)){echo "<button class='action2' onclick='editRecord()'>Edit</button><button class='action3' onclick='removeRecord()'>Delete</button>";}
+								if(in_array($classId, $adminClasses) || in_array($classId, $modClasses)){echo "<button class='action2' onclick='editRecord(event)'>Edit</button><button class='action3' onclick='removeRecord(event)'>Delete</button>";}
 							}
 							echo "</td>
 							</tr>";
