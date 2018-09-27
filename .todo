@@ -1,16 +1,16 @@
 Planned	1) Change background picture on login and register page
 Done		2) When adding a record, write name of the class into log file instead of /*TODO*/
 Done		3) Display action buttons on list page depending on logged user and/or its status
-Waiting	4) Style apply page
-Waiting	5) Style applyForm page
-Waiting	6) Style newClass page
+Waiting		4) Style apply page
+Waiting		5) Style applyForm page
+Waiting		6) Style newClass page
 Done		7) Style classManagement page
-Waiting	8) Write info page
-Waiting	9) Style info page
-Waiting	10) Improve styling of home page
+Waiting		8) Write info page
+Waiting		9) Style info page
+Waiting		10) Improve styling of home page
 Done		11) Improve styling of list page
 Done 		12) Remove "Author" input field from "Add record" form and use name of logged user instead
-Waiting	13) Improve styling of index page
+Waiting		13) Improve styling of index page
 Done		14) Make adding and removing subject possible for admins on classManagement page
 Done		15) Repair sending e-mails to admins of classes (applyForm - line 24)
 Done		16) Make action buttons work
@@ -22,8 +22,8 @@ Done		21) Encrypt user passwords before saving them in the database
 Done		22) Center form on the list page
 Actual		23) Make JS.js file more simple and efficient
 Done		24) Repair adding new records
-Waiting	25) Make newly added record inserted on correct row without reloading the page
+Waiting		25) Make newly added record inserted on correct row without reloading the page
 Done		26) Remove horizontal scroll bar from the list page
-Waiting	27) Finish styling of classManagement page
-Waiting	28) Repair bug with deleting answered applications with longer messages
-Planned 29) Repair bug with normal members having moderator permissions
+Waiting		27) Finish styling of classManagement page
+Waiting		28) Repair bug with deleting answered applications with longer messages
+Planned	29) Repair bug with normal members having moderator permissions
