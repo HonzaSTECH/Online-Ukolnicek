@@ -199,16 +199,16 @@ function newRecord(event)
 	{
 		console.log("Duplicate");
 		//alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.");
-		document.getElementsByTagName("tr")[yCursor ].childNodes[1].innerHTML = dateWork;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[3].innerHTML = document.getElementById("form2").value;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[5].innerHTML = document.getElementById("form3").value;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[1].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[3].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[5].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[7].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[9].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[11].style.backgroundColor = recordColor;
-		document.getElementsByTagName("tr")[yCursor ].childNodes[13].style.backgroundColor = recordColor;
+		row.childNodes[1].innerHTML = dateWork;
+		row.childNodes[3].innerHTML = document.getElementById("form2").value;
+		row.childNodes[5].innerHTML = document.getElementById("form3").value;
+		row.childNodes[1].style.backgroundColor = recordColor;
+		row.childNodes[3].style.backgroundColor = recordColor;
+		row.childNodes[5].style.backgroundColor = recordColor;
+		row.childNodes[7].style.backgroundColor = recordColor;
+		row.childNodes[9].style.backgroundColor = recordColor;
+		row.childNodes[11].style.backgroundColor = recordColor;
+		row.childNodes[13].style.backgroundColor = recordColor;
 		
 		document.cookie = "newDate=" + document.getElementById("form1").value;
 		document.cookie = "newSubject=" + document.getElementById("form2").value;
@@ -240,19 +240,20 @@ function closeForm()
         document.getElementById("form").style.display = "none";
     }
 
-function upvoteRecord()
+function upvoteRecord(event)
 {
 	console.log("Upvote detected.");
+/*
 	var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	yCursor = event.pageY;
 	yCursor -= 0.123 * VH;				//Substract header
 	yCursor /= 0.102 * VH;				//Get record position
 	yCursor = Math.floor(yCursor);		//Round the result down
-
-	var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
-	var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
-	var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
-	document.getElementsByTagName("tr")[yCursor].childNodes[11].innerHTML = (Number(document.getElementsByTagName("tr")[yCursor].childNodes[11].innerHTML )+ 1);
+*/
+	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
+	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
+	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
+	event.target.parentNode.parentNode.childNodes[11].innerHTML = (Number(event.target.parentNode.parentNode.childNodes[11].innerHTML )+ 1);
 	//TODO
 
 	document.cookie = "date=" + date;
@@ -264,18 +265,19 @@ function upvoteRecord()
 	getRequest("AJAXactions.php", testFunc, testFunc);
 }
 
-function editRecord()
+function editRecord(event)
 {
 	console.log("Edit detected.");
+/*
 	var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	yCursor = event.pageY;
 	yCursor -= 0.123 * VH;				//Substract header
 	yCursor /= 0.102 * VH;				//Get record position
 	yCursor = Math.floor(yCursor);		//Round the result down
-	
-	var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
-	var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
-	var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
+*/	
+	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
+	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
+	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
 	
 	var dateTemp = date;
 	var year=undefined;
@@ -309,7 +311,7 @@ function editRecord()
 	document.getElementById("form2").value = subject;
 	document.getElementById("form3").value = desc;
 	
-	switch(document.getElementsByTagName("tr")[yCursor].childNodes[1].bgColor)
+	switch(event.target.parentNode.parentNode.childNodes[1].bgColor)
 	{
 		case "#FF8888":
 			document.getElementById("priority1").childNodes[1].checked = true;
@@ -332,25 +334,28 @@ function editRecord()
 	document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
 	document.cookie = "description=" + desc;
 	
+	var row = event.target.parentNode.parentNode;
 	//Form has been displayed. After submitting data will be processed in newRecord function
 }
 
-function removeRecord()
+function removeRecord(event)
 {
 	console.log("Delete detected.");
 
 	if(confirm("Opravdu chcete smazat tento záznam? Tato akce je nevratná!"))
 	{
+/*
 		var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 		yCursor = event.pageY;
 		yCursor -= 0.123 * VH;				//Substract header
 		yCursor /= 0.102 * VH;				//Get record position
 		yCursor = Math.floor(yCursor);		//Round the result down
-
-		var date = document.getElementsByTagName("tr")[yCursor].childNodes[1].innerHTML;
-		var subject = document.getElementsByTagName("tr")[yCursor].childNodes[3].innerHTML;
-		var desc = document.getElementsByTagName("tr")[yCursor].childNodes[5].innerHTML;
-		document.getElementsByTagName("tr")[yCursor].parentNode.removeChild(document.getElementsByTagName("tr")[yCursor]);
+*/
+		var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
+		var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
+		var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
+		event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
+		//document.getElementsByTagName("tr")[yCursor].parentNode.removeChild(document.getElementsByTagName("tr")[yCursor]);
 		//TODO
 
 		document.cookie = "date=" + date;
