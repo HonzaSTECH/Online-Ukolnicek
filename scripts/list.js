@@ -5,6 +5,7 @@ var recordUpvotes = new Array(0);
 var date;
 var i;
 var yCursor;
+var row;
 
 function newRecord(event)
 {
@@ -236,9 +237,9 @@ function addRecord()
 }
 
 function closeForm()
-    {
-        document.getElementById("form").style.display = "none";
-    }
+{
+	document.getElementById("form").style.display = "none";
+}
 
 function upvoteRecord(event)
 {
@@ -334,7 +335,7 @@ function editRecord(event)
 	document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
 	document.cookie = "description=" + desc;
 	
-	var row = event.target.parentNode.parentNode;
+	row = event.target.parentNode.parentNode;
 	//Form has been displayed. After submitting data will be processed in newRecord function
 }
 
