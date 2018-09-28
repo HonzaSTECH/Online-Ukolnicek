@@ -1,67 +1,44 @@
-var recordCount = 0;
-var recordPriority;
-var recordColor;
-var recordUpvotes = new Array(0);
-var date;
-var i;
-var yCursor;
 var row;
 
 function newRecord(event)
 {
 	event.preventDefault();
 	document.getElementById("form").style.display = "none";
+	var i;
 	
-	recordPriority = (document.querySelector('input[name="priority"]:checked').value);
-	switch(recordPriority)
+	var recordColor;
+	switch(document.querySelector('input[name="priority"]:checked').value)
 	{
 		case "1":
-		recordColor = "#FF8888";
-		    break;
+			recordColor = "#FF8888";
+			break;
 		case "2":
-		    recordColor = "#FFCC88";
-		    break;
+			recordColor = "#FFCC88";
+			break;
 		case "3":
-		    recordColor = "#FFFF77";
-		    break;
+			recordColor = "#FFFF77";
+			break;
 		case "4":
-		    recordColor = "#88EE88";
-		    break;
+			recordColor = "#88EE88";
+			break;
 		case "5":
-		    recordColor = "#9999FF";
-		    break;
+			recordColor = "#9999FF";
+			break;
 		default:
-		    recordColor = "#FFFF77";
+			recordColor = "#FFFF77";
 	}
 	
 	var duplicate = false;
 	
-/*	    */date = new Date();
-/*    D */var dateWork = document.getElementById("form1").value;
-/*    A */
-/*    T */var year;
-/*    E */var month;
-/*      */var day;
-/*    G */i=0;
-/*    E */
-/*    T */for(; dateWork[i] != "-"; i++){
-/*    T */    if(year == undefined){year = dateWork[i];}
-/*    I */    else{year += dateWork[i];}
-/*    N */}
-/*    G */i++;
-/*      */for(; dateWork[i] != "-"; i++){
-/*    A */    if(month == undefined){month = dateWork[i];}
-/*    N */    else{month += dateWork[i];}
-/*    D */}
-/*      */i++;
-/*    C */for(; dateWork[i] != "-" && dateWork[i] != undefined; i++){
-/*    O */    if(day == undefined){day = dateWork[i];}
-/*    N */    else{day += dateWork[i];}
-/*    V */}
-/*    E */dateWork = (day + ". " + month + ". " + year);
-/*    R */
-/*	  */
-/*    T */var today = (date.getDate() + ". " + (date.getMonth()+1) + ". " + date.getFullYear());
+	var dateWork = document.getElementById("form1").value;
+	
+	var year = getDate(dateWork, "y");
+	var month = getDate(dateWork, "m");
+	var day = getDate(dateWork, "d");
+	dateWork = formatDate(dateWork, "Y-M-D to D. M. Y");
+	
+	var date = new Date();
+	var today = (date.getDate() + ". " + (date.getMonth()+1) + ". " + date.getFullYear());
 	
 	if(document.getElementById("form").style.backgroundColor == "rgb(153, 254, 254)")
 	{
@@ -69,21 +46,18 @@ function newRecord(event)
 	}
 	else 
 	{
-		for(i=1; i<=recordCount; i++)
+		for(i=1; i<=(document.getElementsByTagName("tr").length)-2; i++)
 		{
 			if(document.getElementsByClassName("column2")[i].innerText == document.getElementById("form2").value && document.getElementsByClassName("column1")[i].innerText == dateWork)
 			{
 				duplicate = true;
-				yCursor = i;
+				row = document.getElementsByTagName("tr")[i + 1];
 				break;
 			}
 		}
 	}
-    if(duplicate == false)
-	{
-		var records = document.getElementById("data");
-		
-		var rw = document.createElement("tr");
+	if(duplicate == false)
+	{	
 		var date = document.createElement("td");
 		var subject = document.createElement("td");
 		var description = document.createElement("td");
@@ -91,60 +65,46 @@ function newRecord(event)
 		var dateOfAdding = document.createElement("td");
 		var likes = document.createElement("td");
 		var action = document.createElement("td");
+		
 		var actionButton1 = document.createElement("button");
 		var actionButton2 = document.createElement("button");
 		var actionButton3 = document.createElement("button");
 		
-		var dateText = document.createTextNode(dateWork);
-		var subjectText = document.createTextNode(document.getElementById("form2").value);
-		var descriptionText = document.createTextNode(document.getElementById("form3").value);
-		var authorText = document.createTextNode("Vy")
-		var dateOfAddingText = document.createTextNode(today);
-		var likesText = document.createTextNode("0");
-		var actionButton1Text = document.createTextNode("Like");
-		var actionButton2Text = document.createTextNode("Edit");
-		var actionButton3Text = document.createTextNode("Delete");
-	
-		actionButton1.appendChild(actionButton1Text);
-		actionButton1.className = "action1";
-		actionButton2.appendChild(actionButton2Text);
-		actionButton2.className = "action2";
-		actionButton3.appendChild(actionButton3Text);
-		actionButton3.className = "action3";
+		actionButton1.innerHTML = "Like";
+		actionButton1.setAttribute("class", "action1");
+		actionButton1.setAttribute("onclick", "upvoteRecord(event)");
+		actionButton2.innerHTML = "Edit";
+		actionButton2.setAttribute("class", "action2");
+		actionButton2.setAttribute("onclick", "editRecord(event)");
+		actionButton3.innerHTML = "Delete";
+		actionButton3.setAttribute("class", "action3");
+		actionButton3.setAttribute("onclick", "removeRecord(event)");
 		
-		date.appendChild(dateText);
-		subject.appendChild(subjectText);
-		description.appendChild(descriptionText);
-		author.appendChild(authorText);
-		dateOfAdding.appendChild(dateOfAddingText);
-		likes.appendChild(likesText);
-		action.appendChild(actionButton1);
-		action.appendChild(actionButton2);
-		action.appendChild(actionButton3);
+		date.innerHTML = dateWork;
+		subject.innerHTML = document.getElementById("form2").value;
+		description.innerHTML = document.getElementById("form3").value;
+		author.innerHTML = "Vy";
+		dateOfAdding.innerHTML = today;
+		likes.innerHTML = "0";
+		action.append(actionButton1, actionButton2, actionButton3);
 		
-		date.className = "column1";
-		subject.className = "column2";
-		description.className = "column3";
-		author.className = "column4";
-		dateOfAdding.className = "column5";
-		likes.className = "column6";
-		action.className = "column7";
+		date.setAttribute("class","column1");
+		subject.setAttribute("class","column2");
+		description.setAttribute("class","column3");
+		author.setAttribute("class","column4");
+		dateOfAdding.setAttribute("class","column5");
+		likes.setAttribute("class","column6");
+		action.setAttribute("class","column7");
+		date.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
+		subject.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
+		description.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
+		author.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
+		dateOfAdding.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
+		likes.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
+		action.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
 		
-		date.style.backgroundColor = recordColor;
-		subject.style.backgroundColor = recordColor;
-		description.style.backgroundColor = recordColor;
-		author.style.backgroundColor = recordColor;
-		dateOfAdding.style.backgroundColor = recordColor;
-		likes.style.backgroundColor = recordColor;
-		action.style.backgroundColor = recordColor;
-		
-		rw.appendChild(date);
-		rw.appendChild(subject);
-		rw.appendChild(description);
-		rw.appendChild(author);
-		rw.appendChild(dateOfAdding);
-		rw.appendChild(likes);
-		rw.appendChild(action);
+		var rw = document.createElement("tr");
+		rw.append(date, subject, description, author, dateOfAdding, likes, action);
 		
 		var next;
 		for(i = 1; i < document.getElementsByTagName("tr").length; i++)
@@ -160,39 +120,30 @@ function newRecord(event)
 			
 			for(; dateTemp[i] != "."; i++)
 			{
-				if(day == undefined){day = dateTemp[i];}
-				else{day += dateTemp[i];}
+				if(dayT == undefined){day = dateTemp[i];}
+				else{dayT += dateTemp[i];}
 			}
 			i++; i++;
 			for(; dateTemp[i] != "."; i++)
 			{
-				if(month == undefined){month = dateTemp[i];}
-				else{month += dateTemp[i];}
+				if(monthT == undefined){month = dateTemp[i];}
+				else{monthT += dateTemp[i];}
 			}
 			i++; i++;
 			for(; dateTemp[i] != "." && dateTemp[i] != undefined; i++)
 			{
-				if(year == undefined){year = dateTemp[i];}
-				else{year += dateTemp[i];}
+				if(yearT == undefined){year = dateTemp[i];}
+				else{yearT += dateTemp[i];}
 			}
-			if(yearT < year || (monthT < month && yearT == year) || (dayT < day && monthT == month && yearT == year)){break;}
+			if(yearT > year || (monthT > month && yearT == year) || (dayT > day && monthT == month && yearT == year)){break;}
 		}
 		
 		document.getElementsByTagName("tr")[0].parentNode.insertBefore(rw, next);
 		
-		document.getElementsByClassName("action1")[recordCount].onclick = upvoteRecord;
-		document.getElementsByClassName("action2")[recordCount].onclick = editRecord;
-		document.getElementsByClassName("action3")[recordCount].onclick = removeRecord;
-		
-		recordUpvotes[recordCount]=0;
-		
-		if(recordCount == 0){document.getElementById("noRecord").style.display = "none";}
-		recordCount++;
-		
 		document.cookie = "date=" + document.getElementById("form1").value;
 		document.cookie = "subject=" + document.getElementById("form2").value;
 		document.cookie = "description=" + document.getElementById("form3").value;
-		document.cookie = "priority=" + recordPriority;
+		document.cookie = "priority=" + document.querySelector('input[name="priority"]:checked').value;
 		
 		getRequest("AJAXnewRecord.php", testFunc, testFunc);
 	}
@@ -203,20 +154,20 @@ function newRecord(event)
 		row.childNodes[1].innerHTML = dateWork;
 		row.childNodes[3].innerHTML = document.getElementById("form2").value;
 		row.childNodes[5].innerHTML = document.getElementById("form3").value;
-		row.childNodes[1].style.backgroundColor = recordColor;
-		row.childNodes[3].style.backgroundColor = recordColor;
-		row.childNodes[5].style.backgroundColor = recordColor;
-		row.childNodes[7].style.backgroundColor = recordColor;
-		row.childNodes[9].style.backgroundColor = recordColor;
-		row.childNodes[11].style.backgroundColor = recordColor;
-		row.childNodes[13].style.backgroundColor = recordColor;
+		row.childNodes[1].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
+		row.childNodes[3].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
+		row.childNodes[5].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
+		row.childNodes[7].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
+		row.childNodes[9].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
+		row.childNodes[11].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
+		row.childNodes[13].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
 		
 		document.cookie = "newDate=" + document.getElementById("form1").value;
 		document.cookie = "newSubject=" + document.getElementById("form2").value;
 		document.cookie = "newDescription=" + document.getElementById("form3").value;		//Saving new values into cookies so PHP can access it
-		document.cookie = "newPriority=" + recordPriority;
+		document.cookie = "newPriority=" + document.querySelector('input[name="priority"]:checked').value;
 		document.cookie = "action=E";
-
+	
 		getRequest("AJAXactions.php", testFunc, testFunc);
 	}
 }
@@ -244,18 +195,11 @@ function closeForm()
 function upvoteRecord(event)
 {
 	console.log("Upvote detected.");
-/*
-	var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	yCursor = event.pageY;
-	yCursor -= 0.123 * VH;				//Substract header
-	yCursor /= 0.102 * VH;				//Get record position
-	yCursor = Math.floor(yCursor);		//Round the result down
-*/
+
 	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
 	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
 	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
 	event.target.parentNode.parentNode.childNodes[11].innerHTML = (Number(event.target.parentNode.parentNode.childNodes[11].innerHTML )+ 1);
-	//TODO
 
 	document.cookie = "date=" + date;
 	document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
@@ -269,41 +213,14 @@ function upvoteRecord(event)
 function editRecord(event)
 {
 	console.log("Edit detected.");
-/*
-	var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	yCursor = event.pageY;
-	yCursor -= 0.123 * VH;				//Substract header
-	yCursor /= 0.102 * VH;				//Get record position
-	yCursor = Math.floor(yCursor);		//Round the result down
-*/	
+
 	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
 	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
 	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
 	
 	var dateTemp = date;
-	var year=undefined;
-	var month=undefined;
-	var day=undefined;
-	i=0;
-	
-	for(; dateTemp[i] != "."; i++)
-	{
-		if(day == undefined){day = dateTemp[i];}
-		else{day += dateTemp[i];}
-	}
-	i++; i++;
-	for(; dateTemp[i] != "."; i++)
-	{
-		if(month == undefined){month = dateTemp[i];}
-		else{month += dateTemp[i];}
-	}
-	i++; i++;
-	for(; dateTemp[i] != "." && dateTemp[i] != undefined; i++)
-	{
-		if(year == undefined){year = dateTemp[i];}
-		else{year += dateTemp[i];}
-	}
-	dateTemp = year + "-" + month + "-" + day;
+
+	dateTemp = formatDate(dateTemp, "D. M. Y to Y-M-D");
 	
 	document.getElementById("form").style.display = "block";
 	document.getElementById("form").style.backgroundColor = "#99FEFE";
@@ -345,19 +262,10 @@ function removeRecord(event)
 
 	if(confirm("Opravdu chcete smazat tento záznam? Tato akce je nevratná!"))
 	{
-/*
-		var VH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-		yCursor = event.pageY;
-		yCursor -= 0.123 * VH;				//Substract header
-		yCursor /= 0.102 * VH;				//Get record position
-		yCursor = Math.floor(yCursor);		//Round the result down
-*/
 		var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
 		var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
 		var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
 		event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
-		//document.getElementsByTagName("tr")[yCursor].parentNode.removeChild(document.getElementsByTagName("tr")[yCursor]);
-		//TODO
 
 		document.cookie = "date=" + date;
 		document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
@@ -407,6 +315,101 @@ function getRequest(url, success, error)
 	req.open("GET", url, true);
 	req.send(null);
 	return req;
+}
+
+function formatDate(date, direction)
+{
+	var year = undefined;
+	var month = undefined;
+	var day = undefined;
+	var i = 0;
+	
+	
+	switch(direction)
+	{
+		case "Y-M-D to D. M. Y":
+			for(; date[i] != "-"; i++)
+			{
+				if(year == undefined){year = date[i];}
+				else{year += date[i];}
+			}
+			i++;
+			for(; date[i] != "-"; i++)
+			{
+				if(month == undefined){month = date[i];}
+				else{month += date[i];}
+			}
+			i++;
+			for(; date[i] != "-" && date[i] != undefined; i++)
+			{
+				if(day == undefined){day = date[i];}
+				else{day += date[i];}
+			}
+			date = (day + ". " + month + ". " + year);
+			break;
+			
+		case "D. M. Y to Y-M-D":
+			for(; date[i] != "."; i++)
+			{
+				if(day == undefined){day = date[i];}
+				else{day += date[i];}
+			}
+			i++; i++;
+			for(; date[i] != "."; i++)
+			{
+				if(month == undefined){month = date[i];}
+				else{month += date[i];}
+			}
+			i++; i++;
+			for(; date[i] != "." && date[i] != undefined; i++)
+			{
+				if(year == undefined){year = date[i];}
+				else{year += date[i];}
+			}
+			date = year + "-" + month + "-" + day;
+			break;
+			
+		default:
+			date = false;
+	}
+	
+	return date;
+}
+
+function getDate(date, fraction)
+{
+	var i = 0;
+	var result = undefined;
+	
+	switch(fraction)
+	{
+		case "y":
+			for(i = 0; date[i] != "-"; i++)
+			{
+				if(result == undefined){result = date[i];}
+				else{result += date[i];}
+			}
+			break;
+		
+		case "m":
+			for(i = 5; date[i] != "-"; i++)
+			{
+				if(result == undefined){result = date[i];}
+				else{result += date[i];}
+			}
+			break;
+		
+		case "d":
+			for(i = 8; i < date.length; i++)
+			{
+				if(result == undefined){result = date[i];}
+				else{result += date[i];}
+			}
+			break;
+		
+		default:
+			return false;
+	}
 }
 
 function testFunc(result){alert("Test succefull: " + result);}
