@@ -6,6 +6,7 @@ function newRecord(event)
 	document.getElementById("form").style.display = "none";
 	var i;
 	
+	//Getting priority of the new record
 	var recordColor;
 	switch(document.querySelector('input[name="priority"]:checked').value)
 	{
@@ -28,8 +29,7 @@ function newRecord(event)
 			recordColor = "#FFFF77";
 	}
 	
-	var duplicate = false;
-	
+	//Getting date of the new record
 	var dateWork = document.getElementById("form1").value;
 	
 	var year = getDate(dateWork, "y");
@@ -40,6 +40,8 @@ function newRecord(event)
 	var date = new Date();
 	var today = (date.getDate() + ". " + (date.getMonth()+1) + ". " + date.getFullYear());
 	
+	//Finding out if the new record is a duplicate
+	var duplicate = false;
 	if(document.getElementById("form").style.backgroundColor == "rgb(153, 254, 254)")
 	{
 		duplicate = true;
@@ -56,8 +58,11 @@ function newRecord(event)
 			}
 		}
 	}
-	if(duplicate == false)
+	
+	
+	if(duplicate == false)		//Adding completly new record
 	{	
+		//Creating and styling elements
 		var date = document.createElement("td");
 		var subject = document.createElement("td");
 		var description = document.createElement("td");
@@ -95,17 +100,19 @@ function newRecord(event)
 		dateOfAdding.setAttribute("class","column5");
 		likes.setAttribute("class","column6");
 		action.setAttribute("class","column7");
-		date.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		subject.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		description.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		author.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		dateOfAdding.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		likes.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		action.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
+		date.setAttribute("bgcolor", recordColor);
+		subject.setAttribute("bgcolor", recordColor);
+		description.setAttribute("bgcolor", recordColor);
+		author.setAttribute("bgcolor", recordColor);
+		dateOfAdding.setAttribute("bgcolor", recordColor);
+		likes.setAttribute("bgcolor", recordColor);
+		action.setAttribute("bgcolor", recordColor);
 		
+		//Composing the row of styled and filled td elements
 		var rw = document.createElement("tr");
 		rw.append(date, subject, description, author, dateOfAdding, likes, action);
 		
+		//Finding out correct position of the new row (by date)
 		var next;
 		for(i = 1; i < document.getElementsByTagName("tr").length; i++)
 		{
@@ -138,8 +145,10 @@ function newRecord(event)
 			if(yearT > year || (monthT > month && yearT == year) || (dayT > day && monthT == month && yearT == year)){break;}
 		}
 		
+		//Inserting the new row
 		document.getElementsByTagName("tr")[0].parentNode.insertBefore(rw, next);
 		
+		//Saving cookies for AJAX script
 		document.cookie = "date=" + document.getElementById("form1").value;
 		document.cookie = "subject=" + document.getElementById("form2").value;
 		document.cookie = "description=" + document.getElementById("form3").value;
@@ -147,20 +156,21 @@ function newRecord(event)
 		
 		getRequest("AJAXnewRecord.php", testFunc, testFunc);
 	}
-	else
+	else						//Edditing a duplicate
 	{
 		console.log("Duplicate");
 		//alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.");
+		
 		row.childNodes[1].innerHTML = dateWork;
 		row.childNodes[3].innerHTML = document.getElementById("form2").value;
 		row.childNodes[5].innerHTML = document.getElementById("form3").value;
-		row.childNodes[1].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[3].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[5].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[7].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[9].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[11].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[13].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
+		row.childNodes[1].setAttribute("bgColor", recordColor);
+		row.childNodes[3].setAttribute("bgColor", recordColor);
+		row.childNodes[5].setAttribute("bgColor", recordColor);
+		row.childNodes[7].setAttribute("bgColor", recordColor);
+		row.childNodes[9].setAttribute("bgColor", recordColor);
+		row.childNodes[11].setAttribute("bgColor", recordColor);
+		row.childNodes[13].setAttribute("bgColor", recordColor);
 		
 		document.cookie = "newDate=" + document.getElementById("form1").value;
 		document.cookie = "newSubject=" + document.getElementById("form2").value;
