@@ -71,13 +71,9 @@ function newRecord(event)
 		var likes = document.createElement("td");
 		var action = document.createElement("td");
 		
-		var actionButton1 = document.createElement("button");
 		var actionButton2 = document.createElement("button");
 		var actionButton3 = document.createElement("button");
 		
-		actionButton1.innerHTML = "Like";
-		actionButton1.setAttribute("class", "action1");
-		actionButton1.setAttribute("onclick", "upvoteRecord(event)");
 		actionButton2.innerHTML = "Edit";
 		actionButton2.setAttribute("class", "action2");
 		actionButton2.setAttribute("onclick", "editRecord(event)");
@@ -91,7 +87,7 @@ function newRecord(event)
 		author.innerHTML = "Vy";
 		dateOfAdding.innerHTML = today;
 		likes.innerHTML = "0";
-		action.append(actionButton1, actionButton2, actionButton3);
+		action.append(actionButton2, actionButton3);
 		
 		date.setAttribute("class","column1");
 		subject.setAttribute("class","column2");
@@ -160,17 +156,18 @@ function newRecord(event)
 	{
 		console.log("Duplicate");
 		//alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.");
+		var mult = (event.target.parentNode.parentNode.childNodes.length == 7 ? 0:1);
 		
-		row.childNodes[1].innerHTML = dateWork;
-		row.childNodes[3].innerHTML = document.getElementById("form2").value;
-		row.childNodes[5].innerHTML = document.getElementById("form3").value;
-		row.childNodes[1].setAttribute("bgColor", recordColor);
-		row.childNodes[3].setAttribute("bgColor", recordColor);
-		row.childNodes[5].setAttribute("bgColor", recordColor);
-		row.childNodes[7].setAttribute("bgColor", recordColor);
-		row.childNodes[9].setAttribute("bgColor", recordColor);
-		row.childNodes[11].setAttribute("bgColor", recordColor);
-		row.childNodes[13].setAttribute("bgColor", recordColor);
+		row.childNodes[0 + (1 * mult)].innerHTML = dateWork;
+		row.childNodes[1 + (2 * mult)].innerHTML = document.getElementById("form2").value;
+		row.childNodes[2 + (3 * mult)].innerHTML = document.getElementById("form3").value;
+		row.childNodes[0 + (1 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[1 + (2 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[2 + (3 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[3 + (4 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[4 + (5 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[5 + (6 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[6 + (7 * mult)].setAttribute("bgColor", recordColor);
 		
 		document.cookie = "newDate=" + document.getElementById("form1").value;
 		document.cookie = "newSubject=" + document.getElementById("form2").value;
@@ -223,14 +220,15 @@ function upvoteRecord(event)
 function editRecord(event)
 {
 	console.log("Edit detected.");
-
-	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
-	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
-	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
+	var mult = (event.target.parentNode.parentNode.childNodes.length == 7 ? 0:1);
+	var date = event.target.parentNode.parentNode.childNodes[0 + (1 * mult)].innerHTML;
+	var subject = event.target.parentNode.parentNode.childNodes[1 + (2 * mult)].innerHTML;
+	var desc = event.target.parentNode.parentNode.childNodes[2 + (3 * mult)].innerHTML;
 	
 	var dateTemp = date;
 
 	dateTemp = formatDate(dateTemp, "D. M. Y to Y-M-D");
+	//dateTemp = "2018-10-20";
 	
 	document.getElementById("form").style.display = "block";
 	document.getElementById("form").style.backgroundColor = "#99FEFE";
@@ -239,7 +237,7 @@ function editRecord(event)
 	document.getElementById("form2").value = subject;
 	document.getElementById("form3").value = desc;
 	
-	switch(event.target.parentNode.parentNode.childNodes[1].bgColor)
+	switch(event.target.parentNode.bgColor)
 	{
 		case "#FF8888":
 			document.getElementById("priority1").childNodes[1].checked = true;
@@ -257,7 +255,6 @@ function editRecord(event)
 			document.getElementById("priority5").childNodes[1].checked = true;
 			break;
 	}
-	
 	document.cookie = "date=" + date;
 	document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
 	document.cookie = "description=" + desc;
