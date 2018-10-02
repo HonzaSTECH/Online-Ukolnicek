@@ -156,8 +156,9 @@ function newRecord(event)
 	{
 		console.log("Duplicate");
 		//alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.");
-		var mult = (event.target.parentNode.parentNode.childNodes.length == 7 ? 0:1);
-		
+		var mult = (row.childNodes.length == 7 ? 0:1);
+		console.log(row.childNodes.length);
+		console.log(mult);
 		row.childNodes[0 + (1 * mult)].innerHTML = dateWork;
 		row.childNodes[1 + (2 * mult)].innerHTML = document.getElementById("form2").value;
 		row.childNodes[2 + (3 * mult)].innerHTML = document.getElementById("form3").value;
