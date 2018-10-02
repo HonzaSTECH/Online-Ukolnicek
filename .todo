@@ -1,4 +1,4 @@
-Planned	1) Change background picture on login and register page
+Actual		1) Change background picture on login and register page
 Done		2) When adding a record, write name of the class into log file instead of /*TODO*/
 Done		3) Display action buttons on list page depending on logged user and/or its status
 Waiting	4) Style apply page
