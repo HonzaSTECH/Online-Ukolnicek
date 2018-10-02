@@ -109,40 +109,24 @@ function newRecord(event)
 		rw.append(date, subject, description, author, dateOfAdding, likes, action);
 		
 		//Finding out correct position of the new row (by date)
-		var next;
+		var next, yearT, monthT, dayT;
 		for(i = 1; i < document.getElementsByTagName("tr").length; i++)
 		{
-			next = document.getElementsByTagName("tr")[i]
+			next = document.getElementsByTagName("tr")[i];
 			date = next.childNodes[1].innerHTML;
-			
-			var dateTemp = date;
-			var yearT=undefined;
-			var monthT=undefined;
-			var dayT=undefined;
-			i=0;
-			
-			for(; dateTemp[i] != "."; i++)
-			{
-				if(dayT == undefined){day = dateTemp[i];}
-				else{dayT += dateTemp[i];}
-			}
-			i++; i++;
-			for(; dateTemp[i] != "."; i++)
-			{
-				if(monthT == undefined){month = dateTemp[i];}
-				else{monthT += dateTemp[i];}
-			}
-			i++; i++;
-			for(; dateTemp[i] != "." && dateTemp[i] != undefined; i++)
-			{
-				if(yearT == undefined){year = dateTemp[i];}
-				else{yearT += dateTemp[i];}
-			}
+			console.log(date);
+			date = formatDate(date, "D. M. Y to Y-M-D");
+			//date = "2018-09-17";			//TODO
+			yearT=getDate(date, "y");
+			monthT=getDate(date, "m");
+			dayT=getDate(date, "d");
+			console.log("Year: " + yearT + " - Month: " + monthT + " - Day: " + dayT);
 			if(yearT > year || (monthT > month && yearT == year) || (dayT > day && monthT == month && yearT == year)){break;}
 		}
 		
 		//Inserting the new row
-		document.getElementsByTagName("tr")[0].parentNode.insertBefore(rw, next);
+		if (i < document.getElementsByTagName("tr").length){document.getElementsByTagName("tr")[0].parentNode.insertBefore(rw, next);}
+		else {document.getElementsByTagName("tr")[0].parentNode.appendChild(rw);}
 		
 		//Saving cookies for AJAX script
 		document.cookie = "date=" + document.getElementById("form1").value;
@@ -380,7 +364,6 @@ function formatDate(date, direction)
 		default:
 			date = false;
 	}
-	
 	return date;
 }
 
@@ -418,6 +401,7 @@ function getDate(date, fraction)
 		default:
 			return false;
 	}
+	return result;
 }
 
 function testFunc(result){alert("Test succefull: " + result);}
