@@ -34,6 +34,7 @@ function hideForm(event){
 	document.getElementById("subjectsForm").style.display = "none";
 }
 function accept(event){
+	//Getting application details
 	var nickname = event.target.parentNode.parentNode.childNodes[0].innerHTML;
 	var message =  event.target.parentNode.parentNode.childNodes[3].childNodes[0].innerHTML;
 	var applyClass = event.target.parentNode.parentNode.childNodes[5].innerHTML;
@@ -41,19 +42,22 @@ function accept(event){
 	var user = document.getElementById("username").innerHTML.split(" ");
 	user = user[user.length - 1];
 	
-	
+	//Removing the application from DOM
 	event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
 	
+	//Save nickname, message and class value into cookie so PHP can access it
 	document.cookie = "nickname=" + nickname;
-	document.cookie = "message=" + message;		//Save nickname, message and class value into cookie so PHP can acces it
+	document.cookie = "message=" + message;
 	document.cookie = "class=" + applyClass;
 
 	document.cookie = "admin=" + user;
 	document.cookie = "action=a";
-
+	
+	//Opening AJAX request
 	getRequest("AJAXmanagement.php", testFunc, testFunc);
 }
 function decline(){
+	//Getting application details
 	var nickname = event.target.parentNode.parentNode.childNodes[0].innerHTML;
 	var message =  event.target.parentNode.parentNode.childNodes[3].childNodes[0].innerHTML;
 	var applyClass = event.target.parentNode.parentNode.childNodes[5].innerHTML;
@@ -61,33 +65,37 @@ function decline(){
 	var user = document.getElementById("username").innerHTML.split(" ");
 	user = user[user.length - 1];
 	
+	//Removing the application from DOM
 	event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
 	
+	//Save nickname, message and class value into cookie so PHP can access it
 	document.cookie = "nickname=" + nickname;
-	document.cookie = "message=" + message;		//Save nickname, message and class value into cookie so PHP can acces it
+	document.cookie = "message=" + message;
 	document.cookie = "class=" + applyClass;
 
 	document.cookie = "admin=" + user;
 	document.cookie = "action=d";
-
+	
+	//Opening AJAX request
 	getRequest("AJAXmanagement.php", testFunc, testFunc);
 }
 function getRequest(url, success, error)
 {
 	var req = false;
-	try //Creating request
+	//Creating request
+	try
 	{
-		// most browsers
+		//Most broswers
 		req = new XMLHttpRequest();
 	} catch (e)
 	{
-		// IE
+		//Interned Explorer
 		try
 		{
 			req = new ActiveXObject("Msxml2.XMLHTTP");
 		}catch(e)
 		{
-			// try an older version
+			//Older version of IE
 			try
 			{
 				req = new ActiveXObject("Microsoft.XMLHTTP");
@@ -97,9 +105,15 @@ function getRequest(url, success, error)
 			}
 		}
 	}
-	if (!req) return false;	//Checking request
-	if (typeof success != 'function') success = function () {};	//Checking function parametrs and setting intial values in case they aren´t specified
+	
+	//Checking request
+	if (!req) return false;
+	
+	//Checking function parametrs and setting intial values in case they aren´t specified
+	if (typeof success != 'function') success = function () {};
 	if (typeof error!= 'function') error = function () {};
+	
+	//Waiting for server response
 	req.onreadystatechange = function()
 	{
 		if(req.readyState == 4)
@@ -111,6 +125,4 @@ function getRequest(url, success, error)
 	req.send(null);
 	return req;
 }
-function testFunc(response){
-	alert(response);
-}
+function testFunc(response){alert(response);}
