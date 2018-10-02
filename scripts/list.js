@@ -1,4 +1,4 @@
-var row;
+var row;		//The only one global variable (used to transffer data between editRecord and newRecord functions)
 
 function newRecord(event)
 {
@@ -6,6 +6,7 @@ function newRecord(event)
 	document.getElementById("form").style.display = "none";
 	var i;
 	
+	//Getting priority of the new record
 	var recordColor;
 	switch(document.querySelector('input[name="priority"]:checked').value)
 	{
@@ -28,8 +29,7 @@ function newRecord(event)
 			recordColor = "#FFFF77";
 	}
 	
-	var duplicate = false;
-	
+	//Getting date of the new record
 	var dateWork = document.getElementById("form1").value;
 	
 	var year = getDate(dateWork, "y");
@@ -40,6 +40,8 @@ function newRecord(event)
 	var date = new Date();
 	var today = (date.getDate() + ". " + (date.getMonth()+1) + ". " + date.getFullYear());
 	
+	//Finding out if the new record is a duplicate
+	var duplicate = false;
 	if(document.getElementById("form").style.backgroundColor == "rgb(153, 254, 254)")
 	{
 		duplicate = true;
@@ -56,8 +58,11 @@ function newRecord(event)
 			}
 		}
 	}
-	if(duplicate == false)
+	
+	
+	if(duplicate == false)		//Adding completly new record
 	{	
+		//Creating and styling elements
 		var date = document.createElement("td");
 		var subject = document.createElement("td");
 		var description = document.createElement("td");
@@ -66,13 +71,9 @@ function newRecord(event)
 		var likes = document.createElement("td");
 		var action = document.createElement("td");
 		
-		var actionButton1 = document.createElement("button");
 		var actionButton2 = document.createElement("button");
 		var actionButton3 = document.createElement("button");
 		
-		actionButton1.innerHTML = "Like";
-		actionButton1.setAttribute("class", "action1");
-		actionButton1.setAttribute("onclick", "upvoteRecord(event)");
 		actionButton2.innerHTML = "Edit";
 		actionButton2.setAttribute("class", "action2");
 		actionButton2.setAttribute("onclick", "editRecord(event)");
@@ -86,7 +87,7 @@ function newRecord(event)
 		author.innerHTML = "Vy";
 		dateOfAdding.innerHTML = today;
 		likes.innerHTML = "0";
-		action.append(actionButton1, actionButton2, actionButton3);
+		action.append(actionButton2, actionButton3);
 		
 		date.setAttribute("class","column1");
 		subject.setAttribute("class","column2");
@@ -95,51 +96,36 @@ function newRecord(event)
 		dateOfAdding.setAttribute("class","column5");
 		likes.setAttribute("class","column6");
 		action.setAttribute("class","column7");
-		date.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		subject.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		description.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		author.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		dateOfAdding.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		likes.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
-		action.setAttribute("style", ("backgroundColor:" + recordColor + ";"));
+		date.setAttribute("bgcolor", recordColor);
+		subject.setAttribute("bgcolor", recordColor);
+		description.setAttribute("bgcolor", recordColor);
+		author.setAttribute("bgcolor", recordColor);
+		dateOfAdding.setAttribute("bgcolor", recordColor);
+		likes.setAttribute("bgcolor", recordColor);
+		action.setAttribute("bgcolor", recordColor);
 		
+		//Composing the row of styled and filled td elements
 		var rw = document.createElement("tr");
 		rw.append(date, subject, description, author, dateOfAdding, likes, action);
 		
-		var next;
+		//Finding out correct position of the new row (by date)
+		var next, yearT, monthT, dayT;
 		for(i = 1; i < document.getElementsByTagName("tr").length; i++)
 		{
-			next = document.getElementsByTagName("tr")[i]
+			next = document.getElementsByTagName("tr")[i];
 			date = next.childNodes[1].innerHTML;
-			
-			var dateTemp = date;
-			var yearT=undefined;
-			var monthT=undefined;
-			var dayT=undefined;
-			i=0;
-			
-			for(; dateTemp[i] != "."; i++)
-			{
-				if(dayT == undefined){day = dateTemp[i];}
-				else{dayT += dateTemp[i];}
-			}
-			i++; i++;
-			for(; dateTemp[i] != "."; i++)
-			{
-				if(monthT == undefined){month = dateTemp[i];}
-				else{monthT += dateTemp[i];}
-			}
-			i++; i++;
-			for(; dateTemp[i] != "." && dateTemp[i] != undefined; i++)
-			{
-				if(yearT == undefined){year = dateTemp[i];}
-				else{yearT += dateTemp[i];}
-			}
+			date = formatDate(date, "D. M. Y to Y-M-D");
+			yearT=getDate(date, "y");
+			monthT=getDate(date, "m");
+			dayT=getDate(date, "d");
 			if(yearT > year || (monthT > month && yearT == year) || (dayT > day && monthT == month && yearT == year)){break;}
 		}
 		
-		document.getElementsByTagName("tr")[0].parentNode.insertBefore(rw, next);
+		//Inserting the new row
+		if (i < document.getElementsByTagName("tr").length){document.getElementsByTagName("tr")[0].parentNode.insertBefore(rw, next);}
+		else {document.getElementsByTagName("tr")[0].parentNode.appendChild(rw);}
 		
+		//Saving cookies for AJAX script
 		document.cookie = "date=" + document.getElementById("form1").value;
 		document.cookie = "subject=" + document.getElementById("form2").value;
 		document.cookie = "description=" + document.getElementById("form3").value;
@@ -147,20 +133,19 @@ function newRecord(event)
 		
 		getRequest("AJAXnewRecord.php", testFunc, testFunc);
 	}
-	else
+	else						//Edditing a duplicate
 	{
-		console.log("Duplicate");
-		//alert("Ve Vámi zadaný den je již písemka z tohoto předmětu zadána. Daný záznam byl tedy upraven dle Vámi zadaných dat jakožto duplikát.");
-		row.childNodes[1].innerHTML = dateWork;
-		row.childNodes[3].innerHTML = document.getElementById("form2").value;
-		row.childNodes[5].innerHTML = document.getElementById("form3").value;
-		row.childNodes[1].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[3].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[5].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[7].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[9].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[11].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
-		row.childNodes[13].setAttribute("style", ("backgroundColor=" + recordColor + ";"));
+		var mult = (row.childNodes.length == 7 ? 0:1);
+		row.childNodes[0 + (1 * mult)].innerHTML = dateWork;
+		row.childNodes[1 + (2 * mult)].innerHTML = document.getElementById("form2").value;
+		row.childNodes[2 + (3 * mult)].innerHTML = document.getElementById("form3").value;
+		row.childNodes[0 + (1 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[1 + (2 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[2 + (3 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[3 + (4 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[4 + (5 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[5 + (6 * mult)].setAttribute("bgColor", recordColor);
+		row.childNodes[6 + (7 * mult)].setAttribute("bgColor", recordColor);
 		
 		document.cookie = "newDate=" + document.getElementById("form1").value;
 		document.cookie = "newSubject=" + document.getElementById("form2").value;
@@ -174,9 +159,11 @@ function newRecord(event)
 
 function addRecord()
 {
+	//Displaying the form
         document.getElementById("form").style.display = "block";
 	document.getElementById("form").style.backgroundColor = "#99FFFF";
 	
+	//Setting intial values
 	document.getElementById("form1").value = "";
 	document.getElementById("form2").value = "";
 	document.getElementById("form3").value = "";
@@ -189,47 +176,51 @@ function addRecord()
 
 function closeForm()
 {
+	//Closing the form
 	document.getElementById("form").style.display = "none";
 }
 
 function upvoteRecord(event)
 {
-	console.log("Upvote detected.");
-
+	//Getting record details
 	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
 	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
 	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
 	event.target.parentNode.parentNode.childNodes[11].innerHTML = (Number(event.target.parentNode.parentNode.childNodes[11].innerHTML )+ 1);
-
+	
+	//Save date, subject and description value into cookie so PHP can access it
 	document.cookie = "date=" + date;
-	document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
+	document.cookie = "subject=" + subject;
 	document.cookie = "description=" + desc;
 
 	document.cookie = "action=L";
-
+	
+	//Opening AJAX request
 	getRequest("AJAXactions.php", testFunc, testFunc);
 }
 
 function editRecord(event)
 {
-	console.log("Edit detected.");
-
-	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
-	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
-	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
+	//Getting record details
+	var mult = (event.target.parentNode.parentNode.childNodes.length == 7 ? 0:1);
+	var date = event.target.parentNode.parentNode.childNodes[0 + (1 * mult)].innerHTML;
+	var subject = event.target.parentNode.parentNode.childNodes[1 + (2 * mult)].innerHTML;
+	var desc = event.target.parentNode.parentNode.childNodes[2 + (3 * mult)].innerHTML;
 	
 	var dateTemp = date;
 
 	dateTemp = formatDate(dateTemp, "D. M. Y to Y-M-D");
 	
+	//Displaying the form
 	document.getElementById("form").style.display = "block";
 	document.getElementById("form").style.backgroundColor = "#99FEFE";
 	
+	//Setting intial values
 	document.getElementById("form1").value = dateTemp;
 	document.getElementById("form2").value = subject;
 	document.getElementById("form3").value = desc;
 	
-	switch(event.target.parentNode.parentNode.childNodes[1].bgColor)
+	switch(event.target.parentNode.bgColor)
 	{
 		case "#FF8888":
 			document.getElementById("priority1").childNodes[1].checked = true;
@@ -248,8 +239,9 @@ function editRecord(event)
 			break;
 	}
 	
+	//Save date, subject and description value into cookie so PHP can access it
 	document.cookie = "date=" + date;
-	document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
+	document.cookie = "subject=" + subject;
 	document.cookie = "description=" + desc;
 	
 	row = event.target.parentNode.parentNode;
@@ -258,17 +250,18 @@ function editRecord(event)
 
 function removeRecord(event)
 {
-	console.log("Delete detected.");
-
+	//Confirmation alert
 	if(confirm("Opravdu chcete smazat tento záznam? Tato akce je nevratná!"))
 	{
+		//Getting record details
 		var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
 		var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
 		var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
 		event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
-
+		
+		//Save date, subject and description value into cookie so PHP can access it
 		document.cookie = "date=" + date;
-		document.cookie = "subject=" + subject;		//Save date, subject and description value into cookie so PHP can acces it
+		document.cookie = "subject=" + subject;
 		document.cookie = "description=" + desc;
 		
 		document.cookie = "action=D"
@@ -280,19 +273,20 @@ function removeRecord(event)
 function getRequest(url, success, error)
 {
 	var req = false;
-	try //Creating request
+	//Creating request
+	try
 	{
-		// most browsers
+		//Most broswers
 		req = new XMLHttpRequest();
 	} catch (e)
 	{
-		// IE
+		// Internet explorer
 		try
 		{
 			req = new ActiveXObject("Msxml2.XMLHTTP");
 		}catch(e)
 		{
-			// try an older version
+			//Older version of IE
 			try
 			{
 				req = new ActiveXObject("Microsoft.XMLHTTP");
@@ -302,9 +296,15 @@ function getRequest(url, success, error)
 			}
 		}
 	}
-	if (!req) return false;	//Checking request
-	if (typeof success != 'function') success = function () {};	//Checking function parametrs and setting intial values in case they aren´t specified
+	
+	//Checking request
+	if (!req) return false;
+	
+	//Checking function parametrs and setting intial values in case they aren´t specified
+	if (typeof success != 'function') success = function () {};
 	if (typeof error!= 'function') error = function () {};
+	
+	//Getting server response
 	req.onreadystatechange = function()
 	{
 		if(req.readyState == 4)
@@ -323,7 +323,6 @@ function formatDate(date, direction)
 	var month = undefined;
 	var day = undefined;
 	var i = 0;
-	
 	
 	switch(direction)
 	{
@@ -372,7 +371,6 @@ function formatDate(date, direction)
 		default:
 			date = false;
 	}
-	
 	return date;
 }
 
@@ -410,6 +408,7 @@ function getDate(date, fraction)
 		default:
 			return false;
 	}
+	return result;
 }
 
 function testFunc(result){alert("Test succefull: " + result);}
