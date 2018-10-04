@@ -9,10 +9,12 @@ body{
     background-color: #FFBB77;
     width: 50vw;
     height: 50vh;
-    margin-right: 24vw;
-    margin-left: 24vw;
-    margin-top: 24vh;
-    margin-bottom: 24vh;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 #loginForm{
     height: 30vh;
