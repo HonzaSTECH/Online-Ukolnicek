@@ -1,5 +1,5 @@
 body{
-    background-image:url("https://image.ibb.co/htq7ZT/classroom_night.png");
+    background-image:url("../images/BGimage.JPG");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -9,10 +9,12 @@ body{
     background-color: #FFBB77;
     width: 50vw;
     height: 84vh;
-    margin-right: 24vw;
-    margin-left: 24vw;
-    margin-top: 7vh;
-    margin-bottom: 7vh;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 #registerForm{
     height: 64vh;
