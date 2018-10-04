@@ -22,9 +22,9 @@ Done		21) Encrypt user passwords before saving them in the database
 Done		22) Center form on the list page
 Done		23) Make JS.js file more simple and efficient
 Done		24) Repair adding new records
-Waiting	25) Make newly added record inserted on correct row without reloading the page
+Done		25) Make newly added record inserted on correct row without reloading the page
 Done		26) Remove horizontal scroll bar from the list page
 Waiting	27) Finish styling of classManagement page
-Waiting	28) Repair bug with deleting answered applications with longer messages
-Actual		29) Repair bug with normal members having moderator permissions
-Waiting	30) Make liking a record possible only once per account
+Actual		28) Repair bug with deleting answered applications with longer messages
+Done		29) Repair bug with normal members having moderator permissions
+Planned	30) Make liking a record possible only once per account
