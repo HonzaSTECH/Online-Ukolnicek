@@ -36,10 +36,14 @@
 						echo "<div id='successMessage'>Byl/a jsi úspěšně přihlášen/a.</div>";
 						$_SESSION['user']=$name;
 						$ip = $_SERVER['REMOTE_ADDR'];
-						fileLog("Uživatel $name se přihlásil z IP adresy $ip");
+						fileLog("Uživatel $name se přihlásil z IP adresy $ip.");
 						echo "<script type='text/javascript'>location.href = 'home.php';</script>";
 					}
-					else{echo "<div id='loginError'>Špatné heslo</div>";}
+					else{
+						echo "<div id='loginError'>Špatné heslo</div>";
+						$ip = $_SERVER['REMOTE_ADDR'];
+						fileLog("Z adresy $ip proběhl pokus o přihlášení k účtu $name.");
+						}
 				}
 				else{echo "<div id='loginError'>Uživatel s tímto jménem neexistuje.</div>";}
 			}
