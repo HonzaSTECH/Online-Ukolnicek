@@ -1,4 +1,4 @@
-Actual		1) Change background picture on login and register page
+Done		1) Change background picture on login and register page
 Done		2) When adding a record, write name of the class into log file instead of /*TODO*/
 Done		3) Display action buttons on list page depending on logged user and/or its status
 Waiting	4) Style apply page
@@ -26,4 +26,4 @@ Waiting	25) Make newly added record inserted on correct row without reloading th
 Done		26) Remove horizontal scroll bar from the list page
 Waiting	27) Finish styling of classManagement page
 Waiting	28) Repair bug with deleting answered applications with longer messages
-Planned	29) Repair bug with normal members having moderator permissions
+Done		29) Repair bug with normal members having moderator permissions

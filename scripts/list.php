@@ -74,7 +74,6 @@
 					
 					$query = "SELECT id, date,subject, description, author, dateOfAdding, priority, likes FROM records WHERE class=$classId ORDER BY date";
 					$records = mysqli_query($connection, $query);
-					
 					if($records){
 						while($row = mysqli_fetch_array($records)){
 							switch($row['priority']){
