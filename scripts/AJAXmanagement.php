@@ -3,7 +3,7 @@
 	include 'logger.php';
 	
 	$nickname = $_COOKIE['nickname'];
-	$message = $_COOKIE['message'];
+	$message = urldecode($_COOKIE['message']);
 	$class = $_COOKIE['class'];
 	$admin = $_COOKIE['admin'];
 	$action = $_COOKIE['action'];
@@ -34,8 +34,14 @@
 			break;
 	}
 	
-	echo "$nickname<br />$message<br />$class<br/>$action<br />$admin";
+	echo "$nickname\n$message\n$class\n$action\n$admin";
+	//$message = urlencode($message);
+	str_replace("\n", "(char)13+(char)10", $message);
+	echo "\n $message";
+	echo "\n";
 	$query = "DELETE FROM applications WHERE nickname='$nickname' AND message='$message' AND class='$class'";
+	echo "\n";
+	echo $query;
 	mysqli_query($connection, $query);
 	if(!$result){echo mysqli_error($connection);}
 	mysqli_close($connection);

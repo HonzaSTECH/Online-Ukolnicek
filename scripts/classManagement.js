@@ -37,6 +37,7 @@ function accept(event){
 	//Getting application details
 	var nickname = event.target.parentNode.parentNode.childNodes[0].innerHTML;
 	var message =  event.target.parentNode.parentNode.childNodes[3].childNodes[0].innerHTML;
+	console.log(message);
 	var applyClass = event.target.parentNode.parentNode.childNodes[5].innerHTML;
 	
 	var user = document.getElementById("username").innerHTML.split(" ");
@@ -47,7 +48,7 @@ function accept(event){
 	
 	//Save nickname, message and class value into cookie so PHP can access it
 	document.cookie = "nickname=" + nickname;
-	document.cookie = "message=" + message;
+	document.cookie = "message=" + encodeURIComponent(message);
 	document.cookie = "class=" + applyClass;
 
 	document.cookie = "admin=" + user;
