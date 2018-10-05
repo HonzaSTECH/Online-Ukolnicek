@@ -67,7 +67,7 @@
 		$user = $_SESSION['user'];
 		fileLog("Uživatel $user zažádal o přijetí do třídy $class");
 		echo "Vaše žádost o přijetí do této třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte na stránce se seznamem tříd (<a href='home.php'>zde</a>).<br />";
-		//echo "<script type='text/javascript'>location.href = 'home.php';</script>";
+		echo "<script type='text/javascript'>location.href = 'home.php';</script>";
 	}
 ?>
 <a href="apply.php">Návrat na seznam tříd</a>
