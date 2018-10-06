@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once('connect.php');
 	
 	$date = $_COOKIE['date'];
@@ -22,7 +23,20 @@
 	
 	switch($action){
 		case 'L':
-			$query = "UPDATE records SET likes = likes + 1 WHERE date='$date' AND subject='$subject' AND description='$description'";
+			$query = "SELECT likers FROM records WHERE date='$date' AND subject='$subject' AND description='$description'";
+			$newLikers = mysqli_query($connection, $query);
+			$newLikers = mysqli_fetch_array($newLikers);
+			$newLikers = $newLikers['likers'];
+			
+			$username = $_SESSION['user'];
+			$query = "SELECT id FROM users WHERE name='$username'";
+			$query = mysqli_query($connection, $query);
+			$query = mysqli_fetch_array($query);
+			$user = $query['id'];
+			
+			if ($newLikers == "0"){$newLikers = $user;}
+			else {$newLikers .= ",".$user;}
+			$query = "UPDATE records SET likes = likes + 1, likers = '$newLikers' WHERE date='$date' AND subject='$subject' AND description='$description'";
 			break;
 		case 'E':
 			$newDate = $_COOKIE['newDate'];
