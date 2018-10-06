@@ -27,4 +27,5 @@ Done		26) Remove horizontal scroll bar from the list page
 Waiting	27) Finish styling of classManagement page
 Planned	28) Repair bug with deleting answered applications with longer messages
 Done		29) Repair bug with normal members having moderator permissions
-Actual		30) Make liking a record possible only once per account
+Done		30) Make liking a record possible only once per account
+Actual		31) Display a link to class management page only to admins of the class
