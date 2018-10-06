@@ -70,9 +70,20 @@
 					</th>
 				</tr>
 				<?php
+					function liked($username, $likers)
+					{
+						global $connection;
+						$query = "SELECT id FROM users WHERE name='$username'";
+						$query = mysqli_query($connection, $query);
+						$query = mysqli_fetch_array($query);
+						$user = $query['id'];
+						$likers = explode(",",$likers);
+						return (in_array($user, $likers));
+					}
+				
 					require_once("connect.php");
 					
-					$query = "SELECT id, date,subject, description, author, dateOfAdding, priority, likes FROM records WHERE class=$classId ORDER BY date";
+					$query = "SELECT id, date, subject, description, author, dateOfAdding, priority, likes, likers FROM records WHERE class=$classId ORDER BY date";
 					$records = mysqli_query($connection, $query);
 					if($records){
 						while($row = mysqli_fetch_array($records)){
@@ -109,7 +120,7 @@
 							<td align='center' class='column7' BGCOLOR=".$recordColor.">";
 							if($_SESSION['user'] == $row['author']){echo "<button class='action2' onclick='editRecord(event)'>Edit</button><button class='action3' onclick='removeRecord(event)'>Delete</button>";}
 							else{
-								echo "<button class='action1' onclick='upvoteRecord(event)'>Like</button>";
+								if(!liked($_SESSION['user'], $row['likers'])){echo "<button class='action1' onclick='upvoteRecord(event)'>Like</button>";}
 								$user = $_SESSION['user'];
 								$query = "SELECT modIn, adminIn FROM users WHERE name = '$user'";
 								$result = mysqli_query($connection, $query);
@@ -159,9 +170,6 @@
 				<span id="form3Text">Popis:</span>
 				<textarea type="message" id="form3" name="description" required placeholder="Opakovací test" maxlength=100></textarea>
 				<br />
-				<!--<span id="form4Text">Přidal:</span>
-				<input type="text" id="form4" name="author" required placeholder="Jméno Přijímení">
-				<br />-->
 				<span id="form5Text">Priorita:</span>
 					<div id="priority1">
 						<input type="radio" name="priority" value="1" id="pr1">
@@ -193,6 +201,5 @@
 			</form>
 			<button id="formCancel" onclick="closeForm()">Zrušit</button>
 		</div>
-               <!-- <a href="server.php">PHP testing area</a>	-->
     </body>
 </html>
