@@ -39,9 +39,21 @@
 			<div id="homeBox">
 				<a href="home.php" id="homeLink">Domů</a>
 			</div>
-			<div id="classManagementBox">
-				<a href="classManagement.php" id="classManagementLink">Správa třídy</a>
-			</div>
+			<?php
+				require_once('connect.php');
+				$classId = $_SESSION['class'];
+				$username = $_SESSION['user'];
+				$query = "SELECT admin FROM classes WHERE id='$classId'";
+				$result = mysqli_query($connection, $query);
+				$result = mysqli_fetch_array($result);
+				$result = $result['admin'];
+				if($result == $username)
+				{
+					echo "<div id='classManagementBox'>
+						<a href='classManagement.php' id='classManagementLink'>Správa třídy</a>
+					</div>";
+				}
+			?>
 		</div>
 		<div id="home">
 			<div id="noRecord">Žádný záznam</div>
