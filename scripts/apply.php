@@ -4,7 +4,7 @@
 	check(true);
 ?>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
+<link rel="shortcut icon" href="../images/marklessLogo.ico">
 <link rel="stylesheet" href="../styles/apply.css">
 <p>Seznam tříd:</p>
 

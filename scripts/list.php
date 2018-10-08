@@ -16,7 +16,7 @@
 			echo $name;
 		?>
 		</title>
-		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="shortcut icon" href="../images/marklessLogo.ico">
 		<link rel="stylesheet" href="../styles/list.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 		<script src=list.js></script>

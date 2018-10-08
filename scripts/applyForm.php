@@ -4,7 +4,7 @@
 	check(true);
 ?>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
+<link rel="shortcut icon" href="../images/marklessLogo.ico">
 <link rel="stylesheet" href="../styles/applyForm.css">
 
 <p>Administrátor nebo moderátoři této třídy musí potvrdit tvou žádost o vstup do této třídy. Dej jim tedy vědět, kdo skutečně jsi, ať vědí, koho mezi sebe přijímají.</p>
