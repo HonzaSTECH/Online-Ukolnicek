@@ -1,7 +1,8 @@
 <?php
 	session_start();
 	require 'checker.php';
-	check(true, true);
+	check(true, true, true);
+	require 'connect.php';
 ?>
 <html>
 	<head>
@@ -44,8 +45,6 @@
 				</div>
 				<div id="tab2">
 					<?php
-						require_once('connect.php');
-						
 						$class = $_SESSION['class'];
 						$query = "SELECT subjects FROM classes WHERE id='$class'";
 						$result = mysqli_query($connection, $query);
