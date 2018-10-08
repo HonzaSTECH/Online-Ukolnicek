@@ -43,7 +43,7 @@
 ?>
 
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
+<link rel="shortcut icon" href="../images/marklessLogo.ico">
 <link rel="stylesheet" href="../styles/newClass.css">
 <p>Zažádat o založení nové třídy</p>
 <p>Z důvodu zamezení zakládání nepotřebných a prázdných tříd a zaplňování omezeného místa v naší databázi je nutné k založení třídy vyplnit tento formulář.</p><br />

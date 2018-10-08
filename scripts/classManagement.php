@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="shortcut icon" href="../images/marklessLogo.ico">
 		<link rel="stylesheet" href="../styles/classManagement.css">
 		<script src="classManagement.js"></script>
 	</head>
