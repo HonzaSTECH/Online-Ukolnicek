@@ -15,7 +15,7 @@ Done		14) Make adding and removing subject possible for admins on classManagemen
 Done		15) Repair sending e-mails to admins of classes (applyForm - line 24)
 Done		16) Make action buttons work
 Done		17) Change date format on list page
-Actual	 	18) Comment the code
+Done	 	18) Comment the code
 Done		19) Make accepting and declining applications work on classManagement page
 Done		20) Make short names (<5 characters) invalid during registration
 Done		21) Encrypt user passwords before saving them in the database
