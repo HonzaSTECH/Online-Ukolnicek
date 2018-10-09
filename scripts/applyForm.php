@@ -81,7 +81,7 @@
 			fileLog("Uživatel $user zažádal o přijetí do třídy $class");
 			
 			//Redirecting to the home page
-			echo "<script>alert(Vaše žádost o přijetí do této třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte na stránce se seznamem tříd.);</script>";
+			echo "<script>alert('Vaše žádost o přijetí do této třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte na stránce se seznamem tříd.');</script>";
 			echo "<script type='text/javascript'>location.href = 'home.php';</script>";
 		}
 	?>
