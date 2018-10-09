@@ -17,5 +17,10 @@
 		Vytvořeno v roce 2018
 	</span>
 	<br />
+	<div id="news">
+		<?php
+			include 'news.php';
+		?>
+	</div>
 	<a href="home.php">Návrat</a>
 </body>
