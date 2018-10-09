@@ -40,27 +40,6 @@ body{
 	vertical-align: middle;
 	text-align: center;
 }
-/*#homeBox{
-	width: 15vw;
-	height: 10vh;
-	margin: 0;
-	border: 0;
-	background-color: #9999FF;
-	text-align: center;
-	font-size: 4vh;
-	position: absolute;
-	right: 16vw;
-	overflow: hide;
-	display: inline-table;
-}
-#homeLink{
-	color:  #6666CC;
-	text-decoration: none;
-	margin: 0;
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-}*/
 #infoBox{
 	width: 15vw;
 	height: 10vh;
