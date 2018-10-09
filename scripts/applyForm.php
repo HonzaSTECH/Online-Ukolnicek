@@ -23,6 +23,7 @@
 
 		if(isset($_POST['posted'])){
 			
+			//Getting ID of the class
 			$class = $_SESSION['applyClass'];
 			$query = "SELECT id FROM classes WHERE name='$class'";
 			mysqli_query($connection, $query);
@@ -30,6 +31,7 @@
 			$class = $result['id'];
 			unset($_SESSION['applyClass']);
 			
+			//Getting e-mail of the admin of the class
 			$query = "SELECT admin FROM classes WHERE name='$class'";
 			$result = mysqli_query($connection, $query);
 			if (!$result){echo "An error occured. Error: ".mysqli_error();}
@@ -38,24 +40,28 @@
 			$query = "SELECT email FROM users WHERE name='$admin'";
 			$result = mysqli_query($connection, $query);
 			if (!$result){echo "An error occured. Error: ".mysqli_error();}
-			$toemail = mysqli_fetch_array($result);
-			$toemail = $toemail['email'];
+			$email = mysqli_fetch_array($result);
+			$email = $toemail['email'];
 
+			//Getting application details
 			$user = $_SESSION['user'];
 			$name = $_POST['name'];
 			$surname = $_POST['surname'];
 			$message = $_POST['message'];
 			
+			//Writing the application into the database
 			$timestamp = time();
 			$query = "INSERT INTO applications (nickname, name, surname, message, class, age) VALUES ('$user', '$name', '$surname', '$message', '$class', '$timestamp')";
 			$result = mysqli_query($connection, $query);
+			
+			//Checking for error
 			if(!$result){echo "An Error occured. Error: ".mysqli_error($connection);}
 			
-			//Sending e-mail to the admin of the class
+			//Building e-mail for the admin
 			$message = wordwrap($message, 70, "\r\n");
 			
-			$to = $toemail;
 			$email_subject = "Žádost o přijetí to třídy od: $name $surname";
+			//Building e-mail body
 			$email_body = "Detaily žádosti:".
 			"\nJméno: $name".
 			"\nPřijímení: $surname".
@@ -66,10 +72,16 @@
 			"\nTuto Žadost schvalte pouze v případě, že jste si jistí kdo tento uživatel ve skutečnosti je.".
 			"\nTento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.".
 			$headers = "From: info@seznamtestu.chytrak.cz\n";
-			mail($to,$email_subject,$email_body,$headers);
+			
+			//Sending e-mail to the admin of the class
+			mail($email,$email_subject,$email_body,$headers);
+			
+			//Logging the application
 			$user = $_SESSION['user'];
 			fileLog("Uživatel $user zažádal o přijetí do třídy $class");
-			echo "Vaše žádost o přijetí do této třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte na stránce se seznamem tříd (<a href='home.php'>zde</a>).<br />";
+			
+			//Redirecting to the home page
+			echo "<script>alert(Vaše žádost o přijetí do této třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte na stránce se seznamem tříd.);</script>";
 			echo "<script type='text/javascript'>location.href = 'home.php';</script>";
 		}
 	?>
