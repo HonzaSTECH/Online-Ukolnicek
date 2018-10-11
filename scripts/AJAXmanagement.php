@@ -35,8 +35,6 @@
 	}
 	
 	echo "$nickname\n$message\n$class\n$action\n$admin";
-	//$message = urlencode($message);
-	str_replace("\n", "(char)13+(char)10", $message);
 	echo "\n $message";
 	echo "\n";
 	$query = "DELETE FROM applications WHERE nickname='$nickname' AND message='$message' AND class='$class'";
