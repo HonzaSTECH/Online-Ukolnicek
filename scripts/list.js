@@ -186,7 +186,10 @@ function upvoteRecord(event)
 	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
 	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
 	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
+	
+	//Altering DOM table
 	event.target.parentNode.parentNode.childNodes[11].innerHTML = (Number(event.target.parentNode.parentNode.childNodes[11].innerHTML )+ 1);
+	event.target.parentNode.removeChild(event.target.parentNode.childNodes[0]);
 	
 	//Save date, subject and description value into cookie so PHP can access it
 	document.cookie = "date=" + date;

@@ -1,12 +1,13 @@
 <?php
 	session_start();
 	require 'checker.php';
-	check(true, true);
+	check(true, true, true);
+	require 'connect.php';
 ?>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="shortcut icon" href="../images/marklessLogo.ico">
 		<link rel="stylesheet" href="../styles/classManagement.css">
 		<script src="classManagement.js"></script>
 	</head>
@@ -40,12 +41,15 @@
 			</nav>
 			<div id="container">
 				<div id="tab1">
-					ID třídy: <?php echo $_SESSION['class'];?>
+					ID třídy:
+					<?php
+						//Displaying ID of the class
+						echo $_SESSION['class'];
+					?>
 				</div>
 				<div id="tab2">
 					<?php
-						require_once('connect.php');
-						
+						//Displaying subjects in the class
 						$class = $_SESSION['class'];
 						$query = "SELECT subjects FROM classes WHERE id='$class'";
 						$result = mysqli_query($connection, $query);
@@ -68,6 +72,7 @@
 					<div id="subjectsForm">
 						<form method="POST" action="classManagement.php">
 							<?php
+								//Displaying subjects of the class as default values in the input fields
 								$class = $_SESSION['class'];
 								$query = "SELECT subjects FROM classes WHERE id='$class'";
 								$result = mysqli_query($connection, $query);
@@ -87,10 +92,12 @@
 							<button onclick="hideForm(event)">Zrušit</button>
 						</form>
 						<?php
+							//Handling form submit
 							if(isset($_POST['save']))
 							{
 								$subjects = array();
 								//TODO -make it look better
+								//Nesting new subjects in the array
 								array_push($subjects, $_POST['sub1']);
 								array_push($subjects, $_POST['sub2']);
 								array_push($subjects, $_POST['sub3']);
@@ -112,12 +119,16 @@
 								array_push($subjects, $_POST['sub19']);
 								array_push($subjects, $_POST['sub20']);
 								
+								//Connecting the subjects together
 								$subjects = implode(',',$subjects);
 								$class = $_SESSION['class'];
-								echo $subjects;
+								
+								//Updating the database
 								$query = "UPDATE classes SET subjects = '$subjects' WHERE id = $class";
 								unset($class);
 								mysqli_query($connection, $query);
+								
+								//Reloading the page
 								echo "<script type='text/javascript'>location.href = 'classManagement.php';</script>";
 							}
 						?>
@@ -127,6 +138,7 @@
 				<div id="tab3">
 
 					<?php
+						//Displaying the table of members of the class
 						require_once('connect.php');
 						$query = "SELECT id, name, memberIn, modIn, adminIn FROM `users` WHERE memberIn != 0";
 						$result = mysqli_query($connection, $query);
@@ -135,6 +147,7 @@
 						$mods = array();
 						$members = array();
 						
+						//Transforming data from the database into arrays
 						while($data = mysqli_fetch_array($result))
 						{
 							$adminClasses = explode(',',$data['adminIn']);
@@ -146,30 +159,36 @@
 						}
 						
 						echo "<table border=1>";
-						foreach($admins as $user)
-						{
-							echo "<tr><td class='rank3'>Administrátor</td><td class='username'>$user</td><td class='action'></td></tr>";
-						}
-						foreach($mods as $user)
-						{
-							echo "<tr><td class='rank2'>Moderátor</td><td class='username'>$user</td><td class='action'><select value='Moderátor'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
-						}
-						foreach($members as $user)
-						{
-							echo "<tr><td class='rank1'>Člen</td><td class='username'>$user</td><td class='action'><select value='Člen'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
-						}
+							//Displaying admins
+							foreach($admins as $user)
+							{
+								echo "<tr><td class='rank3'>Administrátor</td><td class='username'>$user</td><td class='action'></td></tr>";
+							}
+							//Displaying moderators
+							foreach($mods as $user)
+							{
+								echo "<tr><td class='rank2'>Moderátor</td><td class='username'>$user</td><td class='action'><select value='Moderátor'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
+							}
+							//Displaying members
+							foreach($members as $user)
+							{
+								echo "<tr><td class='rank1'>Člen</td><td class='username'>$user</td><td class='action'><select value='Člen'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
+							}
 						echo "</table>";
 					?>
 					
 				</div>
 				<div id="tab4">
 					<?php
+						//Displaying applications to the class
 						require_once('connect.php');
 						$class = $_SESSION['class'];
 						$query = "SELECT * FROM applications WHERE class='$class' ORDER BY age";
 						$result = mysqli_query($connection, $query);
 						mysqli_close($connection);
 						$exist = 0;
+						
+						//Printing the table
 						while($data = mysqli_fetch_array($result)){
 							$exist++;
 							if ($exist == 1){echo "<table border=1><tr><th align='center' id='nicknameHeader'>Přezdívka</th><th align='center' id='nameHeader'>Jméno</th><th align='center' id='surnameHeader'>Přijímení</th><th align='center' id='messageHeader'>Zpráva</th><th align='center' id='actionHeader'>Akce</td></tr>";}
@@ -179,6 +198,8 @@
 							$d = $data['message'];
 							echo "<tr><td align='center' class='nicknameColumn'>$a</td><td align='center' class='nameColumn'>$b</td><td align='center' class='surnameColumn'>$c</td><td align='center' class='messageColumn'><div class='messageBox'>$d</div></td><td align='center' class='actionColumn'><button onclick='accept(event)' class='acceptButton'>Přijmout</button><br /><button onclick='decline(event)' class='declineButton'>Odmítnout</button></td><td class='hiddenClass'>$class</td></tr>";
 						}
+						
+						//Checking for an existing application
 						if($exist > 0){echo "</table>";}
 						else {echo "Žádné žádosti o přijetí.";}
 						
