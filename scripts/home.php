@@ -54,6 +54,9 @@
 				
 				//Printing the table
 				echo "<form action='classLogin.php' method='POST'><table>";
+				
+				$modClasses = array(0);
+				$adminClasses = array(0);
 				foreach ($classes as $class)
 				{
 					//Getting the name of the class
