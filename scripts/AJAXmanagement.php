@@ -49,7 +49,7 @@
 	
 	echo "$nickname\n$message\n$class\n$action\n$admin";	//Controll outputs
 	echo "\n $message";
-	
+
 	//Remove answered application from the database
 	$query = "DELETE FROM applications WHERE nickname='$nickname' AND message='$message' AND class='$class'";
 	
