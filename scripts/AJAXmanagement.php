@@ -4,7 +4,7 @@
 	
 	//Getting data from cookies
 	$nickname = $_COOKIE['nickname'];
-	$message = $_COOKIE['message'];
+	$message = urldecode($_COOKIE['message']);
 	$class = $_COOKIE['class'];
 	$admin = $_COOKIE['admin'];
 	$action = $_COOKIE['action'];
@@ -47,9 +47,14 @@
 			break;
 	}
 	
-	echo "$nickname<br />$message<br />$class<br/>$action<br />$admin";	//Controll output
+	echo "$nickname\n$message\n$class\n$action\n$admin";	//Controll outputs
+	echo "\n $message";
+	
 	//Remove answered application from the database
 	$query = "DELETE FROM applications WHERE nickname='$nickname' AND message='$message' AND class='$class'";
+	
+	echo "\n";
+	echo $query;
 	mysqli_query($connection, $query);
 	
 	//Check for errors

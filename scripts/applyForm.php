@@ -26,7 +26,7 @@
 			//Getting ID of the class
 			$class = $_SESSION['applyClass'];
 			$query = "SELECT id FROM classes WHERE name='$class'";
-			mysqli_query($connection, $query);
+			$result = mysqli_query($connection, $query);
 			$result = mysqli_fetch_array($result);
 			$class = $result['id'];
 			unset($_SESSION['applyClass']);
@@ -41,13 +41,16 @@
 			$result = mysqli_query($connection, $query);
 			if (!$result){echo "An error occured. Error: ".mysqli_error();}
 			$email = mysqli_fetch_array($result);
-			$email = $toemail['email'];
+			$email = $email['email'];
 
 			//Getting application details
 			$user = $_SESSION['user'];
 			$name = $_POST['name'];
 			$surname = $_POST['surname'];
 			$message = $_POST['message'];
+			
+			//Replacing linebreaks with <br>
+			$message = str_replace(array("\r\n"), '<br>', $message);
 			
 			//Writing the application into the database
 			$timestamp = time();
