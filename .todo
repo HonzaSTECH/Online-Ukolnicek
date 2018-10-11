@@ -15,7 +15,7 @@ Done		14) Make adding and removing subject possible for admins on classManagemen
 Done		15) Repair sending e-mails to admins of classes (applyForm - line 24)
 Done		16) Make action buttons work
 Done		17) Change date format on list page
-Waiting 	18) Comment the code
+Done	 	18) Comment the code
 Done		19) Make accepting and declining applications work on classManagement page
 Done		20) Make short names (<5 characters) invalid during registration
 Done		21) Encrypt user passwords before saving them in the database
@@ -25,6 +25,9 @@ Done		24) Repair adding new records
 Done		25) Make newly added record inserted on correct row without reloading the page
 Done		26) Remove horizontal scroll bar from the list page
 Waiting	27) Finish styling of classManagement page
-Actual		28) Repair bug with deleting answered applications with longer messages
+Planned	28) Repair bug with deleting answered applications with longer messages
 Done		29) Repair bug with normal members having moderator permissions
-Planned	30) Make liking a record possible only once per account
+Done		30) Make liking a record possible only once per account
+Done		31) Display a link to class management page only to admins of the class
+Waiting	32) Convert all the pages into HTML5 format.
+Done		33) Prepair the news page

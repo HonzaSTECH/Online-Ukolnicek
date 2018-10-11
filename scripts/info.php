@@ -5,7 +5,7 @@
 ?>
 <head>
 	<meta charset="utf-8">
-	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="shortcut icon" href="../images/marklessLogo.ico">
 	<link rel="stylesheet" href="../styles/info.css">
 </head>
 <body>
@@ -17,5 +17,10 @@
 		Vytvořeno v roce 2018
 	</span>
 	<br />
+	<div id="news">
+		<?php
+			include 'news.php';
+		?>
+	</div>
 	<a href="home.php">Návrat</a>
 </body>

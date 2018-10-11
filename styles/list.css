@@ -441,19 +441,18 @@ td{
 	white-space: nowrap;
 	position: relative;
 	left: 42vw;
-}
-#noRecord{
-	position: absolute;
-	top: 25.05vh;
-	left: 0;
 	right: 0;
 	margin: auto;
-	height: 5.1vh;
-	width: 30vw;
+}
+#noRecord{
+	left: 0;
+	right: 0;
+	margin-right: auto;
+	margin-left: auto;
+	width: 100%;
+	height: 100%;
 	background-color: #CCCCCC;
-	border: 1px solid black;
 	text-align: center;
 	vertical-align: middle;
 	font-size: 5vh;
-	z-index: -1;
 }

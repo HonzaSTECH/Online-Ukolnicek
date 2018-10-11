@@ -3,6 +3,7 @@
 	require_once('connect.php');
 	include 'logger.php';
 	
+	//Getting data from cookies
 	$a = $_COOKIE['date'];
 	$b = $_COOKIE['subject'];
 	$c = $_COOKIE['description'];
@@ -10,11 +11,15 @@
 	$e = $_COOKIE['priority'];
 	
 	$classId = $_SESSION['class'];
-
+	
+	//Inserting new record into the database
 	$query = "INSERT INTO records (date, subject, description, author, dateOfAdding, priority, class) values ('$a', '$b', '$c', '$d', NOW(), '$e', '$classId')";
 	$result = mysqli_query($connection, $query);
+	
+	//Checking for errors
 	if ($result)
 	{
+		//Logging the new record
 		$user = $_SESSION['user'];
 		$query = "SELECT name FROM classes WHERE id='$classId'";
 		$result = mysqli_query($connection, $query);
