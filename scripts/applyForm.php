@@ -49,6 +49,9 @@
 			$surname = $_POST['surname'];
 			$message = $_POST['message'];
 			
+      //Replacing linebreaks with <br>
+      $message = str_replace(array("\r\n"), '<br>', $message);
+      
 			//Writing the application into the database
 			$timestamp = time();
 			$query = "INSERT INTO applications (nickname, name, surname, message, class, age) VALUES ('$user', '$name', '$surname', '$message', '$class', '$timestamp')";
