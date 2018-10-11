@@ -45,9 +45,11 @@ function accept(event){
 	//Removing the application from DOM
 	event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
 	
+	message = message.replace(/\r\n/g, '<br>').replace(/[\r\n]/g, '<br>');
+	
 	//Save nickname, message and class value into cookie so PHP can access it
 	document.cookie = "nickname=" + nickname;
-	document.cookie = "message=" + message;
+	document.cookie = "message=" + encodeURIComponent(message);
 	document.cookie = "class=" + applyClass;
 
 	document.cookie = "admin=" + user;
@@ -68,9 +70,11 @@ function decline(){
 	//Removing the application from DOM
 	event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
 	
+	message = message.replace(/\r\n/g, '<br>').replace(/[\r\n]/g, '<br>');
+	
 	//Save nickname, message and class value into cookie so PHP can access it
 	document.cookie = "nickname=" + nickname;
-	document.cookie = "message=" + message;
+	document.cookie = "message=" + encodeURIComponent(message);
 	document.cookie = "class=" + applyClass;
 
 	document.cookie = "admin=" + user;
