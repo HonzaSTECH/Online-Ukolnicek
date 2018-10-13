@@ -89,8 +89,4 @@
 		}
 	?>
 	<a href="apply.php">Návrat na seznam tříd</a>
-<<<<<<< HEAD
 </body>
-=======
-</body>
->>>>>>> 0986e609d528b2717f7fa4ef089600cd68b057b9

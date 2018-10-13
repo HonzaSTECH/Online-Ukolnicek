@@ -24,7 +24,7 @@
 		
 		//Handling form submit
 		if(isset($_POST['posted'])){ 
-			define('myemail' = 'honza.stech@gmail.com');
+			define('myemail', 'honza.stech@gmail.com');
 			
 			//Getting submission details
 			$name = $_POST['name'];
