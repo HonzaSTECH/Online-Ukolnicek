@@ -31,4 +31,5 @@ Done		30) Make liking a record possible only once per account
 Done		31) Display a link to class management page only to admins of the class
 Waiting	32) Convert all the pages into HTML5 format.
 Done		33) Prepair the news page
-Actual		34) Test and repair all the pages
+Done		34) Test and repair all the pages
+Waiting	35) Make the classManagement page fully functional and make managing applications possible for moderators

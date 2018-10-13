@@ -16,7 +16,7 @@
 			<input type="password" name="password" placeholder="Heslo" id="passwordInput" required><br />
 			<input type="password" name="password_repeat" placeholder="Heslo znovu" id="repeatPasswordInput" required><br />
 			<input type="email" name="email" placeholder="E-mail" id="emailInput" required>
-			<div id="termsInput"><br /><input type="checkbox" name="accept" id="checkbox"><br /><span id=termsText>Souhlasím se spracováním zadaných údajů pro účely této služby</span></div>
+			<div id="termsInput"><br /><input type="checkbox" name="accept" id="checkbox"><br /><span id=termsText>Souhlasím se zpracováním zadaných údajů pro účely této služby</span></div>
 			<input type="submit" name="send" value="Zaregistrovat se" id="submitButton">
 		</form>
 		<div id="loginLink">Jsi již zaregistrován? Přihlaš se <a href="login.php"><u>zde</u></a>.</div>
@@ -36,7 +36,7 @@
 				$accept = @$_POST['accept'];
 				
 				//Checking for acceptence of terms of service
-				if(!isset($accept)){echo "<div id='registerError'>Musíš udělit souhlas se spracováním zadaných údajů.</div>";}
+				if(!isset($accept)){echo "<div id='registerError'>Musíš udělit souhlas se zpracováním zadaných údajů.</div>";}
 				else		//Accepted terms
 				{
 					//Searching the database for an existing account with the same name

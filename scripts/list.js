@@ -81,9 +81,12 @@ function newRecord(event)
 		actionButton3.setAttribute("class", "action3");
 		actionButton3.setAttribute("onclick", "removeRecord(event)");
 		
+		var descText = document.getElementById("form3").value;
+		descText = descText.replace(/\r\n/g, '<br>').replace(/[\r\n]/g, '<br>');
+		
 		date.innerHTML = dateWork;
 		subject.innerHTML = document.getElementById("form2").value;
-		description.innerHTML = document.getElementById("form3").value;
+		description.innerHTML = descText;
 		author.innerHTML = "Vy";
 		dateOfAdding.innerHTML = today;
 		likes.innerHTML = "0";
@@ -128,7 +131,7 @@ function newRecord(event)
 		//Saving cookies for AJAX script
 		document.cookie = "date=" + document.getElementById("form1").value;
 		document.cookie = "subject=" + document.getElementById("form2").value;
-		document.cookie = "description=" + document.getElementById("form3").value;
+		document.cookie = "description=" + descText;
 		document.cookie = "priority=" + document.querySelector('input[name="priority"]:checked').value;
 		
 		getRequest("AJAXnewRecord.php", testFunc, testFunc);
@@ -136,9 +139,13 @@ function newRecord(event)
 	else						//Edditing a duplicate
 	{
 		var mult = (row.childNodes.length == 7 ? 0:1);
+		
+		var descText = document.getElementById("form3").value;
+		descText = descText.replace(/\r\n/g, '<br>').replace(/[\r\n]/g, '<br>');
+		
 		row.childNodes[0 + (1 * mult)].innerHTML = dateWork;
 		row.childNodes[1 + (2 * mult)].innerHTML = document.getElementById("form2").value;
-		row.childNodes[2 + (3 * mult)].innerHTML = document.getElementById("form3").value;
+		row.childNodes[2 + (3 * mult)].innerHTML = descText;
 		row.childNodes[0 + (1 * mult)].setAttribute("bgColor", recordColor);
 		row.childNodes[1 + (2 * mult)].setAttribute("bgColor", recordColor);
 		row.childNodes[2 + (3 * mult)].setAttribute("bgColor", recordColor);
@@ -149,7 +156,7 @@ function newRecord(event)
 		
 		document.cookie = "newDate=" + document.getElementById("form1").value;
 		document.cookie = "newSubject=" + document.getElementById("form2").value;
-		document.cookie = "newDescription=" + document.getElementById("form3").value;		//Saving new values into cookies so PHP can access it
+		document.cookie = "newDescription=" + descText;		//Saving new values into cookies so PHP can access it
 		document.cookie = "newPriority=" + document.querySelector('input[name="priority"]:checked').value;
 		document.cookie = "action=E";
 	
@@ -209,6 +216,8 @@ function editRecord(event)
 	var date = event.target.parentNode.parentNode.childNodes[0 + (1 * mult)].innerHTML;
 	var subject = event.target.parentNode.parentNode.childNodes[1 + (2 * mult)].innerHTML;
 	var desc = event.target.parentNode.parentNode.childNodes[2 + (3 * mult)].innerHTML;
+	
+	desc = desc.replace(/<br>/g, '\r\n');
 	
 	var dateTemp = date;
 
