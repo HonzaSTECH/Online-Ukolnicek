@@ -1,7 +1,7 @@
 <?php	session_start();		?>
 <head>
 	<meta charset="utf-8">
-	<link rel="shortcut icon" href="../images/marklessLogo.ico">
+	<link rel="shortcut icon" href="../images/transparentMarklessLogo.ico">
 	<link rel="stylesheet" href="../styles/newClass.css">
 </head>
 <body>
