@@ -1,3 +1,127 @@
-div{
-	
+body{
+    background-image:url("../images/BGimage.JPG");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+#registerBox{
+    border: 1vw dashed #777700;
+    border-radius: 20%;
+    background-color: #FFBB77;
+    width: 50vw;
+    height: 84vh;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#registerForm{
+    height: 64vh;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+}
+#usernameInput{
+    font-size: 5vh;
+    width: 40vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    height: 8vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+#passwordInput{
+    font-size: 5vh;
+    width: 40vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    height: 8vh;
+    margin-top: 3vh;
+    margin-bottom: 0;
+    text-align: center;
+}
+#repeatPasswordInput{
+    font-size: 5vh;
+    width: 40vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    height: 8vh;
+    margin-top: 3vh;
+    margin-bottom: 0;
+    text-align: center;
+}
+#emailInput{
+    font-size: 5vh;
+    width: 40vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    height: 8vh;
+    margin-top: 3vh;
+    margin-bottom: 0;
+    text-align: center;
+}
+#termsInput{
+    font-size: 3vh;
+    text-align: center;
+    width: 40vw;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    height: 11vh;
+    margin-top: 1vh;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: auto;
+}
+#checkbox{
+	transform: scale(3);
+	position: relative;
+	top: -1vh;
+}
+#termsText{
+	display: block;
+}
+#submitButton{
+    font-size: 5vh;
+    font-size: 3vh;
+    width: 20vw;
+    margin-right: 15vw;
+    margin-left: 15vw;
+    height: 8vh;
+    margin-top: 2vh;
+    margin-bottom: 0;
+    text-align: center;
+}
+#loginLink{
+	width: 50vw;
+	text-align: center;
+	font-size: 2vh;
+	color: green;
+	margin-bottom: 2vh;
+}
+a:link{
+	color:blue;
+}
+a:visited{
+	color:blue;
+}
+a:hover{
+	color:red;
+}
+a:active{
+	color:yellow;
+}
+#registerError{
+	width: 50vw;
+	text-align: center;
+	font-size: 4vh;
+	color: red;
+}
+#successMessage{
+	width: 50vw;
+	text-align: center;
+	font-size: 4vh;
+	color: green;
+	font-weight: bold;
 }

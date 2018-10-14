@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+		<circle fill="#ffff77" cx="64" cy="64" r="64" />
+	
+		<ellipse fill="#ffaaaa" cx="64" cy="80" rx="42" ry="48" />
+		
+		<ellipse fill="#444444" cx="64" cy="64" rx="40" ry="16" />
+		<rect fill="#444444" x="24" y="32" width="80" height="32" />
+		
+		<polygon fill="#333333" points="119,32 120,32 120,40 64,64 8,40 8,32 9,32 64,55" />
+		<polygon fill="#444444" points="64,8 120,32 64,56 8,32" />
+		
+		<circle stroke="#777777" cx="64" cy="32" r="3" />
+		<line style="stroke-linecap: round; stroke-linejoin: miter;" stroke="#eeb700" stroke-width="4" x1="64" y1="32" x2="36" y2="44" />
+		<line style="stroke-linecap: round; stroke-linejoin: miter;" stroke="#eeb700" stroke-width="4" x1="36" y1="44" x2="36" y2="68" />
+		<circle fill="#eeb700" cx="36" cy="68" r="4" />
+	</svg>
