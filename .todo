@@ -10,7 +10,7 @@ Waiting	9) Style info page
 Waiting	10) Improve styling of home page
 Done		11) Improve styling of list page
 Done 		12) Remove "Author" input field from "Add record" form and use name of logged user instead
-Waiting	13) Improve styling of index page
+Done		13) Improve styling of index page
 Done		14) Make adding and removing subject possible for admins on classManagement page
 Done		15) Repair sending e-mails to admins of classes (applyForm - line 24)
 Done		16) Make action buttons work
