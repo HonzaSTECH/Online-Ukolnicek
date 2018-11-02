@@ -61,6 +61,7 @@ body{
 	vertical-align: middle;
 	text-align: center;
 }
+/*------------------------------------*/
 #leftSidebar{
 	background-color: #FF9999;
 	margin: 0;
@@ -148,8 +149,12 @@ table{
 	transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 #applyBox:hover{
-	width: 19vw;
-	height: 21vh;
+	width: 15vw;
+	height: 15vh;
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+	padding-left: 2vw;
+	padding-right: 2vw;
 	margin-bottom: 4vh;
 	margin-top: 4vh;
 	margin-left: 2vw;
@@ -182,12 +187,21 @@ table{
 	transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 #newClassBox:hover{
-	width: 19vw;
-	height: 21vh;
+	width: 15vw;
+	height: 15vh;
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+	padding-left: 2vw;
+	padding-right: 2vw;
 	margin-bottom: 4vh;
 	margin-top: 4vh;
 	margin-left: 2vw;
 	margin-right: 2vw;
+	border: 1vw dashed #BBEEFF;
+	background-color: #99CCFF;
+	font-size: 5vh;
+	float: right;
+	display: inline-table;
 }
 #newClassLink{
 	color: #6699CC;
