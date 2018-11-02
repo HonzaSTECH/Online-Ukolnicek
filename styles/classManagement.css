@@ -4,38 +4,45 @@ body{
 }
 /*---------------------------*/
 #header{
-	width: 98vw;
+	border-radius: 5vh;
+	width: 96vw;
 	height: 10vh;
 	margin-left: 1vw;
 	margin-right: 1vw;
 	margin-top: 1vh;
 	margin-bottom: 1vh;
-	background-color: #999999;
+	padding-left: 2vw;
+	background-color: #99AAFF;
 	display: inline-table;
-	overflow: auto;
 }
 #username{
 	display: table-cell;
 	vertical-align: middle;
 	font-size: 5vh;
 	text-align: left;
-	color: #0000BB;
+	color: #3737FF;
 }
 #logoutBox{
-	width: 15vw;
-	height: 10vh;
-	margin: 0;
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
 	border: 0;
-	background-color: #99FFFF;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #66ff88;
 	text-align: center;
 	font-size: 4vh;
-	position: absolute;
 	right: 1vw;
-	overflow: hide;
 	display: inline-table;
+	float: right;
 }
 #logoutLink{
-	color: #66CCCC;
+	color: #6666CC;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
@@ -43,20 +50,26 @@ body{
 	text-align: center;
 }
 #infoBox{
-	width: 15vw;
-	height: 10vh;
-	margin: 0;
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
 	border: 0;
-	background-color: #99FF99;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #66ff88;
 	text-align: center;
 	font-size: 4vh;
-	position: absolute;
 	right: 16vw;
-	overflow: hide;
 	display: inline-table;
+	float: right;
 }
 #infoLink{
-	color: #66CC66;
+	color: #6666CC;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
@@ -64,17 +77,23 @@ body{
 	text-align: center;
 }
 #homeBox{
-	width: 15vw;
-	height: 10vh;
-	margin: 0;
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
 	border: 0;
-	background-color: #9999FF;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #66FF88;
 	text-align: center;
 	font-size: 4vh;
-	position: absolute;
-	right: 31vw;
-	overflow: hide;
+	right: 1vw;
 	display: inline-table;
+	float: right;
 }
 #homeLink{
 	color:  #6666CC;
@@ -85,20 +104,26 @@ body{
 	text-align: center;
 }
 #classBox{
-	width: 15vw;
-	height: 10vh;
-	margin: 0;
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
 	border: 0;
-	background-color: #FFFF99;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #66FF88;
 	text-align: center;
 	font-size: 4vh;
-	position: absolute;
-	right: 46vw;
-	overflow: hide;
+	right: 1vw;
 	display: inline-table;
+	float: right;
 }
 #classLink{
-	color:  #CCCC66;
+	color:  #6666CC;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
