@@ -19,18 +19,26 @@
 				echo $_SESSION['user'];
 				?>
 			</span>
-			<div id="logoutBox">
-				<a href="login.php" id="logoutLink">Odhlásit se</a>
-			</div>
-			<div id="infoBox">
-				<a href="info.php" id="infoLink">Informace</a>
-			</div>
-			<div id="homeBox">
-				<a href="home.php" id="homeLink">Domů</a>
-			</div>
-			<div id="classBox">
-				<a href="list.php" id="classLink">Třída</a>
-			</div>
+			<a href="login.php">
+				<div id="logoutBox">
+					<span id="logoutLink">Odhlásit se</span>
+				</div>
+			</a>
+			<a href="info.php">
+				<div id="infoBox">
+					<span id="infoLink">Informace</span>
+				</div>
+			</a>
+			<a href="home.php">
+				<div id="homeBox">
+					<span id="homeLink">Domů</span>
+				</div>
+			</a>
+			<a href="list.php">
+				<div id="classBox">
+					<span id="classLink">Třída</span>
+				</div>
+			</a>
 		</div>
 		<div id="main">
 			<nav>
