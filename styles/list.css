@@ -1,11 +1,23 @@
+@font-face { 
+	font-family: Ubuntu; 
+	font-weight: bold; 
+	src: url("../fonts/Ubuntu-Regular.ttf");
+}
+@font-face { 
+	font-family: Ubuntu-bold; 
+	font-weight: bold; 
+	src: url('../fonts/Ubuntu-Bold.ttf'); 
+}
+
 body{
 	background-color: #FFFF99;
 	margin: 0;
 }
 /*---------------------*/
 #header{
+	border: 0.3vw outset lightskyblue;
 	border-radius: 5vh;
-	width: 96vw;
+	width: 95.3vw;
 	height: 10vh;
 	margin-left: 1vw;
 	margin-right: 1vw;
@@ -16,7 +28,7 @@ body{
 	display: inline-table;
 }
 #home{
-	max-height: 88vh;
+	max-height: 86.4vh;
 	overflow: auto;
 	margin: 0;
 }
@@ -47,19 +59,41 @@ body{
 	margin-bottom: 1vh;
 	margin-left: 20px;
 	margin-right: 20px;
-	border: 0;
+	border: 3px outset #B477DD;
 	border-radius: 4vh;
 	padding-left: 50px;
 	padding-right: 50px;
-	background-color: #66ff88;
+	background-color: #d699ff;
 	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 1vw;
+	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#logoutBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
 	font-size: 4vh;
 	right: 1vw;
 	display: inline-table;
 	float: right;
 }
 #logoutLink{
-	color: #6666CC;
+	color: #FF3737;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
@@ -74,24 +108,47 @@ body{
 	margin-bottom: 1vh;
 	margin-left: 20px;
 	margin-right: 20px;
-	border: 0;
+	border: 3px outset #B477DD;
 	border-radius: 4vh;
 	padding-left: 50px;
 	padding-right: 50px;
-	background-color: #66ff88;
+	background-color: #d699ff;
 	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
+	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#infoBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
 	font-size: 4vh;
 	right: 16vw;
 	display: inline-table;
 	float: right;
 }
 #infoLink{
-	color: #6666CC;
+	color: #FF3737;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
+	transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 #homeBox{
 	width: fit-content;
@@ -101,19 +158,41 @@ body{
 	margin-bottom: 1vh;
 	margin-left: 20px;
 	margin-right: 20px;
-	border: 0;
+	border: 3px outset #B477DD;
 	border-radius: 4vh;
 	padding-left: 50px;
 	padding-right: 50px;
-	background-color: #66FF88;
+	background-color: #d699ff;
 	text-align: center;
+	font-family: "Ubuntu", Arial;
 	font-size: 4vh;
-	right: 1vw;
+	right: 16vw;
+	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#homeBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
 	display: inline-table;
 	float: right;
 }
 #homeLink{
-	color:  #6666CC;
+	color: #FF3737;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
@@ -128,19 +207,41 @@ body{
 	margin-bottom: 1vh;
 	margin-left: 20px;
 	margin-right: 20px;
-	border: 0;
+	border: 3px outset #B477DD;
 	border-radius: 4vh;
 	padding-left: 50px;
 	padding-right: 50px;
-	background-color: #66FF88;
+	background-color: #d699ff;
 	text-align: center;
+	font-family: "Ubuntu", Arial;
 	font-size: 4vh;
-	right: 1vw;
+	right: 16vw;
+	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#classManagementBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
 	display: inline-table;
 	float: right;
 }
 #classManagementLink{
-	color:  #6666CC;
+	color: #FF3737;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
