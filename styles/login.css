@@ -15,7 +15,7 @@ body{
 	background-size: 100% 100%;
 }
 #loginBox{
-	border: 3px dashed #000;
+	border: 3px outset #FF990080;
 	border-radius: 20%;
 	background-color: rgba(255,255,0,0.5);
 	width: 20vw;
@@ -56,7 +56,7 @@ fieldset{
 	margin: auto;
 	height: 100%;
 	background-color: rgba(48,48,255,0.65);
-	border: 1px solid black;
+	border: 2px dashed black;
 }
 #usernameInput{
 	font-size: 2vh;
