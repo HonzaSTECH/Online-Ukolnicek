@@ -1,4 +1,290 @@
+@font-face { 
+	font-family: Ubuntu; 
+	font-weight: bold; 
+	src: url("../fonts/Ubuntu-Regular.ttf");
+}
+@font-face { 
+	font-family: Ubuntu-bold; 
+	font-weight: bold; 
+	src: url('../fonts/Ubuntu-Bold.ttf'); 
+}
+body{
+	margin: 0;
+	background-image: url("../images/BGimage.JPG");
+	font-family: "Ubuntu", Arial;
+}
+/*------------------------------------*/
+#header{
+	border: 0.3vw outset lightskyblue;
+	border-radius: 5vh;
+	width: 95.3vw;
+	height: 10vh;
+	margin-left: 1vw;
+	margin-right: 1vw;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	padding-left: 2vw;
+	background-color: #99AAFF;
+	display: inline-table;
+}
+#container{
+	width: 35vw;
+	background-color: #FFFF99E6;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border: 3px outset gold;
+	border-radius: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+}
+/*------------------------------------*/
+#username{
+	font-family: "Ubuntu-Bold", Arial;
+	font-weight: bold;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 5vh;
+	text-align: left;
+	color: #3737FF;
+}
+#logoutBox{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #d699ff;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 1vw;
+	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#logoutBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 1vw;
+	display: inline-table;
+	float: right;
+}
+#logoutLink{
+	color: #FF3737;
+	text-decoration: none;
+	margin: 0;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+#infoBox{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #d699ff;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
+	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#infoBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
+	display: inline-table;
+	float: right;
+}
+#infoLink{
+	color: #FF3737;
+	text-decoration: none;
+	margin: 0;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+#homeBox{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #d699ff;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
+	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#homeBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
+	display: inline-table;
+	float: right;
+}
+#homeLink{
+	color: #FF3737;
+	text-decoration: none;
+	margin: 0;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+/*------------------------------------*/
+#infoText{
+	font-family: "Ubuntu-Bold", Arial;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+}
+form{
+	
+}
+/*------------------------------------*/
+fieldset{
+	font-family: "Ubuntu", Arial;
+}
+/*------------------------------------*/
+#name{
+	display: block;
+	position: relative;
+	left: 0;
+	right: 0;
+	width: 50%;
+	margin: auto;
+	font-size: 2em;
+	text-align: center;
+}
+#surname{
+	display: block;
+	position: relative;
+	left: 0;
+	right: 0;
+	width: 50%;
+	margin: auto;
+	margin-top: 1vh;
+	font-size: 2em;
+	text-align: center;
+}
+#school{
+	display: block;
+	position: relative;
+	left: 0;
+	right: 0;
+	width: 50%;
+	margin: auto;
+	margin-top: 1vh;
+	font-size: 2em;
+	text-align: center;
+}
+#class{
+	display: block;
+	position: relative;
+	left: 0;
+	right: 0;
+	width: 50%;
+	margin: auto;
+	margin-top: 1vh;
+	font-size: 2em;
+	text-align: center;
+}
+#email{
+	display: block;
+	position: relative;
+	left: 0;
+	right: 0;
+	width: 50%;
+	margin: auto;
+	margin-top: 1vh;
+	font-size: 2em;
+	text-align: center;
+}
 #text{
-    height: 100px;
-    width: 173px;
+	display: block;
+	position: relative;
+	left: 0;
+	right: 0;
+	width: 75%;
+	margin: auto;
+	margin-top: 1vh;
+	height: 6em;
+	resize: vertical;
+	font-size: 1.2em;
+}
+#submitButton{
+	display: block;
+	position: relative;
+	left: 0;
+	right: 0;
+	margin: auto;
+	margin-top: 1vh;
+	font-size: 2em;
 }

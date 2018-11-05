@@ -5,18 +5,48 @@
 	<link rel="stylesheet" href="../styles/newClass.css">
 </head>
 <body>
-	<p>Zažádat o založení nové třídy</p>
-	<p>Z důvodu zamezení zakládání nepotřebných a prázdných tříd a zaplňování omezeného místa v naší databázi je nutné k založení třídy vyplnit tento formulář.</p><br />
+	<div id="header">
+		<span id="username">
+			<?php
+			echo "Jsi přihlášen jako ";
+			echo $_SESSION['user'];
+			?>
+		</span>
+		<a href="login.php">
+			<div id="logoutBox">
+				<span id="logoutLink">Odhlásit se</span>
+			</div>
+		</a>
+		<a href="info.php">
+			<div id="infoBox">
+				<span id="infoLink">Informace</span>
+			</div>
+		</a>
+		<a href="home.php">
+			<div id="homeBox">
+				<span id="homeLink">Domů</span>
+			</div>
+		</a>
+	</div>
+	<div id="container">
+		<div id="infoText">
+			<p>Zažádat o založení nové třídy</p>
+			<p>Z důvodu zamezení zakládání nepotřebných a prázdných tříd a zaplňování omezeného místa v naší databázi je nutné k založení třídy vyplnit tento formulář.</p><br />
+		</div>
+		<form action="newClass.php" method="POST">
+			<fieldset>
+				<input type=text name="name" placeholder="Jméno" id="name" required>
+				<input type=text name="surname" placeholder="Přijímení" id="surname" required>
+				<input type=text name="school" placeholder="Škola" id="school" required>
+				<input type=text name="class" placeholder="Třída" id="class" required>
+				<input type=email name="email" placeholder="E-mail" id="email" required>
+				<textarea type="message" name="message" placeholder="Text žádosti"  id="text" required></textarea>
+				<input type=submit name="posted" value="Odeslat žádost" id="submitButton">
+			</fieldset>
+		</form>
+	</div>
+</body>
 
-	<form action="newClass.php" method="POST">
-		<input type=text name="name" placeholder="Jméno" required><br />
-		<input type=text name="surname" placeholder="Přijímení" required><br />
-		<input type=text name="school" placeholder="Škola" required><br />
-		<input type=text name="class" placeholder="Třída" required><br />
-		<input type=email name="email" placeholder="E-mail" required><br />
-		<textarea type="message" name="message" placeholder="Text žádosti" required id="text"></textarea><br /><br />
-		<input type=submit name="posted" value="Odeslat žádost"><br />
-	</form>
 	<?php
 		require 'checker.php';
 		check(true);
@@ -70,6 +100,3 @@
 			}
 		}
 	?>
-
-	<a href="home.php">Návrat na seznam tříd</a>
-</body>
