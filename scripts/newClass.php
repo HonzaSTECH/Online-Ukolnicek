@@ -30,8 +30,12 @@
 	</div>
 	<div id="container">
 		<div id="infoText">
-			<p>Zažádat o založení nové třídy</p>
-			<p>Z důvodu zamezení zakládání nepotřebných a prázdných tříd a zaplňování omezeného místa v naší databázi je nutné k založení třídy vyplnit tento formulář.</p><br />
+			<h2>Zažádat o založení nové třídy</h2>
+			<span id=subtext>
+				Z důvodu zamezení zakládání nepotřebných a prázdných tříd a zaplňování omezeného místa v naší databázi je nutné k založení třídy vyplnit tento formulář.<br />
+				Další komunikace bude probíhat prostřednictvím e-mailu, proto se prosím ujistěte, že jste zadali správnou e-mailovou adresu.<br />
+				Založení třídy je stejně jako všechny ostatní funkce bezplatné.
+			</span>
 		</div>
 		<form action="newClass.php" method="POST">
 			<fieldset>
