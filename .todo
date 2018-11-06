@@ -1,9 +1,9 @@
 Done		1) Change background picture on login and register page
 Done		2) When adding a record, write name of the class into log file instead of /*TODO*/
 Done		3) Display action buttons on list page depending on logged user and/or its status
-Waiting	4) Style apply page
-Waiting	5) Style applyForm page
-Actual		6) Style newClass page
+Actual	4) Style apply page
+Planned	5) Style applyForm page
+Done		6) Style newClass page
 Done		7) Style classManagement page
 Waiting	8) Write info page
 Waiting	9) Style info page
