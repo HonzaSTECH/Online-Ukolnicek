@@ -29,13 +29,13 @@ body{
 }
 #container{
 	width: 35vw;
-	background-color: #FFFF99E6;
+	background-color: #99FF99;
 	position: absolute;
 	left: 0;
 	right: 0;
 	margin: auto;
-	border: 0.3vw outset gold;
-	border-radius: 1vh;
+	border: 0.3vw outset #00CC00;
+	border-radius: 3vw;
 	padding-top: 1vh;
 	padding-left: 1vw;
 	padding-right: 1vw;
@@ -211,6 +211,9 @@ form{
 /*------------------------------------*/
 fieldset{
 	font-family: "Ubuntu", Arial;
+	border: 2px dashed black;
+	width: 80%;
+	margin: auto;
 }
 h2{
 	font-family: "Ubuntu-Bold", Arial;
@@ -228,7 +231,7 @@ h2{
 	width: 50%;
 	margin: auto;
 	font-family: "Ubuntu", Arial;
-	font-size: 2em;
+	font-size: 1.75em;
 	text-align: center;
 }
 #surname{
@@ -240,7 +243,7 @@ h2{
 	margin: auto;
 	margin-top: 1vh;
 	font-family: "Ubuntu", Arial;
-	font-size: 2em;
+	font-size: 1.75em;
 	text-align: center;
 }
 #school{
@@ -252,7 +255,7 @@ h2{
 	margin: auto;
 	margin-top: 1vh;
 	font-family: "Ubuntu", Arial;
-	font-size: 2em;
+	font-size: 1.75em;
 	text-align: center;
 }
 #class{
@@ -264,7 +267,7 @@ h2{
 	margin: auto;
 	margin-top: 1vh;
 	font-family: "Ubuntu", Arial;
-	font-size: 2em;
+	font-size: 1.75em;
 	text-align: center;
 }
 #email{
@@ -276,7 +279,7 @@ h2{
 	margin: auto;
 	margin-top: 1vh;
 	font-family: "Ubuntu", Arial;
-	font-size: 2em;
+	font-size: 1.75em;
 	text-align: center;
 }
 #text{
@@ -287,7 +290,7 @@ h2{
 	width: 75%;
 	margin: auto;
 	margin-top: 1vh;
-	height: 13.2em;
+	height: 14.4em;
 	resize: vertical;
 	font-family: "Ubuntu", Arial;
 	font-size: 1.2em;
