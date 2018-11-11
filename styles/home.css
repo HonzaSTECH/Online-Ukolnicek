@@ -185,6 +185,8 @@ fieldset{
 	overflow: auto;
 }
 table{
+	 text-align: center;
+	margin: auto;
 	width: 25vw;
 	font-size: 3vh;
 }

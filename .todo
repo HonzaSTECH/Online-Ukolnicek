@@ -1,8 +1,8 @@
 Done		1) Change background picture on login and register page
 Done		2) When adding a record, write name of the class into log file instead of /*TODO*/
 Done		3) Display action buttons on list page depending on logged user and/or its status
-Actual		4) Style apply page
-Planned	5) Style applyForm page
+Done		4) Style apply page
+Done		5) Style applyForm page
 Done		6) Style newClass page
 Done		7) Style classManagement page
 Waiting	8) Write info page
@@ -36,3 +36,8 @@ Waiting	35) Make the classManagement page fully functional and make managing app
 Waiting	36) Use jQuery on  the pages
 Waiting	37) Use Bootstrap on some pages
 Waiting	38) Optimalize all the pages for mobile phones
+Done		39) Fix the wrongly positioned scroll bar on the apply page
+Waiting	40) Make leaving a class possible
+Waiting	41) Inform users about acceptence or declining their join application
+Actual		42) Improve all e-mail sending mechanisms to look like that one on apply page
+Waiting	43) Improve displaying longer class names on the apply page
