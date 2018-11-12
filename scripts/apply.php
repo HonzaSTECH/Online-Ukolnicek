@@ -198,13 +198,16 @@
 				"<br /><br />".
 				"<br /><i>Žádost můžete přijmout nebo zamítnout na stránce se seznamem testů.".
 				"<br />Tuto Žadost schvalte pouze v případě, že jste si jistí kdo tento uživatel ve skutečnosti je.".
-				"<br />Tento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.</i>";
+				"<br />Tento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.</i>".
+				"<hr /><span style='color: rgb(102,102,102)';>Nechcete od nás dostávat další e-maily? Odhlašte se z odběru e-mailů <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
+				<br /><span style='color: rgb(135,135,135)';>Toto zruší pouze automaticky odesílamé e-maily. Pokud odešlete dotaz nebo připomínku, stále můžete dostanet webmasterem psanou odpověď.</span>";
 				
-				$headers = "From: Seznam testů info <info@seznamtestu.chytrak.cz>\n";
-				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+				//$headers = "From: Seznam testů info <info@seznamtestu.chytrak.cz>\n";
+				//$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 				
 				//Sending e-mail to the admin of the class
-				mail($email,$email_subject,$email_body,$headers);
+				require_once('mailer.php');
+				sendEmail($email,$email_subject,$email_body);
 				
 				//Logging the application
 				$user = $_SESSION['user'];
