@@ -188,19 +188,28 @@
 				//str_replace("<br>", "\n", $message);
 				$message = wordwrap($message, 70, "<br />");
 				
-				$email_subject = "Žádost o přijetí do třídy $className od: $name $surname";
+				$email_subject = "Nová žádost o přijetí do třídy $className od $name $surname";
 				//Building e-mail body
-				$email_body = "<h2>Detaily žádosti:</h2>".
-				"<b>Jméno:</b> $name".
-				"<br /><b>Přijímení:</b> $surname".
-				"<br /><b>Text žádosti:</b>".
-				"<br />$message".
-				"<br /><br />".
-				"<br /><i>Žádost můžete přijmout nebo zamítnout na stránce se seznamem testů.".
-				"<br />Tuto Žadost schvalte pouze v případě, že jste si jistí kdo tento uživatel ve skutečnosti je.".
-				"<br />Tento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.</i>".
-				"<hr /><span style='color: rgb(102,102,102)';>Nechcete od nás dostávat další e-maily? Odhlašte se z odběru e-mailů <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
-				<br /><span style='color: rgb(135,135,135)';>Toto zruší pouze automaticky odesílamé e-maily. Pokud odešlete dotaz nebo připomínku, stále můžete dostanet webmasterem psanou odpověď.</span>";
+				$email_body = "
+				<div style='width: 50%; border: 2px solid black; margin: auto; background-color: #FFFF99; padding:10px;text-align:center'>
+					<h2 style='position:relative;left:0;right:0;margin:auto;'>Detaily žádosti:</h2>
+					<fieldset style='width: 50%; position: relative; left:0; right:0; margin: auto;border-radius:20px;'>
+						<b>Jméno:</b> $name
+						<br /><b>Přijímení:</b> $surname
+						<br /><b>Text žádosti:</b>
+						<br />
+						<div style='border: 1px solid black; width: 50%;padding:5px;margin:auto;position:relative;left:0;right:0;'>
+							$message
+						</div>
+						<br />
+					</fieldset>
+					<br /><i>Žádost můžete přijmout nebo zamítnout na stránce se seznamem testů.
+					<br />Tuto Žadost schvalte pouze v případě, že jste si jistí kdo tento uživatel ve skutečnosti je.
+					<br />Tento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.</i>
+					<hr /><span style='color: rgb(102,102,102)';>Nechcete od nás dostávat další e-maily? Odhlašte se z odběru e-mailů <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
+					<br /><span style='color: rgb(135,135,135)';>Toto zruší pouze automaticky odesílané e-maily. Pokud odešlete dotaz nebo připomínku, stále můžete dostat webmasterem psanou odpověď.</span>
+				</div>
+				";
 				
 				//$headers = "From: Seznam testů info <info@seznamtestu.chytrak.cz>\n";
 				//$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
