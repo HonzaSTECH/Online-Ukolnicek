@@ -30,20 +30,80 @@
 			if(!$result){echo mysqli_error($connection);}
 			unset($result);
 			
+			//Building e-mail for the user
+			
+            $query = "SELECT name FROM classes WHERE id='$class'";
+            $result = mysqli_query($connection, $query);
+            $result = mysqli_fetch_array($result);
+            $classname = $result['name'];
+            
+            $query = "SELECT email FROM users WHERE name='$nickname'";
+            $result = mysqli_query($connection, $query);
+            $result = mysqli_fetch_array($result);
+            $email = $result['email'];
+            
+			$email_subject = "Žádost o přijetí do třídy $classname.";
+			//Building e-mail body
+			$email_body = "
+			<div style='width: 50%; border: 2px solid black; margin: auto; background-color: #FFFF99; padding:10px;text-align:center'>
+				<h2 style='position:relative;left:0;right:0;margin:auto;'>Stav vaší žádosti</h2>
+				<fieldset style='width: 50%; position: relative; left:0; right:0; margin: auto;border-radius:20px;'>
+					<span style='font-size: 1.5em;'>
+						Blahopřejeme, vaše žádost o přijetí do třídy $classname byla<br /><b style='color:limegreen;'>schválena</b>.<br />Vaší žádost vyřizoval uživatel $admin.
+					</span>
+				</fieldset>
+				<br /><i>Žádosti o přijetí do dalších tříd můžete zaslat na stránkách seznamtestu.chytrak.cz.
+				<br />Pokud chcete tuto třídu opustit, můžete tak učinit na stránce se seznamam tříd.
+				<br />Tento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.</i>
+				<hr /><span style='color: rgb(102,102,102)';>Nechcete od nás dostávat další e-maily? Odhlašte se z odběru e-mailů <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
+				<br /><span style='color: rgb(135,135,135)';>Toto zruší pouze automaticky odesílané e-maily. Pokud odešlete dotaz nebo připomínku, stále můžete dostat webmasterem psanou odpověď.</span>
+			</div>
+			";
+			
+			//Sending e-mail to the user
+			require_once('mailer.php');
+			sendEmail($email,$email_subject,$email_body);
+            
 			//Logging the accpetence
-			$query = "SELECT name FROM classes WHERE id=$class";
-			$result = mysqli_query($connection, $query);
-			$result = mysqli_fetch_array($result);
-			$result = $result['name'];
 			filelog("Uživatel $nickname byl přijat do třídy $result uživatelem $admin.");
 			break;
-		case 'd':	//Declining the application
+		case 'd':	//Declining the application			
+			//Building e-mail for the user
+			
+            $query = "SELECT name FROM classes WHERE id='$class'";
+            $result = mysqli_query($connection, $query);
+            $result = mysqli_fetch_array($result);
+            $classname = $result['name'];
+            
+            $query = "SELECT email FROM users WHERE name='$nickname'";
+            $result = mysqli_query($connection, $query);
+            $result = mysqli_fetch_array($result);
+            $email = $result['email'];
+            
+			$email_subject = "Žádost o přijetí do třídy $classname.";
+			//Building e-mail body
+			$email_body = "
+			<div style='width: 50%; border: 2px solid black; margin: auto; background-color: #FFFF99; padding:10px;text-align:center'>
+				<h2 style='position:relative;left:0;right:0;margin:auto;'>Stav vaší žádosti</h2>
+				<fieldset style='width: 50%; position: relative; left:0; right:0; margin: auto;border-radius:20px;'>
+					<span style='font-size: 1.5em;'>
+						Je nám líto, ale vaše žádost o přijetí do třídy $classname byla<br /><b style='color:red;'>zamítnuta</b>.<br />Vaší žádost vyřizoval uživatel $admin.
+					</span>
+				</fieldset>
+				<br /><i>Novou žádost můžete zaslat na stránkách seznamtestu.chytrak.cz.
+				<br />Pokud chcete znovu zažádat o přijetí do této třídy, doporučujeme vám napsat lepší text žádosti.
+				<br />Tento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.</i>
+				<hr /><span style='color: rgb(102,102,102)';>Nechcete od nás dostávat další e-maily? Odhlašte se z odběru e-mailů <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
+				<br /><span style='color: rgb(135,135,135)';>Toto zruší pouze automaticky odesílané e-maily. Pokud odešlete dotaz nebo připomínku, stále můžete dostat webmasterem psanou odpověď.</span>
+			</div>
+			";
+			
+			//Sending e-mail to the user
+			require_once('mailer.php');
+			sendEmail($email,$email_subject,$email_body);
+			
 			//Logging the declinence
-			$query = "SELECT name FROM classes WHERE id=$class";
-			$result = mysqli_query($connection, $query);
-			$result = mysqli_fetch_array($result);
-			$result = $result['name'];
-			filelog("Žádost uživatel $nickname o přijetí do třídy $claaa byla zamítnuta uživatelem $admin.");
+			filelog("Žádost uživatel $nickname o přijetí do třídy $class byla zamítnuta uživatelem $admin.");
 			break;
 	}
 	
