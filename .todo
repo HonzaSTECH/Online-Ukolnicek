@@ -41,3 +41,5 @@ Waiting	40) Make leaving a class possible
 Waiting	41) Inform users about acceptence or declining their join application
 Actual		42) Improve all e-mail sending mechanisms to look like that one on apply page
 Waiting	43) Improve displaying longer class names on the apply page
+Waiting 44) Remove controll alert messages from all pages that use AJAX
+Waiting 45) Make color of the record depend on subject and remove priority attribute
