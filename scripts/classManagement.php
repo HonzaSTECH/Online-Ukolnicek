@@ -49,11 +49,24 @@
 			</nav>
 			<div id="container">
 				<div id="tab1">
-					ID třídy:
+					ID třídy: 
 					<?php
 						//Displaying ID of the class
 						echo $_SESSION['class'];
 					?>
+					<br />
+					Jméno třídy: 
+					<?php
+						//Displaying name of the class
+						$classId = $_SESSION['class'];
+						$query = "SELECT name FROM classes WHERE id=$classId";
+						$result = mysqli_query($connection, $query);
+						$result = mysqli_fetch_array($result);
+						$className = $result['name'];
+						echo "<input type='text' id='className' value='$className' disabled>    ";
+					?>
+					<button onclick="changeClassName('<?php echo $className; ?>')" id="changeClassName">Změnit</button>
+					<button onclick="cancelNameChange('<?php echo $className; ?>')" id="cancelNameChange" style="display:none;">Zrušit</button>
 				</div>
 				<div id="tab2">
 					<?php

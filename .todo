@@ -24,7 +24,7 @@ Done		23) Make JS.js file more simple and efficient
 Done		24) Repair adding new records
 Done		25) Make newly added record inserted on correct row without reloading the page
 Done		26) Remove horizontal scroll bar from the list page
-Waiting	27) Finish styling of classManagement page
+Planned	27) Finish styling of classManagement page
 Done		28) Repair bug with deleting answered applications with longer messages
 Done		29) Repair bug with normal members having moderator permissions
 Done		30) Make liking a record possible only once per account
@@ -39,7 +39,10 @@ Waiting	38) Optimalize all the pages for mobile phones
 Done		39) Fix the wrongly positioned scroll bar on the apply page
 Waiting	40) Make leaving a class possible
 Waiting	41) Inform users about acceptence or declining their join application
-Actual		42) Improve all e-mail sending mechanisms to look like that one on apply page
+Done		42) Improve e-mail sending when a application is accepted or declined to look like that one on apply page
 Waiting	43) Improve displaying longer class names on the apply page
-Waiting 44) Remove controll alert messages from all pages that use AJAX
-Waiting 45) Make color of the record depend on subject and remove priority attribute
+Waiting 	44) Remove controll alert messages from all pages that use AJAX
+Planned 	45) Make color of the record depend on subject and remove priority attribute
+Waiting	46) Log actions executed on the classManagement page
+Waiting	47) Secure and satinize all database interactions
+Actual		48) Add new functionalities to the classManagement page

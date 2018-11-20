@@ -26,6 +26,32 @@ function fourthTab(){
 	
 	document.getElementById("tab4").style.display = "block";
 }
+function changeClassName(originalValue){
+	document.getElementById("className").removeAttribute("disabled");
+	document.getElementById("changeClassName").innerHTML = "Uložit";
+	document.getElementById("changeClassName").setAttribute("onclick","saveClassName('" + originalValue + "')");
+	document.getElementById("cancelNameChange").style.display = "inline";
+}
+function saveClassName(originalValue){
+	document.getElementById("className").setAttribute("disabled", "1");
+	document.getElementById("changeClassName").innerHTML = "Změnit";
+	document.getElementById("changeClassName").setAttribute("onclick","changeClassName()");
+	document.getElementById("cancelNameChange").style.display = "none";
+	
+	var newName = document.getElementById("className").value;
+	document.cookie = "nickname=" + originalValue;
+	document.cookie = "class=" + newName;
+	document.cookie = "action=n"
+	
+	getRequest("AJAXmanagement.php", testFunc, testFunc);
+}
+function cancelNameChange(originalValue){
+	document.getElementById("className").setAttribute("disabled", "1");
+	document.getElementById("className").innerHTML = originalValue;
+	document.getElementById("changeClassName").innerHTML = "Změnit";
+	document.getElementById("changeClassName").setAttribute("onclick","changeClassName()");
+	document.getElementById("cancelNameChange").style.display = "none";
+}
 function changeSubjects(){
 	document.getElementById("subjectsForm").style.display = "block";
 }
@@ -58,7 +84,7 @@ function accept(event){
 	//Opening AJAX request
 	getRequest("AJAXmanagement.php", testFunc, testFunc);
 }
-function decline(){
+function decline(event){
 	//Getting application details
 	var nickname = event.target.parentNode.parentNode.childNodes[0].innerHTML;
 	var message =  event.target.parentNode.parentNode.childNodes[3].childNodes[0].innerHTML;
@@ -83,8 +109,7 @@ function decline(){
 	//Opening AJAX request
 	getRequest("AJAXmanagement.php", testFunc, testFunc);
 }
-function getRequest(url, success, error)
-{
+function getRequest(url, success, error){
 	var req = false;
 	//Creating request
 	try

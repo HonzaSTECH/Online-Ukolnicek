@@ -32,16 +32,16 @@
 			
 			//Building e-mail for the user
 			
-            $query = "SELECT name FROM classes WHERE id='$class'";
-            $result = mysqli_query($connection, $query);
-            $result = mysqli_fetch_array($result);
-            $classname = $result['name'];
-            
-            $query = "SELECT email FROM users WHERE name='$nickname'";
-            $result = mysqli_query($connection, $query);
-            $result = mysqli_fetch_array($result);
-            $email = $result['email'];
-            
+			$query = "SELECT name FROM classes WHERE id='$class'";
+			$result = mysqli_query($connection, $query);
+			$result = mysqli_fetch_array($result);
+			$classname = $result['name'];
+			
+			$query = "SELECT email FROM users WHERE name='$nickname'";
+			$result = mysqli_query($connection, $query);
+			$result = mysqli_fetch_array($result);
+			$email = $result['email'];
+			
 			$email_subject = "Žádost o přijetí do třídy $classname.";
 			//Building e-mail body
 			$email_body = "
@@ -66,20 +66,28 @@
             
 			//Logging the accpetence
 			filelog("Uživatel $nickname byl přijat do třídy $result uživatelem $admin.");
+			
+			echo "$nickname\n$message\n$class\n$action\n$admin";	//Controll outputs
+			echo "\n $message";
+
+			//Remove answered application from the database
+			$query = "DELETE FROM applications WHERE nickname='$nickname' AND message='$message' AND class='$class'";
+			
 			break;
-		case 'd':	//Declining the application			
+			
+		case 'd':	//Declining the application
 			//Building e-mail for the user
 			
-            $query = "SELECT name FROM classes WHERE id='$class'";
-            $result = mysqli_query($connection, $query);
-            $result = mysqli_fetch_array($result);
-            $classname = $result['name'];
-            
-            $query = "SELECT email FROM users WHERE name='$nickname'";
-            $result = mysqli_query($connection, $query);
-            $result = mysqli_fetch_array($result);
-            $email = $result['email'];
-            
+			$query = "SELECT name FROM classes WHERE id='$class'";
+			$result = mysqli_query($connection, $query);
+			$result = mysqli_fetch_array($result);
+			$classname = $result['name'];
+			
+			$query = "SELECT email FROM users WHERE name='$nickname'";
+			$result = mysqli_query($connection, $query);
+			$result = mysqli_fetch_array($result);
+			$email = $result['email'];
+			
 			$email_subject = "Žádost o přijetí do třídy $classname.";
 			//Building e-mail body
 			$email_body = "
@@ -104,18 +112,24 @@
 			
 			//Logging the declinence
 			filelog("Žádost uživatel $nickname o přijetí do třídy $class byla zamítnuta uživatelem $admin.");
-			break;
-	}
-	
-	echo "$nickname\n$message\n$class\n$action\n$admin";	//Controll outputs
-	echo "\n $message";
+			
+			echo "$nickname\n$message\n$class\n$action\n$admin";	//Controll outputs
+			echo "\n $message";
 
-	//Remove answered application from the database
-	$query = "DELETE FROM applications WHERE nickname='$nickname' AND message='$message' AND class='$class'";
+			//Remove answered application from the database
+			$query = "DELETE FROM applications WHERE nickname='$nickname' AND message='$message' AND class='$class'";
+			
+			break;
+			
+			case 'n'://Changin name of the class
+				echo $class;
+				$query = "UPDATE classes SET name= '$class' WHERE name='$nickname'";
+				break;
+	}
 	
 	echo "\n";
 	echo $query;
-	mysqli_query($connection, $query);
+	$result = mysqli_query($connection, $query);
 	
 	//Check for errors
 	if(!$result){echo mysqli_error($connection);}
