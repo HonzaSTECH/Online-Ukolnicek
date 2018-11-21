@@ -3,11 +3,11 @@
 	include 'logger.php';
 	
 	//Getting data from cookies
-	$nickname = $_COOKIE['nickname'];
-	$message = urldecode($_COOKIE['message']);
-	$class = $_COOKIE['class'];
-	$admin = $_COOKIE['admin'];
-	$action = $_COOKIE['action'];
+	$nickname = @$_COOKIE['nickname'];
+	$message = @urldecode($_COOKIE['message']);
+	$class = @$_COOKIE['class'];
+	$admin = @$_COOKIE['admin'];
+	$action = @$_COOKIE['action'];
 	
 	//Perform a action depending on $action value
 	switch($action){
@@ -118,13 +118,24 @@
 
 			//Remove answered application from the database
 			$query = "DELETE FROM applications WHERE nickname='$nickname' AND message='$message' AND class='$class'";
-			
 			break;
 			
-			case 'n'://Changin name of the class
-				echo $class;
-				$query = "UPDATE classes SET name= '$class' WHERE name='$nickname'";
-				break;
+		case 'n'://Changin name of the class
+			$query = "UPDATE classes SET name='$class' WHERE name='$nickname'";
+			break;
+			
+		case 'c'://Closing the class
+			$query = "UPDATE classes SET open=false WHERE name='$nickname'";
+			break;
+			
+		case 'o'://Opening the class
+			$query = "UPDATE classes SET open=true WHERE name='$nickname'";
+			break;
+		
+		case 'r'://Removing all applications to the class
+			$classId = $_COOKIE['class'];
+			$query = "DELETE FROM applications WHERE class=$classId";
+			break;
 	}
 	
 	echo "\n";

@@ -52,6 +52,37 @@ function cancelNameChange(originalValue){
 	document.getElementById("changeClassName").setAttribute("onclick","changeClassName()");
 	document.getElementById("cancelNameChange").style.display = "none";
 }
+function changeClassStatus(originalValue, classNm, classId){
+	var action;
+	if(originalValue == true){action = "close";}
+	else{action = "open"}
+	
+	var newButtonValue = (action == "open") ? "Uzavřít třídu" : "Otevřít třídu";
+	var newValue = (action == "open") ? 1 : 0;
+	var newText = (action == "open") ? "Otevřená - žádosti o přijetí jsou zapnuty" : "Uzavřená - do třídy nelze zažádat o přijetí";
+	
+	document.getElementById("changeClassStatus").innerHTML = newButtonValue;
+	document.getElementById("changeClassStatus").setAttribute("onclick", "changeClassStatus(" + newValue + ",'" + classNm +"'," + classId +")");
+	document.getElementById("classStatus").innerHTML = newText;
+	
+	document.cookie = "nickname=" + classNm;
+	document.cookie = "action=" + action.charAt(0);		//c or o
+	
+	getRequest("AJAXmanagement.php", testFunc, testFunc);
+	
+	if(action == "close")
+	{
+		var clearApplications = confirm("Třída byla uzavřena. Přejete si odmítnout a vymazat všechny nevyřízené žádosti o přijetí do třídy?");
+		if(clearApplications == true)
+		{
+			document.cookie = "nickname=" + classNm;
+			document.cookie = "class=" + classId;
+			document.cookie = "action=r";
+	
+			getRequest("AJAXmanagement.php", testFunc, testFunc);
+		}
+	}
+}
 function changeSubjects(){
 	document.getElementById("subjectsForm").style.display = "block";
 }
