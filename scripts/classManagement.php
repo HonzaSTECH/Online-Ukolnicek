@@ -55,6 +55,7 @@
 						echo $_SESSION['class'];
 					?>
 					<br />
+					
 					Jméno třídy: 
 					<?php
 						//Displaying name of the class
@@ -67,6 +68,24 @@
 					?>
 					<button onclick="changeClassName('<?php echo $className; ?>')" id="changeClassName">Změnit</button>
 					<button onclick="cancelNameChange('<?php echo $className; ?>')" id="cancelNameChange" style="display:none;">Zrušit</button>
+					<br />
+					
+					Status třídy: 
+					<?php
+						//Displaying status (opened/locked) of the class
+						$query = "SELECT open FROM classes WHERE id=$classId";
+						$result = mysqli_query($connection, $query);
+						$result = mysqli_fetch_array($result);
+						$result = $result['open'];
+						
+						if(empty($result)){$result = 0;}	//Just to make sure
+						else {$result = 1;}
+						
+						if ($result){echo "<span id='classStatus'>Otevřená - žádosti o přijetí jsou zapnuty</span>"; $statusAction = "Uzavřít třídu";}
+						else{echo "<span id='classStatus'>Uzavřená - do třídy nelze zažádat o přijetí</span>"; $statusAction = "Otevřít třídu";}
+					?>
+					<button onclick="changeClassStatus(<?php echo $result.",'".$className."' ,".$classId; ?>)" id="changeClassStatus"><?php echo $statusAction ?></button>
+					
 				</div>
 				<div id="tab2">
 					<?php

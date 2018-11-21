@@ -59,7 +59,7 @@
 						$count--;
 						$query .= $class;
 						if($count > 0){$query .= ", ";}
-						else{$query .= ");";}
+						else{$query .= ") AND open=1;";}
 					}
 					$result = mysqli_query($connection, $query);
 					
