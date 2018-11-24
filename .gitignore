@@ -1,4 +1,8 @@
+backup/*
+local/*
 sketches/*
+scripts/unused/*
+styles/unused/*
 images/unused/*
 log.txt
 news.txt
