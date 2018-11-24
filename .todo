@@ -1,16 +1,16 @@
 Done		1) Change background picture on login and register page
 Done		2) When adding a record, write name of the class into log file instead of /*TODO*/
 Done		3) Display action buttons on list page depending on logged user and/or its status
-Waiting	4) Style apply page
-Waiting	5) Style applyForm page
-Waiting	6) Style newClass page
+Done		4) Style apply page
+Done		5) Style applyForm page
+Done		6) Style newClass page
 Done		7) Style classManagement page
 Waiting	8) Write info page
 Waiting	9) Style info page
-Waiting	10) Improve styling of home page
+Done		10) Improve styling of home page
 Done		11) Improve styling of list page
 Done 		12) Remove "Author" input field from "Add record" form and use name of logged user instead
-Waiting	13) Improve styling of index page
+Done		13) Improve styling of index page
 Done		14) Make adding and removing subject possible for admins on classManagement page
 Done		15) Repair sending e-mails to admins of classes (applyForm - line 24)
 Done		16) Make action buttons work
@@ -24,7 +24,7 @@ Done		23) Make JS.js file more simple and efficient
 Done		24) Repair adding new records
 Done		25) Make newly added record inserted on correct row without reloading the page
 Done		26) Remove horizontal scroll bar from the list page
-Waiting	27) Finish styling of classManagement page
+Planned	27) Finish styling of classManagement page
 Done		28) Repair bug with deleting answered applications with longer messages
 Done		29) Repair bug with normal members having moderator permissions
 Done		30) Make liking a record possible only once per account
@@ -36,3 +36,13 @@ Waiting	35) Make the classManagement page fully functional and make managing app
 Waiting	36) Use jQuery on  the pages
 Waiting	37) Use Bootstrap on some pages
 Waiting	38) Optimalize all the pages for mobile phones
+Done		39) Fix the wrongly positioned scroll bar on the apply page
+Waiting	40) Make leaving a class possible
+Waiting	41) Inform users about acceptence or declining their join application
+Done		42) Improve e-mail sending when a application is accepted or declined to look like that one on apply page
+Waiting	43) Improve displaying longer class names on the apply page
+Waiting 	44) Remove controll alert messages from all pages that use AJAX
+Planned 	45) Make color of the record depend on subject and remove priority attribute
+Waiting	46) Log actions executed on the classManagement page
+Waiting	47) Secure and satinize all database interactions
+Actual		48) Add new functionalities to the classManagement page

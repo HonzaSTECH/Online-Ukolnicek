@@ -11,13 +11,22 @@
 </head>
 <body>
 	<div id="registerBox">
+		<div id="header">Zaregistruj se</div>
 		<form method="POST" action="register.php" id="registerForm">
-			<input type="text" name="username" placeholder="Jméno" id="usernameInput" required><br />
-			<input type="password" name="password" placeholder="Heslo" id="passwordInput" required><br />
-			<input type="password" name="password_repeat" placeholder="Heslo znovu" id="repeatPasswordInput" required><br />
+			<fieldset>
+			<input type="text" name="username" placeholder="Jméno" id="usernameInput" required>
+			<br />
+			<input type="password" name="password" placeholder="Heslo" id="passwordInput" required>
+			<br />
+			<input type="password" name="password_repeat" placeholder="Heslo znovu" id="repeatPasswordInput" required>
+			<br />
 			<input type="email" name="email" placeholder="E-mail" id="emailInput" required>
-			<div id="termsInput"><br /><input type="checkbox" name="accept" id="checkbox"><br /><span id=termsText>Souhlasím se zpracováním zadaných údajů pro účely této služby</span></div>
+			<div id="termsInput">
+				<input type="checkbox" name="accept" id="checkbox">
+				<span id=termsText>Souhlasím se zpracováním zadaných údajů pro účely této služby</span>
+			</div>
 			<input type="submit" name="send" value="Zaregistrovat se" id="submitButton">
+			</fieldset>
 		</form>
 		<div id="loginLink">Jsi již zaregistrován? Přihlaš se <a href="login.php"><u>zde</u></a>.</div>
 		
