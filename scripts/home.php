@@ -17,18 +17,16 @@
 			echo $_SESSION['user'];
 			?>
 		</span>
-		<div id="logoutBox">
-			<a href="login.php" id="logoutLink">Odhlásit se</a>
-		</div>
-		<div id="infoBox">
-			<a href="info.php" id="infoLink">Informace</a>
-		</div>
-	</div>
-	<div id="leftSidebar">
-		<!-- TODO -->
-	</div>
-	<div id="rightSidebar">
-		<!-- TODO -->
+		<a href="login.php">
+			<div id="logoutBox">
+				<span id="logoutLink">Odhlásit se</span>
+			</div>
+		</a>
+		<a href="info.php">
+			<div id="infoBox">
+				<span id="infoLink">Informace</span>
+			</div>
+		</a>
 	</div>
 	<div id="middle">
 		<div id="titleBox">
@@ -53,7 +51,7 @@
 				$classes = explode(',', $data);
 				
 				//Printing the table
-				echo "<form action='classLogin.php' method='POST'><table>";
+				echo "<form action='classLogin.php' method='POST'><fieldset><table>";
 				
 				$modClasses = array(0);
 				$adminClasses = array(0);
@@ -77,14 +75,14 @@
 					if(!$data == '0'){$adminClasses = explode(',', $data);}
 					
 					//Displaying list of classes
-					echo "<tr><td class='selectorColumn'><input type=radio name='classSelect' value='$class' class='radioSelect'></td><td class='nameColumn'> $classData</td><td class='rankColumn'>";
+					echo "<tr><td class='selectorColumn'><input type=radio name='classSelect' value='$class' class='radioSelect' required></td><td class='nameColumn'> $classData</td><td class='rankColumn'>";
 					if(in_array($class, $adminClasses)){echo "Administrátor";}
 					else if(in_array($class, $modClasses)){echo "Moderátor";}
 					else{echo "Člen";}
 					echo "</td></tr>";
 				}
 				//Displaying the "ENTER" button
-				echo "</table><input type=submit value='Vstoupit' name='login' id='submitButton'></form>";
+				echo "</table></fieldset><input type=submit value='Vstoupit' name='login' id='submitButton'></form>";
 			}
 			else
 			{

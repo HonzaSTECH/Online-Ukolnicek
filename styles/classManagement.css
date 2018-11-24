@@ -1,41 +1,82 @@
+@font-face { 
+	font-family: Ubuntu; 
+	font-weight: bold; 
+	src: url("../fonts/Ubuntu-Regular.ttf");
+}
+@font-face { 
+	font-family: Ubuntu-bold; 
+	font-weight: bold; 
+	src: url('../fonts/Ubuntu-Bold.ttf'); 
+}
+
 body{
 	background-color: #FFFF99;
 	margin: 0;
 }
 /*---------------------------*/
 #header{
-	width: 98vw;
+	border: 0.3vw outset lightskyblue;
+	border-radius: 5vh;
+	width: 95.3vw;
 	height: 10vh;
 	margin-left: 1vw;
 	margin-right: 1vw;
 	margin-top: 1vh;
 	margin-bottom: 1vh;
-	background-color: #999999;
+	padding-left: 2vw;
+	background-color: #99AAFF;
 	display: inline-table;
-	overflow: auto;
 }
 #username{
 	display: table-cell;
 	vertical-align: middle;
 	font-size: 5vh;
 	text-align: left;
-	color: #0000BB;
+	color: #3737FF;
 }
 #logoutBox{
-	width: 15vw;
-	height: 10vh;
-	margin: 0;
-	border: 0;
-	background-color: #99FFFF;
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #d699ff;
 	text-align: center;
+	font-family: "Ubuntu", Arial;
 	font-size: 4vh;
-	position: absolute;
 	right: 1vw;
-	overflow: hide;
 	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#logoutBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 1vw;
+	display: inline-table;
+	float: right;
 }
 #logoutLink{
-	color: #66CCCC;
+	color: #FF3737;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
@@ -43,41 +84,98 @@ body{
 	text-align: center;
 }
 #infoBox{
-	width: 15vw;
-	height: 10vh;
-	margin: 0;
-	border: 0;
-	background-color: #99FF99;
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #d699ff;
 	text-align: center;
+	font-family: "Ubuntu", Arial;
 	font-size: 4vh;
-	position: absolute;
 	right: 16vw;
-	overflow: hide;
 	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#infoBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
+	display: inline-table;
+	float: right;
 }
 #infoLink{
-	color: #66CC66;
+	color: #FF3737;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
+	transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 #homeBox{
-	width: 15vw;
-	height: 10vh;
-	margin: 0;
-	border: 0;
-	background-color: #9999FF;
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #d699ff;
 	text-align: center;
+	font-family: "Ubuntu", Arial;
 	font-size: 4vh;
-	position: absolute;
-	right: 31vw;
-	overflow: hide;
+	right: 16vw;
 	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#homeBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
+	display: inline-table;
+	float: right;
 }
 #homeLink{
-	color:  #6666CC;
+	color: #FF3737;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
@@ -85,20 +183,48 @@ body{
 	text-align: center;
 }
 #classBox{
-	width: 15vw;
-	height: 10vh;
-	margin: 0;
-	border: 0;
-	background-color: #FFFF99;
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #d699ff;
 	text-align: center;
+	font-family: "Ubuntu", Arial;
 	font-size: 4vh;
-	position: absolute;
-	right: 46vw;
-	overflow: hide;
+	right: 16vw;
 	display: inline-table;
+	float: right;
+	transition: 1s cubic-bezier(0, 0, 0.2, 1);
+}
+#classBox:hover{
+	width: fit-content;
+	height: 8vh;
+	vertical-align: middle;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px outset #B477DD;
+	border-radius: 4vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #FF9999;
+	text-align: center;
+	font-family: "Ubuntu", Arial;
+	font-size: 4vh;
+	right: 16vw;
+	display: inline-table;
+	float: right;
 }
 #classLink{
-	color:  #CCCC66;
+	color: #FF3737;
 	text-decoration: none;
 	margin: 0;
 	display: table-cell;
@@ -108,16 +234,11 @@ body{
 /*---------------------------*/
 #main{
 	width: 49.8vw;
-	height: 86.8vh;
-	/*border-top: 0.1vh solid black;
-	border-left: 0.1vw solid black;
-	border-bottom: 0.1vh solid black;
-	border-right: 0.1vw solid black;*/
+	height: 86.4vh;
 	margin: auto;
 }
 /*---------------------------*/
 nav {
-	/*border: 1px solid black;*/
 	height: 4vh;
 	z-index: -1;
 	overflow: hidden;

@@ -26,6 +26,63 @@ function fourthTab(){
 	
 	document.getElementById("tab4").style.display = "block";
 }
+function changeClassName(originalValue){
+	document.getElementById("className").removeAttribute("disabled");
+	document.getElementById("changeClassName").innerHTML = "Uložit";
+	document.getElementById("changeClassName").setAttribute("onclick","saveClassName('" + originalValue + "')");
+	document.getElementById("cancelNameChange").style.display = "inline";
+}
+function saveClassName(originalValue){
+	document.getElementById("className").setAttribute("disabled", "1");
+	document.getElementById("changeClassName").innerHTML = "Změnit";
+	document.getElementById("changeClassName").setAttribute("onclick","changeClassName()");
+	document.getElementById("cancelNameChange").style.display = "none";
+	
+	var newName = document.getElementById("className").value;
+	document.cookie = "nickname=" + originalValue;
+	document.cookie = "class=" + newName;
+	document.cookie = "action=n"
+	
+	getRequest("AJAXmanagement.php", testFunc, testFunc);
+}
+function cancelNameChange(originalValue){
+	document.getElementById("className").setAttribute("disabled", "1");
+	document.getElementById("className").innerHTML = originalValue;
+	document.getElementById("changeClassName").innerHTML = "Změnit";
+	document.getElementById("changeClassName").setAttribute("onclick","changeClassName()");
+	document.getElementById("cancelNameChange").style.display = "none";
+}
+function changeClassStatus(originalValue, classNm, classId){
+	var action;
+	if(originalValue == true){action = "close";}
+	else{action = "open"}
+	
+	var newButtonValue = (action == "open") ? "Uzavřít třídu" : "Otevřít třídu";
+	var newValue = (action == "open") ? 1 : 0;
+	var newText = (action == "open") ? "Otevřená - žádosti o přijetí jsou zapnuty" : "Uzavřená - do třídy nelze zažádat o přijetí";
+	
+	document.getElementById("changeClassStatus").innerHTML = newButtonValue;
+	document.getElementById("changeClassStatus").setAttribute("onclick", "changeClassStatus(" + newValue + ",'" + classNm +"'," + classId +")");
+	document.getElementById("classStatus").innerHTML = newText;
+	
+	document.cookie = "nickname=" + classNm;
+	document.cookie = "action=" + action.charAt(0);		//c or o
+	
+	getRequest("AJAXmanagement.php", testFunc, testFunc);
+	
+	if(action == "close")
+	{
+		var clearApplications = confirm("Třída byla uzavřena. Přejete si odmítnout a vymazat všechny nevyřízené žádosti o přijetí do třídy?");
+		if(clearApplications == true)
+		{
+			document.cookie = "nickname=" + classNm;
+			document.cookie = "class=" + classId;
+			document.cookie = "action=r";
+	
+			getRequest("AJAXmanagement.php", testFunc, testFunc);
+		}
+	}
+}
 function changeSubjects(){
 	document.getElementById("subjectsForm").style.display = "block";
 }
@@ -58,7 +115,7 @@ function accept(event){
 	//Opening AJAX request
 	getRequest("AJAXmanagement.php", testFunc, testFunc);
 }
-function decline(){
+function decline(event){
 	//Getting application details
 	var nickname = event.target.parentNode.parentNode.childNodes[0].innerHTML;
 	var message =  event.target.parentNode.parentNode.childNodes[3].childNodes[0].innerHTML;
@@ -83,8 +140,7 @@ function decline(){
 	//Opening AJAX request
 	getRequest("AJAXmanagement.php", testFunc, testFunc);
 }
-function getRequest(url, success, error)
-{
+function getRequest(url, success, error){
 	var req = false;
 	//Creating request
 	try
