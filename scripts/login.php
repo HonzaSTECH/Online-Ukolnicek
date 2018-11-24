@@ -10,12 +10,15 @@
 </head>
 <body>
         <div id="loginBox">
+		<div id="header">Přihlaš se</div>
 		<form method="POST" action="login.php" id="loginForm">
-			<input type=text name="username" placeholder="Jméno" id="usernameInput" required>
-			<br />
-			<input type=password name="password" placeholder="Heslo" id="passwordInput" required>
-			<br />
-			<input type=submit name="send" value="Přihlásit se" id="submitButton">
+			<fieldset>
+				<input type=text name="username" placeholder="Jméno" id="usernameInput" required>
+				<br />
+				<input type=password name="password" placeholder="Heslo" id="passwordInput" required>
+				<br />
+				<input type=submit name="send" value="Přihlásit se" id="submitButton">
+			</fieldset>
 		</form>
 		<div id="registerLink">Ještě nemáš účet? Zaregistruj se <a href="register.php"><u>zde</u></a>.</div>
 		

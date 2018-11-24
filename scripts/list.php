@@ -31,15 +31,21 @@
 				echo $_SESSION['user'];
 				?>
 			</span>
-			<div id="logoutBox">
-				<a href="login.php" id="logoutLink">Odhlásit se</a>
-			</div>
-			<div id="infoBox">
-				<a href="info.php" id="infoLink">Informace</a>
-			</div>
-			<div id="homeBox">
-				<a href="home.php" id="homeLink">Domů</a>
-			</div>
+			<a href="login.php">
+				<div id="logoutBox">
+					<span id="logoutLink">Odhlásit se</span>
+				</div>
+			</a>
+			<a href="info.php">
+				<div id="infoBox">
+					<span id="infoLink">Informace</span>
+				</div>
+			</a>
+			<a href="home.php">
+				<div id="homeBox">
+					<span id="homeLink">Domů</span>
+				</div>
+			</a>
 			<?php
 				//Checking for user being admin of the class and displaying the classManagement link in case he is
 				require_once('connect.php');
@@ -51,9 +57,13 @@
 				$result = $result['admin'];
 				if($result == $username)
 				{
-					echo "<div id='classManagementBox'>
-						<a href='classManagement.php' id='classManagementLink'>Správa třídy</a>
-					</div>";
+					echo "
+					<a href='classManagement.php'>
+						<div id='classManagementBox'>
+							<span id='classManagementLink'>Správa třídy</span>
+						</div>
+					</a>
+					";
 				}
 			?>
 		</div>
