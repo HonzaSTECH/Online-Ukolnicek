@@ -1,63 +1,115 @@
+@font-face { 
+	font-family: Ubuntu; 
+	font-weight: bold; 
+	src: url("../fonts/Ubuntu-Regular.ttf");
+}
+@font-face { 
+	font-family: Ubuntu-bold; 
+	font-weight: bold; 
+	src: url('../fonts/Ubuntu-Bold.ttf'); 
+}
+
 body{
-    background-image:url("../images/BGimage.JPG");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+	background-image:url("../images/BGimage.JPG");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 #loginBox{
-    border: 1vw dashed #777700;
-    border-radius: 20%;
-    background-color: #FFBB77;
-    width: 50vw;
-    height: 50vh;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+	border: 3px outset #FF990080;
+	border-radius: 20%;
+	background-color: rgba(255,255,0,0.5);
+	width: 20vw;
+	height: 31.5vh;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+#header{
+	font-family: "Ubuntu-Bold", Arial;
+	font-weight: bold;
+	font-size: 2.5em;
+	text-align: center;
+	border: 3px dotted #00AA00;
+	border-radius: 9px;
+	background-color: rgba(48,255,48,0.75);
+	margin: auto;
+	margin-top: 1vh;
+	position: absolute;
+	left: 0;
+	right: 0;
+	display: inline;
+	width: 15vw;
 }
 #loginForm{
-    height: 30vh;
-    margin-top: 5vh;
-    margin-bottom: 2vh;
+	height: 12vh;
+	position: relative;
+	top: 8vh;
+}
+fieldset{
+	width: 13vw;
+	left: 0;
+	right: 0;
+	position: absolute;
+	margin: auto;
+	height: 100%;
+	background-color: rgba(48,48,255,0.65);
+	border: 2px dashed black;
 }
 #usernameInput{
-    font-size: 5vh;
-    width: 40vw;
-    margin-right: 5vw;
-    margin-left: 5vw;
-    height: 8vh;
-    margin-top: 0;
-    margin-bottom: 0;
-    text-align: center;
+	font-size: 2vh;
+	width: 12.5vw;
+	margin-right: auto;
+	margin-left: auto;
+	left: 0;
+	right: 0;
+	position: absolute;
+	height: 3vh;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
 }
 #passwordInput{
-    font-size: 5vh;
-    width: 40vw;
-    margin-right: 5vw;
-    margin-left: 5vw;
-    height: 8vh;
-    margin-top: 3vh;
-    margin-bottom: 0;
-    text-align: center;
+	font-size: 2vh;
+	width: 12.5vw;
+	margin-right: auto;
+	margin-left: auto;
+	left: 0;
+	right: 0;
+	position: absolute;
+	height: 3vh;
+	margin-top: 3vh;
+	margin-bottom: 0;
+	text-align: center;
 }
 #submitButton{
-    font-size: 5vh;
-    font-size: 3vh;
-    width: 20vw;
-    margin-right: 15vw;
-    margin-left: 15vw;
-    height: 8vh;
-    margin-top: 3vh;
-    margin-bottom: 0;
-    text-align: center;
+	font-size: 2vh;
+	width: 7vw;
+	margin-right: auto;
+	margin-left: auto;
+	left: 0;
+	right: 0;
+	position: absolute;
+	height: 3vh;
+	margin-top: 5vh;
+	margin-bottom: 0;
+	text-align: center;
 }
 #registerLink{
-	width: 50vw;
+	font-family: "Ubuntu", Arial;
+	width: 100%;
 	text-align: center;
-	font-size: 2vh;
+	font-size: 1.2em;
 	color: green;
 	margin-bottom: 2vh;
+	margin-right: auto;
+	margin-left: auto;
+	top: 10vh;
+	left: 0;
+	right: 0;
+	position: relative;
 }
 a:link{
 	color:blue;
@@ -72,15 +124,29 @@ a:active{
 	color:yellow;
 }
 #loginError{
-	width: 50vw;
+	font-family: "Ubuntu", Arial;
+	width: 100%;
 	text-align: center;
-	font-size: 4vh;
+	font-size: 1.2em;
 	color: red;
+	margin-right: auto;
+	margin-left: auto;
+	left: 0;
+	right: 0;
+	top: 9vh;
+	position: relative;
 }
 #successMessage{
-	width: 50vw;
+	font-family: "Ubuntu", Arial;
+	width: 100%;
 	text-align: center;
-	font-size: 4vh;
+	font-size: 1.2em;
 	color: green;
 	font-weight: bold;
+	margin-right: auto;
+	margin-left: auto;
+	left: 0;
+	right: 0;
+	top: 9vh;
+	position: relative;
 }

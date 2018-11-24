@@ -1,45 +1,104 @@
+@font-face { 
+	font-family: Ubuntu; 
+	font-weight: bold; 
+	src: url("../fonts/Ubuntu-Regular.ttf");
+}
+@font-face { 
+  font-family: Ubuntu-bold; 
+  font-weight: bold; 
+  src: url('../fonts/Ubuntu-Bold.ttf'); 
+}
+
 body{
 	margin: 0;
+	background-image:url("../images/BGimageSm.JPG");
+}
+fieldset{
+	width: 35vw;
+	margin: auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: #BBFFBB;
+	border: 0.3vw outset #00FFBB;
+	border-radius: 5%;
+}
+article{
+	border-radius: 2vh;
+	width: 33vw;
+	margin: auto;
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	left: 0;
+	right: 0;
+	border: 3px dotted black;
 }
 #main{
-	background-color: FFFF99;
-	margin-bottom: 0;
+	border-radius: 2vh;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	width: 100%;
+	margin: auto;
+	position: initial;
+	left: 0;
+	right: 0;
+	background-color: #FFFF66;
 }
 #welcomeText{
-	font-family: "Comic Sans MS", Arial;
+	font-family: "Ubuntu", Arial;
 	padding: 2vh;
-	border: 1px hidden;
 	text-align: center;
-	vertical-align: middle;
-	font-size: 10vh;
-	height: 25vh;
-	width: 100vw;
-	white-space: nowrap;
+	font-size: 4vh;
+	width: 92%;
+	position: initial;
+	left: 0;
+	right: 0;
+	margin: auto;
+	overflow: hidden;
+	white-space: pre-wrap;
 }
-#enterForm{
-	margin: 0;
+a{
+	border-radius: 2vh;
+	display: block;
+	height: 11vh;
+	margin: auto;
+	left: 0;
+	right: 0;
 }
 #enterButton{
-	font-family: "Comic Sans MS", Arial;
-	height: 10vh;
-	width: 26vw;
+	font-family: "Ubuntu-Bold", Arial;
+	height: 11vh;
+	width: 25vw;
 	font-size: 6vh;
-	margin-top: 5vh;
-	margin-bottom: 5vh;
-	margin-left: 37vw;
-	margin-right: 37vw;
-	color: #CC4444;
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	color: #FF5522;
 	font-weight: bolder;
-	background-color: #FFEE88;
+	background-color: #FFCC66;
 }
 hr{
 	margin-top: 0;
 	margin-bottom: 0;
 }
-#news{
-	padding-left: 10vw;
-	padding-right: 10vw;
+#newsHeader{
+	display: block;
+	font-size: 2em;
+	font-family: Ubuntu;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: underline;
+}
+#newsText{
+	max-height: 45vh;
+	border-radius: 2vh;
+	background-color: #BBBBFF;
+	overflow: auto;
 	padding-top: 2vh;
-	background-color: #FF99FF;
-	height: 47vh;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	font-size: 1.5em;
+	font-family: Ubuntu, Arial; 
 }

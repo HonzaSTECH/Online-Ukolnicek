@@ -1,8 +1,8 @@
 backup/*
 local/*
 sketches/*
+images/unused/*
 scripts/unused/*
 styles/unused/*
-images/unused/*
 log.txt
 news.txt

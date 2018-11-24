@@ -19,18 +19,26 @@
 				echo $_SESSION['user'];
 				?>
 			</span>
-			<div id="logoutBox">
-				<a href="login.php" id="logoutLink">Odhlásit se</a>
-			</div>
-			<div id="infoBox">
-				<a href="info.php" id="infoLink">Informace</a>
-			</div>
-			<div id="homeBox">
-				<a href="home.php" id="homeLink">Domů</a>
-			</div>
-			<div id="classBox">
-				<a href="list.php" id="classLink">Třída</a>
-			</div>
+			<a href="login.php">
+				<div id="logoutBox">
+					<span id="logoutLink">Odhlásit se</span>
+				</div>
+			</a>
+			<a href="info.php">
+				<div id="infoBox">
+					<span id="infoLink">Informace</span>
+				</div>
+			</a>
+			<a href="home.php">
+				<div id="homeBox">
+					<span id="homeLink">Domů</span>
+				</div>
+			</a>
+			<a href="list.php">
+				<div id="classBox">
+					<span id="classLink">Třída</span>
+				</div>
+			</a>
 		</div>
 		<div id="main">
 			<nav>
@@ -41,11 +49,43 @@
 			</nav>
 			<div id="container">
 				<div id="tab1">
-					ID třídy:
+					ID třídy: 
 					<?php
 						//Displaying ID of the class
 						echo $_SESSION['class'];
 					?>
+					<br />
+					
+					Jméno třídy: 
+					<?php
+						//Displaying name of the class
+						$classId = $_SESSION['class'];
+						$query = "SELECT name FROM classes WHERE id=$classId";
+						$result = mysqli_query($connection, $query);
+						$result = mysqli_fetch_array($result);
+						$className = $result['name'];
+						echo "<input type='text' id='className' value='$className' disabled>    ";
+					?>
+					<button onclick="changeClassName('<?php echo $className; ?>')" id="changeClassName">Změnit</button>
+					<button onclick="cancelNameChange('<?php echo $className; ?>')" id="cancelNameChange" style="display:none;">Zrušit</button>
+					<br />
+					
+					Status třídy: 
+					<?php
+						//Displaying status (opened/locked) of the class
+						$query = "SELECT open FROM classes WHERE id=$classId";
+						$result = mysqli_query($connection, $query);
+						$result = mysqli_fetch_array($result);
+						$result = $result['open'];
+						
+						if(empty($result)){$result = 0;}	//Just to make sure
+						else {$result = 1;}
+						
+						if ($result){echo "<span id='classStatus'>Otevřená - žádosti o přijetí jsou zapnuty</span>"; $statusAction = "Uzavřít třídu";}
+						else{echo "<span id='classStatus'>Uzavřená - do třídy nelze zažádat o přijetí</span>"; $statusAction = "Otevřít třídu";}
+					?>
+					<button onclick="changeClassStatus(<?php echo $result.",'".$className."' ,".$classId; ?>)" id="changeClassStatus"><?php echo $statusAction ?></button>
+					
 				</div>
 				<div id="tab2">
 					<?php
