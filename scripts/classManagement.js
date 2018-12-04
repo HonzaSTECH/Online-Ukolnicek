@@ -28,13 +28,13 @@ function fourthTab(){
 }
 function changeClassName(originalValue){
 	document.getElementById("className").removeAttribute("disabled");
-	document.getElementById("changeClassName").innerHTML = "Uložit";
+	document.getElementById("changeClassName").innerHTML = "Save";
 	document.getElementById("changeClassName").setAttribute("onclick","saveClassName('" + originalValue + "')");
 	document.getElementById("cancelNameChange").style.display = "inline";
 }
 function saveClassName(originalValue){
 	document.getElementById("className").setAttribute("disabled", "1");
-	document.getElementById("changeClassName").innerHTML = "Změnit";
+	document.getElementById("changeClassName").innerHTML = "Change";
 	document.getElementById("changeClassName").setAttribute("onclick","changeClassName()");
 	document.getElementById("cancelNameChange").style.display = "none";
 	
@@ -48,7 +48,7 @@ function saveClassName(originalValue){
 function cancelNameChange(originalValue){
 	document.getElementById("className").setAttribute("disabled", "1");
 	document.getElementById("className").innerHTML = originalValue;
-	document.getElementById("changeClassName").innerHTML = "Změnit";
+	document.getElementById("changeClassName").innerHTML = "Change";
 	document.getElementById("changeClassName").setAttribute("onclick","changeClassName()");
 	document.getElementById("cancelNameChange").style.display = "none";
 }
@@ -57,9 +57,9 @@ function changeClassStatus(originalValue, classNm, classId){
 	if(originalValue == true){action = "close";}
 	else{action = "open"}
 	
-	var newButtonValue = (action == "open") ? "Uzavřít třídu" : "Otevřít třídu";
+	var newButtonValue = (action == "open") ? "Lock the class" : "Open the class";
 	var newValue = (action == "open") ? 1 : 0;
-	var newText = (action == "open") ? "Otevřená - žádosti o přijetí jsou zapnuty" : "Uzavřená - do třídy nelze zažádat o přijetí";
+	var newText = (action == "open") ? "Opened - applications for admission are turned on" : "Locked - users can't apply for admission to the class";
 	
 	document.getElementById("changeClassStatus").innerHTML = newButtonValue;
 	document.getElementById("changeClassStatus").setAttribute("onclick", "changeClassStatus(" + newValue + ",'" + classNm +"'," + classId +")");
@@ -72,7 +72,7 @@ function changeClassStatus(originalValue, classNm, classId){
 	
 	if(action == "close")
 	{
-		var clearApplications = confirm("Třída byla uzavřena. Přejete si odmítnout a vymazat všechny nevyřízené žádosti o přijetí do třídy?");
+		var clearApplications = confirm("The class was locked. Do you want to reject and remove all pending applications for admission to the class?");
 		if(clearApplications == true)
 		{
 			document.cookie = "nickname=" + classNm;
