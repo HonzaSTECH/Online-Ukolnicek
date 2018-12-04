@@ -12,31 +12,31 @@
 	<div id="header">
 		<span id="username">
 			<?php
-			echo "Jsi přihlášen jako ";
+			echo "You are logged in as ";
 			echo $_SESSION['user'];
 			?>
 		</span>
 		<a href="login.php">
 			<div id="logoutBox">
-				<span id="logoutLink">Odhlásit se</span>
+				<span id="logoutLink">Log out</span>
 			</div>
 		</a>
 		<a href="info.php">
 			<div id="infoBox">
-				<span id="infoLink">Informace</span>
+				<span id="infoLink">Information</span>
 			</div>
 		</a>
 		<a href="home.php">
 			<div id="homeBox">
-				<span id="homeLink">Domů</span>
+				<span id="homeLink">Home</span>
 			</div>
 		</a>
 	</div>
 	<div id="container">
 		<div id="infoText">
-			<h2>Zažádat o přijetí do existující třídy</h2>
+			<h2>Apply for admission to an existing class</h2>
 			<span id=subtext>
-				Vyber si třídu do které se chceš přidat a zadej osobní údaje jako informace pro adminitrátora nebo moderátory třídy kteří budou muset tvojí žádost o přijetí potvrdit.
+				Choose the class you want to join and enter personal information as a hint for administrator or moderators of the class that will have to approve your application.
 			</span>
 		</div>
 		<form action="apply.php" method="POST">
@@ -71,7 +71,7 @@
 					else if($count <= 12){$columns = 3;}
 					else if($count > 12){$columns = 4;}
 					
-					if($columns == 0){echo "Jsi již členem ve všech existujících třídách.";}
+					if($columns == 0){echo "You are already a member in all existing classes";}
 					
 					//Getting amount of needed rows for the table
 					if($columns <= 1){$rowCount = $count;}
@@ -134,10 +134,10 @@
 				?>
 			</fieldset>
 			<fieldset>
-				<input type=text name="name" placeholder="Jméno" id="name" required>
-				<input type=text name="surname" placeholder="Přijímění" id="surname" required>
-				<textarea type="message" name="message" placeholder="Dodatečné informace" id="text" required>Ahoj. Rád bych se přidal do vaší třídy. Přijmete prosím mojí žádost?</textarea>
-				<input type=submit name="posted" value="Odeslat žádost" id="submitButton" <?php	if($count <= 0){echo "disabled";}	?>>
+				<input type=text name="name" placeholder="First name" id="name" required>
+				<input type=text name="surname" placeholder="Last name" id="surname" required>
+				<textarea type="message" name="message" placeholder="Content of the application" id="text" required>Hello. I would like to join your class. Would you please approve my application?</textarea>
+				<input type=submit name="posted" value="Send application" id="submitButton" <?php	if($count <= 0){echo "disabled";}	?>>
 				</fieldset>
 		</form>
 
@@ -188,31 +188,28 @@
 				//str_replace("<br>", "\n", $message);
 				$message = wordwrap($message, 70, "<br />");
 				
-				$email_subject = "Nová žádost o přijetí do třídy $className od $name $surname";
+				$email_subject = "A new application for admission into class $className from $name $surname";
 				//Building e-mail body
 				$email_body = "
 				<div style='width: 50%; border: 2px solid black; margin: auto; background-color: #FFFF99; padding:10px;text-align:center'>
-					<h2 style='position:relative;left:0;right:0;margin:auto;'>Detaily žádosti:</h2>
+					<h2 style='position:relative;left:0;right:0;margin:auto;'>Application details:</h2>
 					<fieldset style='width: 50%; position: relative; left:0; right:0; margin: auto;border-radius:20px;'>
-						<b>Jméno:</b> $name
-						<br /><b>Přijímení:</b> $surname
-						<br /><b>Text žádosti:</b>
+						<b>First name:</b> $name
+						<br /><b>Last name:</b> $surname
+						<br /><b>Content of the application:</b>
 						<br />
 						<div style='border: 1px solid black; width: 50%;padding:5px;margin:auto;position:relative;left:0;right:0;'>
 							$message
 						</div>
 						<br />
 					</fieldset>
-					<br /><i>Žádost můžete přijmout nebo zamítnout na stránce se seznamem testů.
-					<br />Tuto Žadost schvalte pouze v případě, že jste si jistí kdo tento uživatel ve skutečnosti je.
-					<br />Tento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.</i>
-					<hr /><span style='color: rgb(102,102,102)';>Nechcete od nás dostávat další e-maily? Odhlašte se z odběru e-mailů <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
-					<br /><span style='color: rgb(135,135,135)';>Toto zruší pouze automaticky odesílané e-maily. Pokud odešlete dotaz nebo připomínku, stále můžete dostat webmasterem psanou odpověď.</span>
+					<br /><i>You can approve or reject this application on the class management webpage.
+					<br />Approve this application only in case you are sure about who this user actually is.
+					<br />This e-mail has been generated automatically and therefore do not answer it.</i>
+					<hr /><span style='color: rgb(102,102,102)';>Don't want to get more e-mails from us? Unsubscribe <a href='seznamtestu.chytrak.cz'>here</a>.</span>
+					<br /><span style='color: rgb(135,135,135)';>This will stop only automatically generated e-mails. If you send us your opinion, a question or a suggestion, you can still get manually written answer from the webmaster.</span>
 				</div>
 				";
-				
-				//$headers = "From: Seznam testů info <info@seznamtestu.chytrak.cz>\n";
-				//$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 				
 				//Sending e-mail to the admin of the class
 				require_once('mailer.php');
@@ -223,7 +220,7 @@
 				fileLog("Uživatel $user zažádal o přijetí do třídy $class");
 				
 				//Redirecting to the home page
-				echo "<script>alert('Vaše žádost o přijetí do této třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte pomocí e-mailu.');</script>";
+				echo "<script>alert('Your application for admission to this class was send. You will find out about verdict of the admin or moderator of the class on your e-mail');</script>";
 				echo "<script type='text/javascript'>location.href = 'home.php';</script>";
 			}
 		?>
