@@ -28,7 +28,7 @@ body{
 	display: inline-table;
 }
 #home{
-	max-height: 86.4vh;
+	max-height: 86vh;
 	overflow: auto;
 	margin: 0;
 }
