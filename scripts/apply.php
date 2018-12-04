@@ -34,7 +34,7 @@
 	</div>
 	<div id="container">
 		<div id="infoText">
-			<h2>Apply for admission to a class</h2>
+			<h2>Apply for admission to an existing class</h2>
 			<span id=subtext>
 				Choose the class you want to join and enter personal information as a hint for administrator or moderators of the class that will have to approve your application.
 			</span>

@@ -13,24 +13,24 @@
 	<div id="header">
 		<span id="username">
 			<?php
-			echo "Jsi přihlášen jako ";
+			echo "You are logged in as ";
 			echo $_SESSION['user'];
 			?>
 		</span>
 		<a href="login.php">
 			<div id="logoutBox">
-				<span id="logoutLink">Odhlásit se</span>
+				<span id="logoutLink">Log out</span>
 			</div>
 		</a>
 		<a href="info.php">
 			<div id="infoBox">
-				<span id="infoLink">Informace</span>
+				<span id="infoLink">Information</span>
 			</div>
 		</a>
 	</div>
 	<div id="middle">
 		<div id="titleBox">
-		<span id="title">Jsi členem v těchto třídách:</span>
+		<span id="title">You are a member in these classes:</span>
 		</div>
 		<div id="main">
 		
@@ -76,28 +76,28 @@
 					
 					//Displaying list of classes
 					echo "<tr><td class='selectorColumn'><input type=radio name='classSelect' value='$class' class='radioSelect' required></td><td class='nameColumn'> $classData</td><td class='rankColumn'>";
-					if(in_array($class, $adminClasses)){echo "Administrátor";}
-					else if(in_array($class, $modClasses)){echo "Moderátor";}
-					else{echo "Člen";}
+					if(in_array($class, $adminClasses)){echo "Administrator";}
+					else if(in_array($class, $modClasses)){echo "Moderator";}
+					else{echo "Member";}
 					echo "</td></tr>";
 				}
 				//Displaying the "ENTER" button
-				echo "</table></fieldset><input type=submit value='Vstoupit' name='login' id='submitButton'></form>";
+				echo "</table></fieldset><input type=submit value='Enter' name='login' id='submitButton'></form>";
 			}
 			else
 			{
 				//Displaying the "NO MEMBERSHIPS" message
-				echo "<table><tr><td>Nejsi členem žádné třídy.</td></tr></table>";
+				echo "<table><tr><td>You aren't member in any class</td></tr></table>";
 			}
 			mysqli_close($connection);
 		?>
 		
 		</div>
 		<div id="applyBox">
-			<a href="apply.php" id="applyLink">Zažádat o přijetí do existující třídy</a>
+			<a href="apply.php" id="applyLink">Apply for admission to an existing class</a>
 		</div>
 		<div id="newClassBox">
-			<a href="newClass.php" id="newClassLink">Založit novou třídu</a>
+			<a href="newClass.php" id="newClassLink">Create a new class</a>
 		</div>
 	</div>
 </body>
