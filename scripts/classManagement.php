@@ -66,8 +66,13 @@
 						$className = $result['name'];
 						echo "<input type='text' id='className' value='$className' disabled>    ";
 					?>
+<<<<<<< HEAD
 					<button onclick="changeClassName('<?php echo $className; ?>')" id="changeClassName">Změnit</button>
 					<button onclick="cancelNameChange('<?php echo $className; ?>')" id="cancelNameChange">Zrušit</button>
+=======
+					<button onclick="changeClassName('<?php echo $className; ?>')" id="changeClassName">Change</button>
+					<button onclick="cancelNameChange('<?php echo $className; ?>')" id="cancelNameChange" style="display:none;">Cancel</button>
+>>>>>>> 2c0d1dfd85f841d72f2a96d018693f1c6c16ec78
 					<br />
 					
 					Status of the class: 
@@ -81,7 +86,11 @@
 						if(empty($result)){$result = 0;}	//Just to make sure
 						else {$result = 1;}
 						
+<<<<<<< HEAD
 						if ($result){echo "<span id='classStatus'>Opened - applications for admission are turned o</span>"; $statusAction = "Lock the class";}
+=======
+						if ($result){echo "<span id='classStatus'>Opened - applications for admission are turned on</span>"; $statusAction = "Lock the class";}
+>>>>>>> 2c0d1dfd85f841d72f2a96d018693f1c6c16ec78
 						else{echo "<span id='classStatus'>Locked - users can't apply for admission to the class</span>"; $statusAction = "Open the class";}
 					?>
 					<button onclick="changeClassStatus(<?php echo $result.",'".$className."' ,".$classId; ?>)" id="changeClassStatus"><?php echo $statusAction ?></button>
@@ -232,12 +241,20 @@
 							//Displaying moderators
 							foreach($mods as $user)
 							{
+<<<<<<< HEAD
 								echo "<tr><td class='rank2'>Moderator</td><td class='username'>$user</td><td class='action'><select value='Moderátor'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
+=======
+								echo "<tr><td class='rank2'>Moderator</td><td class='username'>$user</td><td class='action'><select value='Moderator'><option>Moderator</option><option>Member</option></select><button>Kick</button></td></tr>";
+>>>>>>> 2c0d1dfd85f841d72f2a96d018693f1c6c16ec78
 							}
 							//Displaying members
 							foreach($members as $user)
 							{
+<<<<<<< HEAD
 								echo "<tr><td class='rank1'>Member</td><td class='username'>$user</td><td class='action'><select value='Člen'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
+=======
+								echo "<tr><td class='rank1'>Member</td><td class='username'>$user</td><td class='action'><select value='Member'><option>Moderator</option><option>Member</option></select><button>Kick</button></td></tr>";
+>>>>>>> 2c0d1dfd85f841d72f2a96d018693f1c6c16ec78
 							}
 						echo "</table>";
 					?>

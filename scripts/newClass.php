@@ -8,44 +8,44 @@
 	<div id="header">
 		<span id="username">
 			<?php
-			echo "Jsi přihlášen jako ";
+			echo "You are logged in as ";
 			echo $_SESSION['user'];
 			?>
 		</span>
 		<a href="login.php">
 			<div id="logoutBox">
-				<span id="logoutLink">Odhlásit se</span>
+				<span id="logoutLink">Log out</span>
 			</div>
 		</a>
 		<a href="info.php">
 			<div id="infoBox">
-				<span id="infoLink">Informace</span>
+				<span id="infoLink">Information</span>
 			</div>
 		</a>
 		<a href="home.php">
 			<div id="homeBox">
-				<span id="homeLink">Domů</span>
+				<span id="homeLink">Home</span>
 			</div>
 		</a>
 	</div>
 	<div id="container">
 		<div id="infoText">
-			<h2>Zažádat o založení nové třídy</h2>
+			<h2>Apply for creation a new class</h2>
 			<span id=subtext>
-				Z důvodu zamezení zakládání nepotřebných a prázdných tříd a zaplňování omezeného místa v naší databázi je nutné k založení třídy vyplnit tento formulář.<br />
-				Další komunikace bude probíhat prostřednictvím e-mailu, proto se prosím ujistěte, že jste zadali správnou e-mailovou adresu.<br />
-				Založení třídy je stejně jako všechny ostatní funkce bezplatné.
+				To avoid creating unnecessary and empty classes and filling a limited space in our database, you need to fill out this form to create a class.<br />
+				Further communication will occure via e-mail, so please make sure that you have entered the correct e-mail address.<br />
+				Creating a class is free just as any other feature.
 			</span>
 		</div>
 		<form action="newClass.php" method="POST">
 			<fieldset>
-				<input type=text name="name" placeholder="Jméno" id="name" required>
-				<input type=text name="surname" placeholder="Přijímení" id="surname" required>
-				<input type=text name="school" placeholder="Škola" id="school" required>
-				<input type=text name="class" placeholder="Třída" id="class" required>
+				<input type=text name="name" placeholder="First name" id="name" required>
+				<input type=text name="surname" placeholder="Last name" id="surname" required>
+				<input type=text name="school" placeholder="School" id="school" required>
+				<input type=text name="class" placeholder="Class" id="class" required>
 				<input type=email name="email" placeholder="E-mail" id="email" required>
-				<textarea type="message" name="message" placeholder="Text žádosti"  id="text" required></textarea>
-				<input type=submit name="posted" value="Odeslat žádost" id="submitButton">
+				<textarea type="message" name="message" placeholder="Content of the application"  id="text" required></textarea>
+				<input type=submit name="posted" value="Send the application" id="submitButton">
 			</fieldset>
 		</form>
 	</div>
@@ -75,19 +75,20 @@
 			if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i",$email))
 			{
 				$errors .= "\n Error: Invalid email address";
-				echo "Neplatná e-mailová adresa.<br />";
+				echo "Invalid e-mail address.<br />";
 			}
 			else
 			{
 				//Building the email
 				$email_subject = "Žádost o založení třídy od: $name $surname";
 				$email_body = "Detaily žádosti:".
-				"\n Jméno: $name".
-				"\n Přijímení: $surname".
-				"\n Škola: $school".
-				"\n Třída: $class".
+				"\n First name: $name".
+				"\n Last name: $surname".
+				"\n School: $school".
+				"\n Class: $class".
 				"\n E-mail: $email".
-				"\n Text žádosti: $message";
+				"\n Content of the application:".
+				"\n $message";
 				$headers = "From: $email\n";
 				$headers .= "Reply-To: '$email'";
 				
@@ -99,7 +100,7 @@
 				fileLog("Uživatel $user zažádal o založení nové třídy za třídu $class ve škole $school");
 				
 				//Redirecting
-				echo "<script>alert('Vaše žádost o založení nové třídy byla odeslána. O přijetí nebo zamítnutí požadavku se dozvíte prostřednictvím e-mailu na Vámi zadanou e-mailovou adresu v řádu několika málo dní.');</script>";
+				echo "<script>alert('Your application for creation of a new class was send. You will be contacted by webmaster on the e-mail address you specified.');</script>";
 				echo "<script type='text/javascript'>location.href = 'home.php';</script>";
 			}
 		}
