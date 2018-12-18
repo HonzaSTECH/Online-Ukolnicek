@@ -15,48 +15,48 @@
 		<div id="header">
 			<span id="username">
 				<?php
-				echo "Jsi přihlášen jako ";
+				echo "You are logged in as ";
 				echo $_SESSION['user'];
 				?>
 			</span>
 			<a href="login.php">
 				<div id="logoutBox">
-					<span id="logoutLink">Odhlásit se</span>
+					<span id="logoutLink">Log out</span>
 				</div>
 			</a>
 			<a href="info.php">
 				<div id="infoBox">
-					<span id="infoLink">Informace</span>
+					<span id="infoLink">Information</span>
 				</div>
 			</a>
 			<a href="home.php">
 				<div id="homeBox">
-					<span id="homeLink">Domů</span>
+					<span id="homeLink">Home</span>
 				</div>
 			</a>
 			<a href="list.php">
 				<div id="classBox">
-					<span id="classLink">Třída</span>
+					<span id="classLink">Class</span>
 				</div>
 			</a>
 		</div>
 		<div id="main">
 			<nav>
-				<a onclick="firstTab()">Obecné</a>
-				<a onclick="secondTab()">Správa předmětů</a>
-				<a onclick="thirdTab()">Správa členů</a>
-				<a onclick="fourthTab()">Žádosti o přijetí</a>
+				<a onclick="firstTab()">General</a>
+				<a onclick="secondTab()">Subjects management</a>
+				<a onclick="thirdTab()">Members management</a>
+				<a onclick="fourthTab()">Applications for admission</a>
 			</nav>
 			<div id="container">
 				<div id="tab1">
-					ID třídy: 
+					ID of the class: 
 					<?php
 						//Displaying ID of the class
 						echo $_SESSION['class'];
 					?>
 					<br />
 					
-					Jméno třídy: 
+					Name of the class: 
 					<?php
 						//Displaying name of the class
 						$classId = $_SESSION['class'];
@@ -67,10 +67,10 @@
 						echo "<input type='text' id='className' value='$className' disabled>    ";
 					?>
 					<button onclick="changeClassName('<?php echo $className; ?>')" id="changeClassName">Změnit</button>
-					<button onclick="cancelNameChange('<?php echo $className; ?>')" id="cancelNameChange" style="display:none;">Zrušit</button>
+					<button onclick="cancelNameChange('<?php echo $className; ?>')" id="cancelNameChange">Zrušit</button>
 					<br />
 					
-					Status třídy: 
+					Status of the class: 
 					<?php
 						//Displaying status (opened/locked) of the class
 						$query = "SELECT open FROM classes WHERE id=$classId";
@@ -81,11 +81,36 @@
 						if(empty($result)){$result = 0;}	//Just to make sure
 						else {$result = 1;}
 						
-						if ($result){echo "<span id='classStatus'>Otevřená - žádosti o přijetí jsou zapnuty</span>"; $statusAction = "Uzavřít třídu";}
-						else{echo "<span id='classStatus'>Uzavřená - do třídy nelze zažádat o přijetí</span>"; $statusAction = "Otevřít třídu";}
+						if ($result){echo "<span id='classStatus'>Opened - applications for admission are turned o</span>"; $statusAction = "Lock the class";}
+						else{echo "<span id='classStatus'>Locked - users can't apply for admission to the class</span>"; $statusAction = "Open the class";}
 					?>
 					<button onclick="changeClassStatus(<?php echo $result.",'".$className."' ,".$classId; ?>)" id="changeClassStatus"><?php echo $statusAction ?></button>
-					
+					<br />
+
+					<button onclick="deleteClass('<?php echo $_SESSION['user'] ?>')" id="deleteClass">Delete the class</button>
+					<div id="timeToDeletion">
+					Time to deletion:
+					<?php
+						$query = "SELECT deletionTime FROM classes WHERE name='$className'";
+						$result = mysqli_query($connection, $query);
+						$result = mysqli_fetch_array($result);
+						$result = $result['deletionTime'];
+						if(!empty($result))
+						{
+							$timeToDeletion = $result - time();
+							$hoursToDeletion = floor($timeToDeletion / 3600);
+							$timeToDeletion %= 3600;
+							$minutesToDeletion = floor($timeToDeletion / 60);
+							$secondsToDeletion = $timeToDeletion % 60;
+							echo "$hoursToDeletion:$minutesToDeletion:$secondsToDeletion";
+						}
+						else
+						{
+							echo "<style>#timeToDeletion{display: none;}</style>";
+						}
+					?>
+					</div>
+					<button onclick="recoverClass()" id="recoverClass">Stop the deletion process</button>
 				</div>
 				<div id="tab2">
 					<?php
@@ -107,7 +132,7 @@
 						echo "</ol>";
 					?>
 					
-					<button id="changeSubjects" onclick="changeSubjects()">Upravit předměty</button>
+					<button id="changeSubjects" onclick="changeSubjects()">Edit subjects</button>
 					
 					<div id="subjectsForm">
 						<form method="POST" action="classManagement.php">
@@ -128,8 +153,8 @@
 									echo "><br />";
 								}
 							?>
-							<input type=submit value="Uložit" name="save">
-							<button onclick="hideForm(event)">Zrušit</button>
+							<input type=submit value="Save" name="save">
+							<button onclick="hideForm(event)">Cancel</button>
 						</form>
 						<?php
 							//Handling form submit
@@ -202,17 +227,17 @@
 							//Displaying admins
 							foreach($admins as $user)
 							{
-								echo "<tr><td class='rank3'>Administrátor</td><td class='username'>$user</td><td class='action'></td></tr>";
+								echo "<tr><td class='rank3'>Administrator</td><td class='username'>$user</td><td class='action'></td></tr>";
 							}
 							//Displaying moderators
 							foreach($mods as $user)
 							{
-								echo "<tr><td class='rank2'>Moderátor</td><td class='username'>$user</td><td class='action'><select value='Moderátor'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
+								echo "<tr><td class='rank2'>Moderator</td><td class='username'>$user</td><td class='action'><select value='Moderátor'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
 							}
 							//Displaying members
 							foreach($members as $user)
 							{
-								echo "<tr><td class='rank1'>Člen</td><td class='username'>$user</td><td class='action'><select value='Člen'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
+								echo "<tr><td class='rank1'>Member</td><td class='username'>$user</td><td class='action'><select value='Člen'><option>Moderátor</option><option>Člen</option></select><button>Odstranit</button></td></tr>";
 							}
 						echo "</table>";
 					?>
@@ -231,12 +256,12 @@
 						//Printing the table
 						while($data = mysqli_fetch_array($result)){
 							$exist++;
-							if ($exist == 1){echo "<table border=1><tr><th align='center' id='nicknameHeader'>Přezdívka</th><th align='center' id='nameHeader'>Jméno</th><th align='center' id='surnameHeader'>Přijímení</th><th align='center' id='messageHeader'>Zpráva</th><th align='center' id='actionHeader'>Akce</td></tr>";}
+							if ($exist == 1){echo "<table border=1><tr><th align='center' id='nicknameHeader'>Nickname</th><th align='center' id='nameHeader'>First name</th><th align='center' id='surnameHeader'>Last name</th><th align='center' id='messageHeader'>Content</th><th align='center' id='actionHeader'>Action</td></tr>";}
 							$a = $data['nickname'];
 							$b = $data['name'];
 							$c = $data['surname'];
 							$d = $data['message'];
-							echo "<tr><td align='center' class='nicknameColumn'>$a</td><td align='center' class='nameColumn'>$b</td><td align='center' class='surnameColumn'>$c</td><td align='center' class='messageColumn'><div class='messageBox'>$d</div></td><td align='center' class='actionColumn'><button onclick='accept(event)' class='acceptButton'>Přijmout</button><br /><button onclick='decline(event)' class='declineButton'>Odmítnout</button></td><td class='hiddenClass'>$class</td></tr>";
+							echo "<tr><td align='center' class='nicknameColumn'>$a</td><td align='center' class='nameColumn'>$b</td><td align='center' class='surnameColumn'>$c</td><td align='center' class='messageColumn'><div class='messageBox'>$d</div></td><td align='center' class='actionColumn'><button onclick='accept(event)' class='acceptButton'>Approve</button><br /><button onclick='decline(event)' class='declineButton'>Reject</button></td><td class='hiddenClass'>$class</td></tr>";
 						}
 						
 						//Checking for an existing application
