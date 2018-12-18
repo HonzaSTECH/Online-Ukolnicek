@@ -266,7 +266,7 @@
 						
 						//Checking for an existing application
 						if($exist > 0){echo "</table>";}
-						else {echo "Žádné žádosti o přijetí.";}
+						else {echo "No applications for admission.";}
 						
 						unset($exist);
 					?>
