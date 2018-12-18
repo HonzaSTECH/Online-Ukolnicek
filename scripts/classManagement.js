@@ -28,13 +28,13 @@ function fourthTab(){
 }
 function changeClassName(originalValue){
 	document.getElementById("className").removeAttribute("disabled");
-	document.getElementById("changeClassName").innerHTML = "Uložit";
+	document.getElementById("changeClassName").innerHTML = "Save";
 	document.getElementById("changeClassName").setAttribute("onclick","saveClassName('" + originalValue + "')");
 	document.getElementById("cancelNameChange").style.display = "inline";
 }
 function saveClassName(originalValue){
 	document.getElementById("className").setAttribute("disabled", "1");
-	document.getElementById("changeClassName").innerHTML = "Změnit";
+	document.getElementById("changeClassName").innerHTML = "Change";
 	document.getElementById("changeClassName").setAttribute("onclick","changeClassName()");
 	document.getElementById("cancelNameChange").style.display = "none";
 	
@@ -48,7 +48,7 @@ function saveClassName(originalValue){
 function cancelNameChange(originalValue){
 	document.getElementById("className").setAttribute("disabled", "1");
 	document.getElementById("className").innerHTML = originalValue;
-	document.getElementById("changeClassName").innerHTML = "Změnit";
+	document.getElementById("changeClassName").innerHTML = "Change";
 	document.getElementById("changeClassName").setAttribute("onclick","changeClassName()");
 	document.getElementById("cancelNameChange").style.display = "none";
 }
@@ -57,9 +57,9 @@ function changeClassStatus(originalValue, classNm, classId){
 	if(originalValue == true){action = "close";}
 	else{action = "open"}
 	
-	var newButtonValue = (action == "open") ? "Uzavřít třídu" : "Otevřít třídu";
+	var newButtonValue = (action == "open") ? "Lock the class" : "Open the class";
 	var newValue = (action == "open") ? 1 : 0;
-	var newText = (action == "open") ? "Otevřená - žádosti o přijetí jsou zapnuty" : "Uzavřená - do třídy nelze zažádat o přijetí";
+	var newText = (action == "open") ? "Opened - applications for admission are turned on" : "Locked - users can't apply for admission to the class";
 	
 	document.getElementById("changeClassStatus").innerHTML = newButtonValue;
 	document.getElementById("changeClassStatus").setAttribute("onclick", "changeClassStatus(" + newValue + ",'" + classNm +"'," + classId +")");
@@ -72,7 +72,7 @@ function changeClassStatus(originalValue, classNm, classId){
 	
 	if(action == "close")
 	{
-		var clearApplications = confirm("Třída byla uzavřena. Přejete si odmítnout a vymazat všechny nevyřízené žádosti o přijetí do třídy?");
+		var clearApplications = confirm("The class was locked. Do you want to reject and remove all pending applications for admission to the class?");
 		if(clearApplications == true)
 		{
 			document.cookie = "nickname=" + classNm;
@@ -82,6 +82,14 @@ function changeClassStatus(originalValue, classNm, classId){
 			getRequest("AJAXmanagement.php", testFunc, testFunc);
 		}
 	}
+}
+function deleteClass(username){
+    var adminPass = prompt("K tomuto kroku je potřeba znovu zadat vaše administrátorské heslo.\nZadejte heslo a pokračujte zvolením OK.");
+    //TODO - verificate the password
+	document.cookie = "nickname=" + username;
+	document.cookie = "admin=" + adminPass;
+	document.cookie = "action=e";
+	getRequest("AJAXmanagement.php", deleteClass2, testFunc, username, adminPass);
 }
 function changeSubjects(){
 	document.getElementById("subjectsForm").style.display = "block";
@@ -140,7 +148,7 @@ function decline(event){
 	//Opening AJAX request
 	getRequest("AJAXmanagement.php", testFunc, testFunc);
 }
-function getRequest(url, success, error){
+function getRequest(url, success, error, user=null, password=null){
 	var req = false;
 	//Creating request
 	try
@@ -169,7 +177,7 @@ function getRequest(url, success, error){
 	//Checking request
 	if (!req) return false;
 	
-	//Checking function parametrs and setting intial values in case they aren´t specified
+	//Checking function parameters and setting intial values in case they aren´t specified
 	if (typeof success != 'function') success = function () {};
 	if (typeof error!= 'function') error = function () {};
 	
@@ -181,8 +189,25 @@ function getRequest(url, success, error){
 			return req.status === 200 ? success(req.responseText) : error(req.status);
 		}
 	}
-	req.open("GET", url, true);
-	req.send(null);
+	req.open("GET", url, true, user, password);
+	req.send();
 	return req;
+}
+function deleteClass2(response){
+	if(response != "Confirmed")
+	{
+		alert("Špatné heslo");
+	}
+	else
+	{
+		var confirmation = confirm("Tato akce je nevratná! Vaše třída bude trvale odstraněna z databáze.\nProces odstranění třídy bude možné zastavit na této stránce v průběhu následujících 24 hodin.");
+		if(confirmation == true)
+		{
+			document.cookie = "nickname=" + username;
+			document.cookie = "action=E";
+			getRequest("AJAXmanagement.php", testFunc, testFunc);
+		}
+		//TODO - set the deletion time
+	}
 }
 function testFunc(response){alert(response);}
