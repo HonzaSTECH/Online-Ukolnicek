@@ -299,6 +299,30 @@ nav a {
 }
 /*---------------------------*/
 /*General tab*/
+#className{
+	
+}
+#changeClassName{
+	
+}
+#cancelNameChange{
+	display: none;
+}
+#classStatus{
+	
+}
+#changeClassStatus{
+	
+}
+#deleteClass{
+	
+}
+#timeToDeletion{
+	
+}
+#recoverClass{
+	display: none;
+}
 /*---------------------------*/
 /*Subjects tab*/
 /*---------------------------*/

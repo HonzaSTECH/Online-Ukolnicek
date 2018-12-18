@@ -120,21 +120,39 @@
 			$query = "DELETE FROM applications WHERE nickname='$nickname' AND message='$message' AND class='$class'";
 			break;
 			
-		case 'n'://Changin name of the class
+		case 'n':	//Changin name of the class
 			$query = "UPDATE classes SET name='$class' WHERE name='$nickname'";
 			break;
 			
-		case 'c'://Closing the class
+		case 'c':	//Closing the class
 			$query = "UPDATE classes SET open=false WHERE name='$nickname'";
 			break;
 			
-		case 'o'://Opening the class
+		case 'o':	//Opening the class
 			$query = "UPDATE classes SET open=true WHERE name='$nickname'";
 			break;
 		
-		case 'r'://Removing all applications to the class
-			$classId = $_COOKIE['class'];
-			$query = "DELETE FROM applications WHERE class=$classId";
+		case 'r':	//Removing all applications to the class
+			$query = "DELETE FROM applications WHERE class=$class";
+			break;
+			
+		case 'e':	//Erasing the class
+			unset($_COOKIE['admin']);	//Erasing the admin password from the cookie
+			$_COOKIE['admin'] = null;
+			
+			$query = "SELECT password FROM users WHERE name='$nickname'";
+			$result = mysqli_query($connection, $query);
+			$result = mysqli_fetch_array($result);
+			$result = $result['password'];
+			if (password_verify($admin, $result))
+			{
+				
+			}
+			break;
+			
+		case 'E':	//Erasing class coonfirmed
+			$deletionTime = time() + 86400;	//86400 seconds = 1 day (24 hours)
+			$query = "UPDATE classes SET deletionTime=$deletionTime WHERE admin=$nickname";
 			break;
 	}
 	
