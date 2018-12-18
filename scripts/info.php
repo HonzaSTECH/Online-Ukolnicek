@@ -10,11 +10,11 @@
 </head>
 <body>
 	<span>
-		<h1>About</h1>
+		<h1>O aplikaci</h1>
 		<br />
-		Creator: Jan Štěch
+		Tvůrce: Jan Štěch
 		<br />
-		Made in 2018
+		Vytvořeno v roce 2018
 	</span>
 	<br />
 	<div id="news">
@@ -22,5 +22,5 @@
 			include 'news.php';
 		?>
 	</div>
-	<a href="javascript:history.go(-1)">Return</a>
+	<a href="home.php">Návrat</a>
 </body>
