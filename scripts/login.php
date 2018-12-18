@@ -10,17 +10,17 @@
 </head>
 <body>
         <div id="loginBox">
-		<div id="header">Log in</div>
+		<div id="header">Přihlaš se</div>
 		<form method="POST" action="login.php" id="loginForm">
 			<fieldset>
-				<input type=text name="username" placeholder="Name" id="usernameInput" required>
+				<input type=text name="username" placeholder="Jméno" id="usernameInput" required>
 				<br />
-				<input type=password name="password" placeholder="Password" id="passwordInput" required>
+				<input type=password name="password" placeholder="Heslo" id="passwordInput" required>
 				<br />
-				<input type=submit name="send" value="Log in" id="submitButton">
+				<input type=submit name="send" value="Přihlásit se" id="submitButton">
 			</fieldset>
 		</form>
-		<div id="registerLink">Don't have an account yet? Register <a href="register.php"><u>here</u></a>.</div>
+		<div id="registerLink">Ještě nemáš účet? Zaregistruj se <a href="register.php"><u>zde</u></a>.</div>
 		
 		<?php
 			require_once("connect.php");
@@ -45,7 +45,7 @@
 					if(password_verify($pass, $data['password']))
 					{
 						//Displaying success message
-						echo "<div id='successMessage'>You was successfully logged in.</div>";
+						echo "<div id='successMessage'>Byl/a jsi úspěšně přihlášen/a.</div>";
 						
 						//Saving user's name into superglobal
 						$_SESSION['user']=$name;
@@ -57,20 +57,19 @@
 						//Redirecting
 						echo "<script type='text/javascript'>location.href = 'home.php';</script>";
 					}
-					else
-					{
+					else{
 						//Displaying error message
-						echo "<div id='loginError'>Incorrect password</div>";
+						echo "<div id='loginError'>Špatné heslo</div>";
 						
 						//Logging the attempt
 						$ip = $_SERVER['REMOTE_ADDR'];
 						fileLog("Z adresy $ip proběhl pokus o přihlášení k účtu $name.");
-					}
+						}
 				}
 				else
 				{
 					//Displaying error message
-					echo "<div id='loginError'>There is no user with this name registred</div>";
+					echo "<div id='loginError'>Uživatel s tímto jménem neexistuje.</div>";
 				}
 			}
 			mysqli_close($connection);

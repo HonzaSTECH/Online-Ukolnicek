@@ -46,5 +46,3 @@ Planned 	45) Make color of the record depend on subject and remove priority attr
 Waiting		46) Log actions executed on the classManagement page
 Waiting		47) Secure and satinize all database interactions
 Actual		48) Add new functionalities to the classManagement page
-Planned		49) Make e-mail sending on the newClass page work with PHPMailer
-Waiting		50) Write the terms page
