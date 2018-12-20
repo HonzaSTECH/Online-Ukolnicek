@@ -10,14 +10,14 @@
 	<fieldset>
 		<article>
 			<div id="main">
-				<div id="welcomeText">Vítej na seznamtestu.chytrak.cz.<br />Pro pokračování klikni na tlačítko.</div>
-				<a href="scripts/login.php"><button id="enterButton">Vstoupit</button></a>
+				<div id="welcomeText">Welcome to examdirectory.online.<br />Click the button below to continue.</div>
+				<a href="scripts/login.php"><button id="enterButton">Enter</button></a>
 			</div>
 		</article>
 		
 		<article>
 			<div id="newsText">
-				<span id="newsHeader">Novinky</span>
+				<span id="newsHeader">News</span>
 				<?php
 					include 'scripts/news.php';
 				?>
