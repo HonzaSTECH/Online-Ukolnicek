@@ -5,7 +5,7 @@
 ?>
 <html>
 	<head>
-        <title>Ukolníček - 
+        <title>Exam list - 
 		<?php
 			//Displaying the name of the class
 			require_once('connect.php');
@@ -27,23 +27,23 @@
 		<div id="header">
 			<span id="username">
 				<?php
-				echo "Jsi přihlášen jako ";
+				echo "You are logged in as ";
 				echo $_SESSION['user'];
 				?>
 			</span>
 			<a href="login.php">
 				<div id="logoutBox">
-					<span id="logoutLink">Odhlásit se</span>
+					<span id="logoutLink">Log out</span>
 				</div>
 			</a>
 			<a href="info.php">
 				<div id="infoBox">
-					<span id="infoLink">Informace</span>
+					<span id="infoLink">Information</span>
 				</div>
 			</a>
 			<a href="home.php">
 				<div id="homeBox">
-					<span id="homeLink">Domů</span>
+					<span id="homeLink">Home</span>
 				</div>
 			</a>
 			<?php
@@ -60,7 +60,7 @@
 					echo "
 					<a href='classManagement.php'>
 						<div id='classManagementBox'>
-							<span id='classManagementLink'>Správa třídy</span>
+							<span id='classManagementLink'>Class management</span>
 						</div>
 					</a>
 					";
@@ -71,25 +71,25 @@
 			<table id="data" border="1">
 				<tr>
 					<th id="date">
-						Datum
+						Date
 					</th>
 					<th id="subject">
-						Předmět
+						Subject
 					</th>
 					<th id="description">
-						Popis
+						Description
 					</th>
 					<th id="author">
-						Přidal/a
+						Added by
 					</th>
 					<th id="dateOfAdding">
-						Přidáno
+						Added on
 					</th>
 					<th id="likes">
 						<strong>^</strong>
 					</th>
 					<th id="akce">
-						Akce
+						Action
 					</th>
 				</tr>
 				<?php
@@ -189,15 +189,15 @@
 				?>
 			</table>
 				
-			<button id="addRecord" onclick="addRecord()">Přidat záznam</button>
+			<button id="addRecord" onclick="addRecord()">Add a new record</button>
 		</div>
 		<div id="form">
-			<div id="formTitle">Přidat záznam</div>
+			<div id="formTitle">Add a new record</div>
 			<form method="POST" onsubmit="newRecord(event)">
-				<span id="form1Text">Datum:</span>
+				<span id="form1Text">Date:</span>
 				<input type="date" id="form1" name="date" required>
 				<br />
-				<span id="form2Text">Předmět:</span>
+				<span id="form2Text">Subject:</span>
 				<select id="form2" name="subject" required>
 					<?php
 						//Displaying possible subjects in the form
@@ -219,10 +219,10 @@
 					<option>---</option>
 				</select>
 				<br />
-				<span id="form3Text">Popis:</span>
-				<textarea type="message" id="form3" name="description" required placeholder="Opakovací test" maxlength=100></textarea>
+				<span id="form3Text">Description:</span>
+				<textarea type="message" id="form3" name="description" required placeholder="Revision test" maxlength=100></textarea>
 				<br />
-				<span id="form5Text">Priorita:</span>
+				<span id="form5Text">Priority:</span>
 					<div id="priority1">
 						<input type="radio" name="priority" value="1" id="pr1">
 						<br />
@@ -249,9 +249,9 @@
 						<label for="pr5">5</label>
 					</div>
 					<br />
-				<input type="submit" id="formSubmit" name="send" value="Potrvrdit">
+				<input type="submit" id="formSubmit" name="send" value="Confirm">
 			</form>
-			<button id="formCancel" onclick="closeForm()">Zrušit</button>
+			<button id="formCancel" onclick="closeForm()">Cancel</button>
 		</div>
     </body>
 </html>

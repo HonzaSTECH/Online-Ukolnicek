@@ -84,7 +84,7 @@ function changeClassStatus(originalValue, classNm, classId){
 	}
 }
 function deleteClass(username){
-    var adminPass = prompt("K tomuto kroku je potřeba znovu zadat vaše administrátorské heslo.\nZadejte heslo a pokračujte zvolením OK.");
+    var adminPass = prompt("It is necessary to verify you with your administrator password.\nType in your password and continue by clicking OK.");
     //TODO - verificate the password
 	document.cookie = "nickname=" + username;
 	document.cookie = "admin=" + adminPass;
@@ -196,11 +196,11 @@ function getRequest(url, success, error, user=null, password=null){
 function deleteClass2(response){
 	if(response != "Confirmed")
 	{
-		alert("Špatné heslo");
+		alert("Incorrect password!");
 	}
 	else
 	{
-		var confirmation = confirm("Tato akce je nevratná! Vaše třída bude trvale odstraněna z databáze.\nProces odstranění třídy bude možné zastavit na této stránce v průběhu následujících 24 hodin.");
+		var confirmation = confirm("This action is irreversible. Your class will be pernamently deleted from the database.\nYou will be able to stop the process of deletion on this webpage during the next 24 hours.");
 		if(confirmation == true)
 		{
 			document.cookie = "nickname=" + username;

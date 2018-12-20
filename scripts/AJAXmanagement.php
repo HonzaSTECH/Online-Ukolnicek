@@ -42,21 +42,21 @@
 			$result = mysqli_fetch_array($result);
 			$email = $result['email'];
 			
-			$email_subject = "Žádost o přijetí do třídy $classname.";
+			$email_subject = "Application for admission into class $classname.";
 			//Building e-mail body
 			$email_body = "
 			<div style='width: 50%; border: 2px solid black; margin: auto; background-color: #FFFF99; padding:10px;text-align:center'>
 				<h2 style='position:relative;left:0;right:0;margin:auto;'>Stav vaší žádosti</h2>
 				<fieldset style='width: 50%; position: relative; left:0; right:0; margin: auto;border-radius:20px;'>
 					<span style='font-size: 1.5em;'>
-						Blahopřejeme, vaše žádost o přijetí do třídy $classname byla<br /><b style='color:limegreen;'>schválena</b>.<br />Vaší žádost vyřizoval uživatel $admin.
+						Congratulations, your application for admission into class $classname has been<br /><b style='color:limegreen;'>approved</b>.<br />Your application was processed by $admin.
 					</span>
 				</fieldset>
-				<br /><i>Žádosti o přijetí do dalších tříd můžete zaslat na stránkách seznamtestu.chytrak.cz.
-				<br />Pokud chcete tuto třídu opustit, můžete tak učinit na stránce se seznamam tříd.
-				<br />Tento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.</i>
-				<hr /><span style='color: rgb(102,102,102)';>Nechcete od nás dostávat další e-maily? Odhlašte se z odběru e-mailů <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
-				<br /><span style='color: rgb(135,135,135)';>Toto zruší pouze automaticky odesílané e-maily. Pokud odešlete dotaz nebo připomínku, stále můžete dostat webmasterem psanou odpověď.</span>
+				<br /><i>You can send more applications for admission into other classes on examdirectory.online.
+				<br />If you want to leave the class, you can do so on the webpage with list of classes.
+				<br />This e-mail has been generated automatically and therefore do not answer it.</i>
+				<hr /><span style='color: rgb(102,102,102)';>Don't want to get more e-mails from us? Unsubscribe <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
+				<br /><span style='color: rgb(135,135,135)';>This will stop only automatically generated e-mails. If you send us your opinion, a question or a suggestion, you can still get manually written answer from the webmaster.</span>
 			</div>
 			";
 			
@@ -95,14 +95,14 @@
 				<h2 style='position:relative;left:0;right:0;margin:auto;'>Stav vaší žádosti</h2>
 				<fieldset style='width: 50%; position: relative; left:0; right:0; margin: auto;border-radius:20px;'>
 					<span style='font-size: 1.5em;'>
-						Je nám líto, ale vaše žádost o přijetí do třídy $classname byla<br /><b style='color:red;'>zamítnuta</b>.<br />Vaší žádost vyřizoval uživatel $admin.
+						We are sorry, but your application for admission into class $classname has been <br /><b style='color:red;'>rejected</b>.<br />Your application was processed by $admin.
 					</span>
 				</fieldset>
-				<br /><i>Novou žádost můžete zaslat na stránkách seznamtestu.chytrak.cz.
-				<br />Pokud chcete znovu zažádat o přijetí do této třídy, doporučujeme vám napsat lepší text žádosti.
-				<br />Tento e-mail byl vygenerován automaticky a tudíž na něj neodpovídejte.</i>
-				<hr /><span style='color: rgb(102,102,102)';>Nechcete od nás dostávat další e-maily? Odhlašte se z odběru e-mailů <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
-				<br /><span style='color: rgb(135,135,135)';>Toto zruší pouze automaticky odesílané e-maily. Pokud odešlete dotaz nebo připomínku, stále můžete dostat webmasterem psanou odpověď.</span>
+				<br /><i>You can send a new application for admission on examdirectory.online.
+				<br />If you want to apply for admission into the same class again, we recommend you to write a better content of the application.
+				<br />This e-mail has been generated automatically and therefore do not answer it.</i>
+				<hr /><span style='color: rgb(102,102,102)';>Don't want to get more e-mails from us? Unsubscribe <a href='seznamtestu.chytrak.cz'>zde</a>.</span>
+				<br /><span style='color: rgb(135,135,135)';>This will stop only automatically generated e-mails. If you send us your opinion, a question or a suggestion, you can still get manually written answer from the webmaster.</span>
 			</div>
 			";
 			
