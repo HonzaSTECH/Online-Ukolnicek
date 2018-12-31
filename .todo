@@ -40,9 +40,10 @@ Done		39) Fix the wrongly positioned scroll bar on the apply page
 Waiting		40) Make leaving a class possible
 Waiting		41) Inform users about acceptence or declining their join application
 Done		42) Improve e-mail sending when a application is accepted or declined to look like that one on apply page
-Waiting		43) Improve displaying longer class names on the apply page
+Planned 	43) Improve displaying longer class names on the apply page
 Waiting 	44) Remove controll alert messages from all pages that use AJAX
 Planned 	45) Make color of the record depend on subject and remove priority attribute
 Waiting		46) Log actions executed on the classManagement page
 Waiting		47) Secure and satinize all database interactions
-Actual		48) Add new functionalities to the classManagement page
+Planned		48) Add new functionalities to the classManagement page
+Actual		49) Make choosing a display language possible
