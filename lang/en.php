@@ -11,7 +11,7 @@ $lang['title'] = "Exam list";
 
 //examdirectory.online/index.php
 $lang['welcome1'] = "Welcome to examdirectory.online";
-$lang['welcome2'] = "Click the button to process";
+$lang['welcome2'] = "Click the button to proceed";
 $lang['enter'] = "Enter";
 $lang['news'] = "News";
 
@@ -126,7 +126,7 @@ $lang['lockButton'] = "Lock the class";
 $lang['classLockAlertText'] = "The class was locked. Do you want to reject and remove all pending applications for admission to the class?";
 $lang['deleteClassPassword1'] = "It is necessary to verify you with your administrator password.";
 $lang['deleteClassPassword2'] = "Type in your password and continue by clicking OK.";
-$lang['deleteClassFinal1'] = "This action is irreversible. Your class will be pernamently deleted from the database."
+$lang['deleteClassFinal1'] = "This action is irreversible. Your class will be pernamently deleted from the database.";
 $lang['deleteClassFinal2'] = "You will be able to stop the process of deletion on this webpage during the next 24 hours.";
 $lang['editSubjects'] = "Edit subjects";
 $lang['nickname'] = "Nickname";

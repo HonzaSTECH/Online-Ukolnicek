@@ -1,145 +1,145 @@
 <?php
-
+header('Content-type: text/html; charset=utf-8');
 /**
  * language: pl
  * encoding: utf-8
- * author: Micha³ Hyla
+ * author: MichaÅ‚ Hyla
  */
 
 //page title
-$lang['title'] = "Lista egzaminów";
+$lang['title'] = "Lista egzaminÃ³w";
 
 //examdirectory.online/index.php
 $lang['welcome1'] = "Witaj na examdirectory.online";
-$lang['welcome2'] = "Kliknij poni¿szy przycisk, aby przejœæ dalej.";
-$lang['enter'] = "PrzejdŸ dalej";
+$lang['welcome2'] = "Kliknij poniÅ¼szy przycisk, aby przejÅ›Ä‡ dalej.";
+$lang['enter'] = "PrzejdÅº dalej";
 $lang['news'] = "Informacje";
 
 //examdirectory.online/scripts/login.php
-$lang['logIn'] = "Zaloguj siê";
+$lang['logIn'] = "Zaloguj siÄ™";
 $lang['name'] = "Nazwa";
-$lang['pass'] = "Has³o";
-$lang['newAccountText'] = "Nie masz jeszcze konta? Zarejestruj siê.";
-$lang['successfulLogin'] = "Pomyœlnie zalogowano.";
-$lang['passFailLogin'] = "Niepoprawne has³o";
-$lang['nameFailLogin'] = "U¿ytkownik o tej nazwie nie istnieje.";
+$lang['pass'] = "HasÅ‚o";
+$lang['newAccountText'] = "Nie masz jeszcze konta? Zarejestruj siÄ™.";
+$lang['successfulLogin'] = "PomyÅ›lnie zalogowano.";
+$lang['passFailLogin'] = "Niepoprawne hasÅ‚o";
+$lang['nameFailLogin'] = "UÅ¼ytkownik o tej nazwie nie istnieje.";
 $lang['hereLink'] = "tutaj";
 
 //examdirectory.online/scripts/register.php
-$lang['register'] = "Zarejestruj siê";
-$lang['repeatPass'] = "Powtórz has³o.";
+$lang['register'] = "Zarejestruj siÄ™";
+$lang['repeatPass'] = "PowtÃ³rz hasÅ‚o.";
 $lang['e-mail'] = "E-mail";
-$lang['termsText'] = "Zgadzam siê z";
+$lang['termsText'] = "Zgadzam siÄ™ z";
 $lang['termsLink'] = "zasadami strony.";
-$lang['logInText'] = "Masz ju¿ konto? Zaloguj siê. ";
-$lang['successfulRegister'] = "Zarejestrowano pomyœlnie.";
-$lang['termsFailRegister'] = "Musisz zaakceptowaæ zasady serwisu.";
-$lang['shortNameFailRegister'] = "Nazwa musi sk³adaæ siê z co najmniej 4 znaków.";
-$lang['longNameFailRegister'] = "Nazwa nie mo¿e mieæ wiêcej ni¿ 16 znaków.";
-$lang['duplicateNameFailRegister'] = "U¿ytkownik o podanej nazwie ju¿ istnieje.";
-$lang['shortPassFailRegister'] = "Has³o musi sk³adaæ siê z co najmniej 4 znaków.";
-$lang['longPassFailRegister'] = "Has³o nie mo¿e mieæ wiêcej ni¿ 16 znaków.";
-$lang['unequalPassFailRegister'] = "Has³a nie s¹ jednakowe.";
-$lang['noDigitInPassFailRegister'] = "Has³o musi zawieraæ co najmniej 1 cyfrê.";
-$lang['noLowercaseInPassFailRegister'] = "Has³o musi zawieraæ co najmniej 1 ma³¹ literê.";
-$lang['noUppercaseInPassFailRegister'] = "Has³o musi zawieraæ co najmniej 1 du¿¹ literê.";
-$lang['invalidEmailFailRegister'] = "Podany email jest nieprawid³owy.";
-$lang['longEmailFailRegister'] = "Email nie mo¿e mieæ wiêcej ni¿ 64 znaki.";
-$lang['duplicateEmailFailRegister'] = "Ten email jest zajêty przez innego u¿ytkownika.";
-$lang['unknownFailRegister'] = "Wyst¹pi³ b³¹d. Powtórz swoj¹ próbê póŸniej lub skontaktuj siê z administratorem strony [honza.stech@gmail.com].";
+$lang['logInText'] = "Masz juÅ¼ konto? Zaloguj siÄ™. ";
+$lang['successfulRegister'] = "Zarejestrowano pomyÅ›lnie.";
+$lang['termsFailRegister'] = "Musisz zaakceptowaÄ‡ zasady serwisu.";
+$lang['shortNameFailRegister'] = "Nazwa musi skÅ‚adaÄ‡ siÄ™ z co najmniej 4 znakÃ³w.";
+$lang['longNameFailRegister'] = "Nazwa nie moÅ¼e mieÄ‡ wiÄ™cej niÅ¼ 16 znakÃ³w.";
+$lang['duplicateNameFailRegister'] = "UÅ¼ytkownik o podanej nazwie juÅ¼ istnieje.";
+$lang['shortPassFailRegister'] = "HasÅ‚o musi skÅ‚adaÄ‡ siÄ™ z co najmniej 4 znakÃ³w.";
+$lang['longPassFailRegister'] = "HasÅ‚o nie moÅ¼e mieÄ‡ wiÄ™cej niÅ¼ 16 znakÃ³w.";
+$lang['unequalPassFailRegister'] = "HasÅ‚a nie sÄ… jednakowe.";
+$lang['noDigitInPassFailRegister'] = "HasÅ‚o musi zawieraÄ‡ co najmniej 1 cyfrÄ™.";
+$lang['noLowercaseInPassFailRegister'] = "HasÅ‚o musi zawieraÄ‡ co najmniej 1 maÅ‚Ä… literÄ™.";
+$lang['noUppercaseInPassFailRegister'] = "HasÅ‚o musi zawieraÄ‡ co najmniej 1 duÅ¼Ä… literÄ™.";
+$lang['invalidEmailFailRegister'] = "Podany email jest nieprawidÅ‚owy.";
+$lang['longEmailFailRegister'] = "Email nie moÅ¼e mieÄ‡ wiÄ™cej niÅ¼ 64 znaki.";
+$lang['duplicateEmailFailRegister'] = "Ten email jest zajÄ™ty przez innego uÅ¼ytkownika.";
+$lang['unknownFailRegister'] = "WystÄ…piÅ‚ bÅ‚Ä…d. PowtÃ³rz swojÄ… prÃ³bÄ™ pÃ³Åºniej lub skontaktuj siÄ™ z administratorem strony [honza.stech@gmail.com].";
 
 //header on pages requiring a logged user
-$lang['headerText'] = "Jesteœ zalogowany, jako";
-$lang['logOut'] = "Wyloguj siê.";
+$lang['headerText'] = "JesteÅ› zalogowany, jako";
+$lang['logOut'] = "Wyloguj siÄ™.";
 $lang['info'] = "Informacje";
-$lang['home'] = "Strona g³ówna";
+$lang['home'] = "Strona gÅ‚Ã³wna";
 $lang['class'] = "Klasa";
-$lang['classManagement'] = "Zarz¹dzanie klas¹.";
+$lang['classManagement'] = "ZarzÄ…dzanie klasÄ….";
 
 //examdirectory.online/scripts/home.php
-$lang['homeHeader'] = "Jesteœ cz³onkiem tych klas:";
-$lang['notMemberInAnyClass'] = "Nie jesteœ cz³onkiem ¿adnej klasy.";
+$lang['homeHeader'] = "JesteÅ› czÅ‚onkiem tych klas:";
+$lang['notMemberInAnyClass'] = "Nie jesteÅ› czÅ‚onkiem Å¼adnej klasy.";
 $lang['admin'] = "Administrator";
 $lang['mod'] = "Moderator";
-$lang['member'] = "Cz³onek";
-$lang['apply'] = "Z³ó¿ wniosek o przyjêcie do istniej¹cej klasy.";
-$lang['newClass'] = "Stwórz now¹ klasê.";
+$lang['member'] = "CzÅ‚onek";
+$lang['apply'] = "ZÅ‚Ã³Å¼ wniosek o przyjÄ™cie do istniejÄ…cej klasy.";
+$lang['newClass'] = "StwÃ³rz nowÄ… klasÄ™.";
 
 //examdirectory.online/scripts/list.php
-$lang['noRecord'] = "Brak zapisów";
+$lang['noRecord'] = "Brak zapisÃ³w";
 $lang['date'] = "Data";
 $lang['subject'] = "Przedmiot";
 $lang['desc'] = "Opis";
 $lang['author'] = "Dodane przez:";
 $lang['dateOfAdding'] = "Data dodania";
 $lang['action'] = "Inne";
-$lang['upvote'] = "Lubiê to";
+$lang['upvote'] = "LubiÄ™ to";
 $lang['edit'] = "Edytuj";
-$lang['delete'] = "Usuñ";
-$lang['newRecord'] = "Dodaj now¹ pozycjê";
-$lang['descPlaceholder'] = "WprowadŸ tekst";
+$lang['delete'] = "UsuÅ„";
+$lang['newRecord'] = "Dodaj nowÄ… pozycjÄ™";
+$lang['descPlaceholder'] = "WprowadÅº tekst";
 $lang['priority'] = "Waga";
-$lang['confirm'] = "ZatwierdŸ";
+$lang['confirm'] = "ZatwierdÅº";
 $lang['cancel'] = "Cofnij";
 
 //examdirectory.online/scripts/apply.php
-$lang['applyLore'] = "Wybierz klasê, do której chcesz do³¹czyæ, i podaj swoje dane, jako informacje dla administratora lub moderatora klasy, który bêdzie musia³ zaakceptowaæ twój wniosek.";
-$lang['meberInAll'] = "Jesteœ ju¿ cz³onkiem we wszystkich istniej¹cych klasach.";
-$lang['fName'] = "Pierwsze imiê";
+$lang['applyLore'] = "Wybierz klasÄ™, do ktÃ³rej chcesz doÅ‚Ä…czyÄ‡, i podaj swoje dane, jako informacje dla administratora lub moderatora klasy, ktÃ³ry bÄ™dzie musiaÅ‚ zaakceptowaÄ‡ twÃ³j wniosek.";
+$lang['meberInAll'] = "JesteÅ› juÅ¼ czÅ‚onkiem we wszystkich istniejÄ…cych klasach.";
+$lang['fName'] = "Pierwsze imiÄ™";
 $lang['lName'] = "Nazwisko";
-$lang['applyPlaceholder'] = "Treœæ wniosku.";
-$lang['applyValue'] = "Czeœæ. Chcia³bym do³¹czyæ do twojej klasy. Proszê, czy móg³byœ zatwierdziæ mój wniosek?";
-$lang['applicationSend'] = "Wyœlij wniosek";
-$lang['applyEmailSubject1'] = "Nowy wniosek o przyjêcie do klasy";
+$lang['applyPlaceholder'] = "TreÅ›Ä‡ wniosku.";
+$lang['applyValue'] = "CzeÅ›Ä‡. ChciaÅ‚bym doÅ‚Ä…czyÄ‡ do twojej klasy. ProszÄ™, czy mÃ³gÅ‚byÅ› zatwierdziÄ‡ mÃ³j wniosek?";
+$lang['applicationSend'] = "WyÅ›lij wniosek";
+$lang['applyEmailSubject1'] = "Nowy wniosek o przyjÄ™cie do klasy";
 $lang['applyEmailSubject2'] = "od";
-$lang['applyEmailHeader'] = "Szczegó³y wniosku";
-$lang['applyEmailLore1'] = "Mo¿esz zatwierdziæ lub odrzuciæ ten wniosek w zak³adce zarz¹dzania klas¹.";
-$lang['applyEmailLore2'] = "ZatwierdŸ ten wniosek jedynie w przypadku, gdy jesteœ pewien, kim jest ten u¿ytkownik.";
-$lang['EmailBottomLore'] = "Ten email zosta³ wygenerowany automatycznie, wiêc nie odpowiadaj na niego.";
-$lang['applyEmailFooter1'] = "Nie chcesz dostawaæ od nas wiêcej emaili? Przestañ nas subskrybowaæ.";
-$lang['applyEmailFooter2'] = "Przestaniesz otrzymywaæ od nas tylko automatycznie wygenerowane emaile. Jeœli wyœlesz nam swoj¹ opinie, pytanie lub sugestie, nadal bêdzie móg³ otrzymaæ pisemn¹ odpowiedŸ administratora.";
-$lang['applyAlertText'] = "Twój wniosek o przyjêcie do tej klasy zosta³ wys³any. Dowiesz siê o decyzji administratora lub moderatora klasy na swoim emailu.";
+$lang['applyEmailHeader'] = "SzczegÃ³Å‚y wniosku";
+$lang['applyEmailLore1'] = "MoÅ¼esz zatwierdziÄ‡ lub odrzuciÄ‡ ten wniosek w zakÅ‚adce zarzÄ…dzania klasÄ….";
+$lang['applyEmailLore2'] = "ZatwierdÅº ten wniosek jedynie w przypadku, gdy jesteÅ› pewien, kim jest ten uÅ¼ytkownik.";
+$lang['EmailBottomLore'] = "Ten email zostaÅ‚ wygenerowany automatycznie, wiÄ™c nie odpowiadaj na niego.";
+$lang['applyEmailFooter1'] = "Nie chcesz dostawaÄ‡ od nas wiÄ™cej emaili? PrzestaÅ„ nas subskrybowaÄ‡.";
+$lang['applyEmailFooter2'] = "Przestaniesz otrzymywaÄ‡ od nas tylko automatycznie wygenerowane emaile. JeÅ›li wyÅ›lesz nam swojÄ… opinie, pytanie lub sugestie, nadal bÄ™dzie mÃ³gÅ‚ otrzymaÄ‡ pisemnÄ… odpowiedÅº administratora.";
+$lang['applyAlertText'] = "TwÃ³j wniosek o przyjÄ™cie do tej klasy zostaÅ‚ wysÅ‚any. Dowiesz siÄ™ o decyzji administratora lub moderatora klasy na swoim emailu.";
 
 //examdirectory.online/scripts/newClass.php
-$lang['newClassHeader'] = "Z³ó¿ wniosek o stworzenie nowej klasy.";
-$lang['newClassLore1'] = "Aby unikn¹æ tworzenia niepotrzebnych i pustych klas oraz zape³niania ograniczonej przestrzeni, musisz wype³niæ ten wniosek.";
-$lang['newClassLore2'] = "Dalsza komunikacja bêdzia odbywaæ siê za pomoc¹ emaila, zatem proszê upewniæ siê, czy poda³o siê poprawny adres email.";
-$lang['newClassLore3'] = "Stworzenie klasy jest bezp³atne, tak jak wszystkie inne funkcje.";
-$lang['school'] = "Szko³a";
-$lang['newClassPlaceholder'] = "Treœæ wniosku";
-$lang['newClassAlertText'] = "Twój wniosek o stworzenie nowej klasy zosta³ wys³any. Administrator strony skontaktuje siê z tob¹ emaila. ";
+$lang['newClassHeader'] = "ZÅ‚Ã³Å¼ wniosek o stworzenie nowej klasy.";
+$lang['newClassLore1'] = "Aby uniknÄ…Ä‡ tworzenia niepotrzebnych i pustych klas oraz zapeÅ‚niania ograniczonej przestrzeni, musisz wypeÅ‚niÄ‡ ten wniosek.";
+$lang['newClassLore2'] = "Dalsza komunikacja bÄ™dzia odbywaÄ‡ siÄ™ za pomocÄ… emaila, zatem proszÄ™ upewniÄ‡ siÄ™, czy podaÅ‚o siÄ™ poprawny adres email.";
+$lang['newClassLore3'] = "Stworzenie klasy jest bezpÅ‚atne, tak jak wszystkie inne funkcje.";
+$lang['school'] = "SzkoÅ‚a";
+$lang['newClassPlaceholder'] = "TreÅ›Ä‡ wniosku";
+$lang['newClassAlertText'] = "TwÃ³j wniosek o stworzenie nowej klasy zostaÅ‚ wysÅ‚any. Administrator strony skontaktuje siÄ™ z tobÄ… emaila. ";
 
 //examdirectory.online/scripts/classManagement.php
 $lang['generalTab'] = "Podstawy";
-$lang['subjectsTab'] = "Zarz¹dzanie przedmiotami";
-$lang['membersTab'] = "Zarz¹dzanie cz³onkami";
-$lang['applicationsTab'] = "Wnioski o przyjêcie";
+$lang['subjectsTab'] = "ZarzÄ…dzanie przedmiotami";
+$lang['membersTab'] = "ZarzÄ…dzanie czÅ‚onkami";
+$lang['applicationsTab'] = "Wnioski o przyjÄ™cie";
 $lang['classId'] = "ID klasy";
 $lang['className'] = "Nazwa klasy";
-$lang['changeButton'] = "Zmieñ";
+$lang['changeButton'] = "ZmieÅ„";
 $lang['saveButton'] = "Zapisz";
 $lang['classStatus'] = "Status klasy";
-$lang['openedClass'] = "Otwarta - mo¿na ubiegaæ siê o do³¹czenie do klasy";
-$lang['closedClass'] = "Zamkniêta - nie mo¿na ubiegaæ siê o do³¹czenie do klasy";
-$lang['openButton'] = "Otwórz klasê";
-$lang['lockButton'] = "Zamknij klasê";
-$lang['classLockAlertText'] = "Klasa zosta³a zamkniêta. Czy chcesz odrzuciæ i usun¹æ wszystkie wnioski o do³¹czenie do klasy?";
-$lang['deleteClassPassword1'] = "Potrzebna jest weryfikacja za pomoc¹ has³a administratora.";
-$lang['deleteClassPassword2'] = "Wpisz swoje has³o i kliknij przycisk \"OK\", aby kontynuowaæ.";
-$lang['deleteClassFinal1'] = "To dzia³anie jest nieodwracalne. Twoja klasa zostanie na sta³e usuniêta z bazy danych.";
-$lang['deleteClassFinal2'] = "Bêdziesz móg³ zatrzymaæ proces kasowania na tej stronie internetowej w ci¹gu najbli¿szych 24 godzin."
+$lang['openedClass'] = "Otwarta - moÅ¼na ubiegaÄ‡ siÄ™ o doÅ‚Ä…czenie do klasy";
+$lang['closedClass'] = "ZamkniÄ™ta - nie moÅ¼na ubiegaÄ‡ siÄ™ o doÅ‚Ä…czenie do klasy";
+$lang['openButton'] = "OtwÃ³rz klasÄ™";
+$lang['lockButton'] = "Zamknij klasÄ™";
+$lang['classLockAlertText'] = "Klasa zostaÅ‚a zamkniÄ™ta. Czy chcesz odrzuciÄ‡ i usunÄ…Ä‡ wszystkie wnioski o doÅ‚Ä…czenie do klasy?";
+$lang['deleteClassPassword1'] = "Potrzebna jest weryfikacja za pomocÄ… hasÅ‚a administratora.";
+$lang['deleteClassPassword2'] = "Wpisz swoje hasÅ‚o i kliknij przycisk \"OK\", aby kontynuowaÄ‡.";
+$lang['deleteClassFinal1'] = "To dziaÅ‚anie jest nieodwracalne. Twoja klasa zostanie na staÅ‚e usuniÄ™ta z bazy danych.";
+$lang['deleteClassFinal2'] = "BÄ™dziesz mÃ³gÅ‚ zatrzymaÄ‡ proces kasowania na tej stronie internetowej w ciÄ…gu najbliÅ¼szych 24 godzin.";
 $lang['editSubjects'] = "Edytuj przedmiot";
 $lang['nickname'] = "Pseudonim";
-$lang['approve'] = "ZatwierdŸ";
-$lang['reject'] = "Odrzuæ";
-$lang['classManagementEmailSubject'] = "Wniosek o przyjêcie do klasy.";
+$lang['approve'] = "ZatwierdÅº";
+$lang['reject'] = "OdrzuÄ‡";
+$lang['classManagementEmailSubject'] = "Wniosek o przyjÄ™cie do klasy.";
 $lang['classManagementEmailSuccessLore1'] = "Gratulacje, ";
 $lang['classManagementEmailFailLore1'] = "Przykro nam, ";
-$lang['classManagementEmailLore2'] = "twój wniosek o przyjêcie do klasy ";
-$lang['classManagementEmailSuccessLore3'] = "zosta³ pozytywnie rozpatrzony";
-$lang['classManagementEmailFailLore3'] = "zosta³ odrzucony.";
-$lang['classManagementEmailLore4'] = "Twój wniosek zosta³ rozpatrzony przez ";
-$lang['classManagementEmailSuccessFooter1'] = "Mo¿esz wys³aæ wiêcej wniosków o przyjêcie do innych klas na stronie examdirectory.online.";
-$lang['classManagementEmailFailFooter1'] = "Mo¿esz wys³aæ nowy wniosek o przyjêcie do klasy na stronie examdirectory.online.";
-$lang['classManagementEmailSuccessFooter2'] = "Jeœli chcesz opuœciæ klasê, mo¿esz to zrobiæ na stronie z listami klas.";
-$lang['classManagementEmailFailFooter2'] = "Jeœli chcesz ponownie ubiegaæ siê o przyjêcie do tej samej klasy, zalecamy napisanie lepszego wniosku o przyjêcie.";
+$lang['classManagementEmailLore2'] = "twÃ³j wniosek o przyjÄ™cie do klasy ";
+$lang['classManagementEmailSuccessLore3'] = "zostaÅ‚ pozytywnie rozpatrzony";
+$lang['classManagementEmailFailLore3'] = "zostaÅ‚ odrzucony.";
+$lang['classManagementEmailLore4'] = "TwÃ³j wniosek zostaÅ‚ rozpatrzony przez ";
+$lang['classManagementEmailSuccessFooter1'] = "MoÅ¼esz wysÅ‚aÄ‡ wiÄ™cej wnioskÃ³w o przyjÄ™cie do innych klas na stronie examdirectory.online.";
+$lang['classManagementEmailFailFooter1'] = "MoÅ¼esz wysÅ‚aÄ‡ nowy wniosek o przyjÄ™cie do klasy na stronie examdirectory.online.";
+$lang['classManagementEmailSuccessFooter2'] = "JeÅ›li chcesz opuÅ›ciÄ‡ klasÄ™, moÅ¼esz to zrobiÄ‡ na stronie z listami klas.";
+$lang['classManagementEmailFailFooter2'] = "JeÅ›li chcesz ponownie ubiegaÄ‡ siÄ™ o przyjÄ™cie do tej samej klasy, zalecamy napisanie lepszego wniosku o przyjÄ™cie.";
