@@ -49,7 +49,7 @@ $lang['duplicateEmailFailRegister'] = "Ten email jest zajęty przez innego użyt
 $lang['unknownFailRegister'] = "Wystąpił błąd. Powtórz swoją próbę później lub skontaktuj się z administratorem strony [honza.stech@gmail.com].";
 
 //header on pages requiring a logged user
-$lang['headerText'] = "Jesteś zalogowany, jako";
+$lang['headerText'] = "Jesteś zalogowany, jako ";
 $lang['logOut'] = "Wyloguj się.";
 $lang['info'] = "Informacje";
 $lang['home'] = "Strona główna";
@@ -77,7 +77,7 @@ $lang['upvote'] = "Lubię to";
 $lang['edit'] = "Edytuj";
 $lang['delete'] = "Usuń";
 $lang['newRecord'] = "Dodaj nową pozycję";
-$lang['descPlaceholder'] = "Wprowadź tekst";
+$lang['descPlaceholder'] = "Wprowadź egzamin";
 $lang['priority'] = "Waga";
 $lang['confirm'] = "Zatwierdź";
 $lang['cancel'] = "Cofnij";
