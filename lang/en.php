@@ -49,7 +49,7 @@ $lang['duplicateEmailFailRegister'] = "This e-mail is already used by another us
 $lang['unknownFailRegister'] = "An error occured. Repeat your attempt later or contact webmaster on e-mail address honza.stech@gmail.com.";
 
 //header on pages requiring a logged user
-$lang['headerText'] = "You are logged in as";
+$lang['headerText'] = "You are logged in as ";
 $lang['logOut'] = "Log out";
 $lang['info'] = "Information";
 $lang['home'] = "Home";
@@ -77,7 +77,7 @@ $lang['upvote'] = "Like";
 $lang['edit'] = "Edit";
 $lang['delete'] = "Delete";
 $lang['newRecord'] = "Add a new record";
-$lang['descPlaceholder'] = "Revision text";
+$lang['descPlaceholder'] = "Revision test";
 $lang['priority'] = "Priority";
 $lang['confirm'] = "Confirm";
 $lang['cancel'] = "Cancel";
