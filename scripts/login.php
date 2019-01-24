@@ -21,7 +21,7 @@
 				<input type=submit name="send" value="<?php echo $lang['logIn']; ?>" id="submitButton">
 			</fieldset>
 		</form>
-		<div id="registerLink"><?php echo $lang['newAccountText'] ?><a href="register.php<?php echo $urlExtension; ?>"><u><?php echo $lang['hereLink']; ?></u></a>.</div>
+		<div id="registerLink"><?php echo $lang['newAccountText'] ?><a href="register.php<?php echo $urlExtension; ?>"><u><?php echo $lang['hereLink']; ?></u></a><?php echo $lang['fullstop']; ?></div>
 		
 		<?php
 			require_once("connect.php");
