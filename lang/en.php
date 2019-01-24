@@ -24,6 +24,7 @@ $lang['successfulLogin'] = "You were successfully logged in.";
 $lang['passFailLogin'] = "Incorrect password";
 $lang['nameFailLogin'] = "There is no user with this name registered.";
 $lang['hereLink'] = "here";
+$lang['fullstop'] = ".";
 
 //examdirectory.online/scripts/register.php
 $lang['register'] = "Register";

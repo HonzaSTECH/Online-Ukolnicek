@@ -24,6 +24,7 @@ $lang['successfulLogin'] = "Pomyślnie zalogowano.";
 $lang['passFailLogin'] = "Niepoprawne hasło";
 $lang['nameFailLogin'] = "Użytkownik o tej nazwie nie istnieje.";
 $lang['hereLink'] = "tutaj";
+$lang['fullstop'] = ".";
 
 //examdirectory.online/scripts/register.php
 $lang['register'] = "Zarejestruj się";

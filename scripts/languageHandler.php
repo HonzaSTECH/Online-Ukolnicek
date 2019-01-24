@@ -7,7 +7,7 @@
 	$urlExtension = "?lang=$language";
 	
 	
-	$avalibeLanguages = array('en','pl');
+	$avalibeLanguages = array('en','pl', 'cn');
 	
 	if (in_array($language,$avalibeLanguages))
 	{
