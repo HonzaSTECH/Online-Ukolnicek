@@ -263,7 +263,7 @@ function editRecord(event)
 function removeRecord(event)
 {
 	//Confirmation alert
-	if(confirm("Opravdu chcete smazat tento záznam? Tato akce je nevratná!"))
+	if(confirm("Opravdu chcete smazat tento záznam? Tato akce je nevratná!"))	//TODO - add translation.
 	{
 		//Getting record details
 		var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
