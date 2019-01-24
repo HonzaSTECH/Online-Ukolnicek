@@ -56,7 +56,7 @@
 						fileLog("Uživatel $name se přihlásil z IP adresy $ip.");
 						
 						//Redirecting
-						echo "<script type='text/javascript'>location.href = 'home.php';</script>";
+						echo "<script type='text/javascript'>location.href = 'home.php".$languageHandler."';</script>";
 					}
 					else
 					{

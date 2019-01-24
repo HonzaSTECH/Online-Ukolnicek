@@ -1,20 +1,23 @@
 <?php
 	session_start();
+	if(empty($_SESSION['class'])){$_SESSION['class'] = $_POST['classSelect'];}
 	require 'checker.php';
 	check(true, true);
+	include 'languageHandler.php';
 ?>
 <html>
 	<head>
-        <title>Exam list - 
-		<?php
-			//Displaying the name of the class
-			require_once('connect.php');
-			$classId = $_SESSION['class'];
-			$query = "SELECT name FROM classes WHERE id=$classId";
-			$result = mysqli_query($connection, $query);
-			$name = mysqli_fetch_array($result);
-			$name = $name['name'];
-			echo $name;
+        <title><?php 
+		echo $lang['title']." - ";
+		
+		//Displaying the name of the class
+		require_once('connect.php');
+		$classId = $_SESSION['class'];
+		$query = "SELECT name FROM classes WHERE id=$classId";
+		$result = mysqli_query($connection, $query);
+		$name = mysqli_fetch_array($result);
+		$name = $name['name'];
+		echo $name;
 		?>
 		</title>
 		<link rel="shortcut icon" href="../images/transparentMarklessLogo.ico">
@@ -27,23 +30,23 @@
 		<div id="header">
 			<span id="username">
 				<?php
-				echo "You are logged in as ";
+				echo $lang['headerText'];
 				echo $_SESSION['user'];
 				?>
 			</span>
-			<a href="login.php">
+			<a href="login.php<?php echo $urlExtension; ?>">
 				<div id="logoutBox">
-					<span id="logoutLink">Log out</span>
+					<span id="logoutLink"><?php echo $lang['logOut']; ?></span>
 				</div>
 			</a>
-			<a href="info.php">
+			<a href="info.php<?php echo $urlExtension; ?>">
 				<div id="infoBox">
-					<span id="infoLink">Information</span>
+					<span id="infoLink"><?php echo $lang['info']; ?></span>
 				</div>
 			</a>
-			<a href="home.php">
+			<a href="home.php<?php echo $urlExtension; ?>">
 				<div id="homeBox">
-					<span id="homeLink">Home</span>
+					<span id="homeLink"><?php echo $lang['home']; ?></span>
 				</div>
 			</a>
 			<?php
@@ -58,9 +61,9 @@
 				if($result == $username)
 				{
 					echo "
-					<a href='classManagement.php'>
+					<a href='classManagement.php".$urlExtension."'>
 						<div id='classManagementBox'>
-							<span id='classManagementLink'>Class management</span>
+							<span id='classManagementLink'>".$lang['classManagement']."</span>
 						</div>
 					</a>
 					";
@@ -71,25 +74,25 @@
 			<table id="data" border="1">
 				<tr>
 					<th id="date">
-						Date
+						<?php echo $lang['date']; ?>
 					</th>
 					<th id="subject">
-						Subject
+						<?php echo $lang['subject']; ?>
 					</th>
 					<th id="description">
-						Description
+						<?php echo $lang['desc']; ?>
 					</th>
 					<th id="author">
-						Added by
+						<?php echo $lang['author']; ?>
 					</th>
 					<th id="dateOfAdding">
-						Added on
+						<?php echo $lang['dateOfAdding']; ?>
 					</th>
 					<th id="likes">
 						<strong>^</strong>
 					</th>
 					<th id="akce">
-						Action
+						<?php echo $lang['action']; ?>
 					</th>
 				</tr>
 				<?php
@@ -158,12 +161,12 @@
 									if($_SESSION['user'] == $row['author'])
 									{
 										//Current user is author of the record - displaying edit and delete button
-										echo "<button class='action2' onclick='editRecord(event)'>Edit</button><button class='action3' onclick='removeRecord(event)'>Delete</button>";
+										echo "<button class='action2' onclick='editRecord(event)'>".$lang['edit']."</button><button class='action3' onclick='removeRecord(event)'>".$lang['delete']."</button>";
 									}
 									else
 									{
 										//Current user is NOT author of the record - displaying like button (if hasn't liked yet)
-										if(!liked($_SESSION['user'], $row['likers'])){echo "<button class='action1' onclick='upvoteRecord(event)'>Like</button>";}
+										if(!liked($_SESSION['user'], $row['likers'])){echo "<button class='action1' onclick='upvoteRecord(event)'>".$lang['upvote']."</button>";}
 										
 										//Checking if the user is mod or admin of the class - displaying edit and delete buttons
 										$user = $_SESSION['user'];
@@ -172,13 +175,13 @@
 										$result = mysqli_fetch_array($result);
 										$adminClasses = explode(',', $result['adminIn']);
 										$modClasses = explode(',', $result['modIn']);
-										if(in_array($classId, $adminClasses) || in_array($classId, $modClasses)){echo "<button class='action2' onclick='editRecord(event)'>Edit</button><button class='action3' onclick='removeRecord(event)'>Delete</button>";}
+										if(in_array($classId, $adminClasses) || in_array($classId, $modClasses)){echo "<button class='action2' onclick='editRecord(event)'>".$lang['edit']."</button><button class='action3' onclick='removeRecord(event)'>".$lang['delete']."</button>";}
 									}
 								echo "</td>
 							</tr>";
 						}
 						//Displaying NO RECORD message if no record exist
-						if (!isset($exist)){echo "<tr><td colspan='7' BGCOLOR='#CCCCCC'><div id='noRecord'>Žádný záznam</div></td></tr>";}
+						if (!isset($exist)){echo "<tr><td colspan='7' BGCOLOR='#CCCCCC'><div id='noRecord'>".$lang['noRecord']."</div></td></tr>";}
 					}
 					else
 					{
@@ -189,15 +192,15 @@
 				?>
 			</table>
 				
-			<button id="addRecord" onclick="addRecord()">Add a new record</button>
+			<button id="addRecord" onclick="addRecord()"><?php echo $lang['newRecord']; ?></button>
 		</div>
 		<div id="form">
-			<div id="formTitle">Add a new record</div>
+			<div id="formTitle"><?php echo $lang['newRecord']; ?></div>
 			<form method="POST" onsubmit="newRecord(event)">
-				<span id="form1Text">Date:</span>
+				<span id="form1Text"><?php echo $lang['date'].":"; ?></span>
 				<input type="date" id="form1" name="date" required>
 				<br />
-				<span id="form2Text">Subject:</span>
+				<span id="form2Text"><?php echo $lang['subject'].":"; ?></span>
 				<select id="form2" name="subject" required>
 					<?php
 						//Displaying possible subjects in the form
@@ -219,10 +222,10 @@
 					<option>---</option>
 				</select>
 				<br />
-				<span id="form3Text">Description:</span>
+				<span id="form3Text"><?php echo $lang['desc'].":"; ?></span>
 				<textarea type="message" id="form3" name="description" required placeholder="Revision test" maxlength=100></textarea>
 				<br />
-				<span id="form5Text">Priority:</span>
+				<span id="form5Text"><?php echo $lang['priority'],":"; ?></span>
 					<div id="priority1">
 						<input type="radio" name="priority" value="1" id="pr1">
 						<br />
@@ -249,9 +252,9 @@
 						<label for="pr5">5</label>
 					</div>
 					<br />
-				<input type="submit" id="formSubmit" name="send" value="Confirm">
+				<input type="submit" id="formSubmit" name="send" value="<?php echo $lang['confirm']; ?>">
 			</form>
-			<button id="formCancel" onclick="closeForm()">Cancel</button>
+			<button id="formCancel" onclick="closeForm()"><?php echo $lang['cancel']; ?></button>
 		</div>
     </body>
 </html>

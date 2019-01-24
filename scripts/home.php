@@ -52,7 +52,7 @@
 				$classes = explode(',', $data);
 				
 				//Printing the table
-				echo "<form action='classLogin.php".$urlExtension."' method='POST'><fieldset><table>";
+				echo "<form action='list.php".$urlExtension."' method='POST'><fieldset><table>";
 				
 				$modClasses = array(0);
 				$adminClasses = array(0);
