@@ -97,7 +97,7 @@ $lang['applyEmailHeader'] ="申请详情";
 $lang['applyEmailLore1'] ="您可以在课程管理网站上批准或拒绝此申请。";
 $lang['applyEmailLore2'] ="仅在您确定该真实用户的情况下批准此申请。";
 $lang['EmailBottomLore'] ="此电子邮件系自动生成，请不要回复。";
-$lang['applyEmailFooter1'] ="不想收到更多来自我们的电子邮件？请取消订阅";
+$lang['applyEmailFooter1'] ="不想收到更多来自我们的电子邮件？请取消订阅 ";
 $lang['applyEmailFooter2'] ="这将仅停止自动生成的电子邮件。如果您将您的意见发 送给我们，问题或建议，您仍然可以从网站管理员处获得手动回复。";
 $lang['applyAlertText'] ="你此课程入课申请已经发送。您将在您的电子邮件中得到来 自管理员或课程版主的结论。";
 
