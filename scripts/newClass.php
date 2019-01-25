@@ -1,4 +1,7 @@
-<?php	session_start();		?>
+<?php
+	session_start();
+	include 'languageHandler.php';
+?>
 <head>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="../images/transparentMarklessLogo.ico">
@@ -8,44 +11,44 @@
 	<div id="header">
 		<span id="username">
 			<?php
-			echo "You are logged in as ";
+			echo $lang['headerText'];
 			echo $_SESSION['user'];
 			?>
 		</span>
-		<a href="login.php">
+		<a href="login.php<?php echo $urlExtension; ?>">
 			<div id="logoutBox">
-				<span id="logoutLink">Log out</span>
+				<span id="logoutLink"><?php echo $lang['logOut']; ?></span>
 			</div>
 		</a>
-		<a href="info.php">
+		<a href="info.php<?php echo $urlExtension; ?>">
 			<div id="infoBox">
-				<span id="infoLink">Information</span>
+				<span id="infoLink"><?php echo $lang['info']; ?></span>
 			</div>
 		</a>
-		<a href="home.php">
+		<a href="home.php<?php echo $urlExtension; ?>">
 			<div id="homeBox">
-				<span id="homeLink">Home</span>
+				<span id="homeLink"><?php echo $lang['home']; ?></span>
 			</div>
 		</a>
 	</div>
 	<div id="container">
 		<div id="infoText">
-			<h2>Apply for creation of a new class</h2>
+			<h2><?php echo $lang['newClassHeader']; ?></h2>
 			<span id=subtext>
-				To avoid creating unnecessary and empty classes and filling a limited space in our database, you need to fill out this form to create a class.<br />
-				Further communication will occure via e-mail, so please make sure that you have entered the correct e-mail address.<br />
-				Creating a class is free just as any other feature.
+				<?php echo $lang['newClassLore1']; ?><br />
+				<?php echo $lang['newClassLore2']; ?><br />
+				<?php echo $lang['newClassLore3']; ?>
 			</span>
 		</div>
-		<form action="newClass.php" method="POST">
+		<form action="newClass.php<?php echo $urlExtension; ?>" method="POST">
 			<fieldset>
-				<input type=text name="name" placeholder="First name" id="name" required>
-				<input type=text name="surname" placeholder="Last name" id="surname" required>
-				<input type=text name="school" placeholder="School" id="school" required>
-				<input type=text name="class" placeholder="Class" id="class" required>
-				<input type=email name="email" placeholder="E-mail" id="email" required>
-				<textarea type="message" name="message" placeholder="Content of the application"  id="text" required></textarea>
-				<input type=submit name="posted" value="Send the application" id="submitButton">
+				<input type=text name="name" placeholder="<?php echo $lang['fName']; ?>" id="name" required>
+				<input type=text name="surname" placeholder="<?php echo $lang['lName']; ?>" id="surname" required>
+				<input type=text name="school" placeholder="<?php echo $lang['school']; ?>" id="school" required>
+				<input type=text name="class" placeholder="<?php echo $lang['class']; ?>" id="class" required>
+				<input type=email name="email" placeholder="<?php echo $lang['e-mail']; ?>" id="email" required>
+				<textarea type="message" name="message" placeholder="<?php echo $lang['newClassPlaceholder']; ?>"  id="text" required></textarea>
+				<input type=submit name="posted" value="<?php echo $lang['applicationSend']; ?>" id="submitButton">
 			</fieldset>
 		</form>
 	</div>
@@ -69,7 +72,9 @@
 			$message = $_POST['message'];
 			
 			//Wrapping the message
-			$message = wordwrap($message, 70, "\r\n");
+			nl2br($message);
+			//str_replace('<br />', PHP_EOL, $message);
+			$message = wordwrap($message, 70, "<br />");
 			
 			//Checking for valid e-mail
 			if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i",$email))
@@ -82,26 +87,28 @@
 				//Building the email
 				$email_subject = "Žádost o založení třídy od: $name $surname";
 				$email_body = "Detaily žádosti:".
-				"\n First name: $name".
-				"\n Last name: $surname".
-				"\n School: $school".
-				"\n Class: $class".
-				"\n E-mail: $email".
-				"\n Content of the application:".
-				"\n $message";
-				$headers = "From: $email\n";
-				$headers .= "Reply-To: '$email'";
+				"<br />First name: $name".
+				"<br />Last name: $surname".
+				"<br />School: $school".
+				"<br />Class: $class".
+				"<br />E-mail: $email".
+				"<br />Content of the application:".
+				"<br />$message";
+				//$headers = "From: $email\n";
+				//$headers .= "Reply-To: '$email'";
 				
 				//Sending the e-mail
-				mail(myemail,$email_subject,$email_body,$headers);
+				//mail(myemail,$email_subject,$email_body,$headers);
+				require_once('mailer.php');
+				sendEmail(myemail,$email_subject,$email_body);
 				
 				//Logging the submission
 				$user = $_SESSION['user'];
 				fileLog("Uživatel $user zažádal o založení nové třídy za třídu $class ve škole $school");
 				
 				//Redirecting
-				echo "<script>alert('Your application for creation of a new class was send. You will be contacted by webmaster on the e-mail address you specified.');</script>";
-				echo "<script type='text/javascript'>location.href = 'home.php';</script>";
+				echo "<script>alert('".$lang['newClassAlertText']."');</script>";
+				echo "<script type='text/javascript'>location.href = 'home.php".$urlExtension."';</script>";
 			}
 		}
 	?>
