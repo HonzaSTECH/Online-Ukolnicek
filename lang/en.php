@@ -97,7 +97,7 @@ $lang['applyEmailHeader'] = "Application details";
 $lang['applyEmailLore1'] = "You can approve or reject this application on the class management website.";
 $lang['applyEmailLore2'] = "Approve this application only in case you are sure about who this user actually is.";
 $lang['EmailBottomLore'] = "This e-mail has been generated automatically and therefore do not answer it.";
-$lang['applyEmailFooter1'] = "Don't want to get more e-mails from us? Unsubscribe";
+$lang['applyEmailFooter1'] = "Don't want to get more e-mails from us? Unsubscribe ";
 $lang['applyEmailFooter2'] = "This will stop only automatically generated e-mails. If you send us your opinion, a question or a suggestion, you can still get manually written answer from the webmaster.";
 $lang['applyAlertText'] = "Your application for admission to this class was send. You will find out about verdict of the admin or a moderator of the class on your e-mail.";
 

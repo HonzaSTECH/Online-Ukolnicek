@@ -97,7 +97,7 @@ $lang['applyEmailHeader'] = "Szczegóły wniosku";
 $lang['applyEmailLore1'] = "Możesz zatwierdzić lub odrzucić ten wniosek w zakładce zarządzania klasą.";
 $lang['applyEmailLore2'] = "Zatwierdź ten wniosek jedynie w przypadku, gdy jesteś pewien, kim jest ten użytkownik.";
 $lang['EmailBottomLore'] = "Ten email został wygenerowany automatycznie, więc nie odpowiadaj na niego.";
-$lang['applyEmailFooter1'] = "Nie chcesz dostawać od nas więcej emaili? Przestań nas subskrybować.";
+$lang['applyEmailFooter1'] = "Nie chcesz dostawać od nas więcej emaili? Przestań nas subskrybować ";
 $lang['applyEmailFooter2'] = "Przestaniesz otrzymywać od nas tylko automatycznie wygenerowane emaile. Jeśli wyślesz nam swoją opinie, pytanie lub sugestie, nadal będzie mógł otrzymać pisemną odpowiedź administratora.";
 $lang['applyAlertText'] = "Twój wniosek o przyjęcie do tej klasy został wysłany. Dowiesz się o decyzji administratora lub moderatora klasy na swoim emailu.";
 
