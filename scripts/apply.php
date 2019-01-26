@@ -195,8 +195,8 @@
 				<div style='width: 50%; border: 2px solid black; margin: auto; background-color: #FFFF99; padding:10px;text-align:center'>
 					<h2 style='position:relative;left:0;right:0;margin:auto;'>".$lang['applyEmailHeader'].":</h2>
 					<fieldset style='width: 50%; position: relative; left:0; right:0; margin: auto;border-radius:20px;'>
-						<b>".$lang['fname'].":</b> $name
-						<br /><b>".$lang['lname'].":</b> $surname
+						<b>".$lang['fName'].":</b> $name
+						<br /><b>".$lang['lName'].":</b> $surname
 						<br /><b>".$lang['applyPlaceholder'].":</b>
 						<br />
 						<div style='border: 1px solid black; width: 50%;padding:5px;margin:auto;position:relative;left:0;right:0;'>
