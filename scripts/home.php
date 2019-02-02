@@ -1,9 +1,9 @@
 <?php
-	session_start(); 
-	require 'checker.php';
-	check(true);
-	unset($_SESSION['class']);
+	session_start();
 	include 'languageHandler.php';
+	require 'checker.php';
+	check($urlExtension, true);
+	unset($_SESSION['class']);
 ?>
 <head>
 	<meta charset="utf-8">

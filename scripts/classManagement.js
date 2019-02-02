@@ -179,7 +179,7 @@ function getRequest(url, success, error, user=null, password=null){
 	
 	//Checking function parameters and setting intial values in case they aren´t specified
 	if (typeof success != 'function') success = function () {};
-	if (typeof error!= 'function') error = function () {};
+	if (typeof error != 'function') error = function () {};
 	
 	//Waiting for server response
 	req.onreadystatechange = function()

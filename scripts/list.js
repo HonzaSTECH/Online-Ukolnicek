@@ -260,29 +260,50 @@ function editRecord(event)
 	//Form has been displayed. After submitting data will be processed in newRecord function
 }
 
-function removeRecord(event)
+function removeRecord(event) //Getting translation of the confirm dialog box
 {
 	//Confirmation alert
-	if(confirm("Opravdu chcete smazat tento záznam? Tato akce je nevratná!"))	//TODO - add translation.
-	{
+	subject = event.target;
+	var url = document.URL;
+	var index = url.lastIndexOf("lang");
+	var language = (url[index+5] + url[index+6]) //Getting the selected language
+	
+	url = "AJAXactions.php?lang=" + language;
+	//console.log(url);
+	document.cookie = "action=T";
+	
+	var res = getRequest(url, confirmDeletion, testFunc, subject);
+	console.log("confirmDeletion - " + res);
+	console.log(res);
+}
+
+function confirmDeletion(translation, subject) //Displaying the dialog box and getting the answer
+{
+	var result = confirm(translation);
+	//console.log("confirmDeletionText - " + result);
+	if(result == true){removeRecordFinal(subject);}
+}
+
+function removeRecordFinal(subject) //Removing the record.
+{
 		//Getting record details
-		var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
-		var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
-		var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
-		event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
+		var date = subject.parentNode.parentNode.childNodes[1].innerHTML;
+		var sub = subject.parentNode.parentNode.childNodes[3].innerHTML;
+		var desc = subject.parentNode.parentNode.childNodes[5].innerHTML;
+		subject.parentNode.parentNode.parentNode.removeChild(subject.parentNode.parentNode);
 		
 		//Save date, subject and description value into cookie so PHP can access it
 		document.cookie = "date=" + date;
-		document.cookie = "subject=" + subject;
+		document.cookie = "subject=" + sub;
 		document.cookie = "description=" + desc;
 		
 		document.cookie = "action=D"
 		
+		//Sending XML HTTP Request
 		getRequest("AJAXactions.php", testFunc, testFunc);
-	}
 }
 
-function getRequest(url, success, error)
+function getRequest(url, success, error, subject = null)
 {
 	var req = false;
 	//Creating request
@@ -315,13 +336,12 @@ function getRequest(url, success, error)
 	//Checking function parametrs and setting intial values in case they aren´t specified
 	if (typeof success != 'function') success = function () {};
 	if (typeof error!= 'function') error = function () {};
-	
 	//Getting server response
 	req.onreadystatechange = function()
 	{
 		if(req.readyState == 4)
 		{
-			return req.status === 200 ? success(req.responseText) : error(req.status);
+			return req.status === 200 ? success(req.responseText, subject) : error(req.status);
 		}
 	}
 	req.open("GET", url, true);

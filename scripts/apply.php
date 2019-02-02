@@ -1,8 +1,8 @@
 <?php
 	session_start();
-	require 'checker.php';
-	check(true);
 	include 'languageHandler.php';
+	require 'checker.php';
+	check($urlExtension, true);
 ?>
 <head>
 	<meta charset="utf-8">

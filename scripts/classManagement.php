@@ -1,7 +1,8 @@
 <?php
 	session_start();
+	include 'languageHandler.php';
 	require 'checker.php';
-	check(true, true, true);
+	check($urlExtension, true, true, true);
 	require 'connect.php';
 ?>
 <html>

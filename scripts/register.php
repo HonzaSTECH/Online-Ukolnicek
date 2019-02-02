@@ -29,7 +29,7 @@
 			<input type="submit" name="send" value="<?php echo $lang['register']; ?>" id="submitButton">
 			</fieldset>
 		</form>
-		<div id="loginLink"><?php echo $lang['logInText']; ?><a href="login.php"><u><?php echo $lang['hereLink']; ?></u></a><?php echo $lang['fullstop']; ?></div>
+		<div id="loginLink"><?php echo $lang['logInText']; ?><a href="login.php<?php echo $urlExtension; ?>"><u><?php echo $lang['hereLink']; ?></u></a><?php echo $lang['fullstop']; ?></div>
 		
 		<?php
 			require_once("connect.php");
