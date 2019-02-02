@@ -20,6 +20,9 @@
 			$langFile = "../lang/$language.php";
 		}
 		include "$langFile";
+		
+		/*$_SESSION['langTemp'] = $language;
+		echo "<script>console.log('Selected language: ".$_SESSION['langTemp']."');</script>"; //For debug reasons only*/
 	}
 	else
 	{

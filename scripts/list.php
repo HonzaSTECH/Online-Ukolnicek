@@ -1,9 +1,9 @@
 <?php
 	session_start();
 	if(empty($_SESSION['class'])){$_SESSION['class'] = $_POST['classSelect'];}
-	require 'checker.php';
-	check(true, true);
 	include 'languageHandler.php';
+	require 'checker.php';
+	check($urlExtension, true, true);
 ?>
 <html>
 	<head>
@@ -223,7 +223,7 @@
 				</select>
 				<br />
 				<span id="form3Text"><?php echo $lang['desc'].":"; ?></span>
-				<textarea type="message" id="form3" name="description" required placeholder="Revision test" maxlength=100></textarea>
+				<textarea type="message" id="form3" name="description" required placeholder="<?php echo $lang['descPlaceholder']; ?>" maxlength=100></textarea>
 				<br />
 				<span id="form5Text"><?php echo $lang['priority'],":"; ?></span>
 					<div id="priority1">

@@ -1,6 +1,8 @@
 <?php
 	session_start();
 	include 'languageHandler.php';
+	require 'checker.php';
+	check($urlExtension, true);
 ?>
 <head>
 	<meta charset="utf-8">
@@ -56,7 +58,7 @@
 
 	<?php
 		require 'checker.php';
-		check(true);
+		check($urlExtension, true);
 		include 'logger.php';
 		
 		//Handling form submit

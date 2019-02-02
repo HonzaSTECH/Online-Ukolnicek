@@ -1,18 +1,18 @@
 <?php
-	function check($check_user = false, $check_class = false, $check_admin = false)
+	function check($extension, $check_user = false, $check_class = false, $check_admin = false)
 	{
 		if($check_user)		//Checking for logged user
 		{
 			if(!isset($_SESSION['user']))
 			{
-				echo "<script type='text/javascript'>location.href = 'login.php';</script>";
+				echo "<script type='text/javascript'>location.href = 'login.php$extension';</script>";
 			}
 		}
 		if($check_class)		//Checking for entered class
 		{
 			if(!isset($_SESSION['class']))
 			{
-				echo "<script type='text/javascript'>location.href = 'home.php';</script>";
+				echo "<script type='text/javascript'>location.href = 'home.php$extension';</script>";
 			}
 		}
 		if($check_admin)	//Checking for being admin of the entered class
@@ -30,7 +30,7 @@
 			//Comparing admin name with logged user's name
 			if($username != $result)
 			{
-				echo "<script type='text/javascript'>location.href = 'list.php';</script>";
+				echo "<script type='text/javascript'>location.href = 'list.php$extension';</script>";
 			}
 		}
 	}

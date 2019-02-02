@@ -1,14 +1,24 @@
 <?php
 	session_start();
+	
+	$action = $_COOKIE['action'];
+	if ($action == 'T') //Getting translation of the confirm dialog box.
+	{
+		$language = $_GET['lang'];
+		$langFile = "../lang/$language.php";
+		include $langFile;
+		echo $lang['confirmDelete'];
+		die();
+	}
+	
 	require_once('connect.php');
 	
 	//Get data from cookies
 	$date = $_COOKIE['date'];
 	$subject = $_COOKIE['subject'];
 	$description = $_COOKIE['description'];
-	$action = $_COOKIE['action'];
 	
-	//Convert the date into YYYY-MM--DD format
+	//Convert the date into YYYY-MM-DD format
 	$day = ""; $month = ""; $year = "";
 	$date = str_split($date);
 	foreach ($date as $char){
