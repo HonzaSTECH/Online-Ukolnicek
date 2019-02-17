@@ -2,6 +2,7 @@
 	session_start();
 	require_once('connect.php');
 	include 'logger.php';
+	include 'languageHandler.php';
 	
 	//Getting data from cookies
 	$nickname = @$_COOKIE['nickname'];
@@ -18,12 +19,13 @@
 			$query = "SELECT memberIn FROM users WHERE name='$nickname'";
 			$result = mysqli_query($connection, $query);
 			if(!$result){echo mysqli_error($connection);}
-			else{
+			else
+			{
 				$result = mysqli_fetch_array($result);
 				$result = $result['memberIn'];
 				if($result == "0"){$result = $class;}
 				else{$result .= (','.$class);}
-				$query = "UPDATE users SET memberIn = $result WHERE name='$nickname'";
+				$query = "UPDATE users SET memberIn = '$result' WHERE name='$nickname'";
 			}
 			unset($result);
 			$result = mysqli_query($connection, $query);
@@ -67,7 +69,7 @@
 			sendEmail($email,$email_subject,$email_body);
             
 			//Logging the accpetence
-			filelog("Uživatel $nickname byl přijat do třídy $result uživatelem $admin.");
+			filelog("Uživatel $nickname byl přijat do třídy $classname uživatelem $admin.");
 			
 			echo "$nickname\n$message\n$class\n$action\n$admin";	//Controll outputs
 			echo "\n $message";
@@ -97,7 +99,7 @@
 				<h2 style='position:relative;left:0;right:0;margin:auto;'>".$lang['classManagementEmailHeader']."</h2>
 				<fieldset style='width: 50%; position: relative; left:0; right:0; margin: auto;border-radius:20px;'>
 					<span style='font-size: 1.5em;'>
-						".$lang['classManagementEmailFailLore1']."$classname".$lang['classManagementEmailLore2']."<br /><b style='color:red;'>".$lang['classManagementEmailFailLore3']."</b>.<br />".$lang['classManagementEmailSuccessLore1']."$admin.
+						".$lang['classManagementEmailFailLore1']."$classname".$lang['classManagementEmailLore2']."<br /><b style='color:red;'>".$lang['classManagementEmailFailLore3']."</b>.<br />".$lang['classManagementEmailLore4']."$admin.
 					</span>
 				</fieldset>
 				<br /><i>".$lang['classManagementEmailFailFooter1']."
@@ -113,7 +115,7 @@
 			sendEmail($email,$email_subject,$email_body);
 			
 			//Logging the declinence
-			filelog("Žádost uživatel $nickname o přijetí do třídy $class byla zamítnuta uživatelem $admin.");
+			filelog("Žádost uživatel $nickname o přijetí do třídy $classname byla zamítnuta uživatelem $admin.");
 			
 			echo "$nickname\n$message\n$class\n$action\n$admin";	//Controll outputs
 			echo "\n $message";
