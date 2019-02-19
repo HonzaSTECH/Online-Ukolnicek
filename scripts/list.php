@@ -152,7 +152,7 @@
 							echo "<tr>
 								<td align='center' class='column1' BGCOLOR=".$recordColor.">".$row['date']."</td>
 								<td align='center' class='column2' BGCOLOR=".$recordColor.">".$row['subject']."</td>
-								<td align='center' class='column3' BGCOLOR=".$recordColor.">".$row['description']."</td>
+								<td align='center' class='column3' BGCOLOR=".$recordColor."><div>".$row['description']."</div></td>
 								<td align='center' class='column4' BGCOLOR=".$recordColor.">".$row['author']."</td>
 								<td align='center' class='column5' BGCOLOR=".$recordColor.">".$row['dateOfAdding']."</td>
 								<td align='center' class='column6' BGCOLOR=".$recordColor.">".$row['likes']."</td>
