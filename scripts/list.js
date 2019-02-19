@@ -67,6 +67,7 @@ function newRecord(event)
 		var subject = document.createElement("td");
 		var description = document.createElement("td");
 		var author = document.createElement("td");
+		var authorInner = document.createElement("td");
 		var dateOfAdding = document.createElement("td");
 		var likes = document.createElement("td");
 		var action = document.createElement("td");
@@ -87,7 +88,8 @@ function newRecord(event)
 		date.innerHTML = dateWork;
 		subject.innerHTML = document.getElementById("form2").value;
 		description.innerHTML = descText;
-		author.innerHTML = "Vy";
+		authorInner.innerHTML = "Vy";//TODO - use nickname
+		author.append(authorInner);
 		dateOfAdding.innerHTML = today;
 		likes.innerHTML = "0";
 		action.append(actionButton2, actionButton3);
@@ -145,7 +147,7 @@ function newRecord(event)
 		
 		row.childNodes[0 + (1 * mult)].innerHTML = dateWork;
 		row.childNodes[1 + (2 * mult)].innerHTML = document.getElementById("form2").value;
-		row.childNodes[2 + (3 * mult)].innerHTML = descText;
+		row.childNodes[2 + (3 * mult)].childNodes[0].innerHTML = descText;
 		row.childNodes[0 + (1 * mult)].setAttribute("bgColor", recordColor);
 		row.childNodes[1 + (2 * mult)].setAttribute("bgColor", recordColor);
 		row.childNodes[2 + (3 * mult)].setAttribute("bgColor", recordColor);
@@ -167,7 +169,7 @@ function newRecord(event)
 function addRecord()
 {
 	//Displaying the form
-        document.getElementById("form").style.display = "block";
+    document.getElementById("form").style.display = "block";
 	document.getElementById("form").style.backgroundColor = "#99FFFF";
 	
 	//Setting intial values
@@ -192,7 +194,7 @@ function upvoteRecord(event)
 	//Getting record details
 	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
 	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
-	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
+	var desc = event.target.parentNode.parentNode.childNodes[5].childNodes[0].innerHTML;
 	
 	//Altering DOM table
 	event.target.parentNode.parentNode.childNodes[11].innerHTML = (Number(event.target.parentNode.parentNode.childNodes[11].innerHTML )+ 1);
@@ -215,7 +217,7 @@ function editRecord(event)
 	var mult = (event.target.parentNode.parentNode.childNodes.length == 7 ? 0:1);
 	var date = event.target.parentNode.parentNode.childNodes[0 + (1 * mult)].innerHTML;
 	var subject = event.target.parentNode.parentNode.childNodes[1 + (2 * mult)].innerHTML;
-	var desc = event.target.parentNode.parentNode.childNodes[2 + (3 * mult)].innerHTML;
+	var desc = event.target.parentNode.parentNode.childNodes[2 + (3 * mult)].childNodes[0].innerHTML;
 	
 	desc = desc.replace(/<br>/g, '\r\n');
 	
@@ -289,7 +291,7 @@ function removeRecordFinal(subject) //Removing the record.
 		//Getting record details
 		var date = subject.parentNode.parentNode.childNodes[1].innerHTML;
 		var sub = subject.parentNode.parentNode.childNodes[3].innerHTML;
-		var desc = subject.parentNode.parentNode.childNodes[5].innerHTML;
+		var desc = subject.parentNode.parentNode.childNodes[5].childNodes[0].innerHTML;
 		subject.parentNode.parentNode.parentNode.removeChild(subject.parentNode.parentNode);
 		
 		//Save date, subject and description value into cookie so PHP can access it
@@ -443,4 +445,4 @@ function getDate(date, fraction)
 	return result;
 }
 
-function testFunc(result){alert("Test succefull: " + result);}
+function testFunc(result){/*alert("Test succefull: " + result);*/}

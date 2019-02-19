@@ -109,7 +109,7 @@ $lang['newClassLore2'] = "Dalsza komunikacja będzia odbywać się za pomocą em
 $lang['newClassLore3'] = "Stworzenie klasy jest bezpłatne, tak jak wszystkie inne funkcje.";
 $lang['school'] = "Szkoła";
 $lang['newClassPlaceholder'] = "Treść wniosku";
-$lang['newClassAlertText'] = "Twój wniosek o stworzenie nowej klasy został wysłany. Administrator strony skontaktuje się z tobą emaila. ";
+$lang['newClassAlertText'] = "Twój wniosek o stworzenie nowej klasy został wysłany. Administrator strony skontaktuje się z tobą za pomocą emaila.";
 
 //examdirectory.online/scripts/classManagement.php
 $lang['generalTab'] = "Podstawy";

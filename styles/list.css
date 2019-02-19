@@ -483,6 +483,9 @@ td{
 	font-size: 30px;
 	overflow: auto;
 }
+.column3 div{
+	overflow: auto;
+}
 #description{
 	background-color: #CDFFCD;
 	width: 36vw;
