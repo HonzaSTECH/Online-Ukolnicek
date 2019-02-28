@@ -38,14 +38,14 @@ Waiting	37) Use Bootstrap on some pages
 Waiting	38) Optimalize all the pages for mobile phones
 Done		39) Fix the wrongly positioned scroll bar on the apply page
 Waiting	40) Make leaving a class possible
-Waiting	41) Inform users about acceptence or declining their join application
+Done	41) Inform users about acceptence or declining their join application
 Done		42) Improve e-mail sending when a application is accepted or declined to look like that one on apply page
 Done	 	43) Improve displaying longer class names on the apply page
-Waiting 	44) Remove controll alert messages from all pages that use AJAX
+Done 	44) Remove controll alert messages from all pages that use AJAX
 Actual 	45) Make color of the record depend on subject and remove priority attribute
-Waiting	46) Log actions executed on the classManagement page
+Planned	46) Log actions executed on the classManagement page
 Waiting	47) Secure and satinize all database interactions
 Waiting	48) Add new functionalities to the classManagement page
 Done		49) Make choosing a display language possible
 Waiting	50) Make unsubscribing from e-mails possible
-Waiting 51) Make choosing a display language more user friendly
+Waiting 51) Make choosing a display language more user-friendly
