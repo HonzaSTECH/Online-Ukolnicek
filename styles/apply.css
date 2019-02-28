@@ -246,14 +246,6 @@ td{
 	text-align: center;
 	vertical-align: middle;
 }
-td:hover{
-	overflow: visible;
-	padding: 0;
-	white-space: nowrap;
-	font-size: 1.5em;
-	text-align: center;
-	vertical-align: middle;
-}
 label input{
 	transform: scale(1.75);
 	margin-right: 5px;

@@ -317,15 +317,37 @@ nav a {
 #deleteClass{
 	
 }
+#deleteClassInfo{
+	display: none;
+}
+#deleteClassInput{
+	display: none;
+}
+#deleteClassCancel{
+	display: none;
+}
 #timeToDeletion{
 	
 }
+#timeReloadButton{
+	height: 1.5em;
+	width: 1.5em;
+	padding: 0;
+}
+#timeReloadButton img{
+	height: 1em;
+	width: 1em;
+}
 #recoverClass{
-	display: none;
+	
 }
 /*---------------------------*/
 /*Subjects tab*/
+#subjectsForm{
+	display: none;
+}
 /*---------------------------*/
+/*Members tab*/
 .rank1{
 	color: 0000BB;
 	width: 15vw;
@@ -350,10 +372,15 @@ nav a {
 	overflow: auto;
 	text-align: center;
 }
-#subjectsForm{
-	display: none;
+.kickButton{
+	position: relative;
+	display: block;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
 /*---------------------------*/
+/*Applications tab*/
 #tab4 table{
 	border-collapse: collapse;
 }

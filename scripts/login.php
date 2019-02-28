@@ -2,6 +2,7 @@
 	session_start(); 
 	unset($_SESSION['class']);
 	unset($_SESSION['user']);
+	include 'languageHandler.php';
 ?>
 <head>
 	<meta charset="utf-8">
@@ -10,17 +11,17 @@
 </head>
 <body>
         <div id="loginBox">
-		<div id="header">Log in</div>
-		<form method="POST" action="login.php" id="loginForm">
+		<div id="header"><?php echo $lang['logIn']; ?></div>
+		<form method="POST" action="login.php<?php echo $urlExtension; ?>" id="loginForm">
 			<fieldset>
-				<input type=text name="username" placeholder="Name" id="usernameInput" required>
+				<input type=text name="username" placeholder="<?php echo $lang['name']; ?>" id="usernameInput" required>
 				<br />
-				<input type=password name="password" placeholder="Password" id="passwordInput" required>
+				<input type=password name="password" placeholder="<?php echo $lang['pass']; ?>" id="passwordInput" required>
 				<br />
-				<input type=submit name="send" value="Log in" id="submitButton">
+				<input type=submit name="send" value="<?php echo $lang['logIn']; ?>" id="submitButton">
 			</fieldset>
 		</form>
-		<div id="registerLink">Don't have an account yet? Register <a href="register.php"><u>here</u></a>.</div>
+		<div id="registerLink"><?php echo $lang['newAccountText'] ?><a href="register.php<?php echo $urlExtension; ?>"><u><?php echo $lang['hereLink']; ?></u></a><?php echo $lang['fullstop']; ?></div>
 		
 		<?php
 			require_once("connect.php");
@@ -45,7 +46,7 @@
 					if(password_verify($pass, $data['password']))
 					{
 						//Displaying success message
-						echo "<div id='successMessage'>You was successfully logged in.</div>";
+						echo "<div id='successMessage'>".$lang['successfulLogin']."</div>";
 						
 						//Saving user's name into superglobal
 						$_SESSION['user']=$name;
@@ -55,12 +56,12 @@
 						fileLog("Uživatel $name se přihlásil z IP adresy $ip.");
 						
 						//Redirecting
-						echo "<script type='text/javascript'>location.href = 'home.php';</script>";
+						echo "<script type='text/javascript'>location.href = 'home.php".$urlExtension."';</script>";
 					}
 					else
 					{
 						//Displaying error message
-						echo "<div id='loginError'>Incorrect password</div>";
+						echo "<div id='loginError'>".$lang['passFailLogin']."</div>";
 						
 						//Logging the attempt
 						$ip = $_SERVER['REMOTE_ADDR'];
@@ -70,7 +71,7 @@
 				else
 				{
 					//Displaying error message
-					echo "<div id='loginError'>There is no user with this name registred</div>";
+					echo "<div id='loginError'>".$lang['nameFailLogin']."</div>";
 				}
 			}
 			mysqli_close($connection);
