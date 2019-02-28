@@ -24,12 +24,12 @@
 			<input type="email" name="email" placeholder="<?php echo $lang['e-mail']; ?>" id="emailInput" required>
 			<div id="termsInput">
 				<input type="checkbox" name="accept" id="checkbox">
-				<span id=termsText><?php echo $lang['termsText']; ?> <a href="terms.html"><u><?php echo $lang['termsLink']; ?></u></a>.</span>
+				<span id=termsText><?php echo $lang['termsText']; ?> <a href="terms.html"><u><?php echo $lang['termsLink']; ?></u></a><?php echo $lang['fullstop']; ?></span>
 			</div>
 			<input type="submit" name="send" value="<?php echo $lang['register']; ?>" id="submitButton">
 			</fieldset>
 		</form>
-		<div id="loginLink"><?php echo $lang['logInText']; ?><a href="login.php"><u><?php echo $lang['hereLink']; ?></u></a>.</div>
+		<div id="loginLink"><?php echo $lang['logInText']; ?><a href="login.php<?php echo $urlExtension; ?>"><u><?php echo $lang['hereLink']; ?></u></a><?php echo $lang['fullstop']; ?></div>
 		
 		<?php
 			require_once("connect.php");

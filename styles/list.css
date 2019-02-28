@@ -483,6 +483,14 @@ td{
 	font-size: 30px;
 	overflow: auto;
 }
+.column3 div{
+	overflow: auto;
+	max-height: 10.2vh;
+	/*height: 10.2vh;*/
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+}
 #description{
 	background-color: #CDFFCD;
 	width: 36vw;

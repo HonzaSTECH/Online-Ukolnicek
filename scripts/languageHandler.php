@@ -7,7 +7,7 @@
 	$urlExtension = "?lang=$language";
 	
 	
-	$avalibeLanguages = array('en','pl');
+	$avalibeLanguages = array('en','pl', 'cn');
 	
 	if (in_array($language,$avalibeLanguages))
 	{
@@ -20,6 +20,9 @@
 			$langFile = "../lang/$language.php";
 		}
 		include "$langFile";
+		
+		/*$_SESSION['langTemp'] = $language;
+		echo "<script>console.log('Selected language: ".$_SESSION['langTemp']."');</script>"; //For debug reasons only*/
 	}
 	else
 	{
