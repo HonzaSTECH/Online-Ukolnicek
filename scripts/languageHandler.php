@@ -25,7 +25,7 @@
 	}
 	include "$langFile";
 	
-	echo "<script>console.log('Selected language: ".$_SESSION['langTemp']."');</script>"; //For debug reasons only*/
+	//echo "<script>console.log('Selected language: ".$_SESSION['langTemp']."');</script>"; //For debug reasons only*/
 }
 	
 ?>
