@@ -5,8 +5,8 @@ Done		4) Style apply page
 Done		5) Style applyForm page
 Done		6) Style newClass page
 Done		7) Style classManagement page
-Waiting		8) Write info page
-Waiting		9) Style info page
+Waiting	8) Write info page
+Waiting	9) Style info page
 Done		10) Improve styling of home page
 Done		11) Improve styling of list page
 Done 		12) Remove "Author" input field from "Add record" form and use name of logged user instead
@@ -24,26 +24,27 @@ Done		23) Make JS.js file more simple and efficient
 Done		24) Repair adding new records
 Done		25) Make newly added record inserted on correct row without reloading the page
 Done		26) Remove horizontal scroll bar from the list page
-Planned		27) Finish styling of classManagement page
+Planned	27) Finish styling of classManagement page
 Done		28) Repair bug with deleting answered applications with longer messages
 Done		29) Repair bug with normal members having moderator permissions
 Done		30) Make liking a record possible only once per account
 Done		31) Display a link to class management page only to admins of the class
-Waiting		32) Convert all the pages into HTML5 format.
+Waiting	32) Convert all the pages into HTML5 format.
 Done		33) Prepair the news page
 Done		34) Test and repair all the pages
-Waiting		35) Make the classManagement page fully functional and make managing applications possible for moderators
-Waiting		36) Use jQuery on  the pages
-Waiting		37) Use Bootstrap on some pages
-Waiting		38) Optimalize all the pages for mobile phones
+Waiting	35) Make the classManagement page fully functional and make managing applications possible for moderators
+Waiting	36) Use jQuery on  the pages
+Waiting	37) Use Bootstrap on some pages
+Waiting	38) Optimalize all the pages for mobile phones
 Done		39) Fix the wrongly positioned scroll bar on the apply page
-Waiting		40) Make leaving a class possible
-Waiting		41) Inform users about acceptence or declining their join application
+Waiting	40) Make leaving a class possible
+Waiting	41) Inform users about acceptence or declining their join application
 Done		42) Improve e-mail sending when a application is accepted or declined to look like that one on apply page
-Planned 	43) Improve displaying longer class names on the apply page
+Actual	 	43) Improve displaying longer class names on the apply page
 Waiting 	44) Remove controll alert messages from all pages that use AJAX
 Planned 	45) Make color of the record depend on subject and remove priority attribute
-Waiting		46) Log actions executed on the classManagement page
-Waiting		47) Secure and satinize all database interactions
-Planned		48) Add new functionalities to the classManagement page
-Actual		49) Make choosing a display language possible
+Waiting	46) Log actions executed on the classManagement page
+Waiting	47) Secure and satinize all database interactions
+Planned	48) Add new functionalities to the classManagement page
+Done		49) Make choosing a display language possible
+Waiting	50) Make unsubscribing from e-mails possible

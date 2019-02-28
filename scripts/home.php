@@ -1,7 +1,8 @@
 <?php
-	session_start(); 
+	session_start();
+	include 'languageHandler.php';
 	require 'checker.php';
-	check(true);
+	check($urlExtension, true);
 	unset($_SESSION['class']);
 	include 'languageHandler.php';
 ?>
@@ -18,12 +19,12 @@
 			echo $_SESSION['user'];
 			?>
 		</span>
-		<a href="login.php">
+		<a href="login.php<?php echo $urlExtension; ?>">
 			<div id="logoutBox">
 				<span id="logoutLink"><?php echo $lang['logOut']; ?></span>
 			</div>
 		</a>
-		<a href="info.php">
+		<a href="info.php<?php echo $urlExtension; ?>">
 			<div id="infoBox">
 				<span id="infoLink"><?php echo $lang['info']; ?></span>
 			</div>
@@ -31,7 +32,7 @@
 	</div>
 	<div id="middle">
 		<div id="titleBox">
-		<span id="title"><?php echo $lang['homeHeader']; ?></span>
+			<span id="title"><?php echo $lang['homeHeader']; ?></span>
 		</div>
 		<div id="main">
 		
@@ -52,7 +53,11 @@
 				$classes = explode(',', $data);
 				
 				//Printing the table
+<<<<<<< HEAD
 				echo "<form action='classLogin.php".$urlExtension."' method='POST'><fieldset><table>";
+=======
+				echo "<form action='list.php".$urlExtension."' method='POST'><fieldset><table>";
+>>>>>>> c6f279771b069facb9bf5df12614cab5229bae05
 				
 				$modClasses = array(0);
 				$adminClasses = array(0);
@@ -95,10 +100,17 @@
 		
 		</div>
 		<div id="applyBox">
+<<<<<<< HEAD
 			<a href="apply.php" id="applyLink"><?php echo $lang['apply']; ?></a>
 		</div>
 		<div id="newClassBox">
 			<a href="newClass.php" id="newClassLink"><?php echo $lang['newClass']; ?></a>
+=======
+			<a href="apply.php<?php echo $urlExtension; ?>" id="applyLink"><?php echo $lang['apply']; ?></a>
+		</div>
+		<div id="newClassBox">
+			<a href="newClass.php<?php echo $urlExtension; ?>" id="newClassLink"><?php echo $lang['newClass']; ?></a>
+>>>>>>> c6f279771b069facb9bf5df12614cab5229bae05
 		</div>
 	</div>
 </body>

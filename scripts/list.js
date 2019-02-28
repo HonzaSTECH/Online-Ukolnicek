@@ -67,6 +67,7 @@ function newRecord(event)
 		var subject = document.createElement("td");
 		var description = document.createElement("td");
 		var author = document.createElement("td");
+		var authorInner = document.createElement("td");
 		var dateOfAdding = document.createElement("td");
 		var likes = document.createElement("td");
 		var action = document.createElement("td");
@@ -87,7 +88,8 @@ function newRecord(event)
 		date.innerHTML = dateWork;
 		subject.innerHTML = document.getElementById("form2").value;
 		description.innerHTML = descText;
-		author.innerHTML = "Vy";
+		authorInner.innerHTML = "Vy";//TODO - use nickname
+		author.append(authorInner);
 		dateOfAdding.innerHTML = today;
 		likes.innerHTML = "0";
 		action.append(actionButton2, actionButton3);
@@ -145,7 +147,7 @@ function newRecord(event)
 		
 		row.childNodes[0 + (1 * mult)].innerHTML = dateWork;
 		row.childNodes[1 + (2 * mult)].innerHTML = document.getElementById("form2").value;
-		row.childNodes[2 + (3 * mult)].innerHTML = descText;
+		row.childNodes[2 + (3 * mult)].childNodes[0].innerHTML = descText;
 		row.childNodes[0 + (1 * mult)].setAttribute("bgColor", recordColor);
 		row.childNodes[1 + (2 * mult)].setAttribute("bgColor", recordColor);
 		row.childNodes[2 + (3 * mult)].setAttribute("bgColor", recordColor);
@@ -167,7 +169,7 @@ function newRecord(event)
 function addRecord()
 {
 	//Displaying the form
-        document.getElementById("form").style.display = "block";
+    document.getElementById("form").style.display = "block";
 	document.getElementById("form").style.backgroundColor = "#99FFFF";
 	
 	//Setting intial values
@@ -192,7 +194,7 @@ function upvoteRecord(event)
 	//Getting record details
 	var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
 	var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
-	var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
+	var desc = event.target.parentNode.parentNode.childNodes[5].childNodes[0].innerHTML;
 	
 	//Altering DOM table
 	event.target.parentNode.parentNode.childNodes[11].innerHTML = (Number(event.target.parentNode.parentNode.childNodes[11].innerHTML )+ 1);
@@ -215,7 +217,7 @@ function editRecord(event)
 	var mult = (event.target.parentNode.parentNode.childNodes.length == 7 ? 0:1);
 	var date = event.target.parentNode.parentNode.childNodes[0 + (1 * mult)].innerHTML;
 	var subject = event.target.parentNode.parentNode.childNodes[1 + (2 * mult)].innerHTML;
-	var desc = event.target.parentNode.parentNode.childNodes[2 + (3 * mult)].innerHTML;
+	var desc = event.target.parentNode.parentNode.childNodes[2 + (3 * mult)].childNodes[0].innerHTML;
 	
 	desc = desc.replace(/<br>/g, '\r\n');
 	
@@ -260,29 +262,50 @@ function editRecord(event)
 	//Form has been displayed. After submitting data will be processed in newRecord function
 }
 
-function removeRecord(event)
+function removeRecord(event) //Getting translation of the confirm dialog box
 {
 	//Confirmation alert
-	if(confirm("Opravdu chcete smazat tento záznam? Tato akce je nevratná!"))
-	{
+	subject = event.target;
+	var url = document.URL;
+	var index = url.lastIndexOf("lang");
+	var language = (url[index+5] + url[index+6]) //Getting the selected language
+	
+	url = "AJAXactions.php?lang=" + language;
+	//console.log(url);
+	document.cookie = "action=T";
+	
+	var res = getRequest(url, confirmDeletion, testFunc, subject);
+	console.log("confirmDeletion - " + res);
+	console.log(res);
+}
+
+function confirmDeletion(translation, subject) //Displaying the dialog box and getting the answer
+{
+	var result = confirm(translation);
+	//console.log("confirmDeletionText - " + result);
+	if(result == true){removeRecordFinal(subject);}
+}
+
+function removeRecordFinal(subject) //Removing the record.
+{
 		//Getting record details
-		var date = event.target.parentNode.parentNode.childNodes[1].innerHTML;
-		var subject = event.target.parentNode.parentNode.childNodes[3].innerHTML;
-		var desc = event.target.parentNode.parentNode.childNodes[5].innerHTML;
-		event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
+		var date = subject.parentNode.parentNode.childNodes[1].innerHTML;
+		var sub = subject.parentNode.parentNode.childNodes[3].innerHTML;
+		var desc = subject.parentNode.parentNode.childNodes[5].childNodes[0].innerHTML;
+		subject.parentNode.parentNode.parentNode.removeChild(subject.parentNode.parentNode);
 		
 		//Save date, subject and description value into cookie so PHP can access it
 		document.cookie = "date=" + date;
-		document.cookie = "subject=" + subject;
+		document.cookie = "subject=" + sub;
 		document.cookie = "description=" + desc;
 		
 		document.cookie = "action=D"
 		
+		//Sending XML HTTP Request
 		getRequest("AJAXactions.php", testFunc, testFunc);
-	}
 }
 
-function getRequest(url, success, error)
+function getRequest(url, success, error, subject = null)
 {
 	var req = false;
 	//Creating request
@@ -315,13 +338,12 @@ function getRequest(url, success, error)
 	//Checking function parametrs and setting intial values in case they aren´t specified
 	if (typeof success != 'function') success = function () {};
 	if (typeof error!= 'function') error = function () {};
-	
 	//Getting server response
 	req.onreadystatechange = function()
 	{
 		if(req.readyState == 4)
 		{
-			return req.status === 200 ? success(req.responseText) : error(req.status);
+			return req.status === 200 ? success(req.responseText, subject) : error(req.status);
 		}
 	}
 	req.open("GET", url, true);
@@ -423,4 +445,4 @@ function getDate(date, fraction)
 	return result;
 }
 
-function testFunc(result){alert("Test succefull: " + result);}
+function testFunc(result){/*alert("Test succefull: " + result);*/}
