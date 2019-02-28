@@ -125,7 +125,7 @@
 							{
 								if(!isset($row[$k])){break;}
 								$classname = $row[$k];
-								echo "<td style='width:".$width."vw; min-width:".$width."vw; max-width:".$width."vw;'><label>";
+								echo "<td style='width:".$width."vw; min-width:".$width."vw; max-width:".$width."vw;'><label title=".$classname.">";
 									echo"<input type=radio name='applyTo' value='$classname' required>$classname";
 								echo "</label></td>";
 							}
