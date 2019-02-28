@@ -1,7 +1,8 @@
 <?php
 	session_start();
+	include 'languageHandler.php';
 	require 'checker.php';
-	check(true);
+	check($urlExtension, true);
 ?>
 <head>
 	<meta charset="utf-8">
@@ -12,34 +13,34 @@
 	<div id="header">
 		<span id="username">
 			<?php
-			echo "You are logged in as ";
+			echo $lang['headerText'];
 			echo $_SESSION['user'];
 			?>
 		</span>
-		<a href="login.php">
+		<a href="login.php<?php echo $urlExtension; ?>">
 			<div id="logoutBox">
-				<span id="logoutLink">Log out</span>
+				<span id="logoutLink"><?php echo $lang['logOut']; ?></span>
 			</div>
 		</a>
-		<a href="info.php">
+		<a href="info.php<?php echo $urlExtension; ?>">
 			<div id="infoBox">
-				<span id="infoLink">Information</span>
+				<span id="infoLink"><?php echo $lang['info']; ?></span>
 			</div>
 		</a>
-		<a href="home.php">
+		<a href="home.php<?php echo $urlExtension; ?>">
 			<div id="homeBox">
-				<span id="homeLink">Home</span>
+				<span id="homeLink"><?php echo $lang['home']; ?></span>
 			</div>
 		</a>
 	</div>
 	<div id="container">
 		<div id="infoText">
-			<h2>Apply for admission to an existing class</h2>
+			<h2><?php echo $lang['apply']; ?></h2>
 			<span id=subtext>
-				Choose the class you want to join and enter personal information as a hint for administrator or moderators of the class that will have to approve your application.
+				<?php echo $lang['applyLore']; ?>
 			</span>
 		</div>
-		<form action="apply.php" method="POST">
+		<form action="apply.php<?php echo $urlExtension; ?>" method="POST">
 			<fieldset id=classSelect>
 				<?php	//Printing list of classes to join 
 					require_once("connect.php");
@@ -71,7 +72,7 @@
 					else if($count <= 12){$columns = 3;}
 					else if($count > 12){$columns = 4;}
 					
-					if($columns == 0){echo "You are already a member in all existing classes.";}
+					if($columns == 0){echo $lang['memberInAll'];}
 					
 					//Getting amount of needed rows for the table
 					if($columns <= 1){$rowCount = $count;}
@@ -124,7 +125,7 @@
 							{
 								if(!isset($row[$k])){break;}
 								$classname = $row[$k];
-								echo "<td style='width:".$width."vw; min-width:".$width."vw; max-width:".$width."vw;'><label>";
+								echo "<td style='width:".$width."vw; min-width:".$width."vw; max-width:".$width."vw;'><label title=".$classname.">";
 									echo"<input type=radio name='applyTo' value='$classname' required>$classname";
 								echo "</label></td>";
 							}
@@ -134,10 +135,10 @@
 				?>
 			</fieldset>
 			<fieldset>
-				<input type=text name="name" placeholder="First name" id="name" required>
-				<input type=text name="surname" placeholder="Last name" id="surname" required>
-				<textarea type="message" name="message" placeholder="Content of the application" id="text" required>Hello. I would like to join your class. Would you please approve my application?</textarea>
-				<input type=submit name="posted" value="Send application" id="submitButton" <?php	if($count <= 0){echo "disabled";}	?>>
+				<input type=text name="name" placeholder="<?php echo $lang['fName']; ?>" id="name" required>
+				<input type=text name="surname" placeholder="<?php echo $lang['lName']; ?>" id="surname" required>
+				<textarea type="message" name="message" placeholder="<?php echo $lang['applyPlaceholder']; ?>" id="text" required><?php echo $lang['applyValue']; ?></textarea>
+				<input type=submit name="posted" value="<?php echo $lang['applicationSend']; ?>" id="submitButton" <?php	if($count <= 0){echo "disabled";}	?>>
 				</fieldset>
 		</form>
 
@@ -188,26 +189,26 @@
 				//str_replace("<br>", "\n", $message);
 				$message = wordwrap($message, 70, "<br />");
 				
-				$email_subject = "A new application for admission into class $className from $name $surname";
+				$email_subject = $lang['applyEmailSubject1']." ".$className.$lang['applyEmailSubject2'].$name." ".$surname;
 				//Building e-mail body
 				$email_body = "
 				<div style='width: 50%; border: 2px solid black; margin: auto; background-color: #FFFF99; padding:10px;text-align:center'>
-					<h2 style='position:relative;left:0;right:0;margin:auto;'>Application details:</h2>
+					<h2 style='position:relative;left:0;right:0;margin:auto;'>".$lang['applyEmailHeader'].":</h2>
 					<fieldset style='width: 50%; position: relative; left:0; right:0; margin: auto;border-radius:20px;'>
-						<b>First name:</b> $name
-						<br /><b>Last name:</b> $surname
-						<br /><b>Content of the application:</b>
+						<b>".$lang['fName'].":</b> $name
+						<br /><b>".$lang['lName'].":</b> $surname
+						<br /><b>".$lang['applyPlaceholder'].":</b>
 						<br />
 						<div style='border: 1px solid black; width: 50%;padding:5px;margin:auto;position:relative;left:0;right:0;'>
 							$message
 						</div>
 						<br />
 					</fieldset>
-					<br /><i>You can approve or reject this application on the class management webpage.
-					<br />Approve this application only in case you are sure about who this user actually is.
-					<br />This e-mail has been generated automatically and therefore do not answer it.</i>
-					<hr /><span style='color: rgb(102,102,102)';>Don't want to get more e-mails from us? Unsubscribe <a href='seznamtestu.chytrak.cz'>here</a>.</span>
-					<br /><span style='color: rgb(135,135,135)';>This will stop only automatically generated e-mails. If you send us your opinion, a question or a suggestion, you can still get manually written answer from the webmaster.</span>n>
+					<br /><i>".$lang['applyEmailLore1']."
+					<br />".$lang['applyEmailLore2']."
+					<br />".$lang['EmailBottomLore']."</i>
+					<hr /><span style='color: rgb(102,102,102)';>".$lang['applyEmailFooter1']." <a href='seznamtestu.chytrak.cz'>".$lang['hereLink']."</a>.</span>
+					<br /><span style='color: rgb(135,135,135)';>".$lang['applyEmailFooter2']."</span>
 				</div>
 				";
 				
@@ -221,8 +222,8 @@
 				fileLog("Uživatel $user zažádal o přijetí do třídy $class");
 				
 				//Redirecting to the home page
-				echo "<script>alert('Your application for admission to this class was send. You will find out about verdict of the admin or moderator of the class on your e-mail.');</script>";
-				echo "<script type='text/javascript'>location.href = 'home.php';</script>";
+				echo "<script>alert('".$lang['applyAlertText']."');</script>";
+				echo "<script type='text/javascript'>location.href = 'home.php".$urlExtension."';</script>";
 			}
 		?>
 	</div>
