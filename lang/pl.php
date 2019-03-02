@@ -51,11 +51,11 @@ $lang['unknownFailRegister'] = "Wystąpił błąd. Powtórz swoją próbę póź
 
 //header on pages requiring a logged user
 $lang['headerText'] = "Jesteś zalogowany, jako ";
-$lang['logOut'] = "Wyloguj się.";
+$lang['logOut'] = "Wyloguj się";
 $lang['info'] = "Informacje";
 $lang['home'] = "Strona główna";
 $lang['class'] = "Klasa";
-$lang['classManagement'] = "Zarządzanie klasą.";
+$lang['classManagement'] = "Zarządzanie klasą";
 
 //examdirectory.online/scripts/home.php
 $lang['homeHeader'] = "Jesteś członkiem tych klas:";
