@@ -367,20 +367,25 @@
 					<?php
 						//Displaying subjects in the class
 						$class = $_SESSION['class'];
-						$query = "SELECT subjects FROM classes WHERE id='$class'";
+						$query = "SELECT subjects,subjectsColors FROM classes WHERE id='$class'";
 						$result = mysqli_query($connection, $query);
 						$result = mysqli_fetch_array($result);
-						$result = $result['subjects'];
-						$result = explode(',',$result);
-						echo "<ol>";
-						foreach ($result as $subject)
+						$subjects = $result['subjects'];
+						$subColors = $result['subjectsColors'];
+						$subjects = explode(',',$subjects);
+						$subColors = explode(',',$subColors);
+						echo "<table><tr><td></td><td>".$lang['subjectAbb']."</td><td>".$lang['subjectColor']."</td></tr>";
+						$i = 0;
+						foreach ($subjects as $subject)
 						{
-							echo "<li>";
+							$color = $subColors[$i];
+							$i++;
+							echo "<tr><td>$i. </td><td>";
 							if ($subject!=''){echo $subject;}
 							else {echo $lang['subjectNotSet'];}
-							echo "</li>";
+							echo "</td><td style='background-color: $color'></td></tr>";
 						}
-						echo "</ol>";
+						echo "</table>";
 					?>
 					
 					<button id="changeSubjects" onclick="changeSubjects()"><?php echo $lang['editSubjects']; ?></button>
@@ -390,18 +395,23 @@
 							<?php
 								//Displaying subjects of the class as default values in the input fields
 								$class = $_SESSION['class'];
-								$query = "SELECT subjects FROM classes WHERE id='$class'";
+								$query = "SELECT subjects,subjectsColors FROM classes WHERE id='$class'";
 								$result = mysqli_query($connection, $query);
 								$result = mysqli_fetch_array($result);
-								$result = $result['subjects'];
-								$result = explode(',',$result);
+								$subjects = $result['subjects'];
+								$colors = $result['subjectsColors'];
+								$subjects = explode(',',$subjects);
+								$colors = explode(',',$colors);
 								
 								for ($i = 1; $i <= 20; $i++)
 								{
 									echo "<input type=text maxlength=3 name='sub$i'";
 									$j = $i - 1;
-									if($result[$j] != ''){echo "value='$result[$j]'";}
-									echo "><br />";
+									if($subjects[$j] != ''){echo "value='$subjects[$j]'";}
+									echo ">";
+									$col = $colors[$j];
+									echo "<input type=color name='col$i' value=$col>";
+									echo"<br />";
 								}
 							?>
 							<input type=submit value="<?php echo $lang['saveButton']; ?>" name="save">
@@ -412,6 +422,7 @@
 							if(isset($_POST['save']))
 							{
 								$subjects = array();
+								$colors = array();
 								//TODO - make it look better
 								//Nesting new subjects in the array
 								array_push($subjects, $_POST['sub1']);
@@ -435,13 +446,36 @@
 								array_push($subjects, $_POST['sub19']);
 								array_push($subjects, $_POST['sub20']);
 								
-								//Connecting the subjects together
-								$subjects = implode(',',$subjects);
-								$class = $_SESSION['class'];
+								array_push($colors, $_POST['col1']);
+								array_push($colors, $_POST['col2']);
+								array_push($colors, $_POST['col3']);
+								array_push($colors, $_POST['col4']);
+								array_push($colors, $_POST['col5']);
+								array_push($colors, $_POST['col6']);
+								array_push($colors, $_POST['col7']);
+								array_push($colors, $_POST['col8']);
+								array_push($colors, $_POST['col9']);
+								array_push($colors, $_POST['col10']);
+								array_push($colors, $_POST['col11']);
+								array_push($colors, $_POST['col12']);
+								array_push($colors, $_POST['col13']);
+								array_push($colors, $_POST['col14']);
+								array_push($colors, $_POST['col15']);
+								array_push($colors, $_POST['col16']);
+								array_push($colors, $_POST['col17']);
+								array_push($colors, $_POST['col18']);
+								array_push($colors, $_POST['col19']);
+								array_push($colors, $_POST['col20']);
 								
+								//Connecting the subjects and colors together
+								$subjects = implode(',',$subjects);
+								$colors = implode(',',$colors);
+								$class = $_SESSION['class'];
+
 								//Updating the database
-								$query = "UPDATE classes SET subjects = '$subjects' WHERE id = $class";
+								$query = "UPDATE classes SET subjects = '$subjects', subjectsColors = '$colors' WHERE id = $class";
 								unset($class);
+								
 								mysqli_query($connection, $query);
 								
 								//Reloading the page

@@ -50,7 +50,7 @@ $lang['duplicateEmailFailRegister'] = "Tento e-mail je již používán jiným u
 $lang['unknownFailRegister'] = "Vyskytla se chyba. Zkus to znovu později, nebo kontaktuj webmastera na e-mailové adrese honza.stech@gmail.com.";
 
 //header on pages requiring a logged user
-$lang['headerText'] = "Jsi přiihlášen jako ";
+$lang['headerText'] = "Jsi přihlášen jako ";
 $lang['logOut'] = "Odhlásit se";
 $lang['info'] = "Informace";
 $lang['home'] = "Domů";
@@ -133,6 +133,8 @@ $lang['deleteClassPassword1'] = "Tato akce vyžaduje potvrzení vašeho správco
 $lang['deleteClassPassword2'] = "Zadejte své heslo a pokračujte kliknutím na OK.";
 $lang['deleteClassFinal1'] = "Tato akce je nevratná. Vaše třída bude trvale odstraněna z databáze.";
 $lang['deleteClassFinal2'] = "Smazání třídy budete moci odvolat během následujících 24 hodin na této stránce.";
+$lang['subjectAbb'] = "Zkratka";
+$lang['subjectColor'] = "Barva";
 $lang['subjectNotSet'] = "Předmět nenastaven";
 $lang['editSubjects'] = "Upravit předměty";
 $lang['memberKick'] = "Vyloučit";

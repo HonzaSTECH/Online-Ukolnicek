@@ -117,32 +117,23 @@
 					//Checking for query result
 					if($records)
 					{
+						//Getting subjects and their colors
+						$query = "SELECT subjects, subjectsColors FROM classes WHERE id=$classId";
+						$subjects = mysqli_query($connection, $query);
+						$subjects = mysqli_fetch_array($subjects);
+						$abb = $subjects['subjects'];
+						$col = $subjects['subjectsColors'];
+						
+						$abb = explode(',',$abb);
+						$col = explode(',',$col);
+						
 						//Printing the records
 						while($row = mysqli_fetch_array($records))
 						{
 							$exist = true;
 							
-							//Getting records priority / color
-							switch($row['priority'])
-							{
-								case "1":
-									$recordColor = "#FF8888";
-									break;
-								case "2":
-									$recordColor = "#FFCC88";
-									break;
-								case "3":
-									$recordColor = "#FFFF77";
-									break;
-								case "4":
-									$recordColor = "#88EE88";
-									break;
-								case "5":
-									$recordColor = "#9999FF";
-									break;
-								default:
-									$recordColor = "#FFFF77";
-							}
+							//Getting color of the record
+							$recordColor = $col[array_search($row['subject'],$abb)];
 							
 							//Formating dats in the record
 							$row['date'] = date_format(date_create($row['date']), "d. m. Y");
