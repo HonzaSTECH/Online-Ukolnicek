@@ -37,7 +37,7 @@ body{
 	/*border: 1px solid black;*/
 	background-color: #99FFFF;
 	width: 20vw;
-	height: 40vh;
+	height: 32vh;
 	position: absolute;
 	top: 30vh;
 	left: 36vw;
@@ -281,12 +281,6 @@ body{
 	font-size: 3vh;
 	text-align: right;
 }
-/*#form4Text{
-	position: absolute;
-	left: 5px;
-	top: 125px;
-	font-size: 20px;
-}*/
 #form5Text{
 	position: absolute;
 	/*left: 2vw;*/
@@ -314,127 +308,17 @@ body{
 	top: 16vh;
 	height: 9vh;
 }
-/*#form4{
-	position: absolute;
-	left: 150px;
-	top: 130px;
-}*/
-#priority1{
-    position: absolute;
-    top: 26vh;
-    left: 8vw;
-    background-color:#FF8888;
-    height: 6vh;
-    width: 2vw;
-    border: 1px solid black;
-    text-align:center;
-}
-#priority1 input{
-	transform: scale(1.5);
-	position: relative;
-	top: 0.5vh;
-	left: 0.07vw;
-}
-#priority1 label{
-	position: relative;
-	top: 0.5vh;
-	font-weight: bold;
-}
-#priority2{
-    position: absolute;
-    top: 26vh;
-    left: 10vw;
-    background-color:#FFCC88;
-    height: 6vh;
-    width: 2vw;
-    border: 1px solid black;
-    text-align:center;
-}
-#priority2 input{
-	transform: scale(1.5);
-	position: relative;
-	top: 0.5vh;
-	left: 0.1vh;
-}
-#priority2 label{
-	position: relative;
-	top: 0.5vh;
-	font-weight: bold;
-}
-#priority3{
-    position: absolute;
-    top: 26vh;
-    left: 12vw;
-    background-color:#FFFF77;
-    height: 6vh;
-    width: 2vw;
-    border: 1px solid black;
-    text-align:center;
-}
-#priority3 input{
-	transform: scale(1.5);
-	position: relative;
-	top: 0.5vh;
-	left: 0.1vh;
-}
-#priority3 label{
-	position: relative;
-	top: 0.5vh;
-	font-weight: bold;
-}
-#priority4{
-    position: absolute;
-    top: 26vh;
-    left: 14vw;
-    background-color:#88EE88;
-    height: 6vh;
-    width: 2vw;
-    border: 1px solid black;
-    text-align:center;
-}
-#priority4 input{
-	transform: scale(1.5);
-	position: relative;
-	top: 0.5vh;
-	left: 0.1vh;
-}
-#priority4 label{
-	position: relative;
-	top: 0.5vh;
-	font-weight: bold;
-}
-#priority5{
-    position: absolute;
-    top: 26vh;
-    left: 16vw;
-    background-color:#9999FF;
-    height: 6vh;
-    width: 2vw;
-    border: 1px solid black;
-    text-align:center;
-}
-#priority5 input{
-	transform: scale(1.5);
-	position: relative;
-	top: 0.5vh;
-	left: 0.1vh;
-}
-#priority5 label{
-	position: relative;
-	top: 0.5vh;
-	font-weight: bold;
-}
 #formSubmit{
 	position: absolute;
 	left: 4vw;
-	top: 35vh;
+	top: 27vh;
 	width: 5vw;
 	height: 4vh;
 }
 #formCancel{
 	position: absolute;
 	left: 11vw;
-	top: 35vh;
+	top: 27vh;
 	width: 5vw;
 	height: 4vh;
 }

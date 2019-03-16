@@ -111,7 +111,7 @@
 					require_once("connect.php");
 					
 					//Getting all records of the class from the database
-					$query = "SELECT id, date, subject, description, author, dateOfAdding, priority, likes, likers FROM records WHERE class=$classId ORDER BY date";
+					$query = "SELECT id, date, subject, description, author, dateOfAdding, likes, likers FROM records WHERE class=$classId ORDER BY date";
 					$records = mysqli_query($connection, $query);
 					
 					//Checking for query result
@@ -216,33 +216,6 @@
 				<span id="form3Text"><?php echo $lang['desc'].":"; ?></span>
 				<textarea type="message" id="form3" name="description" required placeholder="<?php echo $lang['descPlaceholder']; ?>" maxlength=100></textarea>
 				<br />
-				<span id="form5Text"><?php echo $lang['priority'],":"; ?></span>
-					<div id="priority1">
-						<input type="radio" name="priority" value="1" id="pr1">
-						<br />
-						<label for="pr1">1</label>
-					</div>
-					<div id="priority2">
-						<input type="radio"  name="priority" value="2"  id="pr2">
-						<br />
-						<label for="pr2">2</label>
-					</div>
-					<div id="priority3">
-						<input type="radio" name="priority" value="3"  id="pr3" checked>
-						<br />
-						<label for="pr3">3</label>
-					</div>
-					<div id="priority4">
-						<input type="radio" name="priority" value="4"  id="pr4">
-						<br />
-						<label for="pr4">4</label>
-					</div>
-					<div id="priority5">
-						<input type="radio" name="priority" value="5"  id="pr5">
-						<br />
-						<label for="pr5">5</label>
-					</div>
-					<br />
 				<input type="submit" id="formSubmit" name="send" value="<?php echo $lang['confirm']; ?>">
 			</form>
 			<button id="formCancel" onclick="closeForm()"><?php echo $lang['cancel']; ?></button>

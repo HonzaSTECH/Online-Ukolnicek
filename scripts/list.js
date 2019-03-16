@@ -6,29 +6,6 @@ function newRecord(event)
 	document.getElementById("form").style.display = "none";
 	var i;
 	
-	//Getting priority of the new record
-	var recordColor;
-	switch(document.querySelector('input[name="priority"]:checked').value)
-	{
-		case "1":
-			recordColor = "#FF8888";
-			break;
-		case "2":
-			recordColor = "#FFCC88";
-			break;
-		case "3":
-			recordColor = "#FFFF77";
-			break;
-		case "4":
-			recordColor = "#88EE88";
-			break;
-		case "5":
-			recordColor = "#9999FF";
-			break;
-		default:
-			recordColor = "#FFFF77";
-	}
-	
 	//Getting date of the new record
 	var dateWork = document.getElementById("form1").value;
 	
@@ -88,7 +65,7 @@ function newRecord(event)
 		date.innerHTML = dateWork;
 		subject.innerHTML = document.getElementById("form2").value;
 		description.innerHTML = descText;
-		authorInner.innerHTML = "Vy";//TODO - use nickname
+		//authorInner.innerHTML = "You";//TODO - use nickname
 		author.append(authorInner);
 		dateOfAdding.innerHTML = today;
 		likes.innerHTML = "0";
@@ -101,13 +78,6 @@ function newRecord(event)
 		dateOfAdding.setAttribute("class","column5");
 		likes.setAttribute("class","column6");
 		action.setAttribute("class","column7");
-		date.setAttribute("bgcolor", recordColor);
-		subject.setAttribute("bgcolor", recordColor);
-		description.setAttribute("bgcolor", recordColor);
-		author.setAttribute("bgcolor", recordColor);
-		dateOfAdding.setAttribute("bgcolor", recordColor);
-		likes.setAttribute("bgcolor", recordColor);
-		action.setAttribute("bgcolor", recordColor);
 		
 		//Composing the row of styled and filled td elements
 		var rw = document.createElement("tr");
@@ -134,7 +104,6 @@ function newRecord(event)
 		document.cookie = "date=" + document.getElementById("form1").value;
 		document.cookie = "subject=" + document.getElementById("form2").value;
 		document.cookie = "description=" + descText;
-		document.cookie = "priority=" + document.querySelector('input[name="priority"]:checked').value;
 		
 		getRequest("AJAXnewRecord.php", testFunc, testFunc);
 	}
@@ -148,18 +117,10 @@ function newRecord(event)
 		row.childNodes[0 + (1 * mult)].innerHTML = dateWork;
 		row.childNodes[1 + (2 * mult)].innerHTML = document.getElementById("form2").value;
 		row.childNodes[2 + (3 * mult)].childNodes[0].innerHTML = descText;
-		row.childNodes[0 + (1 * mult)].setAttribute("bgColor", recordColor);
-		row.childNodes[1 + (2 * mult)].setAttribute("bgColor", recordColor);
-		row.childNodes[2 + (3 * mult)].setAttribute("bgColor", recordColor);
-		row.childNodes[3 + (4 * mult)].setAttribute("bgColor", recordColor);
-		row.childNodes[4 + (5 * mult)].setAttribute("bgColor", recordColor);
-		row.childNodes[5 + (6 * mult)].setAttribute("bgColor", recordColor);
-		row.childNodes[6 + (7 * mult)].setAttribute("bgColor", recordColor);
 		
 		document.cookie = "newDate=" + document.getElementById("form1").value;
 		document.cookie = "newSubject=" + document.getElementById("form2").value;
 		document.cookie = "newDescription=" + descText;		//Saving new values into cookies so PHP can access it
-		document.cookie = "newPriority=" + document.querySelector('input[name="priority"]:checked').value;
 		document.cookie = "action=E";
 	
 		getRequest("AJAXactions.php", testFunc, testFunc);
@@ -176,11 +137,6 @@ function addRecord()
 	document.getElementById("form1").value = "";
 	document.getElementById("form2").value = "";
 	document.getElementById("form3").value = "";
-	document.getElementById("priority1").childNodes[1].checked = false;
-	document.getElementById("priority2").childNodes[1].checked = false;
-	document.getElementById("priority3").childNodes[1].checked = true;
-	document.getElementById("priority4").childNodes[1].checked = false;
-	document.getElementById("priority5").childNodes[1].checked = false;
 }
 
 function closeForm()
@@ -233,25 +189,6 @@ function editRecord(event)
 	document.getElementById("form1").value = dateTemp;
 	document.getElementById("form2").value = subject;
 	document.getElementById("form3").value = desc;
-	
-	switch(event.target.parentNode.bgColor)
-	{
-		case "#FF8888":
-			document.getElementById("priority1").childNodes[1].checked = true;
-			break;
-		case "#FFCC88":
-			document.getElementById("priority2").childNodes[1].checked = true;
-			break;
-		case "#FFFF77":
-			document.getElementById("priority3").childNodes[1].checked = true;
-			break;
-		case "#88EE88":
-			document.getElementById("priority4").childNodes[1].checked = true;
-			break;
-		case "#9999FF":
-			document.getElementById("priority5").childNodes[1].checked = true;
-			break;
-	}
 	
 	//Save date, subject and description value into cookie so PHP can access it
 	document.cookie = "date=" + date;

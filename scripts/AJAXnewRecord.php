@@ -8,12 +8,11 @@
 	$b = $_COOKIE['subject'];
 	$c = $_COOKIE['description'];
 	$d = $_SESSION['user'];
-	$e = $_COOKIE['priority'];
 	
 	$classId = $_SESSION['class'];
 	
 	//Inserting new record into the database
-	$query = "INSERT INTO records (date, subject, description, author, dateOfAdding, priority, class) values ('$a', '$b', '$c', '$d', NOW(), '$e', '$classId')";
+	$query = "INSERT INTO records (date, subject, description, author, dateOfAdding, class) values ('$a', '$b', '$c', '$d', NOW(), '$classId')";
 	$result = mysqli_query($connection, $query);
 	
 	//Checking for errors
@@ -25,10 +24,11 @@
 		$result = mysqli_query($connection, $query);
 		$result = mysqli_fetch_array($result);
 		$name = $result['name'];
-		fileLog("Uživatel $user přidal ve třídě $name záznam: $a - $b - $c - $e. priorita");
+		fileLog("Uživatel $user přidal ve třídě $name záznam: $a - $b - $c.");
 	}
 	else
 	{
+		//filelog(mysqli_error($connection));
 		echo "An error occured: ".mysqli_error($connection);
 		mysqli_close($connection);
         }

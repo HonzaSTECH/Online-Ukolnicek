@@ -479,7 +479,7 @@
 								mysqli_query($connection, $query);
 								
 								//Reloading the page
-								echo "<script type='text/javascript'>location.href = 'classManagement.php';</script>";
+								echo "<script type='text/javascript'>location.href = 'classManagement.php$urlExtension';</script>";
 							}
 						?>
 					</div>
