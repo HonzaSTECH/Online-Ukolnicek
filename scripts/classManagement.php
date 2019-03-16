@@ -391,7 +391,7 @@
 					<button id="changeSubjects" onclick="changeSubjects()"><?php echo $lang['editSubjects']; ?></button>
 					
 					<div id="subjectsForm">
-						<form method="POST" action="classManagement.php">
+						<form method="POST" action="classManagement.php<?php echo $urlExtension; ?>">
 							<?php
 								//Displaying subjects of the class as default values in the input fields
 								$class = $_SESSION['class'];
@@ -479,7 +479,7 @@
 								mysqli_query($connection, $query);
 								
 								//Reloading the page
-								echo "<script type='text/javascript'>location.href = 'classManagement.php$urlExtension';</script>";
+								header("Refresh:0");
 							}
 						?>
 					</div>
